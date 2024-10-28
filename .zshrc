@@ -160,6 +160,9 @@ alias warpdc='warp-cli disconnect'
 alias warpm='warp-cli mode warp+doh'
 alias warpch='curl https://www.cloudflare.com/cdn-cgi/trace/'
 
+alias gaa='git add .'
+alias gcm='git commit -m'
+
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴

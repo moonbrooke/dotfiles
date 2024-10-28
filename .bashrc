@@ -30,6 +30,9 @@ alias warpdc='warp-cli disconnect'
 alias warpm='warp-cli mode warp+doh'
 alias warpch='curl https://www.cloudflare.com/cdn-cgi/trace/'
 
+alias gaa='git add .'
+alias gcm='git commit -m'
+
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
