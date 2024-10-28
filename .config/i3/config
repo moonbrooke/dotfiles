@@ -1,0 +1,21 @@
+
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+# Set $mod to Windows key
+set $mod Mod4
+
+# Font
+font pango:FiraMono Nerd Font 12
+
+# Autostart
+include ~/.config/i3/autostart
+
+# Keybindinga
+include ~/.config/i3/keybindings
+
+# Window decorations
+gaps inner 10
+default_border pixel 3
+
+# Color Theme
+include ~/.config/i3/catppuccin-mocha
