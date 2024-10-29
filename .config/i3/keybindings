@@ -127,6 +127,9 @@ bindsym $mod+BackSpace exec ~/.config/rofi/powermenu/type-1/powermenu.sh
 # Screenshot
 bindsym $mod+Print exec ~/dotfiles/.config/rofi/applets/bin/screenshot.sh
 
+# Network
+bindsym $mod+Shift+n exec ~/.config/rofi/custom/netmanager
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
