@@ -144,6 +144,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias grep='grep --color=auto'
+alias fcfv='fc-cache -fv'
 
 alias c='clear'
 alias msk='musikcube'
