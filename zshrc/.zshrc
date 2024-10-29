@@ -145,6 +145,8 @@ alias la='ls -A'
 alias l='ls -CF'
 alias grep='grep --color=auto'
 alias fcfv='fc-cache -fv'
+alias stowall='stow */'
+alias unstowall='stow -D */'
 
 alias c='clear'
 alias msk='musikcube'

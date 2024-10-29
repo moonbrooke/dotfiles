@@ -25,6 +25,8 @@ alias pmu='sudo pacman -R'
 alias pmclean='yay -Scc'
 alias pmconf='sudo nvim /etc/pacman.conf'
 alias fcfv='fc-cache -fv'
+alias stowall='stow */'
+alias unstowall='stow -D */'
 
 alias warpc='warp-cli connect'
 alias warpdc='warp-cli disconnect'
