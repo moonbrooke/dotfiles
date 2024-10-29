@@ -5,7 +5,8 @@
 
 
     ### Geometry ###
-    width = (0, 300)
+    #width = (0, 300)
+    width = (0, 500)
     height = 300
 
     origin = top-right
@@ -25,7 +26,7 @@
     progress_bar_max_width = 300
     progress_bar_corner_radius = 6
 
-    icon_corner_radius = 8
+    icon_corner_radius = 0
 
     indicate_hidden = yes
 
@@ -38,7 +39,7 @@
     text_icon_padding = 5
 
     frame_width = 3
-    frame_color = "#f5c2e7"
+    frame_color = "#89b4fa"
 
     gap_size = 5
 
@@ -87,7 +88,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%a</b>\n%s\n\n%b"
+    format = "<b>%a</b>\n<span foreground='#cdd6f4'>%s</span>\n\n%b"
 	alignment = left
 	vertical_alignment = center
 
@@ -108,7 +109,8 @@
     icon_theme = kora
     icon_position = left
     min_icon_size = 30
-    max_icon_size = 128
+    #max_icon_size = 128
+    max_icon_size = 50
     icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/Adwaita/16x16/legacy/
 
     ### History ###
@@ -137,7 +139,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 8
+    corner_radius = 0
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -204,17 +206,18 @@
     foreground = "#cdd6f4"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    default_icon = ~/.config/dunst/icons/bell.png
 
 [urgency_normal]
     background = "#1e1e2e"
     foreground = "#f9e2af"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    default_icon = ~/.config/dunst/icons/bell.png
 
 [urgency_critical]
     background = "#1e1e2e"
     foreground = "#f38ba8"
     frame_color = "#f38ba8"
     timeout = 0
+    default_icon = ~/.config/dunst/icons/bell.png
