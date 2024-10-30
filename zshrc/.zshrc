@@ -10,6 +10,7 @@ export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export SUDO_PROMPT="Deploying root access. Enter password: "
 export BAT_THEME="base16"
+export FLATPAK_DIR='/var/lib/flatpak/app/'
 
 source ~/.sssh
 
@@ -157,6 +158,7 @@ alias pmi='sudo pacman -S'
 alias pmu='sudo pacman -R'
 alias pmclean='yay -Scc'
 alias pmconf='sudo nvim /etc/pacman.conf'
+alias flatpakdir='cd $FLATPAK_DIR'
 
 alias warpc='warp-cli connect'
 alias warpdc='warp-cli disconnect'

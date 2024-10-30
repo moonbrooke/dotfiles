@@ -7,6 +7,8 @@
 
 source ~/.sssh
 
+export FLATPAK_DIR='/var/lib/flatpak/app/'
+
 alias cat="bat --theme=base16"
 alias ls='ls --color=auto'
 alias ll='ls -alF'
@@ -27,6 +29,7 @@ alias pmconf='sudo nvim /etc/pacman.conf'
 alias fcfv='fc-cache -fv'
 alias stowall='cd ~/dotfiles/ && stow */'
 alias unstowall='cd ~/dotfiles/ && stow -D */'
+alias flatpakdir='cd $FLATPAK_DIR'
 
 alias warpc='warp-cli connect'
 alias warpdc='warp-cli disconnect'
