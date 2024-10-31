@@ -70,7 +70,6 @@
 	"window.title": "${activeEditorShort} / ${rootName}",
 	"breadcrumbs.enabled": false,
 	"workbench.tips.enabled": false,
-	"workbench.sideBar.location": "right",
 	"[jsonc]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
