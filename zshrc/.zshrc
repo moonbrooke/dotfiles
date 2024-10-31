@@ -158,6 +158,7 @@ alias pmi='sudo pacman -S'
 alias pmu='sudo pacman -R'
 alias pmclean='yay -Scc'
 alias pmconf='sudo nvim /etc/pacman.conf'
+alias yayc='du -hd1 ~/.cache/yay'
 alias flatpakdir='cd $FLATPAK_DIR'
 
 alias warpc='warp-cli connect'
