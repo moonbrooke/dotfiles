@@ -29,7 +29,7 @@ alias pmclean='yay -Scc'
 alias pmconf='sudo nvim /etc/pacman.conf'
 alias fcfv='fc-cache -fv'
 alias stowall='cd ~/dotfiles/ && stow */'
-alias unstowall='cd ~/dotfiles/ && stow -D */'
+alias unstow='stow -D'
 alias yayc='du -hd1 ~/.cache/yay'
 alias flatpakdir='cd $FLATPAK_DIR'
 
