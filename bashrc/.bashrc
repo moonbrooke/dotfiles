@@ -9,6 +9,7 @@ source ~/.sssh
 
 export FLATPAK_DIR='/var/lib/flatpak/app/'
 
+# ALIAS
 alias cat="bat --theme=base16"
 alias ls='ls --color=auto'
 alias ll='ls -alF'
@@ -16,8 +17,8 @@ alias la='ls -A'
 alias l='ls -CF'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
+alias lla='ll --color -h --group-directories-first'
 
-# ALIAS
 alias c='clear'
 alias msk='musikcube'
 alias pmc='du -hd1 /var/cache/pacman'

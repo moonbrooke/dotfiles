@@ -148,6 +148,7 @@ alias grep='grep --color=auto'
 alias fcfv='fc-cache -fv'
 alias stowall='cd ~/dotfiles/ && stow */'
 alias unstowall='cd ~/dotfiles/ && stow -D */'
+alias lla='ll --color -h --group-directories-first'
 
 alias c='clear'
 alias msk='musikcube'
