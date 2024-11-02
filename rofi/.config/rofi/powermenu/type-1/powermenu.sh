@@ -84,6 +84,8 @@ run_cmd() {
 				bspc quit
 			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
 				i3-msg exit
+			elif [[ "$DESKTOP_SESSION" == 'hyprland' ]]; then
+				hyprctl dispatch exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
 			fi
@@ -103,11 +105,7 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
+        hyprlock
         ;;
     $suspend)
 		run_cmd --suspend
