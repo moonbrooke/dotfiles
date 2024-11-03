@@ -15,7 +15,7 @@ include ~/.config/i3/keybindings
 
 # Window decorations
 gaps inner 10
-default_border pixel 3
+default_border pixel 5
 
 # Color Theme
 include ~/.config/i3/catppuccin-mocha
