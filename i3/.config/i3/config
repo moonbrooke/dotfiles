@@ -6,7 +6,7 @@ font pango:FiraMono Nerd Font 12
 # Autostart
 include ~/.config/i3/autostart
 
-# Keybinding
+# Keybindings
 include ~/.config/i3/keybinding
 
 # Appearance
@@ -14,3 +14,6 @@ include ~/.config/i3/appearance
 
 # Color Theme
 include ~/.config/i3/catppuccin-mocha
+
+# Window Rules
+include ~/.config/i3/rule
