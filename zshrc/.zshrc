@@ -171,6 +171,11 @@ alias warpch='curl https://www.cloudflare.com/cdn-cgi/trace/'
 alias gaa='git add .'
 alias gcm='git commit -m'
 
+alias ytmp3='yt-dlp -f bestaudio --extract-audio --audio-format mp3 -o "~/Downloads/%(title)s.%(ext)s"'
+alias ytbest='yt-dlp -o "~/Downloads/%(title)s.%(ext)s"'
+alias yt720='yt-dlp -S "height:720" -o "~/Downloads/%(title)s.%(ext)s"'
+alias yt480='yt-dlp -S "height:480" -o "~/Downloads/%(title)s.%(ext)s"'
+
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴
