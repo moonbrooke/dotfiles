@@ -105,12 +105,12 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-        # hyprlock
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l dim
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
+        hyprlock
+		# if [[ -x '/usr/bin/betterlockscreen' ]]; then
+		# 	betterlockscreen -l dim
+		# elif [[ -x '/usr/bin/i3lock' ]]; then
+		# 	i3lock
+		# fi
         ;;
     $suspend)
 		run_cmd --suspend
