@@ -128,7 +128,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+BackSpace exec ~/.config/rofi/powermenu/type-1/powermenu.sh
 
 # Screenshot
-bindsym $mod+Print exec ~/dotfiles/.config/rofi/applets/bin/screenshot.sh
+bindsym $mod+Print exec ~/.config/rofi/applets/bin/screenshot.sh
 
 # Network
 bindsym $mod+Shift+n exec ~/.config/rofi/custom/netmanager
