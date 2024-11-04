@@ -9,15 +9,13 @@ configuration {
 
 window {
     transparency:                "real";
-    location:                    east;
-    anchor:                      east;
+    location:                    north;
+    anchor:                      north;
     fullscreen:                  false;
     width:                       17%;
     height:                      44%;
-    /* x-offset:                    41%; */
-    x-offset:                    -10px;
-    /* y-offset:                    4%; */
-    y-offset:                    -352px;
+    x-offset:                    0px;
+    y-offset:                    10px;
 
     /* properties for all widgets */
     enabled:                     true;
