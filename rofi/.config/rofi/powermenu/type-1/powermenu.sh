@@ -107,7 +107,7 @@ case ${chosen} in
     $lock)
         # hyprlock
 		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
+			betterlockscreen -l dim
 		elif [[ -x '/usr/bin/i3lock' ]]; then
 			i3lock
 		fi
