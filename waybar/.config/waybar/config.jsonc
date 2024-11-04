@@ -99,7 +99,7 @@
     "custom/logo": {
         "format": "  ",
         "tooltip": false,
-        "on-click": "wofi --show drun"
+        "on-click": "~/.config/rofi/launchers/type-1/launcher.sh"
     },
     "battery": {
         "format": "{capacity}% {icon}",
