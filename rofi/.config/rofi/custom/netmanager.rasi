@@ -9,20 +9,22 @@ configuration {
 
 window {
     transparency:                "real";
-    location:                    north;
-    anchor:                      north;
+    location:                    east;
+    anchor:                      east;
     fullscreen:                  false;
     width:                       17%;
     height:                      44%;
-    x-offset:                    41%;
-    y-offset:                    4%;
+    /* x-offset:                    41%; */
+    x-offset:                    -10px;
+    /* y-offset:                    4%; */
+    y-offset:                    -352px;
 
     /* properties for all widgets */
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
-    border-radius:               8px;
+    border:                      3px solid;
+    border-radius:               0px;
     border-color:                @selected;
     cursor:                      "default";
     background-color:            @background;
