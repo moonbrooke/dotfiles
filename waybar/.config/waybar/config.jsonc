@@ -53,12 +53,12 @@
         }
     },
     "hyprland/window": {
-        "format": "{title}",
+        "format": "<b>{title}</b>",
         "max-length": 30
     },
     "memory": {
         "interval": 5,
-        "format": "󰍛 {}%",
+        "format": "󰍛 <b>{}%</b>",
         "max-length": 10
     },
     "tray": {
@@ -66,8 +66,8 @@
     },
     "clock": {
         "tooltip-format": "{calendar}",
-        "format-alt": "It's Arch, btw!",
-        "format": "{:%b %d, %I:%M %p}"
+        "format-alt": "It's <b>Arch</b>, btw!",
+        "format": "<b>{:%b %d, %I:%M %p}</b>"
     },
     "network": {
         "format-wifi" : "{icon}",
@@ -84,10 +84,10 @@
 	"nospacing": 1,
     },
     "wireplumber": {
-        "format": "{icon} {volume}%",
+        "format": "{icon} <b>{volume}%</b>",
         "format-bluetooth": "󰂰",
         "nospacing": 1,
-        "tooltip-format": "Volume : {volume}%",
+        "tooltip-format": "Volume: {volume}%",
         "format-muted": "󰝟",
         "format-icons": {
             "headphone": "",
