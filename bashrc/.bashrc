@@ -32,6 +32,7 @@ alias stowall='cd ~/dotfiles/ && stow */'
 alias unstow='stow -D'
 alias yayc='du -hd1 ~/.cache/yay'
 alias flatpakdir='cd $FLATPAK_DIR'
+alias dirsize='du -sh'
 
 alias warpc='warp-cli connect'
 alias warpdc='warp-cli disconnect'

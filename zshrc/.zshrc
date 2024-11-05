@@ -162,6 +162,7 @@ alias pmclean='yay -Scc'
 alias pmconf='sudo -E -s nvim /etc/pacman.conf'
 alias yayc='du -hd1 ~/.cache/yay'
 alias flatpakdir='cd $FLATPAK_DIR'
+alias dirsize='du -sh'
 
 alias warpc='warp-cli connect'
 alias warpdc='warp-cli disconnect'
