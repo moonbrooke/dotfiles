@@ -47,3 +47,7 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 call plug#end()
 
 colorscheme catppuccin_mocha
+
+" Keymaps
+nnoremap <C-s> :w<cr>
+nnoremap \ :Ex<cr>
