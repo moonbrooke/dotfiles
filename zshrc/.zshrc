@@ -11,6 +11,7 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export SUDO_PROMPT="Deploying root access. Enter password: "
 export BAT_THEME="base16"
 export FLATPAK_DIR='/var/lib/flatpak/app/'
+export EXCONFDIR='/usr/share/doc'
 
 source ~/.sssh
 

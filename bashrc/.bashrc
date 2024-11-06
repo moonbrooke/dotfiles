@@ -8,6 +8,7 @@
 source ~/.sssh
 
 export FLATPAK_DIR='/var/lib/flatpak/app/'
+export EXCONFDIR='/usr/share/doc'
 
 # ALIAS
 alias cat="bat --theme=base16"
