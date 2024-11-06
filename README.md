@@ -1,3 +1,3 @@
 # dotfiles
 
-dotfiles for my Arch Linux setup. Includes my unfinished i3wm setup with Catppuccin Mocha colors.
+dotfiles for my Arch Linux setup. Hyprland, i3, and BSPWM configs in this dotfiles are all experimental. Don't use it!
