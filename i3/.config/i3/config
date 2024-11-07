@@ -1,6 +1,5 @@
 font pango:FiraMono Nerd Font 10
 
-
 # Keybindings
 include ~/.config/i3/autostart
 
