@@ -143,3 +143,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Screenshot with maim
+# Full
+bindsym Print exec "~/.config/i3/scripts/screenshot.sh full"
+# Selection
+bindsym $mod+Print exec "~/.config/i3/scripts/screenshot.sh select"
+# Active Window
+bindsym $mod+Shift+Print exec "~/.config/i3/scripts/screenshot.sh window"

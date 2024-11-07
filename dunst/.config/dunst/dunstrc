@@ -88,7 +88,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%a</b>\n<span foreground='#cdd6f4'>%s</span>\n\n%b"
+    format = "<b>%a</b>\n<span foreground='#cdd6f4'>%b</span>"
 	alignment = left
 	vertical_alignment = center
 
