@@ -1,19 +1,17 @@
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+font pango:FiraMono Nerd Font 10
 
-# Font
-font pango:FiraMono Nerd Font 12
 
-# Autostart
+# Keybindings
 include ~/.config/i3/autostart
 
 # Keybindings
 include ~/.config/i3/keybinding
 
-# Appearance
-include ~/.config/i3/appearance
-
 # Color Theme
 include ~/.config/i3/catppuccin-mocha
 
-# Window Rules
+# Appearance
+include ~/.config/i3/appearance
+
+# Appearance
 include ~/.config/i3/rule
