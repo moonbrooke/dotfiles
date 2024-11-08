@@ -14,7 +14,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 # bindsym $mod+space exec --no-startup-id dmenu_run -p Menu -nb '#1e1e2e' -nf '#cdd6f4' -sb '#89b4fa' -sf '#1e1e2e'
-bindsym $mod+space exec --no-startup-id dmenu_run -p Menu -h 38
+bindsym $mod+space exec --no-startup-id dmenu_run -p Menu -h 32
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
