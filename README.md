@@ -1,6 +1,6 @@
 # dotfiles
 
-dotfiles for my Arch Linux setup. Hyprland and BSPWM configs in this dotfiles are experimental. I use the i3 setup. It's simple setup with [Catppuccin](https://github.com/catppuccin/catppuccin).
+dotfiles for my Arch Linux setup. Hyprland and BSPWM configs in this dotfiles are experimental. I use the i3 setup. It's simple setup with [Catppuccin](https://github.com/catppuccin/catppuccin) colors.
 
 ### Setup
 
