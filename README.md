@@ -13,6 +13,7 @@ dotfiles for my Arch Linux setup. [Hyprland](https://hyprland.org/) and [BSPWM](
 - Notification Daemon: [dunst](https://github.com/dunst-project/dunst)
 - Statusbar: [Polybar](https://github.com/polybar/polybar)
 - Menu: [dmenu](https://tools.suckless.org/dmenu/) + [line height patch](https://tools.suckless.org/dmenu/patches/line-height/)
+- Screenshot Tool: [maim](https://github.com/naelstrof/maim)
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - Editor: [Neovim](https://neovim.io/) / [VS Code](https://code.visualstudio.com/)
 - File Manager: [ranger](https://github.com/ranger/ranger) / [yazi](https://github.com/sxyazi/yazi)
