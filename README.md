@@ -4,8 +4,6 @@ dotfiles for my Arch Linux setup. [Hyprland](https://hyprland.org/) and [BSPWM](
 
 ### Setup
 
-![i3 Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/assets/screenshot_2024-Nov-08-10-52-52_maim.png)
-
 - WM: [i3wm](https://i3wm.org/)
 - Compositor: [Picom](https://picom.app/)
 - Colors: [Catppuccin Mocha](https://github.com/catppuccin/catppuccin)
@@ -18,3 +16,13 @@ dotfiles for my Arch Linux setup. [Hyprland](https://hyprland.org/) and [BSPWM](
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - Editor: [Neovim](https://neovim.io/) / [VS Code](https://code.visualstudio.com/)
 - File Manager: [ranger](https://github.com/ranger/ranger) / [yazi](https://github.com/sxyazi/yazi)
+
+![i3 Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/assets/screenshot_2024-Nov-08-10-52-52_maim.png)
+
+#### polybar
+
+![polybar](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/assets/polybar.png)
+
+#### polybar-simple
+
+![polybar-simple](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/assets/polybar-simple.png)
