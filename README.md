@@ -2,6 +2,8 @@
 
 dotfiles for my Arch Linux setup. [Hyprland](https://hyprland.org/) and [BSPWM](https://github.com/baskerville/bspwm) configs in this dotfiles are experimental. I only use the [i3wm](https://i3wm.org/) setup. It's simple setup with [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) colors.
 
+It's **recommended** to use [GNU Stow](https://www.gnu.org/software/stow/) if you want to use my dotfiles.
+
 ### Setup
 
 - WM: [i3wm](https://i3wm.org/)
