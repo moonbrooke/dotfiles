@@ -17,8 +17,9 @@ It's **recommended** to use [GNU Stow](https://www.gnu.org/software/stow/) if yo
 - Menu: [dmenu](https://tools.suckless.org/dmenu/) + [line height patch](https://tools.suckless.org/dmenu/patches/line-height/)
 - Screenshot Tool: [maim](https://github.com/naelstrof/maim)
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
-- Editor: [Neovim](https://neovim.io/) / [VS Code](https://code.visualstudio.com/)
-- File Manager: [ranger](https://github.com/ranger/ranger) / [yazi](https://github.com/sxyazi/yazi)
+- Editor: [Neovim](https://neovim.io/), [VS Code](https://code.visualstudio.com/)
+- File Manager: [ranger](https://github.com/ranger/ranger), [yazi](https://github.com/sxyazi/yazi)
+- Fonts: [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [HackGen35](https://github.com/yuru7/HackGen) (for Japanese characters support)
 
 ![i3 Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/assets/screenshot_2024-Nov-08-10-52-52_maim.png)
 
