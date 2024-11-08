@@ -14,5 +14,6 @@ dotfiles for my Arch Linux setup. Hyprland and BSPWM configs in this dotfiles ar
 - Prompt: [Oh My Posh](https://ohmyposh.dev/)
 - Notification Daemon: [dunst](https://github.com/dunst-project/dunst)
 - Statusbar: [Polybar](https://github.com/polybar/polybar)
+- Menu: [dmenu](https://tools.suckless.org/dmenu/)
 - Editor: [Neovim](https://neovim.io/)
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
