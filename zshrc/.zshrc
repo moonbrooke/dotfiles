@@ -4,6 +4,7 @@
 #  ┬  ┬┌─┐┬─┐┌─┐
 #  └┐┌┘├─┤├┬┘└─┐
 #   └┘ ┴ ┴┴└─└─┘
+export XDG_CURRENT_DESKTOP=GNOME
 export VISUAL="${EDITOR}"
 export EDITOR='nvim'
 export BROWSER='firefox'
@@ -165,6 +166,7 @@ alias pmconf='sudo -E -s nvim /etc/pacman.conf'
 alias yayc='du -hd1 ~/.cache/yay'
 alias flatpakdir='cd $FLATPAK_DIR'
 alias dirsize='du -sh'
+alias envedit='sudo -E -s nvim /etc/environment'
 
 alias warpc='warp-cli connect'
 alias warpdc='warp-cli disconnect'

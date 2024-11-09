@@ -7,6 +7,7 @@
 
 source ~/.sssh
 
+export XDG_CURRENT_DESKTOP=GNOME
 export FLATPAK_DIR='/var/lib/flatpak/app/'
 export EXCONFDIR='/usr/share/doc'
 
@@ -35,6 +36,7 @@ alias unstow='stow -D'
 alias yayc='du -hd1 ~/.cache/yay'
 alias flatpakdir='cd $FLATPAK_DIR'
 alias dirsize='du -sh'
+alias envedit='sudo -E -s nvim /etc/environment'
 
 alias warpc='warp-cli connect'
 alias warpdc='warp-cli disconnect'
