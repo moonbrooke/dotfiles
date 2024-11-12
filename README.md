@@ -21,12 +21,12 @@ dotfiles for my Arch Linux setup. [Hyprland](https://hyprland.org/) and [BSPWM](
 - File Manager: [ranger](https://github.com/ranger/ranger), [yazi](https://github.com/sxyazi/yazi)
 - Font: [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [HackGen35](https://github.com/yuru7/HackGen) (for Japanese characters support)
 
-![i3 Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/assets/screenshot_2024-Nov-08-10-52-52_maim.png)
+![i3 Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/screenshot_2024-Nov-08-10-52-52_maim.png)
 
 #### polybar
 
-![polybar](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/assets/polybar.png)
+![polybar](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/polybar.png)
 
 #### polybar-simple
 
-![polybar-simple](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/assets/polybar-simple.png)
+![polybar-simple](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/polybar-simple.png)
