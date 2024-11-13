@@ -10,7 +10,7 @@ case "$(echo -e "Shutdown\nRestart\nLogout\nSuspend\nLock" | dmenu \
     "Power:")" in
         Shutdown) exec systemctl poweroff;;
         Restart) exec systemctl reboot;;
-        Logout) kill -HUP $XDG_SESSION_PID;;
+        Logout) i3-msg exit;;
         Suspend) exec systemctl suspend;;
         Lock) exec systemctl --user start lock.target;;
 esac
