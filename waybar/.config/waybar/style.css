@@ -37,7 +37,7 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-    color: @blue;
+    color: @sapphire;
 }
 
 #workspaces button:hover {
@@ -55,6 +55,7 @@ window#waybar.hidden {
 }
 
 #memory,
+#cpu,
 #custom-power,
 #battery,
 #backlight,
@@ -87,6 +88,10 @@ window#waybar.hidden {
 }
 
 #memory {
+    background-color: @surface0;
+}
+
+#cpu {
     background-color: @surface0;
 }
 

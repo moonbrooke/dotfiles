@@ -13,6 +13,7 @@
     ],
     "modules-right": [
         "tray",
+        "cpu",
         "memory",
         "network",
         "wireplumber",
@@ -58,7 +59,13 @@
     },
     "memory": {
         "interval": 5,
-        "format": "󰍛 <b>{}%</b>",
+        "format": "<span foreground='#74c7ec'>RAM </span><b>{used} GB</b>",
+        "max-length": 15
+    },
+    "cpu":
+    {
+        "interval": 5,
+        "format": "<span foreground='#74c7ec'>CPU </span><b>{usage}%</b>",
         "max-length": 10
     },
     "tray": {
@@ -83,14 +90,14 @@
                     },
     },
     "network": {
-        "format-wifi" : "{icon}",
+        "format-wifi" : "<span foreground='#74c7ec'>NET </span><b>{bandwidthDownBytes}</b>",
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "format-ethernet": "󰀂",
+        "format-ethernet": "<span foreground='#74c7ec'>NET </span><b>{bandwidthDownBytes}</b>",
     	//"format-alt" : "󱛇",
-    	"format-alt" : "{icon}",
-        "format-disconnected" : "󰖪",
-    	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    	"format-alt" : "<span foreground='#74c7ec'>NET </span><b>{bandwidthDownBytes}</b>",
+        "format-disconnected" : "<span foreground='#74c7ec'>NET </span><b>OFF</b>",
+    	"tooltip-format-wifi": "{icon} <span foreground='#74c7ec'>{essid}</span>\n<b>⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}</b>",
+        "tooltip-format-ethernet": "󰀂 <span foreground='#74c7ec'>{ifname}</span>\n<b>⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}</b>",
 	    "tooltip-format-disconnected": "Disconnected",
 	    //"on-click": "~/.config/rofi/wifi/wifi.sh &",
 	    "on-click": "pkill rofi || ~/.config/rofi/custom/netmanager",
@@ -99,11 +106,11 @@
 	    "nospacing": 1,
     },
     "wireplumber": {
-        "format": "{icon} <b>{volume}%</b>",
+        "format": "<span foreground='#74c7ec'>VOL </span><b>{volume}%</b>",
         "format-bluetooth": "󰂰",
         "nospacing": 1,
         "tooltip-format": "Volume: {volume}%",
-        "format-muted": "󰝟",
+        "format-muted": "VOL <span foreground='#f38ba8'><b>OFF</b></span>",
         "format-icons": {
             "headphone": "",
             "default": ["󰖀","󰕾",""]
