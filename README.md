@@ -1,8 +1,8 @@
 # dotfiles
 
-dotfiles for my Arch Linux setup. [Hyprland](https://hyprland.org/) and [BSPWM](https://github.com/baskerville/bspwm) configs in this dotfiles are experimental. I only use the [i3wm](https://i3wm.org/) setup. It's simple setup with [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) colors.
+dotfiles for my Arch Linux setup. [Hyprland](https://hyprland.org/), [BSPWM](https://github.com/baskerville/bspwm), and [AwesomeWM](https://awesomewm.org/) configs in this dotfiles are experimental. I only use the [i3wm](https://i3wm.org/) setup. It's simple setup with [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) colors.
 
-**Important:** The folders are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/).
+**IMPORTANT:** The folders are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/).
 
 ### Setup
 
