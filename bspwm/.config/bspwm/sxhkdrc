@@ -4,15 +4,19 @@
 
 # terminal emulator
 super + Return
-	urxvt
+	kitty
 
 # program launcher
 super + @space
-	dmenu_run
+    dmenu_run -p Menu -h 32
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# make sxhkd reload its configuration files:
+super + BackSpace
+	~/.config/bspwm/scripts/dmenu-power.sh
 
 #
 # bspwm hotkeys
@@ -119,3 +123,19 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+# screenshot with maim
+#
+
+# full
+Print
+    ~/.config/bspwm/scripts/screenshot.sh full
+
+# selection
+super + Print
+    ~/.config/bspwm/scripts/screenshot.sh select
+
+# active Window
+super + Shift + Print
+    ~/.config/bspwm/scripts/screenshot.sh window
