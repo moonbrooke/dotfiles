@@ -66,8 +66,21 @@
     },
     "clock": {
         "tooltip-format": "{calendar}",
-        "format-alt": "It's <b>Arch</b>, btw!",
-        "format": "<b>{:%b %d, %I:%M %p}</b>"
+        "format-alt": "<b>{:%A, %d %B %Y}</b>",
+        "format": "<b>{:%b %d, %I:%M %p}</b>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#89b4fa'><b>{}</b></span>",
+                              "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+                              "weeks":      "<span color='#a6e3a1'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#f9e2af'><b>{}</b></span>",
+                              "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"
+                              }
+                    },
     },
     "network": {
         "format-wifi" : "{icon}",

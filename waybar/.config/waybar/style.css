@@ -130,12 +130,13 @@ window#waybar.hidden {
 }
 
 tooltip {
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     padding: 15px;
-    background-color: #131822;
+    background-color: @base;
+    /*border: 3px solid #89b4fa*/
 }
 
 tooltip label {
     padding: 5px;
-    background-color: #131822;
+    background-color: @base;
 }
