@@ -22,6 +22,8 @@ dotfiles for my Arch Linux setup. [BSPWM](https://github.com/baskerville/bspwm) 
 
 ### Hyprland
 
+Featuring rofi config from [https://github.com/adi1090x/rofi](https://github.com/adi1090x/rofi).
+
 ![Hyprland Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/hyprland.png)
 
 ### i3wm
