@@ -1,6 +1,14 @@
 #! /bin/sh
 
 pgrep -x sxhkd > /dev/null || sxhkd -c $HOME/.config/bspwm/sxhkdrc &
+nm-applet &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+$HOME/.config/polybar/launch.sh
+feh --bg-fill $HOME/Pictures/Wallpapers/aesthetic-cityscape-sunset-bridge-desktop-wallpaper-4k.jpg
+fcitx5 &
+picom
+dunst -config $HOME/.config/dunst/dunstrc
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
