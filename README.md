@@ -26,7 +26,7 @@ dotfiles for my Arch Linux setup. [BSPWM](https://github.com/baskerville/bspwm) 
 
 ### i3wm
 
-![i3 Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/screenshot_2024-Nov-08-10-52-52_maim.png)
+![i3 Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/i3wm.png)
 
 #### polybar
 
