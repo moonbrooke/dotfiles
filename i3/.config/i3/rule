@@ -3,6 +3,7 @@ for_window [class="(?i)easyeffects"] floating enable, move container to workspac
 for_window [class="(?i)multimc"] floating enable, move position center
 for_window [class="(?i)prismlauncher"] floating enable, resize set 800 600, move position center
 for_window [class="(?i)minecraft"] floating enable, move position center
+for_window [class="(?i)minecraft-launcher"] floating enable, move position center
 for_window [class="(?i)clapper"] floating enable, move position center
 for_window [class="(?i)loupe"] floating enable, move position center
 for_window [class="(?i)nautilus"] floating enable, move position center
