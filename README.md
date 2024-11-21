@@ -2,11 +2,12 @@
 
 dotfiles for my Arch Linux setup. [BSPWM](https://github.com/baskerville/bspwm) and [AwesomeWM](https://awesomewm.org/) configs in this dotfiles are experimental. Only [Hyprland](https://hyprland.org/) and [i3wm](https://i3wm.org/) setups are being used regularly.
 
-**IMPORTANT:** The folders are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/).
+**IMPORTANT:** The folders are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). And **use at your own risk**!
 
 ### Setup
 
 - WM/Compositor: [Hyprland](https://hyprland.org/), [i3wm](https://i3wm.org/) with [Picom](https://picom.app/)
+- Display Manager: [GDM](https://wiki.gnome.org/Projects/GDM)
 - Colors: [Catppuccin Mocha](https://github.com/catppuccin/catppuccin)
 - Terminal: [kitty](https://sw.kovidgoyal.net/kitty/)
 - Shell: [zsh](https://www.zsh.org/)
@@ -22,7 +23,9 @@ dotfiles for my Arch Linux setup. [BSPWM](https://github.com/baskerville/bspwm) 
 
 ### Hyprland
 
-Featuring rofi config from [https://github.com/adi1090x/rofi](https://github.com/adi1090x/rofi).
+Credit:
+
+- rofi: [https://github.com/adi1090x/rofi](https://github.com/adi1090x/rofi)
 
 ![Hyprland Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/hyprland.png)
 
