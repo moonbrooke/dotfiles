@@ -23,9 +23,10 @@ dotfiles for my Arch Linux setup. [BSPWM](https://github.com/baskerville/bspwm) 
 
 ### Hyprland
 
-Credit:
+Credits:
 
 - rofi: [https://github.com/adi1090x/rofi](https://github.com/adi1090x/rofi)
+- Waybar: [https://github.com/sameemul-haque/dotfiles](https://github.com/sameemul-haque/dotfiles)
 
 ![Hyprland Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/hyprland.png)
 
