@@ -60,7 +60,7 @@
     },
     "memory": {
         "interval": 5,
-        "format": "<span foreground='#74c7ec'>RAM </span><b>{used} GB</b>",
+        "format": "<span foreground='#74c7ec'>RAM </span><b>{percentage}%</b>",
         "max-length": 15
     },
     "cpu":
