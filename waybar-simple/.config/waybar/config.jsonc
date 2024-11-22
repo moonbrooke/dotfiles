@@ -1,0 +1,168 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "spacing": 0,
+    "height": 20,
+    "modules-left": [
+        "custom/logo",
+        "hyprland/workspaces"
+        //"hyprland/window",
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "cpu",
+        "memory",
+        "network",
+        "wireplumber",
+        "battery",
+        "custom/power"
+    ],
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "on-click-right": "fullscreen",
+        "icon-theme": "WhiteSur",
+        "icon-size": 25,
+        "tooltip-format": "{title}"
+    },
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "sort-by": "name",
+        "format": "<b>{icon}</b>",
+        "all-outputs": true,
+        "format-icons": {
+            //"default": "",
+            //"1": "",
+            //"2": "SUB",
+            //"3": "",
+            //"4": "",
+            //"5": "",
+            //"6": "",
+            //"7": "",
+            //"8": "",
+            //"9": "",
+            //"active": "",
+            //"urgent": ""
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+    "hyprland/window": {
+        "format": "<b>{title}</b>",
+        "max-length": 30,
+        "separate-outputs": true
+    },
+    "memory": {
+        "interval": 5,
+        "format": "<span foreground='#89b4fa'>RAM </span><b>{percentage}%</b>",
+        "max-length": 15
+    },
+    "cpu":
+    {
+        "interval": 5,
+        "format": "<span foreground='#89b4fa'>CPU </span><b>{usage}%</b>",
+        "max-length": 10
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "{calendar}",
+        "format-alt": "<b>{:%A, %d %B %Y}</b>",
+        "format": "<b>{:%b %d, %I:%M %p}</b>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#89b4fa'><b>{}</b></span>",
+                              "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+                              "weeks":      "<span color='#a6e3a1'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#f9e2af'><b>{}</b></span>",
+                              "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"
+                              }
+                    },
+    },
+    "network": {
+        "format-wifi" : "<span foreground='#89b4fa'>NET </span><b>{bandwidthDownBytes}</b>",
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+        "format-ethernet": "<span foreground='#89b4fa'>NET </span><b>{bandwidthDownBytes}</b>",
+    	//"format-alt" : "󱛇",
+    	"format-alt" : "<span foreground='#89b4fa'>NET </span><b>{bandwidthDownBytes}</b>",
+        "format-disconnected" : "<span foreground='#89b4fa'>NET </span><b>OFF</b>",
+    	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "󰀂 {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+	    "tooltip-format-disconnected": "Disconnected",
+	    //"on-click": "pkill rofi || ~/.config/rofi/custom/netmanager",
+	    "interval": 5,
+	    "nospacing": 1,
+    },
+    "wireplumber": {
+        "format": "<span foreground='#89b4fa'>VOL </span><b>{volume}%</b>",
+        "format-bluetooth": "󰂰",
+        "nospacing": 1,
+        "tooltip-format": "Volume: {volume}%",
+        "format-muted": "VOL <span foreground='#f38ba8'><b>OFF</b></span>",
+        "format-icons": {
+            "headphone": "",
+            "default": ["󰖀","󰕾",""]
+        },
+        "on-click": "pamixer -t",
+        "scroll-step": 1
+    },
+    "custom/logo": {
+        "format": "  ",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/launchers/type-1/launcher.sh"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ],
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ]
+        },
+        "format-full": "Charged ",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+    "custom/power": {
+        "format": "󰤆",
+        "tooltip": false,
+        "on-click": "pkill rofi || ~/.config/rofi/powermenu/type-1/powermenu.sh"
+    }
+}

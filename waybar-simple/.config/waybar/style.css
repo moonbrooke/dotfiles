@@ -1,0 +1,147 @@
+@import "mocha.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-family: FiraMono Nerd Font;
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: @base;
+        transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+#workspaces {
+    background-color: @surface0;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#workspaces button {
+    all: initial;
+    /* Remove GTK theme values (waybar #1351) */
+    min-width: 0;
+    /* Fix weird spacing in materia (waybar #450) */
+    box-shadow: inset 0 -3px transparent;
+    /* Use box-shadow instead of border so the text isn't offset */
+    padding: 6px 10px 6px 10px;
+    border-radius: 4px;
+    color: @overlay1;
+}
+
+#workspaces button.active {
+    color: @blue;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    color: @peach;
+}
+
+#workspaces button.urgent {
+}
+
+#window {
+    background-color: @surface0;
+    margin: 6px 3px;
+}
+
+#memory,
+#cpu,
+#custom-power,
+#battery,
+#backlight,
+#wireplumber,
+#network,
+#clock,
+#window,
+#tray {
+    border-radius: 4px;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    background-color: #1e1e2e;
+    color: @text;
+}
+
+#custom-power {
+    margin-right: 6px;
+    color: @base;
+    background-color: @red;
+    padding: 6px 14px 6px 12px;
+}
+
+#custom-logo {
+    padding-right: 7px;
+    padding-left: 7px;
+    margin-left: 5px;
+    font-size: 15px;
+    border-radius: 8px 0px 0px 8px;
+    color: @blue;
+}
+
+#memory {
+    background-color: @surface0;
+}
+
+#cpu {
+    background-color: @surface0;
+}
+
+#battery {
+    background-color: #f38ba8;
+}
+
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+    background-color: #ff0000;
+    color: #FFFF00;
+}
+
+#battery.charging {
+    background-color: #a6e3a1;
+    color: #181825;
+}
+
+#backlight {
+    background-color: #fab387;
+}
+
+#wireplumber {
+    background-color: @surface0;
+}
+
+#network {
+    background-color: @surface0;
+    padding-right: 17px;
+}
+
+#clock {
+    font-family: JetBrainsMono Nerd Font;
+    background-color: @surface0;
+}
+
+#window {
+    background-color: @surface0;
+    margin: 6px 3px;
+}
+
+tooltip {
+    /*border-radius: 8px;*/
+    padding: 15px;
+    background-color: @base;
+    /*border: 3px solid #89b4fa*/
+}
+
+tooltip label {
+    padding: 5px;
+    background-color: @base;
+}
