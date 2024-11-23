@@ -62,13 +62,13 @@
     },
     "memory": {
         "interval": 5,
-        "format": "<span foreground='#89b4fa'>RAM </span><b>{percentage}%</b>",
+        "format": "<span foreground='#89b4fa'><b>RAM </b></span><b>{percentage}%</b>",
         "max-length": 15
     },
     "cpu":
     {
         "interval": 5,
-        "format": "<span foreground='#89b4fa'>CPU </span><b>{usage}%</b>",
+        "format": "<span foreground='#89b4fa'><b>CPU </b></span><b>{usage}%</b>",
         "max-length": 10
     },
     "tray": {
@@ -93,12 +93,12 @@
                     },
     },
     "network": {
-        "format-wifi" : "<span foreground='#89b4fa'>NET </span><b>{bandwidthDownBytes}</b>",
+        "format-wifi" : "<span foreground='#89b4fa'><b>NET </b></span><b>{bandwidthDownBytes}</b>",
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "format-ethernet": "<span foreground='#89b4fa'>NET </span><b>{bandwidthDownBytes}</b>",
+        "format-ethernet": "<span foreground='#89b4fa'><b>NET </b></span><b>{bandwidthDownBytes}</b>",
     	//"format-alt" : "󱛇",
-    	"format-alt" : "<span foreground='#89b4fa'>NET </span><b>{bandwidthDownBytes}</b>",
-        "format-disconnected" : "<span foreground='#89b4fa'>NET </span><b>OFF</b>",
+    	"format-alt" : "<span foreground='#89b4fa'><b>NET </b></span><b>{bandwidthDownBytes}</b>",
+        "format-disconnected" : "<span foreground='#89b4fa'><b>NET </b></span><b>OFF</b>",
     	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
         "tooltip-format-ethernet": "󰀂 {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
 	    "tooltip-format-disconnected": "Disconnected",
@@ -107,11 +107,11 @@
 	    "nospacing": 1,
     },
     "wireplumber": {
-        "format": "<span foreground='#89b4fa'>VOL </span><b>{volume}%</b>",
+        "format": "<span foreground='#89b4fa'><b>VOL </b></span><b>{volume}%</b>",
         "format-bluetooth": "󰂰",
         "nospacing": 1,
         "tooltip-format": "Volume: {volume}%",
-        "format-muted": "VOL <span foreground='#f38ba8'><b>OFF</b></span>",
+        "format-muted": "<span foreground='#89b4fa'><b>VOL </b></span><span foreground='#f38ba8'><b>OFF</b></span>",
         "format-icons": {
             "headphone": "",
             "default": ["󰖀","󰕾",""]
