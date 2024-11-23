@@ -85,9 +85,9 @@
 	"window.titleBarStyle": "native",
 	"update.mode": "manual",
 	"workbench.tree.enableStickyScroll": false,
-	// "vscode_custom_css.imports": [
-	// 	"file:///C:/vscode/custom-css-js/custom-style-catppuccin-mocha.css"
-	// ],
+	"vscode_custom_css.imports": [
+		"file:///home/prastya/.config/Code/User/custom-css-js/custom-style-catppuccin-mocha.css"
+	],
 	"editor.minimap.autohide": true,
 	"window.menuBarVisibility": "hidden",
 	"editor.fontWeight": 500
