@@ -182,6 +182,8 @@ alias yt720='yt-dlp -S "height:720" -o "~/Downloads/%(title)s.%(ext)s"'
 alias yt480='yt-dlp -S "height:480" -o "~/Downloads/%(title)s.%(ext)s"'
 
 alias bpm='bpm-tag -f -n'
+alias brup='brew update'
+alias brug='brew upgrade'
 
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │
