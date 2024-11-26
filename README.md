@@ -1,6 +1,6 @@
 # dotfiles
 
-dotfiles for my Arch Linux setup. [BSPWM](https://github.com/baskerville/bspwm) and [AwesomeWM](https://awesomewm.org/) configs in this dotfiles are experimental. Only [Hyprland](https://hyprland.org/) and [i3wm](https://i3wm.org/) setups are being used regularly.
+dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) and [i3wm](https://i3wm.org/) setups are being used regularly. [BSPWM](https://github.com/baskerville/bspwm) and [AwesomeWM](https://awesomewm.org/) configs in this dotfiles are experimental.
 
 **IMPORTANT:** The folders are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). And **use at your own risk**!
 
@@ -13,6 +13,7 @@ dotfiles for my Arch Linux setup. [BSPWM](https://github.com/baskerville/bspwm) 
 - Shell: [zsh](https://www.zsh.org/)
 - Prompt: [Oh My Posh](https://ohmyposh.dev/)
 - Notification Daemon: [dunst](https://github.com/dunst-project/dunst)
+- GTK Theme: [Colloid-gtk-theme / Catppuccin](https://github.com/vinceliuice/Colloid-gtk-theme)
 - Status Bar: [Waybar](https://github.com/Alexays/Waybar) (Hyprland), [Polybar](https://github.com/polybar/polybar) (i3wm)
 - Menu: [rofi-wayland](https://github.com/lbonn/rofi) (Hyprland), [dmenu](https://tools.suckless.org/dmenu/) with [line height patch](https://tools.suckless.org/dmenu/patches/line-height/) (i3wm)
 - Screenshot: [grim](https://sr.ht/~emersion/grim/) with [slurp](https://github.com/emersion/slurp) (Hyprland), [maim](https://github.com/naelstrof/maim) (i3wm)
@@ -25,6 +26,7 @@ dotfiles for my Arch Linux setup. [BSPWM](https://github.com/baskerville/bspwm) 
 
 Credits:
 
+- Learning resource: [https://github.com/mylinuxforwork/dotfiles](https://github.com/mylinuxforwork/dotfiles)
 - rofi: [https://github.com/adi1090x/rofi](https://github.com/adi1090x/rofi)
 - Waybar: [https://github.com/sameemul-haque/dotfiles](https://github.com/sameemul-haque/dotfiles)
 
