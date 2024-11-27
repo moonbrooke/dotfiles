@@ -80,8 +80,8 @@ window#waybar.hidden {
 }
 
 #custom-logo {
-    /*padding-right: 7px;*/
-    /*padding-left: 7px;*/
+    padding-right: 6px;
+    padding-left: 6px;
     /*margin-left: 0px;*/
     font-size: 15px;
     /*border-radius: 8px 0px 0px 8px;*/
