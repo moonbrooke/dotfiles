@@ -1,0 +1,84 @@
+@import "mocha.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: FiraMono Nerd Font;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: white;
+}
+
+tooltip {
+	background: @base;
+	border-radius: 6px;
+	border-width: 0px;
+	border-style: solid;
+	border-color: @base;
+}
+
+#workspaces button {
+    padding: 5px 10px;
+    color: @text;
+}
+
+#workspaces button.active {
+    color: @base;
+    background-color: @pink;
+    border-radius: 15px;
+}
+
+#workspaces button.urgent {
+    color: @base;
+    background-color: @peach;
+    border-radius: 15px;
+}
+
+#workspaces button:hover {
+	background-color: @pink;
+	color: @base;
+	border-radius: 15px;
+}
+
+#clock, #battery, #pulseaudio, #network, #workspaces {
+	background-color: @base;
+	padding: 5px 10px;
+	margin: 5px 0px;
+}
+
+#workspaces {
+	background-color: @base;
+	border-radius: 15px 0px 0px 15px;
+}
+
+#clock {
+    color: @blue;
+    border-radius: 0px 15px 15px 0px;
+    margin-right: 10px;
+}
+
+#battery {
+    color: @lavender;
+}
+
+#battery.charging {
+    color: @yellow;
+}
+
+#battery.warning:not(.charging) {
+    background-color: @peach;
+    color: @base;
+}
+
+#network {
+	color: @green;
+	border-radius: 0px 0px 0px 0px;
+}
+
+#pulseaudio {
+	color: @mauve;
+}

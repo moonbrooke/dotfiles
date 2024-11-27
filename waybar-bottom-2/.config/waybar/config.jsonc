@@ -1,0 +1,87 @@
+{
+    "position": "bottom", 
+    "height": 30,
+    "margin-bottom": 10,
+    "modules-center": ["hyprland/workspaces", "network", "pulseaudio", "battery", "clock"],
+    // Modules configuration
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "<b>{icon}</b>",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
+        "format-icons": {
+            //"1": "",
+            //"2": "",
+            //"3": "",
+            //"4": "",
+            "5": "SUB",
+            //"6": "",
+            //"7": "",
+            //"8": "",
+            //"9": "",
+            //"10": ""
+        }
+    },
+    "clock": {
+        "tooltip-format": "{calendar}",
+        "format-alt": "󰸗 <b>{:%A, %d %B %Y}</b>",
+        "format": "󰸗 <b>{:%b %d (%a), %I:%M %p}</b>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#89b4fa'><b>{}</b></span>",
+                "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+                "weeks":      "<span color='#a6e3a1'><b>W{}</b></span>",
+                "weekdays":   "<span color='#f9e2af'><b>{}</b></span>",
+                "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"
+            }
+        },
+    },
+	"battery": {
+        	"states": {
+            		"warning": 30,
+            		"critical": 15,
+        	},
+        	"format": "{icon} {capacity}%",
+        	"format-charging": "󰂄 {capacity}%",
+        	"format-plugged": "󰂄{capacity}%",
+        	"format-alt": "{icon} {time}",
+        	"format-full": "󱈑 {capacity}%",
+        	"format-icons": ["󱊡", "󱊢", "󱊣"]
+	},
+	"network": {
+        	"format-wifi": "  {essid}",
+        	"format-ethernet": "󰤮  Disconnected",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": "󰤮  Disconnected",
+		"tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+	},
+	"pulseaudio": {
+		"on-click": "pamixer -t",
+		"format": "{icon} {volume}%",
+        	"format-muted": "󰖁 Muted",
+        	"format-icons": {
+            	"headphone": "",
+            	"hands-free": "",
+            	"headset": "",
+            	"phone": "",
+            	"portable": "",
+            	"car": "",
+            	"default": ["", "", ""]
+        },
+    }
+}
