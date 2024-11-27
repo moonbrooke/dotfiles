@@ -48,6 +48,8 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostic message" })
 map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+map("n", "<leader>do", vim.diagnostic.show, { desc = "Show diagnostics" })
+map("n", "<leader>dh", vim.diagnostic.hide, { desc = "Hide diagnostics" })
 
 -- Duplicate
 map({ "n" }, "<C-S-A-Up>", "<CMD>LineDuplicate -1<CR>", { desc = "Duplicate line up" })
