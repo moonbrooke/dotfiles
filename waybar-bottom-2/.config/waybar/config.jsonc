@@ -2,7 +2,7 @@
     "position": "bottom", 
     "height": 30,
     "margin-bottom": 10,
-    "modules-center": ["hyprland/workspaces", "network", "pulseaudio", "cpu", "memory", "battery", "clock"],
+    "modules-center": ["hyprland/workspaces", "tray", "network", "pulseaudio", "cpu", "memory", "battery", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -32,6 +32,9 @@
             //"9": "",
             //"10": ""
         }
+    },
+    "tray": {
+        "spacing": 10
     },
     "clock": {
         "tooltip-format": "{calendar}",
@@ -82,7 +85,7 @@
     "pulseaudio": {
         "on-click": "pamixer -t",
         "format": "<b>VOL <span foreground='#cdd6f4'>{volume}%</span></b>",
-        "format-muted": "<b>VOL <span foreground='#6c7086'>Muted</span></b>",
+        "format-muted": "<b>VOL <span foreground='#6c7086'>OFF</span></b>",
         //"format-icons": {
         //    "headphone": "",
         //    "hands-free": "",
