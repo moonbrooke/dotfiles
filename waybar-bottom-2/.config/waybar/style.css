@@ -51,9 +51,9 @@ tooltip {
 }
 
 #workspaces {
-	background-color: @base;
+	background-color: @surface0;
 	border-radius: 6px 0px 0px 6px;
-    padding: 5px 0px 5px 5px;
+    padding: 5px 5px;
 }
 
 #clock {
