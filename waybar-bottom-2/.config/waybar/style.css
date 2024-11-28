@@ -22,26 +22,32 @@ tooltip {
 }
 
 #workspaces button {
-    padding: 5px 10px;
+    background-color: @surface0;
     color: @text;
+    padding: 5px 10px;
 }
 
 #workspaces button.active {
     color: @base;
     background-color: @pink;
-    border-radius: 6px;
 }
 
 #workspaces button.urgent {
     color: @base;
     background-color: @peach;
-    border-radius: 6px;
 }
 
 #workspaces button:hover {
 	background-color: @pink;
 	color: @base;
-	border-radius: 6px;
+}
+
+#workspaces button:first-child {
+	border-radius: 6px 0px 0px 6px;
+}
+
+#workspaces button:last-child {
+	border-radius: 0px 6px 6px 0px;
 }
 
 #clock, #battery, #pulseaudio, #tray, #network, #cpu, #memory, #workspaces {
@@ -51,7 +57,7 @@ tooltip {
 }
 
 #workspaces {
-	background-color: @surface0;
+	background-color: @base;
 	border-radius: 6px 0px 0px 6px;
     padding: 5px 5px;
 }
