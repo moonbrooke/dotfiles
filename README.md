@@ -24,12 +24,6 @@ dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) and [i3
 
 ### Hyprland
 
-Credits:
-
-- Learning resource: [https://github.com/mylinuxforwork/dotfiles](https://github.com/mylinuxforwork/dotfiles)
-- rofi: [https://github.com/adi1090x/rofi](https://github.com/adi1090x/rofi)
-- Waybar: [https://github.com/sameemul-haque/dotfiles](https://github.com/sameemul-haque/dotfiles)
-
 ![Hyprland Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/hyprland.png)
 
 ### i3wm
@@ -43,3 +37,10 @@ Credits:
 #### polybar-simple
 
 ![polybar-simple](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/polybar-simple.png)
+
+### Credits
+
+- [https://github.com/mylinuxforwork/dotfiles](https://github.com/mylinuxforwork/dotfiles)
+- [https://github.com/adi1090x/rofi](https://github.com/adi1090x/rofi)
+- [https://github.com/sameemul-haque/dotfiles](https://github.com/sameemul-haque/dotfiles)
+- [https://github.com/lokesh-krishna/dotfiles](https://github.com/lokesh-krishna/dotfiles)
