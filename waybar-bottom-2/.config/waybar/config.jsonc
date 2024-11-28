@@ -38,8 +38,8 @@
     },
     "clock": {
         "tooltip-format": "{calendar}",
-        "format-alt": "<b>It's Arch, btw!</b>",
-        "format": "<b>{:%b %d, %I:%M %p (%a)}</b>",
+        "format-alt": "<b>{:%A, %d %B %Y}</b>",
+        "format": "<b>{:%I:%M %p}</b>",
         "calendar": {
             "mode"          : "year",
             "mode-mon-col"  : 3,

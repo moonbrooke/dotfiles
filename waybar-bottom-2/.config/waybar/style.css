@@ -29,7 +29,7 @@ tooltip {
 
 #workspaces button.active {
     color: @base;
-    background-color: @pink;
+    background-color: @blue;
 }
 
 #workspaces button.urgent {
@@ -38,7 +38,7 @@ tooltip {
 }
 
 #workspaces button:hover {
-	background-color: @pink;
+	background-color: @blue;
 	color: @base;
 }
 
@@ -63,7 +63,8 @@ tooltip {
 }
 
 #clock {
-    color: @pink;
+    background: @surface0;
+    color: @text;
     border-radius: 0px 6px 6px 0px;
     margin-right: 10px;
     padding-right: 10px;
