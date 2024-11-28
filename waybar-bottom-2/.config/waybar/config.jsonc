@@ -2,7 +2,7 @@
     "position": "bottom", 
     "height": 30,
     "margin-bottom": 10,
-    "modules-center": ["hyprland/workspaces", "tray", "network", "pulseaudio", "cpu", "memory", "battery", "clock"],
+    "modules-center": ["custom/logo", "hyprland/workspaces", "tray", "network", "pulseaudio", "cpu", "memory", "battery", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -32,6 +32,11 @@
             //"9": "",
             //"10": ""
         }
+    },
+    "custom/logo": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/launchers/type-1/launcher.sh"
     },
     "tray": {
         "spacing": 10

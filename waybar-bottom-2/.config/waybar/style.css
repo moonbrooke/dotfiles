@@ -50,7 +50,7 @@ tooltip {
 	border-radius: 0px 6px 6px 0px;
 }
 
-#clock, #battery, #pulseaudio, #tray, #network, #cpu, #memory, #workspaces {
+#custom-logo, #clock, #battery, #pulseaudio, #tray, #network, #cpu, #memory, #workspaces {
 	background-color: @base;
 	padding: 5px 10px;
 	margin: 5px 0px;
@@ -58,8 +58,13 @@ tooltip {
 
 #workspaces {
 	background-color: @base;
-	border-radius: 6px 0px 0px 6px;
+	/*border-radius: 6px 0px 0px 6px;*/
     padding: 5px 5px;
+}
+
+#custom-logo {
+	border-radius: 6px 0px 0px 6px;
+    padding-left: 12px;
 }
 
 #clock {
