@@ -2,7 +2,7 @@
     "position": "bottom", 
     "height": 30,
     "margin-bottom": 10,
-    "modules-center": ["hyprland/workspaces", "network", "pulseaudio", "battery", "clock"],
+    "modules-center": ["hyprland/workspaces", "network", "pulseaudio", "cpu", "memory", "battery", "clock"],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -35,8 +35,8 @@
     },
     "clock": {
         "tooltip-format": "{calendar}",
-        "format-alt": "󰸗 <b>{:%A, %d %B %Y}</b>",
-        "format": "󰸗 <b>{:%b %d (%a), %I:%M %p}</b>",
+        "format-alt": "󰣇 <b>It's Arch, btw!</b>",
+        "format": "󰸗 <b>{:%b %d, %I:%M %p (%a)}</b>",
         "calendar": {
             "mode"          : "year",
             "mode-mon-col"  : 3,
@@ -51,37 +51,46 @@
             }
         },
     },
-	"battery": {
-        	"states": {
-            		"warning": 30,
-            		"critical": 15,
-        	},
-        	"format": "{icon} {capacity}%",
-        	"format-charging": "󰂄 {capacity}%",
-        	"format-plugged": "󰂄{capacity}%",
-        	"format-alt": "{icon} {time}",
-        	"format-full": "󱈑 {capacity}%",
-        	"format-icons": ["󱊡", "󱊢", "󱊣"]
-	},
-	"network": {
-        	"format-wifi": "  {essid}",
-        	"format-ethernet": "󰤮  Disconnected",
-        	"format-linked": "{ifname} (No IP) ",
-        	"format-disconnected": "󰤮  Disconnected",
-		"tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
-	},
-	"pulseaudio": {
-		"on-click": "pamixer -t",
-		"format": "{icon} {volume}%",
-        	"format-muted": "󰖁 Muted",
-        	"format-icons": {
-            	"headphone": "",
-            	"hands-free": "",
-            	"headset": "",
-            	"phone": "",
-            	"portable": "",
-            	"car": "",
-            	"default": ["", "", ""]
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15,
+        },
+        "format": "{icon} <b>{capacity}</b>%",
+        "format-charging": "󰂄 <b>{capacity}%</b>",
+        "format-plugged": "󰂄 <b>{capacity}%</b>",
+        "format-alt": "{icon} <b>{time}</b>",
+        "format-full": "󰁹 <b>{capacity}%</b>",
+        "format-icons": ["󰁼", "󰁾", "󰂀"]
+    },
+    "network": {
+        "format-wifi": "󰖩 <b>{essid}</b>",
+        "format-ethernet": "󰈀 <b>OFF</b>",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "󰖪 <b>OFF</b>",
+        "tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+    },
+    "memory": {
+        "interval": 5,
+        "format": "󰘚 <b>{percentage}%</b>",
+    },
+    "cpu":
+    {
+        "interval": 5,
+        "format": "󰻹 <b>{usage}%</b>",
+    },
+    "pulseaudio": {
+        "on-click": "pamixer -t",
+        "format": "{icon} <b>{volume}%</b>",
+        "format-muted": "󰖁 <span foreground='#6c7086'><b>Muted</b></span>",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
         },
     }
 }

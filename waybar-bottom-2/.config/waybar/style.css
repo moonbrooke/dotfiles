@@ -44,14 +44,14 @@ tooltip {
 	border-radius: 15px;
 }
 
-#clock, #battery, #pulseaudio, #network, #workspaces {
+#clock, #battery, #pulseaudio, #network, #cpu, #memory, #workspaces {
 	background-color: @base;
 	padding: 5px 10px;
 	margin: 5px 0px;
 }
 
 #workspaces {
-	background-color: @base;
+	background-color: @surface0;
 	border-radius: 15px 0px 0px 15px;
 }
 
@@ -81,4 +81,12 @@ tooltip {
 
 #pulseaudio {
 	color: @mauve;
+}
+
+#cpu {
+	color: @peach;
+}
+
+#memory {
+	color: @rosewater;
 }
