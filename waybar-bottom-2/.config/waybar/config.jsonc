@@ -35,8 +35,8 @@
     },
     "clock": {
         "tooltip-format": "{calendar}",
-        "format-alt": "󰣇 <b>It's Arch, btw!</b>",
-        "format": "󰸗 <b>{:%b %d, %I:%M %p (%a)}</b>",
+        "format-alt": "<b>It's Arch, btw!</b>",
+        "format": "<b>{:%b %d, %I:%M %p (%a)}</b>",
         "calendar": {
             "mode"          : "year",
             "mode-mon-col"  : 3,
@@ -64,33 +64,33 @@
         "format-icons": ["󰁼", "󰁾", "󰂀"]
     },
     "network": {
-        "format-wifi": "󰖩 <b>{essid}</b>",
-        "format-ethernet": "󰈀 <b>OFF</b>",
+        "format-wifi": "<b>NET <span foreground='#cdd6f4'>{essid}</span></b>",
+        "format-ethernet": "<b>NET <span foreground='#6c7086'>OFF</span></b>",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "󰖪 <b>OFF</b>",
+        "format-disconnected": "<b>NET <span foreground='#6c7086'>OFF</span></b>",
         "tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
     },
     "memory": {
         "interval": 5,
-        "format": "󰘚 <b>{percentage}%</b>",
+        "format": "<b>RAM <span foreground='#cdd6f4'>{percentage}%</span></b>",
     },
     "cpu":
     {
         "interval": 5,
-        "format": "󰻹 <b>{usage}%</b>",
+        "format": "<b>CPU <span foreground='#cdd6f4'>{usage}%</span></b>",
     },
     "pulseaudio": {
         "on-click": "pamixer -t",
-        "format": "{icon} <b>{volume}%</b>",
-        "format-muted": "󰖁 <span foreground='#6c7086'><b>Muted</b></span>",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
+        "format": "<b>VOL <span foreground='#cdd6f4'>{volume}%</span></b>",
+        "format-muted": "<b>VOL <span foreground='#6c7086'>Muted</span></b>",
+        //"format-icons": {
+        //    "headphone": "",
+        //    "hands-free": "",
+        //    "headset": "",
+        //    "phone": "",
+        //    "portable": "",
+        //    "car": "",
+        //    "default": ["", "", ""]
+        //},
     }
 }

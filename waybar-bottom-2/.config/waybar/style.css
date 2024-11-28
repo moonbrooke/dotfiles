@@ -64,7 +64,7 @@ tooltip {
 }
 
 #battery {
-    color: @lavender;
+    color: @green;
 }
 
 #battery.charging {
@@ -83,13 +83,13 @@ tooltip {
 }
 
 #pulseaudio {
-	color: @mauve;
+	color: @green;
 }
 
 #cpu {
-	color: @peach;
+	color: @green;
 }
 
 #memory {
-	color: @rosewater;
+	color: @green;
 }
