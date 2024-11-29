@@ -63,6 +63,7 @@ tooltip {
 }
 
 #custom-logo {
+    color: @blue;
 	border-radius: 6px 0px 0px 6px;
     padding-left: 12px;
 }
