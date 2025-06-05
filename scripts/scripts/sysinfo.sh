@@ -20,4 +20,4 @@ echo -e "$USER_HOST"
 echo -e "${BOLD}${GREEN}OS:       ${RESET}$DISTRO"
 echo -e "${BOLD}${GREEN}Kernel:   ${RESET}$KERNEL"
 echo -e "${BOLD}${GREEN}RAM:      ${RESET}$RAM"
-
+echo -e ""
