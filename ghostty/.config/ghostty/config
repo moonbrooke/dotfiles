@@ -19,6 +19,8 @@
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
+window-height = 30
+window-width = 100
 window-padding-x = 5
 window-padding-y = 5
 
