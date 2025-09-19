@@ -5,7 +5,7 @@
     "height": 20,
     "margin-left": 300,
     "margin-right": 300,
-    "margin-bottom": 10,
+    "margin-bottom": 5,
     "modules-left": [
         "custom/logo",
         "hyprland/workspaces"
