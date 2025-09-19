@@ -96,7 +96,7 @@ window#waybar.hidden {
 }
 
 #battery {
-    background-color: #f38ba8;
+    background-color: #a6e3a1;
     color: @base;
 }
 
@@ -105,11 +105,6 @@ window#waybar.hidden {
 #battery.urgent {
     background-color: #ff0000;
     color: #FFFF00;
-}
-
-#battery.charging {
-    background-color: #a6e3a1;
-    color: #181825;
 }
 
 #battery.full {
