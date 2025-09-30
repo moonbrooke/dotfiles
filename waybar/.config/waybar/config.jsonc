@@ -120,7 +120,7 @@
         "scroll-step": 1
     },
     "custom/logo": {
-        "format": " ",
+        "format": "󰣇 ",
         "tooltip": false,
         "on-click": "~/.config/rofi/launchers/type-1/launcher.sh"
     },

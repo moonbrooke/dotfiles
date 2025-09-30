@@ -18,6 +18,10 @@ window#waybar.hidden {
     opacity: 0.5;
 }
 
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
 #workspaces {
     background-color: @surface0;
     margin: 6px 3px;
