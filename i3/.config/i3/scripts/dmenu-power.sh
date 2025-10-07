@@ -7,7 +7,7 @@ case "$(echo -e "Shutdown\nRestart\nLogout\nSuspend\nLock" | dmenu \
     -sf "${COLOR_HIGHLIGHT:-#1e1e2e}" \
     -sb "#89b4fa" \
     -h 32 -i -p \
-    "Power:")" in
+    "Power")" in
         Shutdown) exec systemctl poweroff;;
         Restart) exec systemctl reboot;;
         Logout) i3-msg exit;;
