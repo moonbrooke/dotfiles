@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-if [[ -z $(wl-paste) ]]; then
-    dunstify -h string:x-dunst-stack-tag:clip_notif -t 4000 -u critical "Clipboard Manager" "Clipboard is empty"
-    exit
-fi
+# if [[ -z $(wl-paste) ]]; then
+#     dunstify -h string:x-dunst-stack-tag:clip_notif -t 4000 -u critical "Clipboard Manager" "Clipboard is empty"
+#     exit
+# fi
 
 dir="$HOME/.config/rofi/clipboard"
 
