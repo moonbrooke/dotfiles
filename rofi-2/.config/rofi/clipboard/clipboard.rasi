@@ -1,0 +1,130 @@
+/*****----- Configuration -----*****/
+configuration {
+	show-icons: 		false;
+}
+
+/*****----- Global Properties -----*****/
+* {
+    font: "CaskaydiaMono Nerd Font 12";
+    background:                  #11111b;
+    background-alt:              #313244;
+    foreground:                  #eff1f5;
+    selected:                    #cba6f7;
+    active:                      #6E77FF;
+    urgent:                      #8E3596;
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       500px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    border-radius:               6px;
+    cursor:                      "default";
+    background-color:            @background;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    padding:                     20px 30px 0px 20px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+    children:                    [ "textbox-prompt-colon", "dummy", "entry" ];
+}
+
+dummy {
+    background-color: 		 transparent;
+}
+
+entry {
+    enabled:                     true;
+    expand:                      false;
+    width:                       400px;
+    padding:                     10px 15px 8px 20px;
+    border-radius:               6px;
+    background-color:            @background;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search...";
+    placeholder-color:           @background-alt;
+}
+
+textbox-prompt-colon {
+    font:                        "CaskaydiaMono Nerd Font 12";
+    enabled:                     true;
+    expand:                      false;
+    str:                         "Clipboard";
+    padding:                     10px 20px 10px 15px;
+    border-radius:               6px;
+    background-color:            #89b4fa;
+    text-color:                  @background;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       6;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+
+    spacing:                     0px;
+    margin: 			 20px 20px;
+    border-radius: 		 6px;
+    background-color:            @background;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     0px;
+    padding:                     12px 8px;
+    // border-radius:               6px;
+    background-color:            @background;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+element.selected  {
+    background-color:            @background-alt;
+    border-radius:               6px;
+    text-color:                  @foreground;
+}
+element-icon {
+    size:                         30px;
+    background-color:             transparent;
+    text-color:                   @foreground;
+}
+element-text {
+    padding: 			 0px 16px;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0;
+}

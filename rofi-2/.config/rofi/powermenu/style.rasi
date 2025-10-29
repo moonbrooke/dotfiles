@@ -1,0 +1,111 @@
+/*****----- Configuration -----*****/
+configuration {
+    show-icons: false;
+}
+
+/*****----- Global Properties -----*****/
+* {
+    font: "CaskaydiaMono Nerd Font 12";
+    background: #11111b;
+    foreground: #cdd6f4;
+    selected: #cba6f7;
+    active: #f5e0dc;
+    urgent: #f38ba8;
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency: "real";
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 300px;
+    x-offset: 0px;
+    y-offset: 0px;
+
+    padding: 4px;
+    border-radius: 6px;
+    background-color: @background;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled: true;
+    spacing: 2px;
+    margin: 10px;
+    padding: 0px;
+    background-color: @background;
+    children: [ "listview" ];
+}
+
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled: true;
+    background-color: @background;
+    text-color: @foreground;
+    children: ["dummy", "prompt"];
+}
+
+prompt {
+    enabled: true;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: #a6e3a1;
+    text-color: #313244;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled: true;
+    columns: 1;
+    lines: 6;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    reverse: false;
+    fixed-height: true;
+    fixed-columns: true;
+
+    spacing: 10px;
+    padding: 5px;
+    background-color: @background;
+}
+
+/*****----- Elements (Text Instead of Icons) -----*****/
+element {
+    enabled: true;
+    padding: 15px;
+    border-radius: 2px;
+    background-color: @background;
+    text-color: #cdd6f4;
+    cursor: pointer;
+}
+
+element selected.normal {
+    background-color: #313244;
+    // text-color: #1e1e2e;
+}
+
+element-text {
+    font: "CaskaydiaMono Nerd Font 12";
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+}
+
+/*****----- Message Box -----*****/
+message {
+    enabled: true;
+    margin: 2px;
+    padding: 4px;
+    border-radius: 2px;
+    background-color: #f5e0dc;
+    text-color: #1e1e2e;
+}
+
+textbox {
+    background-color: transparent;
+    text-color: @foreground;
+}
