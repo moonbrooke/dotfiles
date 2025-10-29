@@ -2,6 +2,7 @@
 
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/"
+rofidir="$HOME/.config/rofi/"
 theme='style'
 
 # CMDs
@@ -38,8 +39,8 @@ rofi_cmd() {
 confirm_cmd() {
 	rofi -markup-rows -dmenu \
 		-p 'Confirmation' \
-		-mesg 'Are you Sure?' \
-		-theme ${dir}/confirmation.rasi
+		-mesg 'Are you sure?' \
+		-theme ${rofidir}/confirmation.rasi
 	}
 
 # Ask for confirmation
