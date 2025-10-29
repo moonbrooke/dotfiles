@@ -104,7 +104,7 @@ listview {
 element {
     enabled:                     true;
     spacing:                     0px;
-    padding:                     12px 8px;
+    padding:                     10px 5px;
     // border-radius:               6px;
     background-color:            @background;
     text-color:                  @foreground;
@@ -116,12 +116,12 @@ element.selected  {
     text-color:                  @foreground;
 }
 element-icon {
-    size:                         30px;
-    background-color:             transparent;
-    text-color:                   @foreground;
+    size:                        30px;
+    background-color:            transparent;
+    text-color:                  @foreground;
 }
 element-text {
-    padding: 			 0px 16px;
+    padding: 			 0px 10px;
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
