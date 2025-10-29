@@ -29,7 +29,7 @@ tooltip {
 
 #workspaces button.active {
     color: @base;
-    background-color: @blue;
+    background-color: @green;
 }
 
 #workspaces button.urgent {
