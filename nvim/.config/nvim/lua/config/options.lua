@@ -1,5 +1,8 @@
 -- vim.cmd("language en_US")
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.g.have_nerd_font = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -9,8 +12,7 @@ local o = vim.opt
 o.termguicolors = true
 
 o.number = true
--- o.relativenumber = true
-
+o.relativenumber = false
 o.mouse = "a"
 o.showmode = false
 
@@ -55,3 +57,5 @@ o.softtabstop = 4
 o.scrolloff = 4
 o.sidescrolloff = 8
 -- o.showtabline = 2
+
+o.winborder = "solid" -- https://neovim.io/doc/user/options.html#"winborder"

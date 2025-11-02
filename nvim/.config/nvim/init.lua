@@ -1,4 +1,5 @@
--- Options -> Keymaps -> Lazy
-require("core.options")
-require("core.keymaps")
+require("config.options")
 require("core.lazy")
+require("core.lsp")
+require("config.keymaps")
+require("config.autocmds")
