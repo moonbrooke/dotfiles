@@ -1,3 +1,6 @@
 [submodule "nvim-vanilla/.config/nvim"]
 	path = nvim-vanilla/.config/nvim
 	url = https://github.com/moonbrooke/nvim-vanilla.git
+[submodule "nvim/.config/nvim"]
+	path = nvim/.config/nvim
+	url = https://github.com/moonbrooke/simple.nvim.git
