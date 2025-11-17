@@ -1,0 +1,181 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": [
+        "custom/logo",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+
+    "modules-right": [
+        "memory",
+        "cpu",
+        "temperature",
+        "battery",
+        "pulseaudio",
+        "network",
+        "clock#date",
+        "clock#time",
+        "tray",
+        "hyprland/language"
+    ],
+
+    // Modules
+
+    "custom/logo": {
+        "format": "󰣇 "
+    },
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-time": "{H}h{M}m",
+        "format": "{icon} {capacity}% ({time})",
+        "format-charging": "󰂄 {capacity}% ({time})",
+        "format-charging-full": "󰂄 {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-alt": "{icon} {power}W",
+        "format-icons": [
+            "󰁺",
+            "󰁼",
+            "󰁿",
+            "󰂁",
+            "󰁹"
+        ],
+        "tooltip": false
+    },
+
+    "clock#time": {
+        "interval": 10,
+        "format": "{:%H:%M}",
+        "tooltip": false
+    },
+
+    "clock#date": {
+        "interval": 20,
+        "format": "{:%e %b %Y}",
+        "tooltip": true,
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 4,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#7dcfff'><b>{}</b></span>",
+                "days":       "<span color='#c0caf5'><b>{}</b></span>",
+                "weeks":      "<span color='#9ece6a'><b>{}</b></span>",
+                "weekdays":   "<span color='#e0af68'><b>{}</b></span>",
+                "today":      "<span color='#f7768e'><b><u>{}</u></b></span>"
+            }
+        },
+    },
+
+    "cpu": {
+        "interval": 5,
+        "tooltip": false,
+        "format": "CPU: {usage}%",
+        "format-alt": "CPU: {load}",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "hyprland/language": {
+        "format": "󰌌 {short}",
+        "min-length": 5,
+        //"on-click": "swaymsg 'input * xkb_switch_layout next'",
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "RAM: {used:0.1f}G/{total:0.1f}G",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "tooltip": false
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": "NET: {essid}",
+        "format-ethernet": "ETH: {ifname}",
+        "format-disconnected": "OFF",
+        "format-alt": "󰇧 {ipaddr}/{cidr}",
+        "tooltip": false
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 30,
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        //"disable-scroll-wraparound": true,
+        //"smooth-scrolling-threshold": 4,
+        //"enable-bar-scroll": true,
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        },
+        "format-icons": {
+            "4": "SUB",
+        }
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "󰂰",
+        "format-muted": "MUTED",
+        "format-icons": {
+            "headphone": "VOL:",
+            "default": "VOL"
+            // "default": ["󰕿","󰖀","󰕾"]
+        },
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip": false
+    },
+
+    "temperature": {
+        "critical-threshold": 90,
+        "interval": 5,
+        "format": "TEMP: {temperatureC}°",
+        // "format-icons": [
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     ""
+        // ],
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 11
+        //"spacing": 10
+    },
+    "custom/power":{
+        "tooltip": false,
+        "on-click": "wlogout -p layer-shell &",
+        "format": " "
+    }
+}
