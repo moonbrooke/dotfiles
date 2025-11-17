@@ -45,7 +45,7 @@
 #tray,
 #window {
     color: @white;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 10px 7px 10px;
 }
 
 #battery.warning.discharging,
@@ -59,7 +59,7 @@
 #workspaces button {
     color: @white;
     background: @black;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 10px 7px 10px;
 }
 
 #workspaces button.visible {
@@ -82,8 +82,12 @@
 }
 
 #workspaces button:hover {
-    color: @white;
-    background: @black;
+    color: @green;
+}
+
+#workspaces button.visible:hover {
+    color: @black;
+    background: @green;
 }
 
 #window {
@@ -125,7 +129,6 @@
 #clock {
     color: @black;
     background: @white;
-    font-feature-settings: "tnum";
 }
 
 #custom-logo {
