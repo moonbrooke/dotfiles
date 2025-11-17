@@ -1,0 +1,11 @@
+configuration {
+modi: "drun,ssh,system:~/.config/rofi/rofi_system.sh";
+    sidebar-mode:  true;
+    hide-scrollbar: true;
+    kb-cancel: "Escape,Control+bracketleft";
+    kb-move-char-back: "Control+b";
+    kb-move-char-forward: "Control+f";
+    kb-mode-previous: "Left";
+    kb-mode-next: "Right";
+}
+@theme "./themes/tokyonight.rasi"
