@@ -1,6 +1,6 @@
 # dotfiles
 
-dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) ia being used regularly. Other configs in this dotfiles are either experimental or abandoned.
+dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) setup is being used regularly. Other WM configs in this dotfiles are either experimental or abandoned.
 
 **IMPORTANT:** The folders are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). And **use at your own risk**!
 
