@@ -2,6 +2,27 @@
 use = "tokyo-night"
 dark = "tokyo-night"
 
+# : Mode {{{
+
+[mode]
+
+normal_main = { fg = "#292e42", bg = "#9ece6a", bold = true }
+normal_alt  = { fg = "#9aa5ce", bg = "#292e42" }
+
+# Select mode
+select_main = { fg = "#292e42", bg = "#9ece6a", bold = true }
+select_alt  = { fg = "#9aa5ce", bg = "#292e42" }
+
+# Unset mode
+unset_main = { fg = "#292e42", bg = "#bb9af7", bold = true }
+unset_alt  = { fg = "#9aa5ce", bg = "#292e42" }
+
+# : }}}
+
+# : Status bar {{{
+
 [status]
+overall = { fg = "#9aa5ce" }
 sep_left  = { open = "", close = "" }
 sep_right = { open = "", close = "" }
+
