@@ -22,7 +22,7 @@ export EDITOR="nvim"
 source <(fzf --zsh)
 
 # ZSH History
-HISTFILE=~/.config/zsh/zhistory
+HISTFILE=~/.zhistory
 HISTSIZE=5000
 SAVEHIST=5000
 HISTDUP=erase
@@ -78,3 +78,9 @@ alias pmconf="sudo -E -s nvim /etc/pacman.conf"
 
 alias gaa="git add ."
 alias gcms="git commit -m"
+
+# WiFi
+wfc() {
+    read -r "wifi_name?Enter WiFi name: "
+    iwctl station wlan0 connect "$wifi_name" --passphrase --ask
+}
