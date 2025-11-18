@@ -12,14 +12,14 @@ dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) ia bein
 - Terminal: [kitty](https://sw.kovidgoyal.net/kitty/), [Ghostty](https://ghostty.org)
 - Shell: [zsh](https://www.zsh.org/)
 - Prompt: [Oh My ZSH](https://ohmyz.sh/)
-<!-- - Notification Daemon: [dunst](https://github.com/dunst-project/dunst) -->
-<!-- - GTK Theme: [Colloid-gtk-theme / Catppuccin](https://github.com/vinceliuice/Colloid-gtk-theme) -->
+- --Notification Daemon: [dunst](https://github.com/dunst-project/dunst)--
+- --GTK Theme: [Colloid-gtk-theme / Catppuccin](https://github.com/vinceliuice/Colloid-gtk-theme)--
 - Status Bar: [Waybar](https://github.com/Alexays/Waybar)
 - Menu: [rofi](https://github.com/davatorium/rofi)
 - Screenshot: [grim](https://sr.ht/~emersion/grim/) with [slurp](https://github.com/emersion/slurp)+[jq](https://jqlang.org/)
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - Editor: [Neovim](https://neovim.io/), [VS Code](https://code.visualstudio.com/)
-<!-- - File Manager: [Nautilus](https://apps.gnome.org/Nautilus/), [ranger](https://github.com/ranger/ranger), [yazi](https://github.com/sxyazi/yazi) -->
+- --File Manager: [Nautilus](https://apps.gnome.org/Nautilus/), [ranger](https://github.com/ranger/ranger), [yazi](https://github.com/sxyazi/yazi)--
 - Font: [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [Ricty Nerd Font](https://rictyfonts.github.io/) (for Japanese characters support)
 
 ## Outdated Screenshots
