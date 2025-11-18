@@ -1,5 +1,5 @@
 configuration {
-    modi: "drun,run,window";
+    modi: "drun";
     sidebar-mode:  false;
     hide-scrollbar: true;
     kb-cancel: "Escape,Control+bracketleft";
@@ -9,8 +9,3 @@ configuration {
     kb-mode-next: "Right";
 }
 @theme "./themes/tokyonight.rasi"
-
-textbox-prompt-colon {
-    enabled: true;
-    str: "Menu";
-}
