@@ -78,6 +78,7 @@ alias pmconf="sudo -E -s nvim /etc/pacman.conf"
 
 alias gaa="git add ."
 alias gcms="git commit -m"
+alias gsmu="git pull --recurse-submodules; git submodule update --remote --merge"
 
 # WiFi
 alias wfget="iwctl station wlan0 get-networks"
