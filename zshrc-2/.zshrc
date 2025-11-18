@@ -80,7 +80,9 @@ alias gaa="git add ."
 alias gcms="git commit -m"
 
 # WiFi
-wfc() {
+alias wfget="iwctl station wlan0 get-networks"
+
+wfcon() {
     read -r "wifi_name?Enter WiFi name: "
     iwctl station wlan0 connect "$wifi_name" --passphrase --ask
 }
