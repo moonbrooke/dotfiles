@@ -22,7 +22,7 @@ export EDITOR="nvim"
 source <(fzf --zsh)
 
 # ZSH History
-HISTFILE=~/.zhistory
+HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
 HISTDUP=erase
