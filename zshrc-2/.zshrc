@@ -76,5 +76,5 @@ alias yayc="du -hd1 ~/.cache/yay"
 alias pmclean="yay -Scc"
 alias pmconf="sudo -E -s nvim /etc/pacman.conf"
 
-alias gaa="git commit ."
+alias gaa="git add ."
 alias gcms="git commit -m"
