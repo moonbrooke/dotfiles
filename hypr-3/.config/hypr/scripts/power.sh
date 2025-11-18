@@ -13,13 +13,22 @@
 
 ROFI_THEME="$HOME/.config/rofi/config.rasi"
 
-chosen=$(echo -e "[Cancel]\nLogout\nShutdown\nReboot" | \
+# Main menu (no Cancel option)
+chosen=$(echo -e "Logout\nShutdown\nReboot" | \
     rofi -dmenu -i -p "Power" -line-padding 4 -hide-scrollbar -theme "$ROFI_THEME")
 
-case "$chosen" in
-    "Logout") hyprctl dispatch exit ;;
-    "Shutdown") systemctl poweroff ;;
-    "Reboot") systemctl reboot ;;
-    *) exit 0 ;; # Exit on cancel or invalid input
-esac
+# Exit if nothing selected
+[ -z "$chosen" ] && exit
 
+# Confirmation dialog
+confirm=$(echo -e "Yes\nNo" | \
+    rofi -dmenu -i -p "Are you sure?" -line-padding 4 -hide-scrollbar -theme "$ROFI_THEME")
+
+# Only proceed if "Yes"
+if [ "$confirm" == "Yes" ]; then
+    case "$chosen" in
+        "Logout") hyprctl dispatch exit ;;
+        "Shutdown") systemctl poweroff ;;
+        "Reboot") systemctl reboot ;;
+    esac
+fi
