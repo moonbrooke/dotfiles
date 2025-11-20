@@ -1,6 +1,6 @@
 # Ignore everything inside musik
-musikcube/.config/musikcube/*
+/musikcube/.config/musikcube/*
 
 # Except these
-!musikcube/.config/musikcube/themes/
-!musikcube/.config/musikcube/themes/**
+!/musikcube/.config/musikcube/themes/
+!/musikcube/.config/musikcube/themes/**
