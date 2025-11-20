@@ -1,150 +1,124 @@
-05:41:59 [info] [LOG SESSION] ---------- START ----------
-05:41:59 [info] [PluginFactory] loading plugins
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libalsaout.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libffmpegdecoder.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libgmedecoder.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libhttpdatastream.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libmpris.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libnullout.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libopenmptdecoder.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libpipewireout.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libportaudioout.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libpulseout.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libserver.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libsndioout.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libstockencoders.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libsupereqdsp.so
-05:41:59 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libtaglibreader.so
-05:42:01 [info] [PortAudioOut] Pa_Initialize() return code: 0
-05:42:01 [info] [PipeWireOut] shutdown started
-05:42:01 [info] [PipeWireOut] shutdown complete
-05:42:01 [warning] [PortAudioOut] Pa_AbortStream() return code: -9988
-05:42:01 [warning] [PortAudioOut] Pa_CloseStream() return code: -9988
-05:42:01 [info] [PortAudioOut] Pa_Terminate() return code: 0
-05:42:01 [info] [LocalLibrary] query 'CategoryListQuery' enqueued
-05:42:01 [info] [LocalLibrary] query 'CategoryListQuery' running
-05:42:01 [info] [LocalLibrary] query 'CategoryListQuery' finished with status=4
-05:42:01 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' enqueued
-05:42:01 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' running
-05:42:01 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' finished with status=4
-05:42:01 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
-05:42:01 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
-05:42:01 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
-05:42:01 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
-05:42:01 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
-05:42:01 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
-05:42:02 [info] [LocalLibrary] query 'TrackMetadataQuery' enqueued
-05:42:02 [info] [LocalLibrary] query 'TrackMetadataQuery' running
-05:42:02 [info] [LocalLibrary] query 'TrackMetadataQuery' finished with status=4
-05:42:02 [info] [GaplessTransport] starting track at /home/farpras/Music/Yorushika/ヨルシカ - アポリア [Chi. Chikyuu no Undou ni Tsuite ED].mp3
-05:42:02 [info] [Player] new instance created
-05:42:02 [info] [GaplessTransport] stop
-05:42:02 [info] [Stream] opening /home/farpras/Music/Yorushika/ヨルシカ - アポリア [Chi. Chikyuu no Undou ni Tsuite ED].mp3
-05:42:02 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
-05:42:02 [info] [LocalFileStream] opening file: /home/farpras/Music/Yorushika/ヨルシカ - アポリア [Chi. Chikyuu no Undou ni Tsuite ED].mp3
-05:42:02 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
-05:42:02 [info] [ffmpegdecoder] parsing data stream...
-05:42:02 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
-05:42:02 [info] [ffmpegdecoder] found audio stream!
-05:42:02 [info] [ffmpegdecoder] resolved codec: MP3 (MPEG audio layer 3)
-05:42:02 [info] [Streams] found a decoder for /home/farpras/Music/Yorushika/ヨルシカ - アポリア [Chi. Chikyuu no Undou ni Tsuite ED].mp3
-05:42:05 [info] [PortAudioOut] Pa_Initialize() return code: 0
-05:42:05 [info] [PipeWireOut] shutdown started
-05:42:05 [info] [PipeWireOut] shutdown complete
-05:42:05 [warning] [PortAudioOut] Pa_AbortStream() return code: -9988
-05:42:05 [warning] [PortAudioOut] Pa_CloseStream() return code: -9988
-05:42:05 [info] [PortAudioOut] Pa_Terminate() return code: 0
-05:42:05 [info] [PortAudioOut] Pa_Initialize() return code: 0
-05:42:05 [info] [PipeWireOut] shutdown started
-05:42:05 [info] [PipeWireOut] shutdown complete
-05:42:05 [warning] [PortAudioOut] Pa_AbortStream() return code: -9988
-05:42:05 [warning] [PortAudioOut] Pa_CloseStream() return code: -9988
-05:42:05 [info] [PortAudioOut] Pa_Terminate() return code: 0
-05:42:11 [info] [PortAudioOut] Pa_Initialize() return code: 0
-05:42:11 [info] [PipeWireOut] shutdown started
-05:42:11 [info] [PipeWireOut] shutdown complete
-05:42:11 [warning] [PortAudioOut] Pa_AbortStream() return code: -9988
-05:42:11 [warning] [PortAudioOut] Pa_CloseStream() return code: -9988
-05:42:11 [info] [PortAudioOut] Pa_Terminate() return code: 0
-05:42:11 [info] [PortAudioOut] Pa_Initialize() return code: 0
-05:42:11 [info] [PipeWireOut] shutdown started
-05:42:11 [info] [PipeWireOut] shutdown complete
-05:42:11 [warning] [PortAudioOut] Pa_AbortStream() return code: -9988
-05:42:11 [warning] [PortAudioOut] Pa_CloseStream() return code: -9988
-05:42:11 [info] [PortAudioOut] Pa_Terminate() return code: 0
-05:42:15 [info] [LocalLibrary] query 'CategoryListQuery' enqueued
-05:42:15 [info] [LocalLibrary] query 'CategoryListQuery' running
-05:42:15 [info] [LocalLibrary] query 'CategoryListQuery' finished with status=4
-05:42:15 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
-05:42:15 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
-05:42:15 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
-05:42:15 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
-05:42:15 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
-05:42:15 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
-05:42:27 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
-05:42:27 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
-05:42:27 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
-05:42:27 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
-05:42:27 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
-05:42:27 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
-05:42:27 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
-05:42:27 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
-05:42:27 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
-05:42:27 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
-05:42:27 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
-05:42:27 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
-05:42:28 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
-05:42:28 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
-05:42:28 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
-05:42:28 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
-05:42:28 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
-05:42:28 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
-05:42:28 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
-05:42:28 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
-05:42:28 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
-05:42:28 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
-05:42:28 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
-05:42:28 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
-05:42:43 [info] [GaplessTransport] starting track at /home/farpras/Music/Yorushika/ヨルシカ - アポリア [Chi. Chikyuu no Undou ni Tsuite ED].mp3
-05:42:43 [info] [Player] new instance created
-05:42:43 [info] [GaplessTransport] stop
-05:42:43 [info] [Stream] opening /home/farpras/Music/Yorushika/ヨルシカ - アポリア [Chi. Chikyuu no Undou ni Tsuite ED].mp3
-05:42:43 [info] [LocalFileStream] opening file: /home/farpras/Music/Yorushika/ヨルシカ - アポリア [Chi. Chikyuu no Undou ni Tsuite ED].mp3
-05:42:43 [info] [ffmpegdecoder] parsing data stream...
-05:42:43 [info] [ffmpegdecoder] found audio stream!
-05:42:43 [info] [ffmpegdecoder] resolved codec: MP3 (MPEG audio layer 3)
-05:42:43 [info] [Streams] found a decoder for /home/farpras/Music/Yorushika/ヨルシカ - アポリア [Chi. Chikyuu no Undou ni Tsuite ED].mp3
-05:42:44 [info] [LocalLibrary] query 'TrackMetadataQuery' enqueued
-05:42:44 [info] [LocalLibrary] query 'TrackMetadataQuery' running
-05:42:44 [info] [LocalLibrary] query 'TrackMetadataQuery' finished with status=4
-05:42:44 [info] [Player] new instance created
-05:42:44 [info] [Stream] opening /home/farpras/Music/Yorushika/Yorushika - Sunny.mp3
-05:42:44 [info] [LocalFileStream] opening file: /home/farpras/Music/Yorushika/Yorushika - Sunny.mp3
-05:42:44 [info] [ffmpegdecoder] parsing data stream...
-05:42:44 [info] [ffmpegdecoder] found audio stream!
-05:42:44 [info] [ffmpegdecoder] resolved codec: MP3 (MPEG audio layer 3)
-05:42:44 [info] [Streams] found a decoder for /home/farpras/Music/Yorushika/Yorushika - Sunny.mp3
-05:42:44 [warning] [ffmpegdecoder] invalid packet detected, discarding.
-05:43:03 [info] [LocalLibrary] query 'MarkTrackPlayedQuery' enqueued
-05:43:03 [info] [LocalLibrary] query 'MarkTrackPlayedQuery' running
-05:43:03 [info] [LocalLibrary] query 'MarkTrackPlayedQuery' finished with status=4
-05:46:11 [info] [ffmpegdecoder] finished decoding.
-05:46:14 [info] [GaplessTransport] stop
-05:46:14 [info] [LocalLibrary] query 'TrackMetadataQuery' enqueued
-05:46:14 [info] [LocalLibrary] query 'TrackMetadataQuery' running
-05:46:14 [info] [LocalLibrary] query 'TrackMetadataQuery' finished with status=4
-05:46:14 [info] [Player] new instance created
-05:46:14 [info] [Stream] opening /home/farpras/Music/Yorushika/Yorushika - 言って。 (Say It.).mp3
-05:46:14 [info] [LocalFileStream] opening file: /home/farpras/Music/Yorushika/Yorushika - 言って。 (Say It.).mp3
-05:46:14 [info] [ffmpegdecoder] parsing data stream...
-05:46:14 [info] [ffmpegdecoder] found audio stream!
-05:46:14 [info] [ffmpegdecoder] resolved codec: MP3 (MPEG audio layer 3)
-05:46:14 [info] [Streams] found a decoder for /home/farpras/Music/Yorushika/Yorushika - 言って。 (Say It.).mp3
-05:46:14 [warning] [ffmpegdecoder] invalid packet detected, discarding.
-05:46:34 [info] [LocalLibrary] query 'MarkTrackPlayedQuery' enqueued
-05:46:34 [info] [LocalLibrary] query 'MarkTrackPlayedQuery' running
-05:46:34 [info] [LocalLibrary] query 'MarkTrackPlayedQuery' finished with status=4
-05:47:30 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' enqueued
-05:47:30 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' running
-05:47:30 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' finished with status=4
-05:47:30 [info] [GaplessTransport] stop
+05:54:39 [info] [LOG SESSION] ---------- START ----------
+05:54:39 [info] [PluginFactory] loading plugins
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libalsaout.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libffmpegdecoder.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libgmedecoder.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libhttpdatastream.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libmpris.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libnullout.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libopenmptdecoder.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libpipewireout.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libportaudioout.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libpulseout.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libserver.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libsndioout.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libstockencoders.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libsupereqdsp.so
+05:54:39 [info] [PluginFactory] loaded: /usr/share/musikcube/plugins/libtaglibreader.so
+05:54:39 [info] [PortAudioOut] Pa_Initialize() return code: 0
+05:54:39 [info] [PipeWireOut] shutdown started
+05:54:39 [info] [PipeWireOut] shutdown complete
+05:54:39 [warning] [PortAudioOut] Pa_AbortStream() return code: -9988
+05:54:39 [warning] [PortAudioOut] Pa_CloseStream() return code: -9988
+05:54:39 [info] [PortAudioOut] Pa_Terminate() return code: 0
+05:54:39 [info] [LocalLibrary] query 'CategoryListQuery' enqueued
+05:54:39 [info] [LocalLibrary] query 'CategoryListQuery' running
+05:54:39 [info] [LocalLibrary] query 'CategoryListQuery' finished with status=4
+05:54:39 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' enqueued
+05:54:39 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' running
+05:54:39 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' finished with status=4
+05:54:39 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:39 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:39 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:39 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:39 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:39 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:39 [info] [LocalLibrary] query 'TrackMetadataQuery' enqueued
+05:54:39 [info] [LocalLibrary] query 'TrackMetadataQuery' running
+05:54:39 [info] [LocalLibrary] query 'TrackMetadataQuery' finished with status=4
+05:54:39 [info] [GaplessTransport] starting track at /home/farpras/Music/Yorushika/Yorushika - Sunny.mp3
+05:54:39 [info] [Player] new instance created
+05:54:39 [info] [GaplessTransport] stop
+05:54:39 [info] [Stream] opening /home/farpras/Music/Yorushika/Yorushika - Sunny.mp3
+05:54:39 [info] [LocalFileStream] opening file: /home/farpras/Music/Yorushika/Yorushika - Sunny.mp3
+05:54:39 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
+05:54:39 [info] [ffmpegdecoder] parsing data stream...
+05:54:39 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
+05:54:39 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
+05:54:39 [info] [ffmpegdecoder] found audio stream!
+05:54:39 [info] [ffmpegdecoder] resolved codec: MP3 (MPEG audio layer 3)
+05:54:39 [info] [Streams] found a decoder for /home/farpras/Music/Yorushika/Yorushika - Sunny.mp3
+05:54:39 [warning] [ffmpegdecoder] invalid packet detected, discarding.
+05:54:40 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:40 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:40 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:40 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
+05:54:40 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
+05:54:40 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
+05:54:40 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:40 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:40 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
+05:54:41 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' enqueued
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' running
+05:54:41 [info] [LocalLibrary] query 'CategoryTrackListQuery' finished with status=4
+05:54:42 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' enqueued
+05:54:42 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' running
+05:54:42 [info] [LocalLibrary] query 'TrackMetadataBatchQuery' finished with status=4
+05:54:43 [info] [LocalLibrary] query 'TrackMetadataQuery' enqueued
+05:54:43 [info] [LocalLibrary] query 'TrackMetadataQuery' running
+05:54:43 [info] [LocalLibrary] query 'TrackMetadataQuery' finished with status=4
+05:54:43 [info] [GaplessTransport] starting track at /home/farpras/Music/Yorushika/Yorushika - 言って。 (Say It.).mp3
+05:54:43 [info] [Player] new instance created
+05:54:43 [info] [GaplessTransport] stop
+05:54:43 [info] [Stream] opening /home/farpras/Music/Yorushika/Yorushika - 言って。 (Say It.).mp3
+05:54:43 [info] [LocalFileStream] opening file: /home/farpras/Music/Yorushika/Yorushika - 言って。 (Say It.).mp3
+05:54:43 [info] [ffmpegdecoder] parsing data stream...
+05:54:43 [info] [ffmpegdecoder] found audio stream!
+05:54:43 [info] [ffmpegdecoder] resolved codec: MP3 (MPEG audio layer 3)
+05:54:43 [info] [Streams] found a decoder for /home/farpras/Music/Yorushika/Yorushika - 言って。 (Say It.).mp3
+05:54:43 [warning] [ffmpegdecoder] invalid packet detected, discarding.
+05:54:43 [info] [LocalLibrary] query 'TrackMetadataQuery' enqueued
+05:54:43 [info] [LocalLibrary] query 'TrackMetadataQuery' running
+05:54:43 [info] [LocalLibrary] query 'TrackMetadataQuery' finished with status=4
+05:54:43 [info] [Player] new instance created
+05:54:43 [info] [Stream] opening /home/farpras/Music/Yorushika/ヨルシカ - 春ひさぎ.mp3
+05:54:43 [info] [LocalFileStream] opening file: /home/farpras/Music/Yorushika/ヨルシカ - 春ひさぎ.mp3
+05:54:43 [info] [ffmpegdecoder] parsing data stream...
+05:54:43 [info] [ffmpegdecoder] found audio stream!
+05:54:43 [info] [ffmpegdecoder] resolved codec: MP3 (MPEG audio layer 3)
+05:54:43 [info] [Streams] found a decoder for /home/farpras/Music/Yorushika/ヨルシカ - 春ひさぎ.mp3
+05:54:43 [warning] [ffmpegdecoder] invalid packet detected, discarding.
+05:55:03 [info] [LocalLibrary] query 'MarkTrackPlayedQuery' enqueued
+05:55:03 [info] [LocalLibrary] query 'MarkTrackPlayedQuery' running
+05:55:03 [info] [LocalLibrary] query 'MarkTrackPlayedQuery' finished with status=4
+05:57:47 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' enqueued
+05:57:47 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' running
+05:57:47 [info] [LocalLibrary] query 'PersistedPlayQueueQuery' finished with status=4
+05:57:47 [info] [GaplessTransport] stop
