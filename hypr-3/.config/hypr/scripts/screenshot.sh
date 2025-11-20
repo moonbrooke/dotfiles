@@ -30,4 +30,4 @@ else
 fi
 
 # Send notification with the filename
-notify-send -a "$TYPE Screenshot" -i $FILEPATH "-" "Screenshot saved as <b>$FILENAME</b>"
+notify-send -a "$TYPE Screenshot" -i $FILEPATH "$TYPE Screenshot" "Screenshot saved as <b>$FILENAME</b>"
