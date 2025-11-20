@@ -25,7 +25,7 @@
     # width = (0, 300)
     # constant width of 300
 
-    width = 300
+    width = 400
 
     # The maximum height of a single notification, excluding the frame.
     height = 300
@@ -127,7 +127,7 @@
 
     ### Text ###
 
-    font = JetBrainsMono Nerd Font 10
+    font = CaskaydiaMono Nerd Font 10
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -168,13 +168,13 @@
     #   %%  Literal %
     # Markup is allowed
 
-    format = "<span size='x-large' font_desc='JetBrainsMono Nerd Font 8' weight='bold'>%s</span>\n%b"
+    format = "<span size='x-large' font_desc='CaskaydiaMono Nerd Font 8' weight='bold'>%s</span>\n%b"
 
     #format = "%s %p\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = center
+    alignment = left
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
@@ -316,7 +316,7 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#1a1b26"
     foreground = "#a9b1d6"
-    frame_color = "#9ece6a"
+    frame_color = "#9aa5ce"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #new_icon = /path/to/icon
@@ -324,7 +324,7 @@
 [urgency_normal]
     background = "#1a1b26"
     foreground = "#a9b1d6"
-    frame_color = "#e0af68"
+    frame_color = "#9aa5ce"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #new_icon = /path/to/icon
@@ -332,7 +332,7 @@
 [urgency_critical]
     background = "#1a1b26"
     foreground = "#d9dee9"
-    frame_color = "#f7768e"
+    frame_color = "#9aa5ce"
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     #new_icon = /path/to/icon
