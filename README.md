@@ -6,6 +6,12 @@ dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) setup i
 
 ### Setup
 
+My current setup consist of the following configs:
+
+```bash
+btop dunst-3 fastfetch hypr-3 kitty nvim-vanilla rofi-3 waybar-2 yazi-2 zshrc-2
+```
+
 - WM/Compositor: [Hyprland](https://hyprland.org/)
 - Display Manager: [Ly](https://codeberg.org/fairyglade/ly)
 - Colors: [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
