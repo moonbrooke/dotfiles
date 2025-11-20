@@ -21,6 +21,10 @@ export EDITOR="nvim"
 
 source <(fzf --zsh)
 
+if [ -d "$HOME/scripts" ] ;
+    then PATH="$HOME/scripts:$PATH"
+fi
+
 # ZSH History
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
