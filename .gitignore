@@ -3,3 +3,5 @@ fastfetch-edit/
 musikcube/.config/musikcube/1/
 musikcube/.config/musikcube/log.txt
 musikcube/.config/musikcube/stderr.txt
+
+mpd/.config/mpd/mpdstate
