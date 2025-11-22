@@ -1,144 +1,26 @@
-##############################################################
-## This is an example configuration file. Copy it to        ##
-## $XDG_CONFIG_HOME/ncmpcpp/config or $HOME/.ncmpcpp/config ##
-## and set up your preferences.                             ##
-##############################################################
-#
-##### directories ######
-##
-## Directory for storing ncmpcpp related files.  Changing it is useful if you
-## want to store everything somewhere else and provide command line setting for
-## alternative location to config file which defines that while launching
-## ncmpcpp.
-##
-#
-ncmpcpp_directory = ~/.config/ncmpcpp
-#
-##
-## Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
-## MPD clients (eg. ncmpc) also use that location.
-##
-#
-#lyrics_directory = ~/.lyrics
-#
+lyrics_directory  = ~/.config/ncmpcpp/lyrics
+# execute_on_song_change  = "MediaControl nccover ; dunstify --replace=27072 -i /tmp/cover.png "Playing.." "$(mpc --format '%title% \n%artist%' current)""
+
 ##### connection settings #####
-#
 mpd_host = localhost
-#
 mpd_port = 6600
-#
 #mpd_connection_timeout = 5
-#
+
 ## Needed for tag editor and file operations to work.
 ##
 mpd_music_dir = ~/Music
-#
 #mpd_crossfade_time = 5
-#
-# Exclude pattern for random song action
-# http://www.boost.org/doc/libs/1_46_1/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html
-#random_exclude_pattern = "^(temp|midi_songs).*"
-#
+
 ##### music visualizer #####
-##
-## In order to make music visualizer work with MPD you need to use the fifo
-## output. Its format parameter has to be set to 44100:16:1 for mono
-## visualization or 44100:16:2 for stereo visualization. As an example here is
-## the relevant section for mpd.conf:
-##
-## audio_output {
-##        type            "fifo"
-##        name            "Visualizer feed"
-##        path            "/tmp/mpd.fifo"
-##        format          "44100:16:2"
-## }
-##
-## If the visualization on occasion diverges from the audio output, please set
-## 'buffer_time' parameter of your audio output in mpd.conf to '100000' (100ms)
-## or less to prevent that from happening.
-##
-## Note: If you're using Mopidy, an address of a udpsink gstreamer's output is
-## also accepted. For example, the following section in mopidy.conf:
-##
-## [audio]
-## output = tee name=t ! queue ! autoaudiosink t.
-##        ! queue ! audio/x-raw,rate=44100,channels=2,format=S16LE
-##        ! udpsink host=localhost port=5555
-##
-## will make localhost:5555 available as a source of data for the stereo
-## visualizer.
-##
-#
-#visualizer_data_source = /tmp/mpd.fifo
-#
-##
-## Note: Below parameter is needed for ncmpcpp to determine which output
-## provides data for visualizer and reset it at the beginning of visualization
-## to synchronize with audio.
-##
-#
-#visualizer_output_name = Visualizer feed
-#
-##
-## If you set format to 44100:16:2, make it 'yes'.
-##
-#visualizer_in_stereo = yes
-#
-##
-## Note: set below to >=10 only if you have synchronization issues with
-## visualization and audio.
-##
-#
-#visualizer_sync_interval = 0
-#
-##
-## Note: To enable spectrum frequency visualization you need to compile ncmpcpp
-## with fftw3 support.
-##
-#
-## Available values: spectrum, wave, wave_filled, ellipse.
-##
-#visualizer_type = spectrum
-#
-#visualizer_fps = 60
-#
-#visualizer_autoscale = no
-#
-#visualizer_look = ●▮
-#
-#visualizer_color = blue, cyan, green, yellow, magenta, red
-#
-## Alternative subset of 256 colors for terminals that support it.
-##
-#visualizer_color = 47, 83, 119, 155, 191, 227, 221, 215, 209, 203, 197, 161
-#
-##
-## Note: The next few visualization options apply to the spectrum visualizer.
-##
-#
-## Use unicode block characters for a smoother, more continuous look.
-## This will override the visualizer_look option. With transparent terminals
-## and visualizer_in_stereo set, artifacts may be visible on the bottom half of
-## the visualization.
-#
-#visualizer_spectrum_smooth_look = yes
-#
-## A value between 1 and 5 inclusive. Specifying a larger value makes the
-## visualizer look at a larger slice of time, which results in less jumpy
-## visualizer output.
-#
-#visualizer_spectrum_dft_size = 2
-#
-#visualizer_spectrum_gain = 10
-#
-## Left-most frequency of visualizer in Hz, must be less than HZ MAX
-#
-#visualizer_spectrum_hz_min = 20
-#
-## Right-most frequency of visualizer in Hz, must be greater than HZ MIN
-#
-#visualizer_spectrum_hz_max = 20000
-#
+visualizer_data_source = /tmp/mpd.fifo
+visualizer_output_name = my_fifo
+visualizer_in_stereo = "yes"
+visualizer_fps = "60"
+visualizer_type = "ellipse"
+visualizer_look = ●●
+visualizer_color = "magenta,cyan,blue,red,white,green,yellow,black,magenta"
+visualizer_spectrum_smooth_look = "yes"
+
 ##### system encoding #####
 ##
 ## ncmpcpp should detect your charset encoding but if it failed to do so, you
@@ -158,11 +40,11 @@ mpd_music_dir = ~/Music
 ## Time of inactivity (in seconds) after playlist highlighting will be disabled
 ## (0 = always on).
 ##
-#playlist_disable_highlight_delay = 5
+playlist_disable_highlight_delay = 2
 #
 ## Defines how long messages are supposed to be visible.
 ##
-#message_delay_time = 5
+message_delay_time = 2
 #
 ##### song format #####
 ##
@@ -231,23 +113,24 @@ mpd_music_dir = ~/Music
 ## Note: colors can be nested.
 ##
 #
-#song_list_format = {%a - }{%t}|{$8%f$9}$R{$3%l$9}
+#song_list_format = {%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
 #
 #song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
 #
 #song_library_format = {%n - }{%t}|{%f}
-#
+#alternative_ui_separator_color = 11#
 #alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
+alternative_header_first_line_format = {{$5$b%t$/b$9}}
 #
-#alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
+alternative_header_second_line_format = {{$3$b%a$/b$9}{ - $8$b%b$9}}|{%D}
 #
-#current_item_prefix = $(yellow)$r
+current_item_prefix = $(blue)$r
 #
-#current_item_suffix = $/r$(end)
+current_item_suffix = $/r$(end)
 #
-#current_item_inactive_column_prefix = $(white)$r
+current_item_inactive_column_prefix = $(green)$r
 #
-#current_item_inactive_column_suffix = $/r$(end)
+current_item_inactive_column_suffix = $/r$(end)
 #
 #now_playing_prefix = $b
 #
@@ -269,12 +152,12 @@ mpd_music_dir = ~/Music
 ## Note: Below variables are used for sorting songs in browser.  The sort mode
 ## determines how songs are sorted, and can be used in combination with a sort
 ## format to specify a custom sorting format.  Available values for
-## browser_sort_mode are "type", "name", "mtime", "format" and "none".
+## browser_sort_mode are "name", "mtime", "format" and "noop".
 ##
 #
-#browser_sort_mode = type
+#browser_sort_mode = name
 #
-#browser_sort_format = {%a - }{%t}|{%f} {%l}
+#browser_sort_format = {$5%a - }{$2%t}|{$2%f} {(%l)}
 #
 ##### columns settings #####
 ##
@@ -311,6 +194,7 @@ mpd_music_dir = ~/Music
 ##   available.
 ##
 #
+song_columns_list_format = (50)[blue]{t|f:Title} (20)[green]{a} (20)[white]{b} (7f)[cyan]{l}
 #song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
 #
 ##### various settings #####
@@ -340,7 +224,7 @@ mpd_music_dir = ~/Music
 ##
 ## Note: Possible display modes: classic, columns.
 ##
-#playlist_display_mode = columns
+playlist_display_mode = columns
 #
 #browser_display_mode = classic
 #
@@ -350,13 +234,13 @@ mpd_music_dir = ~/Music
 #
 #discard_colors_if_item_is_selected = yes
 #
-#show_duplicate_tags = yes
+#show_duplicate_tags = true
 #
 #incremental_seeking = yes
 #
 #seek_time = 1
 #
-#volume_change_step = 2
+volume_change_step = 5
 #
 #autocenter_mode = no
 #
@@ -366,15 +250,15 @@ mpd_music_dir = ~/Music
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
 ##
-#progressbar_look = =>
-#
+progressbar_look = "▄▄▄"
+
 ## Available values: database, playlist.
 ##
 #default_place_to_search_in = database
 #
 ## Available values: classic, alternative.
 ##
-#user_interface = classic
+user_interface = alternative
 #
 #data_fetching_delay = yes
 #
@@ -384,28 +268,25 @@ mpd_music_dir = ~/Music
 #
 #media_library_albums_split_by_date = yes
 #
-#media_library_hide_album_dates = no
-#
 ## Available values: wrapped, normal.
 ##
 #default_find_mode = wrapped
 #
 #default_tag_editor_pattern = %n - %t
 #
-#header_visibility = yes
+#header_visibility = no
 #
-#statusbar_visibility = yes
+#statusbar_visibility = no
 #
-## Show the "Connected to ..." message on startup
-#connected_message_on_startup = yes
-#
-#titles_visibility = yes
+#titles_visibility = no
 #
 #header_text_scrolling = yes
 #
-#cyclic_scrolling = no
+cyclic_scrolling = yes
 #
-#lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
+#lines_scrolled = 2
+#
+#lyrics_fetchers = lyricwiki, azlyrics, genius, sing365, lyricsmania, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, internet
 #
 #follow_now_playing_lyrics = no
 #
@@ -415,7 +296,7 @@ mpd_music_dir = ~/Music
 #
 #generate_win32_compatible_filenames = yes
 #
-#allow_for_physical_item_deletion = no
+allow_for_physical_item_deletion = no
 #
 ##
 ## Note: If you set this variable, ncmpcpp will try to get info from last.fm in
@@ -445,13 +326,13 @@ mpd_music_dir = ~/Music
 ##
 ## Note: You can define startup screen by choosing screen from the list above.
 ##
-#startup_screen = playlist
+startup_screen = playlist
 #
 ##
 ## Note: You can define startup slave screen by choosing screen from the list
 ## above or an empty value for no slave screen.
 ##
-#startup_slave_screen = ""
+#startup_slave_screen = "media_library"
 #
 #startup_slave_screen_focus = no
 #
@@ -473,7 +354,7 @@ mpd_music_dir = ~/Music
 #
 #display_bitrate = no
 #
-#display_remaining_time = no
+#display_remaining_time = yes
 #
 ## Available values: none, basic, extended, perl.
 ##
@@ -494,11 +375,9 @@ mpd_music_dir = ~/Music
 #
 #block_search_constraints_change_if_items_found = yes
 #
-#mouse_support = yes
+mouse_support = no
 #
-#mouse_list_scroll_whole_page = no
-#
-#lines_scrolled = 5
+#mouse_list_scroll_whole_page = yes
 #
 #empty_tag_marker = <empty>
 #
@@ -508,7 +387,7 @@ mpd_music_dir = ~/Music
 #
 #media_library_sort_by_mtime = no
 #
-#enable_window_title = yes
+#enable_window_title = no
 #
 ##
 ## Note: You can choose default search mode for search engine. Available modes
@@ -526,11 +405,11 @@ mpd_music_dir = ~/Music
 #
 #search_engine_default_search_mode = 1
 #
-#external_editor = nano
+external_editor = nvim
 #
 ## Note: set to yes if external editor is a console application.
 ##
-#use_console_editor = yes
+use_console_editor = yes
 #
 ##### colors definitions #####
 ##
@@ -562,37 +441,37 @@ mpd_music_dir = ~/Music
 ## are used there is a possibility that you'll be able to use only colors with
 ## transparent background.
 #
-#colors_enabled = yes
+colors_enabled = yes
 #
-#empty_tag_color = cyan
+empty_tag_color = green
 #
-#header_window_color = default
+header_window_color = blue
 #
-#volume_color = default
+volume_color = cyan:b
 #
-#state_line_color = default
+state_line_color = white
 #
-#state_flags_color = default:b
+state_flags_color = white:b
 #
-#main_window_color = yellow
+main_window_color = white
 #
-#color1 = white
+color1 = blue
 #
-#color2 = green
+color2 = green
 #
-#progressbar_color = black:b
+#progressbar_color = white:b
 #
-#progressbar_elapsed_color = green:b
+progressbar_elapsed_color = blue:b
 #
-#statusbar_color = default
+#statusbar_color = red
 #
-#statusbar_time_color = default:b
+statusbar_time_color = cyan:b
 #
-#player_state_color = default:b
+player_state_color = white:b
 #
-#alternative_ui_separator_color = black:b
+alternative_ui_separator_color = green:b
 #
-#window_border_color = green
+window_border_color = green
 #
-#active_window_border = red
+active_window_border = blue
 #

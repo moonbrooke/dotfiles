@@ -1,0 +1,20 @@
+sw_volume: 100
+audio_device_state:1:PipeWire Sound Server
+audio_device_state:1:my_fifo
+state: play
+current: 3
+time: 56.747
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0
+mixrampdelay: -1
+lastloadedplaylist: 
+playlist_begin
+0:The Everlasting Guilty Crown.mp3
+1:EDM/Borgeous & Shaun Frank feat. Delaney Jane - This Could Be Love (Original Mix).mp3
+2:EDM/Borgeous & Shaun Frank (ft. Delaney Jane) - This Could Be Love (Ryos Remix).mp3
+3:EDM/Borgeous & Shaun Frank feat. Delaney Jane - This Could Be Love (Original Mix).mp3
+playlist_end
