@@ -19,7 +19,7 @@ Install dependencies:
 sudo pacman -S hyprland hyprpaper dunst grim slurp jq ly neovim kitty zsh waybar rofi \
 fastfetch neovim ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
 wl-clipboard cliphist hyprpolkitagent xdg-desktop-portal-hyprland xdg-dekstop-portal \
-yazi fzf unzip git stow --needed
+yazi fzf unzip git stow mpd ncmpcpp --needed
 ```
 
 - WM/Compositor: [Hyprland](https://hyprland.org/)
@@ -35,29 +35,8 @@ yazi fzf unzip git stow --needed
 - Editor: [Neovim](https://neovim.io/), [VS Code](https://code.visualstudio.com/)
 - Font: [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [JetBrains Mono Nerd Font](https://www.nerdfonts.com/font-downloads), [Ricty Nerd Font](https://rictyfonts.github.io/) (for Japanese characters support)
 
-## Outdated Screenshots
+### Screenshot
 
-All screenshots are outdated.
+Screenshot with btop, fastfetch, ncmpcpp, Cava, Bitwig Studio, and Rofi.
 
-### Hyprland
-
-![Hyprland Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/hyprland.png)
-
-### i3wm
-
-![i3 Screenshot](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/i3wm.png)
-
-#### polybar
-
-![polybar](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/polybar.png)
-
-#### polybar-simple
-
-![polybar-simple](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/polybar-simple.png)
-
-### Credits
-
-- [https://github.com/mylinuxforwork/dotfiles](https://github.com/mylinuxforwork/dotfiles)
-- [https://github.com/adi1090x/rofi](https://github.com/adi1090x/rofi)
-- [https://github.com/sameemul-haque/dotfiles](https://github.com/sameemul-haque/dotfiles)
-- [https://github.com/lokesh-krishna/dotfiles](https://github.com/lokesh-krishna/dotfiles)
+![hypr-3](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/hypr-3.png)
