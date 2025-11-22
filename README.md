@@ -16,7 +16,7 @@ stow btop dunst-3 fastfetch hypr-3 kitty nvim-vanilla rofi-3 waybar-2 yazi-2 zsh
 Install dependencies:
 
 ```bash
-sudo pacman -S hyprland hyprpaper dunst grim slurp jq ly kitty zsh waybar rofi \
+sudo pacman -S hyprland hyprpaper dunst grim slurp jq ly neovim kitty zsh waybar rofi \
 fastfetch neovim ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
 wl-clipboard cliphist hyprpolkitagent xdg-desktop-portal-hyprland xdg-dekstop-portal \
 yazi fzf unzip git stow --needed
