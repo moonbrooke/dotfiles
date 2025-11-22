@@ -37,6 +37,6 @@ yazi fzf unzip git stow mpd ncmpcpp --needed
 
 ### Screenshot
 
-Screenshot with btop, fastfetch, ncmpcpp, Cava, Bitwig Studio, Rofi, and dunst notification.
+Screenshot with Waybar, btop, fastfetch, ncmpcpp, Cava, Bitwig Studio, Rofi, and dunst notification.
 
 ![hypr-3](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/hypr-3.png)
