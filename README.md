@@ -16,13 +16,12 @@ stow btop dunst-3 fastfetch hypr-3 kitty nvim-vanilla rofi-3 waybar-2 yazi-2 zsh
 Install dependencies:
 
 ```bash
+# I might forget some packages
 sudo pacman -S hyprland hyprpaper dunst grim slurp jq ly neovim kitty zsh waybar rofi \
 fastfetch neovim ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
 wl-clipboard cliphist hyprpolkitagent xdg-desktop-portal-hyprland xdg-dekstop-portal \
 yazi fzf unzip git stow mpd ncmpcpp --needed
 ```
-
-**NOTE**: I might miss some packages.
 
 - WM/Compositor: [Hyprland](https://hyprland.org/)
 - Display Manager: [Ly](https://codeberg.org/fairyglade/ly)
