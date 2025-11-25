@@ -22,6 +22,8 @@ wl-clipboard cliphist hyprpolkitagent xdg-desktop-portal-hyprland xdg-dekstop-po
 yazi fzf unzip git stow mpd ncmpcpp --needed
 ```
 
+**NOTE**: I might miss some packages.
+
 - WM/Compositor: [Hyprland](https://hyprland.org/)
 - Display Manager: [Ly](https://codeberg.org/fairyglade/ly)
 - Colors: [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
