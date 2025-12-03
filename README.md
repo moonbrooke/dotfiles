@@ -2,15 +2,15 @@
 
 dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) setup is being used regularly. Other WM configs in this dotfiles are either experimental or abandoned.
 
-**IMPORTANT:** The folders are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). And **use at your own risk**!
-
 ### Setup
 
-My current setup consists of the following configs:
+**IMPORTANT:** The folders are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). And **use at your own risk**!
+
+My current setup consists of the following:
 
 ```bash
-# Use GNU Stow to create the symlinks
-stow btop dunst-3 fastfetch hypr-3 kitty nvim-vanilla rofi-3 waybar-2 yazi-2 zshrc-2
+# The configs you need to stow
+btop dunst-3 fastfetch hypr-3 kitty nvim-vanilla rofi-3 waybar-2 yazi-2 zshrc-2
 ```
 
 Install dependencies:
