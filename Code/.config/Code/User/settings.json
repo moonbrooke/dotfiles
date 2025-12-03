@@ -1,0 +1,9 @@
+{
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "chat.commandCenter.enabled": false,
+    "workbench.colorTheme": "Tokyo Night",
+    "workbench.iconTheme": "catppuccin-latte",
+    "editor.fontFamily": "'CaskaydiaMono Nerd Font', 'monospace', monospace",
+    "editor.fontSize": 16
+}
