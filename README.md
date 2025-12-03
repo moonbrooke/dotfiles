@@ -20,7 +20,7 @@ Install dependencies:
 sudo pacman -S hyprland hyprpaper dunst grim slurp jq ly neovim kitty zsh waybar rofi \
 fastfetch neovim ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
 wl-clipboard cliphist hyprpolkitagent xdg-desktop-portal-hyprland xdg-dekstop-portal \
-yazi fzf unzip git stow mpd ncmpcpp --needed
+yazi fzf bat unzip git stow mpd ncmpcpp --needed
 ```
 
 - WM/Compositor: [Hyprland](https://hyprland.org/)
