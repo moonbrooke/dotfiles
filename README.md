@@ -1,31 +1,30 @@
 # dotfiles
 
-dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) setup is being used regularly. Other WM configs in this dotfiles are either experimental or abandoned.
+Dotfiles for my Arch Linux setup. Only [Hyprland](https://hypr.land/) setup is used regularly. The other WM configs in this dotfiles are either experimental or abandoned.
 
 ### Setup
 
-**IMPORTANT:** Folders in this repo are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). And **use at your own risk**!
+**IMPORTANT:** Folders in this repo are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). **Use at your own risk**!
 
-Clone the repo in your home folder then `cd` into it. Run `stow <folder-name>` to create the symlink into your `~/.config` folder.
+Clone the repo into your home directory then `cd` into it. Run `stow <folder-name>` to create the symlink in your `~/.config` folder.
 
 My current setup consists of the following:
 
 ```bash
-# The configs you need to stow. You can stow multiple folders at once 
+# The configs you need to stow. You can stow multiple folders at once.
 btop dunst-3 fastfetch hypr-3 kitty nvim-vanilla rofi-3 waybar-2 yazi-2 zshrc-2
 ```
 
 Install dependencies:
 
 ```bash
-# I might forget some packages
 sudo pacman -S hyprland hyprpaper dunst grim slurp jq neovim kitty zsh waybar rofi \
 fastfetch ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
 wl-clipboard cliphist hyprpolkitagent xdg-desktop-portal-hyprland xdg-dekstop-portal \
 thunar thunar-volman gvfs yazi fzf bat btop unzip git stow mpd ncmpcpp --needed
 ```
 
-- WM/Compositor: [Hyprland](https://hyprland.org/)
+- WM/Compositor: [Hyprland](https://hypr.land/)
 - Display Manager: [Ly](https://codeberg.org/fairyglade/ly)
 - Colors: [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
 - Terminal: [kitty](https://sw.kovidgoyal.net/kitty/)
