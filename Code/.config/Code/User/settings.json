@@ -1,9 +1,29 @@
 {
+    "workbench.startupEditor": "none",
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
     "chat.commandCenter.enabled": false,
     "workbench.colorTheme": "Tokyo Night",
-    "workbench.iconTheme": "catppuccin-latte",
-    "editor.fontFamily": "'CaskaydiaMono Nerd Font', 'monospace', monospace",
-    "editor.fontSize": 16
+    "editor.fontSize": 16,
+    "editor.fontFamily": "CaskaydiaCove Nerd Font",
+    "workbench.editor.showTabs": "none",
+    "breadcrumbs.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.iconTheme": "catppuccin-mocha",
+    "editor.minimap.autohide": "mouseover",
+    "editor.minimap.renderCharacters": false,
+    "editor.scrollbar.horizontalScrollbarSize": 8,
+    "editor.scrollbar.verticalScrollbarSize": 8,
+    "editor.lineHeight": 1.5,
+    "chat.disableAIFeatures": true,
+    "C_Cpp.copilotHover": "disabled",
+    "workbench.activityBar.location": "hidden",
+    "editor.minimap.enabled": false,
+    "git.openRepositoryInParentFolders": "never",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "extensions.ignoreRecommendations": true
 }
+
