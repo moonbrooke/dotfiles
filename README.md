@@ -6,10 +6,12 @@ dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) setup i
 
 **IMPORTANT:** Folders in this repo are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). And **use at your own risk**!
 
+Clone the repo in your home folder then `cd` into it. Run `stow <folder-name>` to create the symlink into your `~/.config` folder.
+
 My current setup consists of the following:
 
 ```bash
-# The configs you need to stow
+# The configs you need to stow. You can stow multiple folders at once 
 btop dunst-3 fastfetch hypr-3 kitty nvim-vanilla rofi-3 waybar-2 yazi-2 zshrc-2
 ```
 
