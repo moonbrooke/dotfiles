@@ -4,7 +4,7 @@ dotfiles for my Arch Linux setup. Only [Hyprland](https://hyprland.org/) setup i
 
 ### Setup
 
-**IMPORTANT:** The folders are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). And **use at your own risk**!
+**IMPORTANT:** Folders in this repo are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). And **use at your own risk**!
 
 My current setup consists of the following:
 
