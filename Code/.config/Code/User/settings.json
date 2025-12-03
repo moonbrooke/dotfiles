@@ -5,7 +5,7 @@
     "chat.commandCenter.enabled": false,
     "workbench.colorTheme": "Tokyo Night",
     "editor.fontSize": 16,
-    "editor.fontFamily": "CaskaydiaCove Nerd Font",
+    "editor.fontFamily": "'CaskaydiaMono Nerd Font', 'monospace', monospace",
     "workbench.editor.showTabs": "none",
     "breadcrumbs.enabled": false,
     "window.menuBarVisibility": "toggle",
