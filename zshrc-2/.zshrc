@@ -1,7 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-export PATH="/mnt/c/Users/$USER/AppData/Local/Programs/Microsoft VS Code/bin":$PATH
+if [ -n "$WSL_DISTRO_NAME" ]; then
+    export PATH="/mnt/c/Users/$USER/AppData/Local/Programs/Microsoft VS Code/bin":$PATH
+fi
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
