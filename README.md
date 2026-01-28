@@ -24,6 +24,12 @@ wl-clipboard cliphist hyprpolkitagent xdg-desktop-portal-hyprland xdg-dekstop-po
 thunar thunar-volman gvfs yazi fzf bat btop unzip git stow mpd ncmpcpp --needed
 ```
 
+Extra fonts from the AUR:
+
+```bash
+yay -S ttf-ricty-nerd ttf-sarasa-gothic
+```
+
 - WM/Compositor: [Hyprland](https://hypr.land/)
 - Display Manager: [Ly](https://codeberg.org/fairyglade/ly)
 - Colors: [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
