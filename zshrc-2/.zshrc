@@ -60,6 +60,9 @@ command_not_found_handler() {
     return 127
 }
 
+# Source
+source /usr/share/nvm/init-nvm.sh
+
 # Alias
 
 alias c="clear"
