@@ -1,13 +1,11 @@
 {
     "workbench.startupEditor": "none",
     "window.commandCenter": false,
-    "workbench.layoutControl.enabled": false,
     "chat.commandCenter.enabled": false,
     "workbench.colorTheme": "Tokyo Night",
     "editor.fontSize": 16,
     "editor.fontFamily": "'CaskaydiaMono Nerd Font', 'monospace', monospace",
     "workbench.editor.showTabs": "none",
-    "breadcrumbs.enabled": false,
     "window.menuBarVisibility": "toggle",
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.iconTheme": "catppuccin-mocha",
@@ -24,6 +22,7 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "workbench.layoutControl.enabled": false
 }
 
