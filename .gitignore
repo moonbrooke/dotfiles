@@ -6,3 +6,6 @@ musikcube/.config/musikcube/session.json
 musikcube/.config/musikcube/stderr.txt
 
 mpd/.config/mpd/mpdstate
+
+Code/.config/Code/*
+!Code/.config/Code/User/settings.json
