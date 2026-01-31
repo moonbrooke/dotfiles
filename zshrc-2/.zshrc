@@ -84,7 +84,7 @@ alias pmu="sudo pacman -R"
 alias pml="yay -Q"
 alias pmc="du -hd1 /var/cache/pacman"
 alias yayc="du -hd1 ~/.cache/yay"
-alias pmclean="yay -Scc"
+alias pmclean="sudo find /var/cache/pacman/pkg/ -mindepth 1 -type d -empty -delete; yay -Scc"
 alias pmconf="sudo -E -s nvim /etc/pacman.conf"
 
 alias gaa="git add ."
