@@ -23,6 +23,7 @@
         "asvetliakov.vscode-neovim": 1
     },
     "extensions.ignoreRecommendations": true,
-    "workbench.layoutControl.enabled": false
+    "workbench.layoutControl.enabled": false,
+    "git.confirmSync": false
 }
 
