@@ -27,7 +27,7 @@ confirm=$(echo -e "Yes\nNo" | \
 # Only proceed if "Yes"
 if [ "$confirm" == "Yes" ]; then
     case "$chosen" in
-        "Logout") hyprctl dispatch exit ;;
+        "Logout") ~/.config/hypr/scripts/logout.sh ;;
         "Shutdown") ~/.config/hypr/scripts/shutdown.sh ;;
         "Reboot") ~/.config/hypr/scripts/reboot.sh ;;
     esac
