@@ -6,7 +6,7 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
 fi
 
 # lidm display manager config
-export PATH="$HOME/.config/lidm/catppuccin-mocha.ini":$PATH
+export LIDM_CONF="$HOME/.config/lidm/catppuccin-mocha.ini"
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
