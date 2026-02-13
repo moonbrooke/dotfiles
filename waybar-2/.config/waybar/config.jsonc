@@ -106,7 +106,7 @@
         "interval": 5,
         "format-wifi": "NET: {essid}",
         "format-ethernet": "ETH: {ifname}",
-        "format-disconnected": "OFF",
+        "format-disconnected": "NET: OFF",
         "format-alt": "󰇧 {ipaddr}/{cidr}",
         "tooltip": false
     },
