@@ -107,8 +107,9 @@
         "format-wifi": "NET: {essid}",
         "format-ethernet": "ETH: {ifname}",
         "format-disconnected": "NET: OFF",
-        "format-alt": "󰇧 {ipaddr}/{cidr}",
-        "tooltip": false
+        // "format-alt": "󰇧 {ipaddr}/{cidr}",
+        "tooltip": false,
+        "on-click": "kitty --class floating_gazelle -e gazelle"
     },
 
     "hyprland/window": {
