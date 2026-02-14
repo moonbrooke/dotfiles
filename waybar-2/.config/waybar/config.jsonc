@@ -17,12 +17,14 @@
         "clock#date",
         "clock#time",
         "tray",
-        "hyprland/language"
+        "hyprland/language",
+        "custom/power"
     ],
 
     // Modules
 
     "custom/logo": {
+        "on-click": "pkill rofi || rofi -modes \"drun\" -show drun -display-drun \"Menu\" -display-run \"Run\" -display-window \"Window\" -show-icons -auto-close",
         "format": "󰣇 "
     },
 
@@ -175,8 +177,9 @@
         //"spacing": 10
     },
     "custom/power":{
+        "exec": "whoami",
         "tooltip": false,
-        "on-click": "wlogout -p layer-shell &",
-        "format": " "
+        "on-click": "~/.config/hypr/scripts/power.sh",
+        "format": "{text}"
     }
 }

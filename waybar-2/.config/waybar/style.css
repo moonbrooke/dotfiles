@@ -37,6 +37,7 @@
 #clock,
 #cpu,
 #custom-logo,
+#custom-power,
 #language,
 #memory,
 #network,
@@ -138,4 +139,9 @@
 
 #custom-logo {
     color: @blue;
+}
+
+#custom-power {
+    color: @black;
+    background: @red;
 }
