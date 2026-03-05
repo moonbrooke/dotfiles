@@ -111,7 +111,7 @@
         "format-disconnected": "NET: OFF",
         // "format-alt": "󰇧 {ipaddr}/{cidr}",
         "tooltip": false,
-        "on-click": "kitty --class floating_gazelle -e gazelle"
+        "on-click": "kitty --class floating_nmtui -e nmtui"
     },
 
     "hyprland/window": {
