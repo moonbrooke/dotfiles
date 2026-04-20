@@ -104,3 +104,8 @@ wfcon() {
     read -r "wifi_name?Enter WiFi name: "
     iwctl station wlan0 connect "$wifi_name" --passphrase --ask
 }
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/moonbrooke/.lmstudio/bin"
+# End of LM Studio CLI section
+
