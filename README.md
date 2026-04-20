@@ -12,22 +12,22 @@ My current setup consists of the following:
 
 ```bash
 # The configs you need to stow. You can stow multiple folders at once.
-btop dunst-3 fastfetch hypr-3 kitty nvim-vanilla rofi-3 waybar-2 yazi-2 zshrc-2
+btop dunst-3 fastfetch hypr-3 foot nvim rofi-3 waybar-2 yazi-2 zshrc-2
 ```
 
 Install dependencies:
 
 ```bash
-sudo pacman -S hyprland hyprpaper dunst grim slurp jq neovim kitty zsh waybar rofi \
+sudo pacman -S hyprland swaybg dunst grim slurp jq neovim foot zsh waybar rofi \
 fastfetch ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
-wl-clipboard cliphist hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal \
-thunar thunar-volman gvfs yazi fzf bat btop unzip git stow mpd ncmpcpp --needed
+wl-clipboard cliphist wl-clip-persist hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal \
+thunar thunar-volman gvfs yazi fzf bat btop unzip git stow --needed
 ```
 
-Extra fonts from the AUR:
+Extra fonts for Chinese/Japanese/Korean:
 
 ```bash
-yay -S ttf-ricty-nerd ttf-sarasa-gothic
+yay -S ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk
 ```
 
 - WM/Compositor: [Hyprland](https://hypr.land/)
