@@ -21,7 +21,7 @@ Install dependencies:
 sudo pacman -S hyprland swaybg dunst grim slurp jq neovim foot zsh waybar rofi \
 fastfetch ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
 wl-clipboard cliphist wl-clip-persist hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal \
-thunar thunar-volman gvfs yazi fzf bat btop unzip git stow --needed
+thunar thunar-volman gvfs yazi fzf bat btop unzip git stow nwg-look --needed
 ```
 
 Extra fonts for Chinese/Japanese/Korean:
