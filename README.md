@@ -18,20 +18,21 @@ btop dunst-3 fastfetch hypr-3 foot nvim rofi-3 waybar-2 yazi-2 zshrc-2
 Install dependencies:
 
 ```bash
-sudo pacman -S hyprland swaybg dunst grim slurp jq neovim foot zsh waybar rofi \
-fastfetch ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
+# Necessary for the setup
+sudo pacman -S hyprland swaybg dunst grim slurp jq foot waybar rofi \
+ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
 wl-clipboard cliphist wl-clip-persist hyprpolkitagent xdg-desktop-portal-hyprland xdg-desktop-portal \
-thunar thunar-volman gvfs yazi fzf bat btop unzip git stow nwg-look --needed
-```
+thunar thunar-volman gvfs unzip git stow nwg-look --needed
 
-Extra fonts for Chinese/Japanese/Korean:
+# Opsional but recommended
+sudo pacman -S neovim zsh fastfetch yazi fzf bat btop --needed
 
-```bash
+# Additional fonts for Chinese/Japanese/Korean support
 yay -S ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk
 ```
 
 - WM/Compositor: [Hyprland](https://hypr.land/)
-- Display Manager: ~~[Ly](https://codeberg.org/fairyglade/ly)~~ None. Login via TTY then run `start-hyprland`.
+- Display Manager: None (Login via TTY then run `start-hyprland`)
 - Colors: [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
 - Terminal: [foot](https://codeberg.org/dnkl/foot)
 - Shell: [zsh](https://www.zsh.org/)
