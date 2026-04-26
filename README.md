@@ -31,9 +31,9 @@ yay -S ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk
 ```
 
 - WM/Compositor: [Hyprland](https://hypr.land/)
-- Display Manager: [Ly](https://codeberg.org/fairyglade/ly)
+- Display Manager: ~~[Ly](https://codeberg.org/fairyglade/ly)~~ None. Login via TTY then run `start-hyprland`.
 - Colors: [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
-- Terminal: [kitty](https://sw.kovidgoyal.net/kitty/)
+- Terminal: [foot](https://codeberg.org/dnkl/foot)
 - Shell: [zsh](https://www.zsh.org/)
 - Prompt: [Oh My ZSH](https://ohmyz.sh/)
 - Status Bar: [Waybar](https://github.com/Alexays/Waybar)
