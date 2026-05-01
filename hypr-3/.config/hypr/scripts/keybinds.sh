@@ -13,7 +13,7 @@ rows=$(awk '
     # Reset state when starting the second file
     FNR == 1 && NR != 1 { current = ""; last = "" }
 
-    # Section marker (both files)
+    # Section marker
     /^#[[:space:]]*===[[:space:]]+.+[[:space:]]+===[[:space:]]*$/ {
         s = $0
         sub(/^#[[:space:]]*===[[:space:]]+/, "", s)
@@ -24,10 +24,10 @@ rows=$(awk '
         next
     }
 
-    # First file: keybindings.txt (tab-separated key<TAB>desc)
+    # keybindings.txt
     FNR == NR {
         if ($0 !~ /^#/ && $0 !~ /^[[:space:]]*$/) {
-            i = index($0, "\t")
+            i = index($0, "|")
             if (i > 0 && current != "") {
                 key  = substr($0, 1, i - 1)
                 desc = substr($0, i + 1)
@@ -43,24 +43,25 @@ rows=$(awk '
         next
     }
 
-    # Second file: sxhkdrc (# desc followed by key line)
-    /^#/ { last = substr($0, 3); next }
-    /^[A-Za-z]/ && last && current != "" {
-        cnt[current]++
-        rkey[current, cnt[current]] = $0
-        rdsc[current, cnt[current]] = last
-        last = ""
-        next
-    }
-    { last = "" }
-
     END {
         for (i = 1; i <= n; i++) {
             name = order[i]
             if (cnt[name] == 0) continue
-            printf "<span size=\"large\" weight=\"bold\" foreground=\"#ff8f40\">── %s ──</span>\n", xmlesc(name)
+            printf "<span foreground=\"#ff8f40\">── %s ──</span>\n", xmlesc(name)
             for (j = 1; j <= cnt[name]; j++) {
-                printf "<span foreground=\"#78a9ff\">%-35s</span>  %s\n", xmlesc(rkey[name, j]), xmlesc(rdsc[name, j])
+                
+                # Pad the key string to 35 characters first so Pango tags do not break alignment
+                key_padded = sprintf("%-35s", rkey[name, j])
+                
+                # Escape the XML characters
+                key_escaped = xmlesc(key_padded)
+                
+                # Inject grey color span for the word " or "
+                # We close the primary blue span, start a grey span, and reopen the blue span
+                gsub(/ or /, "</span> <span foreground=\"#565f89\">or</span> <span foreground=\"#78a9ff\">", key_escaped)
+                
+                # Print the final assembled string
+                printf "<span foreground=\"#78a9ff\">%s</span>  %s\n", key_escaped, xmlesc(rdsc[name, j])
             }
         }
     }
@@ -69,4 +70,3 @@ rows=$(awk '
 echo "$rows" | rofi -dmenu -markup-rows -i -p "Keybindings" \
     -line-padding 4 -hide-scrollbar -theme "$ROFI_THEME" \
     -theme-str "window {width: 800;}"
-
