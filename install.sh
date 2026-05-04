@@ -5,9 +5,9 @@ set -e
 echo "Starting dotfiles installation..."
 
 # System Update & Base Requirements
-echo "Updating system and installing base-devel and git..."
+echo "Updating system and installing base-devel, git, and curl..."
 sudo pacman -Syu --noconfirm
-sudo pacman -S --needed --noconfirm base-devel git
+sudo pacman -S --needed --noconfirm base-devel git curl
 
 # Install 'yay' for AUR packages
 if ! command -v yay &> /dev/null; then
@@ -54,6 +54,14 @@ cd "$DOTFILES_DIR"
 # Stow the specific folders listed in the README
 stow btop dunst fastfetch hypr foot nvim rofi waybar-2 yazi zshrc
 
+# Install Oh My Zsh
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+else
+    echo "Oh My Zsh is already installed."
+fi
+
 # Change Default Shell to Zsh
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
     echo "Changing default shell to zsh..."
@@ -62,6 +70,5 @@ fi
 
 echo "================================================="
 echo "Installation Complete!"
-echo "Make sure to install Oh My Zsh manually if you haven't yet, as it manages the prompt."
 echo "Login via TTY and run 'start-hyprland' to launch the environment."
 echo "================================================="
