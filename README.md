@@ -12,7 +12,7 @@ My current setup consists of the following:
 
 ```bash
 # The configs you need to stow. You can stow multiple folders at once.
-btop dunst-3 fastfetch hypr-3 foot nvim rofi-3 waybar-2 yazi-2 zshrc-2
+btop dunst fastfetch hypr foot nvim rofi waybar-2 yazi zshrc
 ```
 
 Install dependencies:
