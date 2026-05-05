@@ -7,6 +7,7 @@ Super + E                       | Launch file manager
 Super + F                       | Toggle floating window
 Super + Z                       | Zoom
 Super + Q                       | Kill focused window
+Super + B                       | Toggle gaps
 Super + G                       | Toggle game mode
 F11 or Alt + Return             | Toggle fullscreen
 Super + N or Super + Shift + W  | Launch WiFi menu
