@@ -25,7 +25,8 @@
 
     "custom/logo": {
         "on-click": "pkill rofi || rofi -modes \"drun\" -show drun -display-drun \"Menu\" -display-run \"Run\" -display-window \"Window\" -show-icons -auto-close",
-        "format": "󰣇 "
+        // "format": "󰣇 "
+        "format": "🐈 "
     },
 
     "battery": {
@@ -180,6 +181,6 @@
         "exec": "whoami",
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/power.sh",
-        "format": "{text}"
+        "format": "🧑 {text}"
     }
 }
