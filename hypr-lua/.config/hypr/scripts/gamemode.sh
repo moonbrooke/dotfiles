@@ -1,19 +1,14 @@
 #!/usr/bin/env sh
-HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
 
-if [ "$HYPRGAMEMODE" = 1 ] ; then
-    hyprctl --batch "\
-        keyword animations:enabled 0;\
-        keyword decoration:shadow:enabled 0;\
-        keyword decoration:blur:enabled 0;\
-        keyword general:gaps_in 0;\
-        keyword general:gaps_out 0;\
-        keyword general:border_size 1;\
-        keyword decoration:rounding 0"
+STATE_FILE="$HOME/.cache/hypr_gamemode"
 
+if [ ! -f "$STATE_FILE" ]; then
+    touch "$STATE_FILE"
     pkill waybar
-    exit
+else
+    rm "$STATE_FILE"
+    pkill waybar
+    waybar &
 fi
 
 hyprctl reload
-waybar &
