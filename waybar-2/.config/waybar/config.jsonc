@@ -15,7 +15,7 @@
         "pulseaudio",
         "network",
         "clock#date",
-        "clock#time",
+        // "clock#time",
         "tray",
         "hyprland/language",
         "custom/power"
@@ -50,15 +50,15 @@
         "tooltip": false
     },
 
-    "clock#time": {
-        "interval": 10,
-        "format": "{:%H:%M}",
-        "tooltip": false
-    },
+    // "clock#time": {
+    //     "interval": 10,
+    //     "format": "{:%H:%M}",
+    //     "tooltip": false
+    // },
 
     "clock#date": {
-        "interval": 20,
-        "format": "{:%e %b %Y}",
+        "interval": 10,
+        "format": "{:%e %b, %H:%M}",
         "tooltip": true,
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
