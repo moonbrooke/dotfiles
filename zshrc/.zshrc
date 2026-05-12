@@ -5,6 +5,10 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
     export PATH="/mnt/c/Users/$USER/AppData/Local/Programs/Microsoft VS Code/bin":$PATH
 fi
 
+if [[ -f ~/.secrets ]]; then
+    source ~/.secrets
+fi
+
 # lidm display manager config
 export LIDM_CONF="$HOME/.config/lidm/catppuccin-mocha.ini"
 
