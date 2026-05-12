@@ -52,7 +52,7 @@ echo "Applying dotfiles with GNU Stow..."
 cd "$DOTFILES_DIR"
 
 # Stow the specific folders listed in the README
-stow btop dunst fastfetch hypr foot nvim rofi waybar-2 yazi zshrc
+stow btop dunst fastfetch hypr foot nvim rofi waybar-2 scripts yazi zshrc
 
 # Install Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
