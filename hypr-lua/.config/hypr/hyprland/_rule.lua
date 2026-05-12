@@ -1,0 +1,39 @@
+-- # Set Window State
+-- windowrule = float on, match:title (Bluetooth)
+-- windowrule = float on, match:title (floating_wifi), size 800 800
+-- windowrule = float on, match:class (org.prismlauncher.PrismLauncher)
+-- windowrule = float on, match:class (UltimMC)
+-- windowrule = float on, match:class (minecraft-launcher)
+-- windowrule = float on, match:title ^(.*Minecraft.*)$
+-- windowrule = float on, match:class (steam)
+-- windowrule = float on, match:class ^(steam_app_.*)$
+-- windowrule = float on, match:class (org.gnome.Nautilus)
+-- windowrule = float on, match:class (org.gnome.Loupe)
+-- windowrule = float on, match:class (com.github.rafostar.Clapper)
+-- windowrule = float off, match:class (com.obsproject.Studio), workspace 4
+-- windowrule = float on, match:class (org.telegram.desktop)
+-- windowrule = float on, match:class (discord)
+-- windowrule = float on, match:class (net.tagaini.tagainijisho)
+-- windowrule = float on, match:class (vlc)
+-- windowrule = float on, match:title (Picture-in-Picture)
+-- windowrule = float on, match:class (org.pulseaudio.pavucontrol)
+-- windowrule = float on, match:class (lutris)
+-- windowrule = float on, match:class (org.gnome.Calculator)
+-- windowrule = float on, match:class (imv)
+--
+-- # Set Opacity
+-- windowrule = opacity 1.0 override 1.0 override, match:title ^(.*YouTube.*)$
+-- windowrule = opacity 1.0 override 1.0 override, match:title ^(.*Twitch.*)$
+-- windowrule = opacity 1.0 override 1.0 override, match:title (Picture-in-Picture)
+-- windowrule = opacity 1.0 override 1.0 override, match:class (obs)
+-- windowrule = opacity 1.0 override 1.0 override, match:class (org.gnome.Loupe)
+-- windowrule = opacity 1.0 override 1.0 override, match:class (com.github.rafostar.Clapper)
+-- windowrule = opacity 1.0 override 1.0 override, match:class (vlc)
+-- windowrule = opacity 1.0 override 1.0 override, match:title ^(.*Minecraft.*)$
+-- windowrule = opacity 1.0 override 1.0 override, match:class (com.bitwig.BitwigStudi)
+-- windowrule = opacity 1.0 override 1.0 override, match:class ^(steam_app_.*)$
+--
+-- # Set Workspace
+-- windowrule = float on, workspace 3, match:class (com.github.wwmm.easyeffects)
+-- windowrule = workspace 2, match:class (Mailspring)
+-- windowrule = float on, workspace 2, match:class (LM-Studio)
