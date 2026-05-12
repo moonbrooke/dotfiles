@@ -10,6 +10,8 @@ Super + F                       | Toggle floating window
 Super + Q                       | Kill focused window
 Super + B                       | Toggle gaps
 Super + G                       | Toggle game mode
+Super + Z                       | Zoom in
+Super + Shift + Z               | Reset zoom
 F11 or Alt + Return             | Toggle fullscreen
 Super + N or Super + Shift + W  | Launch WiFi menu
 Super + BackSpace               | Launch power menu

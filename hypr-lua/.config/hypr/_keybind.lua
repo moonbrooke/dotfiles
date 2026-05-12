@@ -7,7 +7,6 @@ local full_screenshot = "~/.config/hypr/scripts/screenshot.sh full"
 local select_screenshot = "~/.config/hypr/scripts/screenshot.sh select"
 local window_screenshot = "~/.config/hypr/scripts/screenshot.sh window"
 local power_menu = "~/.config/hypr/scripts/power.sh"
--- local zoom = "~/.config/hypr/bin/hypr-zoom -duration=100 -easing=InOutQuad -interp=Linear -target=2.0"
 local cliphist = 'pkill rofi || cliphist list | rofi -dmenu -p "Clipboard" -theme ~/.config/rofi/clipboard.rasi | cliphist decode | wl-copy'
 local run = 'pkill rofi || rofi -modes "run" -show run -display-drun "Menu" -display-run "Run" -display-window "Window" -show-icons -auto-close'
 local restart_waybar = "pkill waybar; waybar &"
@@ -26,12 +25,21 @@ hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.center())
 hl.bind("F11", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind("ALT + RETURN", hl.dsp.window.fullscreen({ action = "toggle" }))
--- hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd(zoom))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(gamemode))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(gaps))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(notes))
 hl.bind(mainMod .. " + BackSlash", hl.dsp.exec_cmd(keybinds_helper))
 hl.bind(mainMod .. " + Slash", hl.dsp.exec_cmd(keybinds_helper))
+
+-- Zoom
+hl.bind(mainMod .. " + Z", function()
+    local zoom = hl.get_config("cursor.zoom_factor") or 1
+    hl.config({ cursor = { zoom_factor = zoom + 1 } })
+end)
+
+hl.bind(mainMod .. " + SHIFT + Z", function()
+    hl.config({ cursor = { zoom_factor = 1 } })
+end)
 
 -- Essentials
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
