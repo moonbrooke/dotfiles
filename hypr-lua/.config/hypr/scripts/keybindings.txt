@@ -7,7 +7,6 @@ Super + R                       | Launch run menu
 Super + Period                  | Launch emoji picker
 Super + E                       | Launch file manager
 Super + F                       | Toggle floating window
-Super + Z                       | Zoom
 Super + Q                       | Kill focused window
 Super + B                       | Toggle gaps
 Super + G                       | Toggle game mode
