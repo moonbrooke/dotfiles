@@ -14,6 +14,7 @@ local wifi = 'foot -T "floating_wifi" -e wifitui'
 local gamemode = "~/.config/hypr/scripts/gamemode.sh"
 local gaps = "~/.config/hypr/scripts/gaps.sh"
 local keybinds_helper = "pkill rofi || ~/.config/hypr/scripts/keybinds.sh"
+local emoji = "~/.config/hypr/scripts/emoji.sh"
 
 local mainMod = "SUPER"
 
@@ -37,6 +38,7 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(cliphist))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(run))
+hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd(emoji))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(restart_waybar))
 -- hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bluetooth))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(wifi))
