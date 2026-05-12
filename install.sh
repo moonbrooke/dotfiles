@@ -53,6 +53,7 @@ cd "$DOTFILES_DIR"
 
 # Stow the specific folders listed in the README
 stow btop dunst fastfetch hypr foot nvim rofi waybar-2 scripts yazi zshrc
+mkdir ~/notes
 
 # Install Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
