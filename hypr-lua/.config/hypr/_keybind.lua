@@ -1,6 +1,7 @@
 -- Programs
 local terminal = "foot"
 local file_manager = "thunar"
+local browser = "firefox-esr"
 local menu = 'pkill rofi || rofi -modes "drun" -show drun -display-drun "Menu" -display-run "Run" -display-window "Window" -show-icons -auto-close'
 local full_screenshot = "~/.config/hypr/scripts/screenshot.sh full"
 local select_screenshot = "~/.config/hypr/scripts/screenshot.sh select"
@@ -34,6 +35,7 @@ hl.bind(mainMod .. " + Slash", hl.dsp.exec_cmd(keybinds_helper))
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(file_manager))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(cliphist))

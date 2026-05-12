@@ -1,8 +1,10 @@
 # === General ===
 Super + Space                   | Launch rofi menu
 Super + Return                  | Launch terminal
+Super + W                       | Launch web browser
 Super + V                       | Launch clipboard history
 Super + R                       | Launch run menu
+Super + Period                  | Launch emoji picker
 Super + E                       | Launch file manager
 Super + F                       | Toggle floating window
 Super + Z                       | Zoom
