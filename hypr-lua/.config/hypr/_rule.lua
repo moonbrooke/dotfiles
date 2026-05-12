@@ -1,17 +1,20 @@
+hl.window_rule({ match = { title = "Bluetooth" }, float = true })
+hl.window_rule({ match = { title = "floating_wifi" }, size = {800, 800}, float = true })
+hl.window_rule({ match = { class = "org.prismlauncher.PrismLauncher" }, float = true })
+hl.window_rule({ match = { class = "UltimMC" }, float = true })
+hl.window_rule({ match = { class = "minecraft-launcher" }, float = true })
+hl.window_rule({ match = { title = "^(.*Minecraft.*)$" }, float = true })
+hl.window_rule({ match = { class = "steam" }, float = true })
+hl.window_rule({ match = { class = "^(steam_app_.*)$" }, float = true })
+hl.window_rule({ match = { class = "org.gnome.nautilus" }, float = true })
+hl.window_rule({ match = { class = "org.gnome.Loupe" }, float = true })
+hl.window_rule({ match = { class = "com.github.rafostar.Clapper" }, float = true })
+hl.window_rule({ match = { class = "com.obsproject.Studio" }, workspace = 4, float = false })
+
+hl.window_rule({ match = { title = "^(.*YouTube.*)$" }, opacity = "1.0" })
+
 -- windowrule = {
 --     -- Floats
---     "float on, match:title (Bluetooth)",
---     "float on, match:title (floating_wifi), size 800 800",
---     "float on, match:class (org.prismlauncher.PrismLauncher)",
---     "float on, match:class (UltimMC)",
---     "float on, match:class (minecraft-launcher)",
---     "float on, match:title ^(.*Minecraft.*)$",
---     "float on, match:class (steam)",
---     "float on, match:class ^(steam_app_.*)$",
---     "float on, match:class (org.gnome.Nautilus)",
---     "float on, match:class (org.gnome.Loupe)",
---     "float on, match:class (com.github.rafostar.Clapper)",
---     "float off, match:class (com.obsproject.Studio), workspace 4",
 --     "float on, match:class (org.telegram.desktop)",
 --     "float on, match:class (discord)",
 --     "float on, match:class (net.tagaini.tagainijisho)",
@@ -28,7 +31,6 @@
 --     "float on, workspace 2, match:class (LM-Studio)",
 --
 --     -- Opacity
---     "opacity 1.0 override 1.0 override, match:title ^(.*YouTube.*)$",
 --     "opacity 1.0 override 1.0 override, match:title ^(.*Twitch.*)$",
 --     "opacity 1.0 override 1.0 override, match:title (Picture-in-Picture)",
 --     "opacity 1.0 override 1.0 override, match:class (obs)",
