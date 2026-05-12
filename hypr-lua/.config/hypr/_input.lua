@@ -14,11 +14,24 @@ hl.config({
         repeat_delay = 200,
     },
     cursor = {
+        zoom_factor = 1,
+        zoom_rigid = false,
+        zoom_disable_aa = true,
+        hotspot_padding = 1,
         no_hardware_cursors = false,
     },
     gestures = {
         workspace_swipe_touch = false,
     },
+    xwayland = {
+        force_zero_scaling = true,
+    },
+})
+
+hl.gesture({
+    fingers = 3,
+    direction = "horizontal",
+    action = "workspace"
 })
 
 hl.device({
