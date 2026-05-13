@@ -116,7 +116,9 @@
 #memory {
 }
 
-#cpu {
+#cpu.warning,
+#cpu.critical {
+    color: @black;
 }
 
 #temperature {
@@ -142,7 +144,13 @@
 }
 
 #custom-logo {
+    color: @white;
+    transition: color 0.2s ease;
+}
+
+#custom-logo:hover {
     color: @red;
+    transition: color 0.2s ease;
 }
 
 #custom-power,
