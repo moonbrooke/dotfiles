@@ -27,7 +27,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.center())
 hl.bind("F11", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind("ALT + RETURN", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(gamemode))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(gaps))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(gaps))
 hl.bind(mainMod .. " + Comma", hl.dsp.exec_cmd(animation))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(notes))
 hl.bind(mainMod .. " + BackSlash", hl.dsp.exec_cmd(keybinds_helper))
@@ -92,15 +92,15 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 
 -- Move through existing workspaces
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
--- mainMod .. "+Ctrl SHIFT, right, workspace, r+1",
--- mainMod .. "+Ctrl SHIFT, left, workspace, r-1",
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + Right", hl.dsp.focus({ workspace = "r+1" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + Left", hl.dsp.focus({ workspace = "r-1" }))
 
 -- Resize windows with mainMod + Ctrl + Arrow keys
--- mainMod .. "+Ctrl, right, resizeactive, 50 0",
--- mainMod .. "+Ctrl, left, resizeactive, -50 0",
--- mainMod .. "+Ctrl, down, resizeactive, 0 50",
--- mainMod .. "+Ctrl, up, resizeactive, 0 -50"
+hl.bind(mainMod .. " + CTRL + Right", hl.dsp.window.resize({ x = 50, y = 0, relative = true }))
+hl.bind(mainMod .. " + CTRL + Left", hl.dsp.window.resize({ x = -50, y = 0, relative = true }))
+hl.bind(mainMod .. " + CTRL + Down", hl.dsp.window.resize({ x = 0, y = 50, relative = true }))
+hl.bind(mainMod .. " + CTRL + Up", hl.dsp.window.resize({ x = 0, y = -50, relative = true }))
 
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })

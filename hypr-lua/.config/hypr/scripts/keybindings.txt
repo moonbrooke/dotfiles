@@ -1,41 +1,41 @@
 # === General ===
-Super + Space                   | Launch rofi menu
-Super + Return                  | Launch terminal
-Super + W                       | Launch web browser
-Super + V                       | Launch clipboard history
-Super + R                       | Launch run menu
-Super + Period                  | Launch emoji picker
-Super + E                       | Launch file manager
-Super + F                       | Toggle floating window
-Super + Q                       | Kill focused window
-Super + Comma                   | Toggle animation
-Super + B                       | Toggle gaps
-Super + G                       | Toggle game mode
-Super + Z                       | Zoom in
-Super + Shift + Z               | Reset zoom
-F11 or Alt + Return             | Toggle fullscreen
-Super + N or Super + Shift + W  | Launch WiFi menu
-Super + BackSpace               | Launch power menu
-Super + Shift + R               | Restart waybar
+Super + Space                       | Launch rofi menu
+Super + Return                      | Launch terminal
+Super + W                           | Launch web browser
+Super + V                           | Launch clipboard history
+Super + R                           | Launch run menu
+Super + Period                      | Launch emoji picker
+Super + E                           | Launch file manager
+Super + F                           | Toggle floating window
+Super + Q                           | Kill focused window
+Super + Comma                       | Toggle animation
+Super + C                           | Toggle gaps
+Super + G                           | Toggle game mode
+Super + Z                           | Zoom in
+Super + Shift + Z                   | Reset zoom
+F11 or Alt + Return                 | Toggle fullscreen
+Super + N or Super + Shift + W      | Launch WiFi menu
+Super + BackSpace                   | Launch power menu
+Super + Shift + R                   | Restart waybar
 
 # === Screenshot ===
-Print                           | Full screenshot
-Super + Print                   | Area selection screenshot
-Super + Shift + Print           | Window screenshot
+Print                               | Full screenshot
+Super + Print                       | Area selection screenshot
+Super + Shift + Print               | Window screenshot
 
 # === Window ===
-Super + J                       | Toggle split
-Super + Right                   | Move focus to the right
-Super + Left                    | Move focus to the left
-Super + Shift + Right           | Move focused window to the right
-Super + Shift + Left            | Move focused window to the left
-Super + Ctrl + Right            | Resize focused window to the right
-Super + Ctrl + Left             | Resize focused window to the left
+Super + J                           | Toggle split
+Super + Right                       | Move focus to the right
+Super + Left                        | Move focus to the left
+Super + Shift + Right               | Move focused window to the right
+Super + Shift + Left                | Move focused window to the left
+Super + Ctrl + Right                | Resize focused window to the right
+Super + Ctrl + Left                 | Resize focused window to the left
 
 # === Workspace ===
-Super + [1,2,3,..]              | Switch to workspace
-Super + Shift + [1,2,3,..]      | Move focused window to workspace
-Control + Shift + Ctrl + Right  | Move to the next workspace
-Control + Shift + Ctrl + Left   | Move to the previous workspace
-Super + S                       | Open scratchpad
-Super + Shift + S               | Move window focused to scratchpad
+Super + [1,2,3,..]                  | Switch to workspace
+Super + Shift + [1,2,3,..]          | Move focused window to workspace
+Super + Ctrl + Shift + Ctrl + Right | Move to the next workspace
+Super + Ctrl + Shift + Ctrl + Left  | Move to the previous workspace
+Super + S                           | Open scratchpad
+Super + Shift + S                   | Move window focused to scratchpad
