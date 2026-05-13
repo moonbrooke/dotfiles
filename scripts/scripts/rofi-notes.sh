@@ -14,7 +14,7 @@ newnote () { \
 
 selected () { \
   choice=$(
-    echo -e "+ New\n$(find "$folder" -type f -printf '%T@ %P\n' | sort -nr | cut -d' ' -f2-)" | rofi -dmenu -i -l 5 -p "Select note or write new one: "
+    echo -e "New\n$(find "$folder" -type f -printf '%T@ %P\n' | sort -nr | cut -d' ' -f2-)" | rofi -dmenu -i -l 5 -p "Select note or write new one: "
   )
   case $choice in
     New) newnote ;;
