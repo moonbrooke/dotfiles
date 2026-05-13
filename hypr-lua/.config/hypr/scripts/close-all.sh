@@ -1,10 +1,7 @@
 #!/bin/bash
 
-hyprctl clients -j | \
-  jq -r ".[].address" | \
-  while read -r addr; do
-    hyprctl dispatch "hl.dsp.window.close(\"address:$addr\")" >/dev/null 2>&1 || hyprctl dispatch closewindow "address:$addr"
-  done
+# Fetch all PIDs, filter out duplicates, and force kill them
+hyprctl clients -j | jq -r '.[].pid' | sort -u | xargs -r kill
 
 # Move to first workspace
-hyprctl dispatch 'hl.dsp.focus({ workspace = "1" })' >/dev/null 2>&1 || hyprctl dispatch workspace 1
+hyprctl dispatch "hl.dsp.focus({ workspace = 1 })"
