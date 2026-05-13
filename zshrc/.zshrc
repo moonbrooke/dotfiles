@@ -109,10 +109,6 @@ wfcon() {
     iwctl station wlan0 connect "$wifi_name" --passphrase --ask
 }
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/moonbrooke/.lmstudio/bin"
-# End of LM Studio CLI section
-
 # Check if the alias 'g' exists before trying to unalias it
 if [[ -n $(alias g 2>/dev/null) ]]; then
     unalias g
