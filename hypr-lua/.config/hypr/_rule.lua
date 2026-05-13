@@ -17,6 +17,8 @@ hl.window_rule({ match = { class = "LM-Studio" }, workspace = 2, float = true })
 hl.window_rule({ match = { class = "Mailspring" }, workspace = 2, float = false })
 hl.window_rule({ match = { title = "^(.*YouTube.*)$" }, opacity = "1.0" })
 hl.window_rule({ match = { title = "^(.*Twitch.*)$" }, opacity = "1.0" })
+hl.window_rule({ match = { class = "thunar", title = "^(.*File Operation Progress.*)$" }, size = {476, 520}, float = true })
+hl.window_rule({ match = { class = "thunar", title = "^(.*Rename \".*)$" }, size = {476, 520}, float = true })
 
 hl.window_rule({ match = { class = "org.prismlauncher.PrismLauncher" }, float = true })
 hl.window_rule({ match = { class = "minecraft-launcher" }, float = true })
