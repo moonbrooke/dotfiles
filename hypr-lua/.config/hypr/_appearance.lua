@@ -1,5 +1,3 @@
--- Gamemode
-local is_gamemode = require("_gamemode")
 local gaps = require("_gaps")
 local is_animation = require("_animation_toggle")
 
