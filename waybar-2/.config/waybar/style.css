@@ -33,6 +33,10 @@
     font-size: 16px;
 }
 
+#custom-logo {
+    font-family: "English Football Club Badges";
+}
+
 #battery,
 #clock,
 #cpu,
@@ -138,7 +142,7 @@
 }
 
 #custom-logo {
-    color: @blue;
+    color: @red;
 }
 
 #custom-power,
