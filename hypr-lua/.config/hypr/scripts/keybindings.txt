@@ -8,6 +8,7 @@ Super + Period                  | Launch emoji picker
 Super + E                       | Launch file manager
 Super + F                       | Toggle floating window
 Super + Q                       | Kill focused window
+Super + Comma                   | Toggle animation
 Super + B                       | Toggle gaps
 Super + G                       | Toggle game mode
 Super + Z                       | Zoom in

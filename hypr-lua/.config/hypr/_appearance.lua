@@ -1,6 +1,7 @@
 -- Gamemode
 local is_gamemode = require("_gamemode")
 local gaps = require("_gaps")
+local is_animation = require("_animation_toggle")
 
 hl.config({
     general = {
@@ -40,6 +41,6 @@ hl.config({
     },
 
     animations = {
-        enabled = not is_gamemode,
+        enabled = is_animation,
     },
 })

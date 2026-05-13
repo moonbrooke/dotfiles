@@ -12,6 +12,7 @@ local run = 'pkill rofi || rofi -modes "run" -show run -display-drun "Menu" -dis
 local restart_waybar = "pkill waybar; waybar &"
 local wifi = 'foot -T "floating_wifi" -e wifitui'
 local gamemode = "~/.config/hypr/scripts/gamemode.sh"
+local animation = "~/.config/hypr/scripts/animation.sh"
 local gaps = "~/.config/hypr/scripts/gaps.sh"
 local notes = "~/scripts/rofi-notes.sh"
 local keybinds_helper = "pkill rofi || ~/.config/hypr/scripts/keybinds.sh"
@@ -27,6 +28,7 @@ hl.bind("F11", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind("ALT + RETURN", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(gamemode))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(gaps))
+hl.bind(mainMod .. " + Comma", hl.dsp.exec_cmd(animation))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(notes))
 hl.bind(mainMod .. " + BackSlash", hl.dsp.exec_cmd(keybinds_helper))
 hl.bind(mainMod .. " + Slash", hl.dsp.exec_cmd(keybinds_helper))
