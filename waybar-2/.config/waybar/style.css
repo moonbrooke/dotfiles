@@ -38,6 +38,7 @@
 #cpu,
 #custom-logo,
 #custom-power,
+#power-profiles-daemon,
 #language,
 #memory,
 #network,
@@ -140,7 +141,8 @@
     color: @blue;
 }
 
-#custom-power {
+#custom-power,
+#power-profiles-daemon {
     color: @black;
     background: @red;
 }

@@ -19,6 +19,7 @@
         "tray",
         "hyprland/language",
         "custom/power"
+        // "power-profiles-daemon"
     ],
 
     // Modules
@@ -182,5 +183,16 @@
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/power.sh",
         "format": "🧑 {text}"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": " Default",
+            "performance": " Performance",
+            "balanced": "  Balanced",
+            "power-saver": " Eco"
+        }
     }
 }
