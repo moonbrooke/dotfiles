@@ -61,7 +61,7 @@
 
     "clock#date": {
         "interval": 10,
-        "format": "{:%e %b, %H:%M}",
+        "format": "{:%e %b, %I:%M %p}",
         "tooltip": true,
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
