@@ -22,8 +22,10 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(power_menu))
-hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + F", hl.dsp.window.center())
+hl.bind(mainMod .. " + F", function ()
+    hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+    hl.dispatch(hl.dsp.window.center())
+end)
 hl.bind("F11", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind("ALT + RETURN", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(gamemode))
@@ -38,7 +40,6 @@ hl.bind(mainMod .. " + Z", function()
     local zoom = hl.get_config("cursor.zoom_factor") or 1
     hl.config({ cursor = { zoom_factor = zoom + 1 } })
 end)
-
 hl.bind(mainMod .. " + SHIFT + Z", function()
     hl.config({ cursor = { zoom_factor = 1 } })
 end)
