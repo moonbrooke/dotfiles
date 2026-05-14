@@ -17,13 +17,11 @@
         "clock#date",
         // "clock#time",
         "tray",
-        "hyprland/language",
         "custom/power"
         // "power-profiles-daemon"
     ],
 
     // Modules
-
     "custom/logo": {
         "on-click": "pkill rofi || rofi -modes \"drun\" -show drun -display-drun \"Menu\" -display-run \"Run\" -display-window \"Window\" -show-icons -auto-close",
         "tooltip-format": "Menu",
@@ -88,13 +86,6 @@
             "warning": 70,
             "critical": 90
         }
-    },
-
-    "hyprland/language": {
-        "format": "󰌌 {short}",
-        "min-length": 5,
-        //"on-click": "swaymsg 'input * xkb_switch_layout next'",
-        "tooltip": false
     },
 
     "memory": {

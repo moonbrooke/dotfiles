@@ -43,7 +43,6 @@
 #custom-logo,
 #custom-power,
 #power-profiles-daemon,
-#language,
 #memory,
 #network,
 #pulseaudio,
@@ -122,9 +121,6 @@
 }
 
 #temperature {
-}
-
-#language {
 }
 
 #battery.critical {
