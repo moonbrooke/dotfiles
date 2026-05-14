@@ -9,3 +9,6 @@ mpd/.config/mpd/mpdstate
 
 Code/.config/Code/*
 !Code/.config/Code/User/settings.json
+
+cmus/.config/cmus/*
+!cmus/.config/cmus/rc
