@@ -1,3 +1,4 @@
+-- General
 hl.window_rule({ match = { title = "Bluetooth" }, float = true })
 hl.window_rule({ match = { title = "floating_wifi" }, size = {800, 800}, float = true })
 hl.window_rule({ match = { class = "org.gnome.nautilus" }, float = true })
@@ -11,22 +12,24 @@ hl.window_rule({ match = { class = "org.pulseaudio.pavucontrol" }, float = true 
 hl.window_rule({ match = { class = "net.tagaini.tagainijisho" }, float = true })
 hl.window_rule({ match = { title = "Picture-in-Picture" }, float = true })
 hl.window_rule({ match = { class = "discord" }, float = true })
-hl.window_rule({ match = { class = "vlc" }, opacity = "1.0", float = true })
+hl.window_rule({ match = { class = "vlc" }, opacity = "1.0 override", float = true })
 hl.window_rule({ match = { class = "imv" }, float = true })
 hl.window_rule({ match = { class = "LM-Studio" }, workspace = 2, float = true })
 hl.window_rule({ match = { class = "Mailspring" }, workspace = 2, float = false })
-hl.window_rule({ match = { title = "^(.*YouTube.*)$" }, opacity = "1.0" })
-hl.window_rule({ match = { title = "^(.*Twitch.*)$" }, opacity = "1.0" })
+hl.window_rule({ match = { title = "^(.*YouTube.*)$" }, opacity = "1.0 override" })
+hl.window_rule({ match = { title = "^(.*Twitch.*)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = "thunar", title = "^(.*File Operation Progress.*)$" }, size = {476, 520}, float = true })
 hl.window_rule({ match = { class = "thunar", title = "^(.*Rename \".*)$" }, size = {476, 520}, float = true })
 
+-- Games
 hl.window_rule({ match = { class = "org.prismlauncher.PrismLauncher" }, float = true })
 hl.window_rule({ match = { class = "minecraft-launcher" }, float = true })
-hl.window_rule({ match = { title = "^(.*Minecraft.*)$" }, opacity = "1.0", float = true })
+hl.window_rule({ match = { title = "^(.*Minecraft.*)$" }, opacity = "1.0 override", float = true })
 hl.window_rule({ match = { class = "steam" }, float = true })
-hl.window_rule({ match = { class = "^(steam_app_.*)$" }, opacity = "1.0", float = true })
+hl.window_rule({ match = { class = "^(steam_app_.*)$" }, opacity = "1.0 override", float = true })
 hl.window_rule({ match = { class = "lutris" }, float = true })
 
+-- Workspaces
 hl.workspace_rule({ workspace = "1", persistent = true, monitor = "eDP-1", default = true, })
 hl.workspace_rule({ workspace = "2", persistent = true, monitor = "eDP-1", default = true, })
 hl.workspace_rule({ workspace = "3", persistent = true, monitor = "eDP-1", default = true, })
