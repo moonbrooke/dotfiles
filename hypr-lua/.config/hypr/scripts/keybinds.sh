@@ -67,6 +67,6 @@ rows=$(awk '
     }
 ' "$KEYSTXT")
 
-echo "$rows" | rofi -dmenu -markup-rows -i -p "Keybindings" \
+echo "$rows" | rofi -dmenu -markup-rows -i -p "Keybindings" -l 20 \
     -line-padding 4 -hide-scrollbar -theme "$ROFI_THEME" \
     -theme-str "window {width: 800;}"
