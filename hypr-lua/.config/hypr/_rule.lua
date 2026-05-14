@@ -35,3 +35,4 @@ hl.workspace_rule({ workspace = "2", persistent = true, monitor = "eDP-1", defau
 hl.workspace_rule({ workspace = "3", persistent = true, monitor = "eDP-1", default = true, })
 hl.workspace_rule({ workspace = "4", persistent = true, monitor = "eDP-1", default = true, layout = "scrolling" })
 hl.workspace_rule({ workspace = "5", persistent = true, monitor = "HDMI-A-1", default = true, })
+hl.workspace_rule({ workspace = "6", persistent = true, monitor = "HDMI-A-1", default = true, })
