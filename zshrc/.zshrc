@@ -100,6 +100,7 @@ alias gsmi="git submodule update --init --recursive"
 alias gsmu="git pull --recurse-submodules; git submodule update --remote --merge"
 
 alias cava="cava -p ~/.config/cava/tokyonight"
+alias gol="golazo"
 
 # WiFi
 alias wfget="iwctl station wlan0 get-networks"
