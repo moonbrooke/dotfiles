@@ -76,7 +76,7 @@ alias c="clear"
 alias cat="bat --theme=base16"
 alias l="ls -CF"
 alias ls="ls --color=auto"
-alias ll="ls -alF"
+alias ll="ls -alF --group-directories-first"
 alias la="ls -A"
 alias lla="ll --color -h --group-directories-first"
 
