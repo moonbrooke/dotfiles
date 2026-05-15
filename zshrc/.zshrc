@@ -72,6 +72,7 @@ source /usr/share/nvm/init-nvm.sh
 
 # Alias
 
+alias so="source ~/.zshrc"
 alias c="clear"
 alias ..="cd .."
 alias ...="cd ../.."
@@ -87,6 +88,7 @@ alias dirsize="du -sh"
 alias grep="grep --color=auto"
 alias fcfv="fc-cache -fv"
 alias snvim="sudo -E -s nvim"
+alias untar="tar -zxvf"
 
 alias pminfo="yay -Si"
 alias pmi="sudo pacman -S"
