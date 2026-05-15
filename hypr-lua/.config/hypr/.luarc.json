@@ -1,0 +1,10 @@
+{
+    "workspace": {
+        "library": [
+            "/home/moonbrooke/.config/hypr"
+        ]
+    },
+    "diagnostics": {
+        "globals": ["hl"]
+    }
+}
