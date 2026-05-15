@@ -155,8 +155,8 @@
     transition: color 0.2s ease;
 }
 
-#custom-power,
-#power-profiles-daemon {
+#custom-power {
     color: @black;
     background: @red;
+    padding: 5px 15px 5px 10px;
 }

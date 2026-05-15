@@ -9,14 +9,14 @@
     ],
 
     "modules-right": [
-        "memory",
-        "cpu",
-        "temperature",
+        // "memory",
+        // "cpu",
+        // "temperature",
         "battery",
         "pulseaudio",
         "network",
-        "clock#datetime",
         "tray",
+        "clock#datetime",
         "custom/power"
     ],
 
@@ -171,9 +171,8 @@
         "spacing": 10
     },
     "custom/power":{
-        "exec": "whoami",
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/power.sh",
-        "format": "{text}"
+        "format": "󰣇"
     }
 }
