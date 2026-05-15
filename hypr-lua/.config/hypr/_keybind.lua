@@ -23,6 +23,7 @@ local emoji = "~/.config/hypr/scripts/emoji.sh"
 local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + L", cycle_layout)
+hl.bind(mainMod .. " + SHIFT + F23", cycle_layout)
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(power_menu))
 hl.bind(mainMod .. " + F", function ()
