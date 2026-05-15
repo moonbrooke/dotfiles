@@ -48,7 +48,8 @@
 #pulseaudio,
 #temperature,
 #tray,
-#window {
+#window,
+#mpris {
     color: @white;
     padding: 5px 10px 7px 10px;
 }
@@ -58,7 +59,8 @@
 }
 
 #window,
-#custom-layout {
+#custom-layout,
+#mpris {
     font-family: "Sarasa Mono CL";
     font-size: 14px;
 }
@@ -104,7 +106,12 @@
     background: @green;
 }
 
-#window {
+#mpris {
+    color: @green;
+}
+
+#mpris.paused {
+    color: @gray;
 }
 
 #pulseaudio.muted {

@@ -7,7 +7,9 @@
         "custom/layout",
         "hyprland/window"
     ],
-
+    "modules-center": [
+        "mpris"
+    ],
     "modules-right": [
         // "memory",
         // "cpu",
@@ -33,6 +35,12 @@
         "signal": 8,
         "format": "{}",
         "tooltip": false
+    },
+
+    "mpris": {
+        "format": "󰐌 {player} - ({artist}) {title}",
+        "format-paused": "󰏥 {player} - ({artist}) {title}",
+        "title-len": 20
     },
 
     "battery": {
