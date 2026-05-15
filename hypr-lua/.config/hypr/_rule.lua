@@ -20,6 +20,7 @@ hl.window_rule({ match = { title = "^(.*YouTube.*)$" }, opacity = "1.0 override"
 hl.window_rule({ match = { title = "^(.*Twitch.*)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = "thunar", title = "^(.*File Operation Progress.*)$" }, size = {476, 520}, float = true })
 hl.window_rule({ match = { class = "thunar", title = "^(.*Rename \".*)$" }, size = {476, 520}, float = true })
+hl.window_rule({ match = { class = "foot" }, persistent_size = true })
 
 -- Games
 hl.window_rule({ match = { class = "org.prismlauncher.PrismLauncher" }, float = true })
