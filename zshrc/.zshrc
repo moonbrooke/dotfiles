@@ -73,6 +73,9 @@ source /usr/share/nvm/init-nvm.sh
 # Alias
 
 alias c="clear"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias cat="bat --theme=base16"
 alias l="ls -CF"
 alias ls="ls --color=auto"
