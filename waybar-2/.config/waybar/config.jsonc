@@ -4,6 +4,7 @@
     "modules-left": [
         "custom/logo",
         "hyprland/workspaces",
+        "custom/layout",
         "hyprland/window"
     ],
 
@@ -14,19 +15,24 @@
         "battery",
         "pulseaudio",
         "network",
-        "clock#date",
-        // "clock#time",
+        "clock#datetime",
         "tray",
         "custom/power"
-        // "power-profiles-daemon"
     ],
 
-    // Modules
     "custom/logo": {
         "on-click": "pkill rofi || rofi -modes \"drun\" -show drun -display-drun \"Menu\" -display-run \"Run\" -display-window \"Window\" -show-icons -auto-close",
         "tooltip-format": "Menu",
         // "format": "󰣇 "
         "format": "A "
+    },
+
+    "custom/layout": {
+        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: dwindle.*/DW/p; s/.*str: master.*/MS/p; s/.*str: scrolling.*/SC/p; s/.*str: monocle.*/MN/p'",
+        "interval": "once",
+        "signal": 8,
+        "format": "[{}]",
+        "tooltip": false
     },
 
     "battery": {
@@ -51,13 +57,7 @@
         "tooltip": false
     },
 
-    // "clock#time": {
-    //     "interval": 10,
-    //     "format": "{:%H:%M}",
-    //     "tooltip": false
-    // },
-
-    "clock#date": {
+    "clock#datetime": {
         "interval": 10,
         "format": "{:%e %b, %I:%M %p}",
         "tooltip": true,
@@ -103,7 +103,6 @@
         "format-wifi": "NET: {essid}",
         "format-ethernet": "ETH: {ifname}",
         "format-disconnected": "NET: OFF",
-        // "format-alt": "󰇧 {ipaddr}/{cidr}",
         "tooltip": false,
         "on-click": "kitty --class floating_nmtui -e nmtui"
     },
@@ -176,16 +175,5 @@
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/power.sh",
         "format": "{text}"
-    },
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip-format": "Profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": " Default",
-            "performance": " Performance",
-            "balanced": "  Balanced",
-            "power-saver": " Eco"
-        }
     }
 }

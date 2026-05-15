@@ -42,6 +42,7 @@
 #cpu,
 #custom-logo,
 #custom-power,
+#custom-layout,
 #power-profiles-daemon,
 #memory,
 #network,
@@ -53,7 +54,8 @@
     padding: 5px 10px 7px 10px;
 }
 
-#window {
+#window,
+#custom-layout {
     font-family: "Sarasa Mono CL";
     font-size: 14px;
 }
