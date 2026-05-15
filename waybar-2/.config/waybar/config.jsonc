@@ -168,8 +168,8 @@
     },
 
     "tray": {
-        "icon-size": 11
-        //"spacing": 10
+        "icon-size": 11,
+        "spacing": 10
     },
     "custom/power":{
         "exec": "whoami",
