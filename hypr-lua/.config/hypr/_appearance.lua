@@ -1,4 +1,4 @@
-local gaps = require("_gaps")
+local gaps = require("_gap")
 local is_animation = require("_animation_toggle")
 
 hl.config({
