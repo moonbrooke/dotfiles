@@ -73,9 +73,9 @@ hl.bind(mainMod .. " + Left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + Right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + Up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + Down",  hl.dsp.focus({ direction = "down" }))
-hl.bind(mainMod .. " + Tab", hl.dsp.window.cycle_next())
+hl.bind(mainMod .. " + Tab", hl.dsp.window.cycle_next({ tiled = true, floating = true }))
 hl.bind(mainMod .. " + Tab", hl.dsp.window.bring_to_top())
-hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.window.cycle_next({ next = false }))
+hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.window.cycle_next({ next = false, tiled = true, floating = true }))
 hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.window.bring_to_top())
 
 -- Move windows around workspaces
