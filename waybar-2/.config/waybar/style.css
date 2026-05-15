@@ -42,7 +42,6 @@
 #cpu,
 #custom-logo,
 #custom-power,
-#custom-layout,
 #power-profiles-daemon,
 #memory,
 #network,
@@ -52,6 +51,10 @@
 #window {
     color: @white;
     padding: 5px 10px 7px 10px;
+}
+
+#custom-layout {
+    padding: 5px 10px 5px 10px;
 }
 
 #window,
@@ -136,7 +139,8 @@
 #tray {
 }
 
-#clock {
+#clock,
+#custom-layout {
     color: @black;
     background: @white;
 }
