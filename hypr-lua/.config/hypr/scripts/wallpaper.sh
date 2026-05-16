@@ -20,7 +20,7 @@ done | rofi -dmenu -i -show-icons -p "Wallpapers" \
     window { width: 35%; border: 3px; border-color: #24283b; }
     listview { columns: 1; lines: 8; spacing: 5px; }
     element { orientation: horizontal; padding: 8px; }
-    element-icon { size: 3em; }
+    element-icon { size: 2em; }
     element-text { vertical-align: 0.5; margin: 0 0 0 10px; }
     ')
 
