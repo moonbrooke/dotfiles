@@ -22,7 +22,7 @@
     ],
 
     "custom/logo": {
-        "on-click": "pkill rofi || rofi -modes \"drun\" -show drun -display-drun \"Menu\" -display-run \"Run\" -display-window \"Window\" -show-icons -auto-close",
+        "on-click": "~/.config/hypr/scripts/menu.sh",
         "tooltip-format": "Menu",
         // "format": "󰣇 "
         "format": "A"
