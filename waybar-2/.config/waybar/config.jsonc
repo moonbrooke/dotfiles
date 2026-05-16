@@ -2,9 +2,9 @@
     "layer": "top",
     "position": "top",
     "modules-left": [
+        "custom/layout",
         "custom/logo",
         "hyprland/workspaces",
-        "custom/layout",
         "hyprland/window"
     ],
     "modules-center": [
@@ -25,7 +25,7 @@
         "on-click": "pkill rofi || rofi -modes \"drun\" -show drun -display-drun \"Menu\" -display-run \"Run\" -display-window \"Window\" -show-icons -auto-close",
         "tooltip-format": "Menu",
         // "format": "󰣇 "
-        "format": "A "
+        "format": "A"
     },
 
     "custom/layout": {
