@@ -50,7 +50,7 @@ textbox {
 }
 
 listview {
-    padding:    4px 0;
+    padding:    4px 0 0 0;
     lines:      8;
     columns:    1;
 
