@@ -19,6 +19,7 @@ local gaps = "~/.config/hypr/scripts/gaps.sh"
 local notes = "~/scripts/rofi-notes.sh"
 local keybinds_helper = "pkill rofi || ~/.config/hypr/scripts/keybinds.sh"
 local emoji = "~/.config/hypr/scripts/emoji.sh"
+local ocr = "~/.config/hypr/scripts/ocr.sh"
 
 local mainMod = "SUPER"
 
@@ -67,6 +68,7 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(wifi))
 hl.bind("Print", hl.dsp.exec_cmd(full_screenshot))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(select_screenshot))
 hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd(window_screenshot))
+hl.bind("ALT + SHIFT + S", hl.dsp.exec_cmd(ocr))
 
 -- Move focus
 hl.bind(mainMod .. " + Left",  hl.dsp.focus({ direction = "left" }))
