@@ -8,7 +8,7 @@ if [ ! -d "$WALLPAPER_DIR" ]; then
 fi
 
 SELECTED=$(ls -1 "$WALLPAPER_DIR" | grep -iE '\.(jpg|jpeg|png|gif|webp)$' | rofi -dmenu -i -p "Wallpapers" \
-    -theme-str 'window {width: 35%; border: 2px; border-color: #313244;} listview {lines: 10;}')
+    -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;} listview {lines: 10;}')
 
 if [ -z "$SELECTED" ]; then
     exit 0

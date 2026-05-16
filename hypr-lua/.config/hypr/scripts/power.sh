@@ -15,7 +15,9 @@ ROFI_THEME="$HOME/.config/rofi/config.rasi"
 
 # Main menu (no Cancel option)
 chosen=$(echo -e "Logout\nShutdown\nReboot" | \
-    rofi -dmenu -i -p "Power" -line-padding 4 -hide-scrollbar -theme "$ROFI_THEME")
+    rofi -dmenu -i -p "Power" -line-padding 4 \
+    -hide-scrollbar -theme "$ROFI_THEME" \
+    -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}')
 
 # Exit if nothing selected
 [ -z "$chosen" ] && exit
