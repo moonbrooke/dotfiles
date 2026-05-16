@@ -30,17 +30,22 @@
     },
 
     "custom/layout": {
-        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: dwindle.*/DW/p; s/.*str: master.*/MS/p; s/.*str: scrolling.*/SC/p; s/.*str: monocle.*/MN/p'",
+        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: dwindle.*/DWINDLE/p; s/.*str: master.*/MASTER/p; s/.*str: scrolling.*/SCROLLING/p; s/.*str: monocle.*/MONOCLE/p'",
         "interval": "once",
         "signal": 8,
         "format": "{}",
-        "tooltip": false
+        "tooltip": true,
+        "tooltip-format": "Current Layout: {}"
     },
 
     "mpris": {
-        "format": "󰐌 {player} - ({artist}) {title}",
-        "format-paused": "󰏥 {player} - ({artist}) {title}",
-        "title-len": 20
+        "format": "󰐌 {player} / {artist} - {title}",
+        "format-paused": "󰏥 {player} / {artist} - {title}",
+        "status-icons": {
+            "paused": "󰏥"
+        },
+        "title-len": 20,
+        "artist-len": 20
     },
 
     "battery": {
