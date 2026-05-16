@@ -20,6 +20,7 @@ Install dependencies:
 ```bash
 # Necessary for the setup
 sudo pacman -S hyprland swaybg dunst grim slurp jq foot waybar rofi \
+hyprpicker tesseract tesseract-data-jpn tesseract-data-eng \
 ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
 wl-clipboard cliphist wl-clip-persist hyprpolkitagent \
 xdg-desktop-portal-hyprland xdg-desktop-portal \
