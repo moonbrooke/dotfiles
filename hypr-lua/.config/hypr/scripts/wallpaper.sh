@@ -7,8 +7,22 @@ if [ ! -d "$WALLPAPER_DIR" ]; then
     exit 1
 fi
 
-SELECTED=$(ls -1 "$WALLPAPER_DIR" | grep -iE '\.(jpg|jpeg|png|gif|webp)$' | rofi -dmenu -i -p "Wallpapers" \
-    -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;} listview {lines: 10;}')
+if ! pgrep -x "awww-daemon" > /dev/null; then
+    awww-daemon &
+    sleep 0.5 
+fi
+
+SELECTED=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.jpeg" \) | while read -r file; do
+    filename=$(basename "$file")
+    echo -en "$filename\0icon\x1f$file\n"
+done | rofi -dmenu -i -show-icons -p "Wallpapers" \
+    -theme-str '
+    window { width: 35%; border: 3px; border-color: #24283b; }
+    listview { columns: 1; lines: 8; spacing: 5px; }
+    element { orientation: horizontal; padding: 8px; }
+    element-icon { size: 3em; }
+    element-text { vertical-align: 0.5; margin: 0 0 0 10px; }
+    ')
 
 if [ -z "$SELECTED" ]; then
     exit 0
@@ -16,14 +30,9 @@ fi
 
 FULL_PATH="$WALLPAPER_DIR/$SELECTED"
 
-if ! pgrep -x "awww-daemon" > /dev/null; then
-    awww-daemon &
-    sleep 0.5
-fi
-
 awww img "$FULL_PATH" \
-    --transition-type center \
+    --transition-type wipe \
     --transition-angle 30 \
     --transition-step 90
 
-notify-send -t 2000 "Wallpaper Updated" "$SELECTED"otify-send -t 2000 "Wallpaper Updated" "$SELECTED"
+notify-send -t 2000 "Wallpaper Updated" "$SELECTED"
