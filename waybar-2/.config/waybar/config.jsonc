@@ -8,7 +8,7 @@
         "hyprland/window"
     ],
     "modules-center": [
-        "mpris"
+        "clock#datetime"
     ],
     "modules-right": [
         // "memory",
@@ -18,7 +18,6 @@
         "pulseaudio",
         "network",
         "tray",
-        "clock#datetime",
         "custom/power"
     ],
 
