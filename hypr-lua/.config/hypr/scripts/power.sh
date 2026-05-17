@@ -24,7 +24,8 @@ chosen=$(echo -e "Logout\nShutdown\nReboot" | \
 
 # Confirmation dialog
 confirm=$(echo -e "Yes\nNo" | \
-    rofi -dmenu -i -p "Are you sure?" -line-padding 4 -hide-scrollbar -theme "$ROFI_THEME")
+    rofi -dmenu -i -p "Are you sure?" -line-padding 4 -hide-scrollbar -theme "$ROFI_THEME" \
+    -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}')
 
 # Only proceed if "Yes"
 if [ "$confirm" == "Yes" ]; then
