@@ -24,6 +24,7 @@
     box-shadow: none;
     text-shadow: none;
     icon-shadow: none;
+    opacity: 0.95;
 }
 
 #waybar {
