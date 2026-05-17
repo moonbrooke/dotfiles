@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Keep hyprpicker alive until after grim captures so the screenshot sees the
-# frozen overlay rather than live content shifting during teardown.
 cleanup_freeze() {
   [[ -n $PID ]] && kill $PID 2>/dev/null
 }
