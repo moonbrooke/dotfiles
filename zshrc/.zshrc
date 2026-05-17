@@ -1,4 +1,3 @@
-# If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 if [ -n "$WSL_DISTRO_NAME" ]; then
@@ -9,10 +8,6 @@ if [[ -f ~/.secrets ]]; then
     source ~/.secrets
 fi
 
-# lidm display manager config
-export LIDM_CONF="$HOME/.config/lidm/catppuccin-mocha.ini"
-
-# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="half-life"
@@ -24,7 +19,6 @@ ZSH_THEME="half-life"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
 export EDITOR="nvim"
 
 # Compilation flags
@@ -71,7 +65,6 @@ command_not_found_handler() {
 source /usr/share/nvm/init-nvm.sh
 
 # Alias
-
 alias so="source ~/.zshrc"
 alias c="clear"
 alias ..="cd .."
@@ -80,7 +73,7 @@ alias ....="cd ../../.."
 alias cat="bat --theme=base16"
 alias l="ls -CF"
 alias ls="ls --color=auto"
-alias ll="ls -alF --group-directories-first"
+alias ll="ls -alF -h --group-directories-first"
 alias la="ls -A"
 alias lla="ll --color -h --group-directories-first"
 
