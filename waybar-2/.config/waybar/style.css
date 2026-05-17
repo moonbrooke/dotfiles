@@ -13,6 +13,7 @@
 @define-color aqua     #7dcfff;
 @define-color gray     #565f89;
 @define-color white    #c0caf5;
+@define-color muted    #24283b;
 
 * {
     border: none;
@@ -147,8 +148,8 @@
 }
 
 #custom-layout {
-    color: @black;
-    background: @white;
+    color: @white;
+    background: @muted;
 }
 
 #custom-logo {
