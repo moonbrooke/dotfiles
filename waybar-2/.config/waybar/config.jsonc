@@ -8,6 +8,7 @@
         "hyprland/window"
     ],
     "modules-center": [
+        "custom/weather",
         "clock#datetime"
     ],
     "modules-right": [
@@ -69,6 +70,14 @@
         "tooltip": false
     },
 
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "~/scripts/waybar-wttr.sh",
+        "return-type": "json"
+    },
+    
     "clock#datetime": {
         "interval": 10,
         "format": "{:%e %b, %I:%M %p}",
@@ -182,6 +191,7 @@
         "icon-size": 11,
         "spacing": 10
     },
+
     "custom/power":{
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/power.sh",
