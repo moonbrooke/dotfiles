@@ -15,9 +15,22 @@ RAM_USED=$(free -h | awk '/^Mem:/ {print $3}')
 RAM_TOTAL=$(free -h | awk '/^Mem:/ {print $2}')
 RAM="${RAM_USED} / ${RAM_TOTAL}"
 
-# Output
+# CPU Info
+CPU_USAGE=$(top -bn1 | grep "Cpu(s)" | awk '{print $2 + $4 "%"}')
+
+# CPU Temp
+if [ -f /sys/class/thermal/thermal_zone0/temp ]; then
+    CPU_TEMP=$(awk '{print $1/1000 "°C"}' /sys/class/thermal/thermal_zone0/temp)
+else
+    CPU_TEMP="N/A"
+fi
+
+# Display
+echo -e ""
 echo -e "$USER_HOST"
-echo -e "${BOLD}${GREEN}OS:       ${RESET}$DISTRO"
-echo -e "${BOLD}${GREEN}Kernel:   ${RESET}$KERNEL"
-echo -e "${BOLD}${GREEN}RAM:      ${RESET}$RAM"
+echo -e "${BOLD}${GREEN}OS:       ${RESET} $DISTRO"
+echo -e "${BOLD}${GREEN}Kernel:   ${RESET} $KERNEL"
+echo -e "${BOLD}${GREEN}RAM:      ${RESET} $RAM"
+echo -e "${BOLD}${GREEN}CPU Usage:${RESET} $CPU_USAGE"
+echo -e "${BOLD}${GREEN}CPU Temp: ${RESET} $CPU_TEMP"
 echo -e ""
