@@ -32,7 +32,8 @@ sudo pacman -S --needed --noconfirm \
 
 # Install Optional but Recommended Packages
 echo "Installing optional utilities..."
-sudo pacman -S --needed --noconfirm neovim zsh fastfetch yazi fzf bat btop
+sudo pacman -S --needed --noconfirm neovim zsh fastfetch yazi fzf bat btop \
+    fcitx5 fcitx5-mozc fcitx5-configtool
 
 # Install AUR Packages
 echo "Installing additional AUR fonts for CJK support..."
@@ -54,7 +55,14 @@ cd "$DOTFILES_DIR"
 
 # Stow the specific folders listed in the README
 stow btop dunst fastfetch hypr foot nvim rofi waybar-2 scripts yazi zshrc
-mkdir ~/notes
+
+# Notes Folder
+if [ ! -d "$HOME/notes" ]; then
+    echo "Creating ~/notes directory..."
+    mkdir ~/notes
+else
+    echo "~/notes directory already exists."
+fi
 
 # Install Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
