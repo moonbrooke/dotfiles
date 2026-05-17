@@ -26,6 +26,8 @@ Super + Shift + Print               | Window screenshot
 Super + Q                           | Kill focused window
 Super + J                           | Toggle split horizontal/vertical
 Super + F                           | Toggle floating window
+Super + P                           | Toggle pin window
+Super + SHIFT + P                   | Toggle pseudotiling
 Super + Right                       | Move focus to the right
 Super + Left                        | Move focus to the left
 Super + Shift + Right               | Move focused window to the right
