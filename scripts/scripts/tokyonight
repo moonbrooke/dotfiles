@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Define your palette
 colors=(
 "#f7768e"
 "#ff9e64"
@@ -22,7 +21,6 @@ colors=(
 "#1a1b26"
 )
 
-# Function to convert hex to RGB
 hex_to_rgb() {
     local hex=${1#"#"}
     local r=$((16#${hex:0:2}))
@@ -31,9 +29,7 @@ hex_to_rgb() {
     echo "$r;$g;$b"
 }
 
-# Print each color with preview on the left and hex on the right
 for hex in "${colors[@]}"; do
     rgb=$(hex_to_rgb "$hex")
-    # Color block (6 spaces wide) followed by hex code
     printf "\e[48;2;%sm      \e[0m %s\n" "$rgb" "$hex"
 done
