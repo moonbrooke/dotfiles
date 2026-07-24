@@ -6,7 +6,6 @@
     "editor.fontSize": 16,
     "editor.fontFamily": "'CaskaydiaMono Nerd Font', 'monospace', monospace",
     "workbench.editor.showTabs": "none",
-    "window.menuBarVisibility": "toggle",
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "workbench.iconTheme": "catppuccin-mocha",
     "editor.minimap.autohide": "mouseover",
@@ -16,7 +15,6 @@
     "editor.lineHeight": 1.5,
     "chat.disableAIFeatures": true,
     "C_Cpp.copilotHover": "disabled",
-    "workbench.activityBar.location": "hidden",
     "editor.minimap.enabled": false,
     "git.openRepositoryInParentFolders": "never",
     "extensions.experimental.affinity": {
@@ -24,6 +22,7 @@
     },
     "extensions.ignoreRecommendations": true,
     "workbench.layoutControl.enabled": false,
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "workbench.activityBar.compact": true
 }
 
