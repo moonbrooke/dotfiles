@@ -61,9 +61,6 @@ command_not_found_handler() {
     return 127
 }
 
-# Source
-source /usr/share/nvm/init-nvm.sh
-
 # Alias
 alias so="source ~/.zshrc"
 alias c="clear"
@@ -118,3 +115,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# opencode
+export PATH=/home/moonbrooke/.opencode/bin:$PATH
