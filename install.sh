@@ -36,8 +36,8 @@ sudo pacman -S --needed --noconfirm neovim zsh fastfetch yazi fzf bat btop \
     fcitx5 fcitx5-mozc fcitx5-configtool
 
 # Install AUR Packages
-echo "Installing additional AUR fonts for CJK support..."
-yay -S --needed --noconfirm ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk
+# echo "Installing additional AUR fonts for CJK support..."
+# yay -S --needed --noconfirm ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk
 
 # Clone Dotfiles
 DOTFILES_DIR="$HOME/dotfiles"
