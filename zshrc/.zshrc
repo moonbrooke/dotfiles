@@ -112,7 +112,7 @@ if [[ -n $(alias g 2>/dev/null) ]]; then
     unalias g
 fi
 
-[ -s "${HOME}/.g/env" ] && \. "${HOME}/.g/env"  # g shell setup
+# [ -s "${HOME}/.g/env" ] && \. "${HOME}/.g/env"  # g shell setup
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -120,3 +120,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # opencode
 export PATH=/home/moonbrooke/.opencode/bin:$PATH
+
+export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/moonbrooke/.lmstudio/bin"
+# End of LM Studio CLI section
+
