@@ -13,7 +13,7 @@
   "IndexerLogEnabled": false,
   "IndexerThreadCount": 4,
   "IndexerTransactionInterval": 300,
-  "InheritBackgroundColor": false,
+  "InheritBackgroundColor": true,
   "LastFmSessionId": "",
   "LastFmToken": "",
   "LastFmUsername": "",
