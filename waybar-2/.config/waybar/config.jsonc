@@ -8,7 +8,7 @@
         "hyprland/window"
     ],
     "modules-center": [
-        "custom/weather",
+        // "custom/weather",
         "clock#datetime"
     ],
     "modules-right": [
