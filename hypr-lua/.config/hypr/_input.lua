@@ -19,9 +19,9 @@ hl.config({
         zoom_disable_aa = true,
         hotspot_padding = 1,
         no_hardware_cursors = false,
-        inactive_timeout = 3,
+        inactive_timeout = 2,
         no_warps = false,
-        persistent_warps = false,
+        persistent_warps = true,
     },
     gestures = {
         workspace_swipe_touch = false,
