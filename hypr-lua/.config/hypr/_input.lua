@@ -21,7 +21,7 @@ hl.config({
         no_hardware_cursors = false,
         inactive_timeout = 3,
         no_warps = false,
-        persistent_warps = true,
+        persistent_warps = false,
     },
     gestures = {
         workspace_swipe_touch = false,
