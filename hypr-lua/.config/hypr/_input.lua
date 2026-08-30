@@ -14,14 +14,8 @@ hl.config({
         repeat_delay = 200,
     },
     cursor = {
-        zoom_factor = 1,
-        zoom_rigid = false,
-        zoom_disable_aa = true,
-        hotspot_padding = 1,
-        no_hardware_cursors = false,
-        inactive_timeout = 2,
-        no_warps = false,
-        persistent_warps = true,
+        hide_on_key_press = true,
+        warp_on_change_workspace = 1,
     },
     gestures = {
         workspace_swipe_touch = false,
