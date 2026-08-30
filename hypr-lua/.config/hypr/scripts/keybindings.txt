@@ -31,6 +31,8 @@ Super + P                           | Toggle pin window
 Super + SHIFT + P                   | Toggle pseudotiling
 Super + Right                       | Move focus to the right
 Super + Left                        | Move focus to the left
+Super + Tab                         | Cycle focus next
+Super + Shift + Tab                 | Cycle focus previous
 Super + Shift + Right               | Move focused window to the right
 Super + Shift + Left                | Move focused window to the left
 Super + Ctrl + Right                | Resize focused window to the right
