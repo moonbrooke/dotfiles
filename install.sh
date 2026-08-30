@@ -38,6 +38,7 @@ sudo pacman -S --needed --noconfirm neovim zsh fastfetch yazi fzf bat btop \
 # Install AUR Packages
 # echo "Installing additional AUR fonts for CJK support..."
 # yay -S --needed --noconfirm ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk
+yay -S --needed --noconfirm dracula-gtk-theme-full tela-icon-theme
 
 # Clone Dotfiles
 DOTFILES_DIR="$HOME/dotfiles"
