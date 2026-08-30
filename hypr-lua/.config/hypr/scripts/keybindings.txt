@@ -13,6 +13,7 @@ Super + C                           | Toggle gaps
 Super + G                           | Toggle game mode
 Super + Z                           | Zoom in
 Super + Shift + Z                   | Reset zoom
+Super + M                           | Launch notes manager
 Super + N or Super + Shift + W      | Launch wifi menu
 Super + BackSpace                   | Launch power menu
 Super + Shift + R                   | Restart waybar
