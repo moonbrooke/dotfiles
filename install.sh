@@ -54,7 +54,7 @@ echo "Applying dotfiles with GNU Stow..."
 cd "$DOTFILES_DIR"
 
 # Stow the specific folders listed in the README
-stow btop dunst fastfetch hypr-lua foot nvim rofi waybar-2 scripts yazi zshrc
+stow btop dunst fastfetch hypr-lua foot nvim rofi waybar-2 scripts yazi
 
 # Notes Folder
 if [ ! -d "$HOME/notes" ]; then
@@ -71,6 +71,13 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 else
     echo "Oh My Zsh is already installed."
 fi
+
+echo "Applying personal zshrc config with GNU Stow..."
+cd "$DOTFILES_DIR"
+if [ -f ~/.zshrc ]; then
+    mv ~/.zshrc ~/.zshrc.bak
+fi
+stow zshrc
 
 # Change Default Shell to Zsh
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
