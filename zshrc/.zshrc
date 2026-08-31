@@ -110,11 +110,6 @@ wfcon() {
     iwctl station wlan0 connect "$wifi_name" --passphrase --ask
 }
 
-# Check if the alias 'g' exists before trying to unalias it
-if [[ -n $(alias g 2>/dev/null) ]]; then
-    unalias g
-fi
-
 # opencode
 export PATH=/home/moonbrooke/.opencode/bin:$PATH
 
