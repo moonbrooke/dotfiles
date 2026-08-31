@@ -24,7 +24,7 @@ fi
 # Install Necessary Packages
 echo "Installing necessary core packages..."
 sudo pacman -S --needed --noconfirm \
-    hyprland swaybg dunst grim slurp jq foot waybar rofi awww \
+    hyprland swaybg dunst grim slurp jq foot waybar rofi awww easyeffects alsa-utils \
     hyprpicker tesseract tesseract-data-jpn tesseract-data-eng \
     ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
     wl-clipboard cliphist wl-clip-persist hyprpolkitagent rofimoji noto-fonts-emoji \
