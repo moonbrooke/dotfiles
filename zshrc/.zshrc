@@ -22,7 +22,7 @@ ZSH_THEME="half-life"
 export EDITOR="nvim"
 
 # Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
+export ARCHFLAGS="-arch $(uname -m)"
 
 source <(fzf --zsh)
 
@@ -109,9 +109,6 @@ wfcon() {
     read -r "wifi_name?Enter WiFi name: "
     iwctl station wlan0 connect "$wifi_name" --passphrase --ask
 }
-
-# opencode
-export PATH=/home/moonbrooke/.opencode/bin:$PATH
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/moonbrooke/.lmstudio/bin"
