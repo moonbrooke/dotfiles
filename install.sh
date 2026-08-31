@@ -27,7 +27,7 @@ sudo pacman -S --needed --noconfirm \
     hyprland swaybg dunst grim slurp jq foot waybar rofi awww \
     hyprpicker tesseract tesseract-data-jpn tesseract-data-eng \
     ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
-    wl-clipboard cliphist wl-clip-persist hyprpolkitagent \
+    wl-clipboard cliphist wl-clip-persist hyprpolkitagent rofimoji noto-fonts-emoji \
     xdg-desktop-portal-hyprland thunar thunar-volman gvfs unzip stow nwg-look
 
 # Install Optional but Recommended Packages
