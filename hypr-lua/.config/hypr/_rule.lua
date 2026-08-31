@@ -1,6 +1,6 @@
 -- General
 hl.window_rule({ match = { title = "Bluetooth" }, float = true })
-hl.window_rule({ match = { title = "floating_wifi" }, size = {800, 800}, float = true })
+hl.window_rule({ match = { title = "floating_nmtui" }, size = {800, 800}, float = true })
 hl.window_rule({ match = { class = "org.gnome.nautilus" }, float = true })
 hl.window_rule({ match = { class = "org.gnome.Loupe" }, float = true })
 hl.window_rule({ match = { class = "org.gnome.Calculator" }, float = true })
