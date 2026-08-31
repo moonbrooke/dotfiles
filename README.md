@@ -19,19 +19,17 @@ Install dependencies:
 
 ```bash
 # Necessary for the setup
-sudo pacman -S --needed hyprland swaybg dunst grim slurp jq foot waybar rofi \
-hyprpicker tesseract tesseract-data-jpn tesseract-data-eng \
-ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
-wl-clipboard cliphist wl-clip-persist hyprpolkitagent \
-xdg-desktop-portal-hyprland xdg-desktop-portal \
-thunar thunar-volman gvfs unzip git stow nwg-look
-
-# Opsional but recommended
-sudo pacman -S --needed neovim zsh fastfetch yazi fzf bat btop \
+sudo pacman -S --needed --noconfirm \
+    hyprland swaybg dunst grim slurp jq foot waybar rofi awww easyeffects alsa-utils \
+    hyprpicker udiskie tesseract tesseract-data-jpn tesseract-data-eng \
+    ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
+    wl-clipboard cliphist wl-clip-persist hyprpolkitagent rofimoji noto-fonts-emoji \
+    xdg-desktop-portal-hyprland thunar thunar-volman gvfs unzip stow nwg-look \
+    neovim zsh fastfetch yazi fzf bat btop \
 fcitx5 fcitx5-mozc fcitx5-configtool
 
 # Additional fonts for Chinese/Japanese/Korean support
-yay -S ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk --needed
+yay -S ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk --needed --noconfirm
 ```
 
 - WM/Compositor: [Hyprland](https://hypr.land/)
