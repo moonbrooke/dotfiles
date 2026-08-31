@@ -8,8 +8,6 @@ if [[ -f ~/.secrets ]]; then
     source ~/.secrets
 fi
 
-source /usr/share/nvm/init-nvm.sh
-
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="half-life"
@@ -117,10 +115,6 @@ if [[ -n $(alias g 2>/dev/null) ]]; then
     unalias g
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # opencode
 export PATH=/home/moonbrooke/.opencode/bin:$PATH
 
@@ -128,5 +122,4 @@ export PATH=/home/moonbrooke/.opencode/bin:$PATH
 export PATH="$PATH:/home/moonbrooke/.lmstudio/bin"
 # End of LM Studio CLI section
 
-export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
-alias g="$GOPATH/bin/g"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+eval "$(/home/moonbrooke/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
