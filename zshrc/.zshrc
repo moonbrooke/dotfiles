@@ -99,6 +99,11 @@ alias gsmu="git pull --recurse-submodules; git submodule update --remote --merge
 alias cava="cava -p ~/.config/cava/tokyonight"
 alias gol="golazo"
 
+# NextDNS
+alias ndst="sudo nextdns start; sudo nextdns activate; echo 'NextDNS Started ✅'"
+alias ndsp="sudo nextdns deactivate; sudo nextdns stop; echo 'NextDNS Stopped ✅'"
+alias ndss="nextdns status"
+
 # WiFi
 alias wfget="iwctl station wlan0 get-networks"
 
