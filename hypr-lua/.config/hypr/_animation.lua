@@ -4,7 +4,8 @@ hl.curve("linear",         { type = "bezier", points = { {0, 0},       {1, 1}   
 hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}    } })
 hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1}     } })
 
-hl.curve("easy",           { type = "spring", mass = 1, stiffness = 300.0, dampening = 20.0 })
+hl.curve("easy",           { type = "spring", mass = 1, stiffness = 550.0, dampening = 40.0 })
+hl.curve("easy",           { type = "bezier", points = { {0.4, 0}, {0.20, 1} } })
 
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "default" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
@@ -15,7 +16,7 @@ hl.animation({ leaf = "fadeIn",        enabled = true,  speed = 1.73, bezier = "
 hl.animation({ leaf = "fadeOut",       enabled = true,  speed = 1.46, bezier = "almostLinear" })
 hl.animation({ leaf = "fade",          enabled = true,  speed = 3.03, bezier = "quick" })
 hl.animation({ leaf = "layers",        enabled = true,  speed = 3.81, bezier = "easeOutQuint" })
-hl.animation({ leaf = "layersIn",      enabled = true,  speed = 2.5,    bezier = "easeOutQuint", style = "fade" })
+hl.animation({ leaf = "layersIn",      enabled = true,  speed = 2.5,  bezier = "easeOutQuint", style = "fade" })
 hl.animation({ leaf = "layersOut",     enabled = true,  speed = 1.5,  bezier = "linear",       style = "fade" })
 hl.animation({ leaf = "fadeLayersIn",  enabled = true,  speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.39, bezier = "almostLinear" })
