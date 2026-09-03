@@ -31,6 +31,7 @@ systemctl --user stop pipewire
 systemctl --user stop wireplumber
 systemctl --user stop xdg-desktop-portal
 systemctl --user stop xdg-desktop-portal-gnome
+systemctl --user stop xdg-desktop-portal-gtk
 systemctl --user stop xdg-desktop-portal-kde
 systemctl --user stop xdg-desktop-portal-wlr
 systemctl --user stop xdg-desktop-portal-hyprland
@@ -54,6 +55,7 @@ sleep $_sleep2
 systemctl --user start pipewire
 systemctl --user start wireplumber
 systemctl --user start xdg-desktop-portal
+systemctl --user start xdg-desktop-portal-gtk
 systemctl --user start xdg-desktop-portal-hyprland
 
 # Run waybar
