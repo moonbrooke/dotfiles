@@ -15,7 +15,7 @@ Super + Z                           | Zoom in
 Super + Shift + Z                   | Reset zoom
 Super + M                           | Launch notes manager
 Super + N                           | Launch wifi menu
-Super + BackSpace                   | Launch power menu
+Super + BackSpace or Super + Esc    | Launch power menu
 Super + Shift + R                   | Restart waybar
 
 # === Screenshot ===
