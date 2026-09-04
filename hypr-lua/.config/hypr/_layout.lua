@@ -16,8 +16,8 @@ return function()
     hl.config({ general = { layout = next_layout } })
 
     local cmd = string.format(
-        "notify-send 'Layout Changed' 'Switched to: <b>%s</b>' -t 2500 -i dialog-information &",
-        next_layout
+        "notify-send 'Settings' 'Layout switched to: <span color=\"#9ece6a\"><b>%s</b></span>' -t 2500 -i dialog-information &",
+        string.upper(next_layout)
     )
 
     os.execute(cmd)
