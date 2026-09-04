@@ -25,7 +25,7 @@ fi
 echo "Installing necessary core packages..."
 sudo pacman -S --needed --noconfirm \
     hyprland swaybg dunst grim slurp jq foot waybar rofi awww easyeffects alsa-utils \
-    hyprpicker imv tesseract tesseract-data-jpn tesseract-data-eng \
+    hyprpicker imv udiskie tesseract tesseract-data-jpn tesseract-data-eng \
     ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
     wl-clipboard cliphist wl-clip-persist hyprpolkitagent rofimoji noto-fonts-emoji \
     xdg-desktop-portal-hyprland thunar thunar-volman gvfs unzip stow nwg-look
@@ -55,7 +55,7 @@ echo "Applying dotfiles with GNU Stow..."
 cd "$DOTFILES_DIR"
 
 # Stow the specific folders listed in the README
-stow btop dunst fastfetch hypr-lua foot nvim rofi waybar-2 scripts yazi
+stow btop dunst fastfetch hypr-lua foot nvim rofi waybar-2 scripts yazi mimeapps
 
 # Notes Folder
 if [ ! -d "$HOME/notes" ]; then
