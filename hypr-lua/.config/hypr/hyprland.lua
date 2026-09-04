@@ -1,4 +1,3 @@
-require("_theme") -- Unused
 require("_monitor")
 require("_env")
 require("_autostart")

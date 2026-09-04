@@ -31,9 +31,10 @@ hl.window_rule({ match = { class = "^(steam_app_.*)$" }, opacity = "1.0 override
 hl.window_rule({ match = { class = "lutris" }, float = true })
 
 -- Workspaces
-hl.workspace_rule({ workspace = "1", persistent = true, monitor = "eDP-1", default = true, })
-hl.workspace_rule({ workspace = "2", persistent = true, monitor = "eDP-1", default = true, })
-hl.workspace_rule({ workspace = "3", persistent = true, monitor = "eDP-1", default = true, })
-hl.workspace_rule({ workspace = "4", persistent = true, monitor = "eDP-1", default = true, })
-hl.workspace_rule({ workspace = "5", persistent = true, monitor = "HDMI-A-1", default = true, })
-hl.workspace_rule({ workspace = "6", persistent = true, monitor = "HDMI-A-1", default = true, })
+-- Only one workspace may have default = true; others remain persistent.
+hl.workspace_rule({ workspace = "1", persistent = true, monitor = "eDP-1", default = true })
+hl.workspace_rule({ workspace = "2", persistent = true, monitor = "eDP-1" })
+hl.workspace_rule({ workspace = "3", persistent = true, monitor = "eDP-1" })
+hl.workspace_rule({ workspace = "4", persistent = true, monitor = "eDP-1" })
+hl.workspace_rule({ workspace = "5", persistent = true, monitor = "HDMI-A-1" })
+hl.workspace_rule({ workspace = "6", persistent = true, monitor = "HDMI-A-1" })

@@ -1,10 +1,10 @@
-local gaps = require("_gap")
+local gaps_enabled = require("_gap")
 local is_animation = require("_animation_toggle")
 
 hl.config({
     general = {
-        gaps_in = gaps and 5 or 0,
-        gaps_out = gaps and 10 or 0,
+        gaps_in = gaps_enabled and 5 or 0,
+        gaps_out = gaps_enabled and 10 or 0,
         border_size = 3,
         resize_on_border = false,
         allow_tearing = false,
