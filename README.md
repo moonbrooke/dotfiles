@@ -4,7 +4,7 @@ Dotfiles for my Arch Linux setup. Only [Hyprland](https://hypr.land/) setup is u
 
 ### Setup
 
-**IMPORTANT:** Folders in this repo are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). **Use at your own risk**!
+**IMPORTANT:** The install scripts are intended for personal usage purpose. I **do not** recommend anyone to use it. And folders in this repo are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). **Use at your own risk**!
 
 Clone the repo into your home directory then `cd` into it. Run `stow <folder-name>` to create the symlink in your `~/.config` folder.
 
@@ -47,6 +47,8 @@ yay -S --needed --noconfirm ttf-monocraft-nerd wifitui-bin dracula-gtk-theme-ful
 - Font: [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [Monocraft Nerd Font](https://github.com/IdreesInc/Monocraft), [Sarasa Gothic](https://github.com/be5invis/sarasa-gothic), [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [JetBrains Mono Nerd Font](https://www.nerdfonts.com/font-downloads), [Ricty Nerd Font](https://rictyfonts.github.io/) (Japanese font), [Noto CJK](https://github.com/notofonts/noto-cjk) (Chinese, Japanese, Korean fonts)
 
 ### Screenshot
+
+> Might be a bit outdated.
 
 Screenshot with Waybar, btop, fastfetch, ncmpcpp, Cava, Bitwig Studio, Rofi, and dunst notification.
 
