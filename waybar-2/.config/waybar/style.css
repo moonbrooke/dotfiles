@@ -29,9 +29,9 @@
 #waybar {
     color: @white;
     background: @black;
-    font-family: "Ricty Nerd Font";
+    font-family: "Monocraft";
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #custom-logo {
@@ -62,8 +62,8 @@
 #window,
 #custom-layout,
 #mpris {
-    font-family: "Sarasa Mono CL";
-    font-size: 14px;
+    font-family: "Monocraft", "Sarasa Mono CL";
+    font-size: 12px;
 }
 
 #battery.warning.discharging,
@@ -163,7 +163,8 @@
 }
 
 #custom-power {
+    font-size: 16px;
     color: @black;
     background: @red;
-    padding: 5px 15px 5px 10px;
+    padding: 5px 15px 5px 15px;
 }

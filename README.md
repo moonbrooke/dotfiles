@@ -29,7 +29,7 @@ sudo pacman -S --needed --noconfirm \
     fcitx5 fcitx5-mozc fcitx5-configtool noto-fonts-cjk
 
 # Additional AUR packages
-yay -S --needed --noconfirm wifitui-bin dracula-gtk-theme-full tela-icon-theme
+yay -S --needed --noconfirm ttf-monocraft-nerd wifitui-bin dracula-gtk-theme-full tela-icon-theme
 ```
 
 - WM/Compositor: [Hyprland](https://hypr.land/)
@@ -44,7 +44,7 @@ yay -S --needed --noconfirm wifitui-bin dracula-gtk-theme-full tela-icon-theme
 - File Manager: [Thunar](https://docs.xfce.org/xfce/thunar/start), [yazi](https://github.com/sxyazi/yazi)
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - Editor: [Neovim](https://neovim.io/), [VS Code](https://code.visualstudio.com/)
-- Font: [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [JetBrains Mono Nerd Font](https://www.nerdfonts.com/font-downloads), [Ricty Nerd Font](https://rictyfonts.github.io/) (Japanese font), [Noto CJK](https://github.com/notofonts/noto-cjk) (Chinese, Japanese, Korean fonts)
+- Font: [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [Monocraft Nerd Font](https://github.com/IdreesInc/Monocraft), [Sarasa Gothic](https://github.com/be5invis/sarasa-gothic), [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [JetBrains Mono Nerd Font](https://www.nerdfonts.com/font-downloads), [Ricty Nerd Font](https://rictyfonts.github.io/) (Japanese font), [Noto CJK](https://github.com/notofonts/noto-cjk) (Chinese, Japanese, Korean fonts)
 
 ### Screenshot
 

@@ -37,7 +37,7 @@ sudo pacman -S --needed --noconfirm neovim zsh fastfetch yazi fzf bat btop \
 
 # Install AUR Packages
 # echo "Installing additional AUR packages..."
-yay -S --needed --noconfirm wifitui-bin dracula-gtk-theme-full tela-icon-theme
+yay -S --needed --noconfirm ttf-monocraft-nerd wifitui-bin dracula-gtk-theme-full tela-icon-theme
 
 # Clone Dotfiles
 DOTFILES_DIR="$HOME/dotfiles"
