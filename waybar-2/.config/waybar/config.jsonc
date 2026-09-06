@@ -126,7 +126,7 @@
         "format-disconnected": "NET: OFF",
         "tooltip": false,
         // "on-click": "kitty --class floating_nmtui -e nmtui"
-        "on-click": "foot -T 'floating_nmtui' -e nmtui"
+        "on-click": "foot -T 'floating_wifitui' -e wifitui"
     },
 
     "hyprland/window": {
