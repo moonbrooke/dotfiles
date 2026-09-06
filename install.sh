@@ -33,12 +33,11 @@ sudo pacman -S --needed --noconfirm \
 # Install Optional but Recommended Packages
 echo "Installing optional utilities..."
 sudo pacman -S --needed --noconfirm neovim zsh fastfetch yazi fzf bat btop \
-    fcitx5 fcitx5-mozc fcitx5-configtool
+    fcitx5 fcitx5-mozc fcitx5-configtool noto-fonts-cjk
 
 # Install AUR Packages
-# echo "Installing additional AUR fonts for CJK support..."
-# yay -S --needed --noconfirm ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk
-yay -S --needed --noconfirm dracula-gtk-theme-full tela-icon-theme
+# echo "Installing additional AUR packages..."
+yay -S --needed --noconfirm wifitui-bin dracula-gtk-theme-full tela-icon-theme
 
 # Clone Dotfiles
 DOTFILES_DIR="$HOME/dotfiles"

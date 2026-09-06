@@ -26,10 +26,10 @@ sudo pacman -S --needed --noconfirm \
     wl-clipboard cliphist wl-clip-persist hyprpolkitagent rofimoji noto-fonts-emoji \
     xdg-desktop-portal-hyprland thunar thunar-volman gvfs unzip stow nwg-look \
     neovim zsh fastfetch yazi fzf bat btop \
-fcitx5 fcitx5-mozc fcitx5-configtool
+    fcitx5 fcitx5-mozc fcitx5-configtool noto-fonts-cjk
 
-# Additional fonts for Chinese/Japanese/Korean support
-yay -S ttf-ricty-nerd ttf-sarasa-gothic noto-fonts-cjk --needed --noconfirm
+# Additional AUR packages
+yay -S --needed --noconfirm wifitui-bin dracula-gtk-theme-full tela-icon-theme
 ```
 
 - WM/Compositor: [Hyprland](https://hypr.land/)
