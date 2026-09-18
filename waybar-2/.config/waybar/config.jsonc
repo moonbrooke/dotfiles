@@ -196,6 +196,6 @@
     "custom/power":{
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/power.sh",
-        "format": "󰣇"
+        "format": "moonbrooke"
     }
 }
