@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-dbus-launch notify-send "Getting list of available Wi-Fi networks..."
+notify-send "Getting list of available Wi-Fi networks..."
 
 WIFI_LIST=$(nmcli --fields "SSID,SECURITY" device wifi list | sed 1d | sed 's/  */ /g' | sed -E "s/WPA1 WPA2/WPA/g" | sed -E "s/802.1X//g" | sort | uniq)
 
 if [[ "$WIFI_LIST" =~ "WIFI is disabled" ]]; then
-    dbus-launch notify-send "Wi-Fi is currently disabled."
+    notify-send "Wi-Fi is currently disabled."
     exit 1
 fi
 
@@ -20,27 +20,27 @@ CHOSEN_SSID=$(echo "$CHOSEN_NETWORK" | awk '{$NF=""; print $0}' | sed 's/[ \t]*$
 KNOWN_CONNECTIONS=$(nmcli connection show | awk '{print $1}')
 
 if echo "$KNOWN_CONNECTIONS" | grep -q -w "$CHOSEN_SSID"; then
-    dbus-launch notify-send "Connecting to $CHOSEN_SSID..."
+    notify-send "Connecting to $CHOSEN_SSID..."
     SUCCESS_MESSAGE=$(nmcli connection up id "$CHOSEN_SSID" 2>&1)
 else
     if [[ "$CHOSEN_NETWORK" =~ "--" ]]; then
-        dbus-launch notify-send "Connecting to open network $CHOSEN_SSID..."
+        notify-send "Connecting to open network $CHOSEN_SSID..."
         SUCCESS_MESSAGE=$(nmcli device wifi connect "$CHOSEN_SSID" 2>&1)
     else
         WIFI_PASSWORD=$(rofi -dmenu -password -p "Password for $CHOSEN_SSID: " -lines 0)
         
         if [ -z "$WIFI_PASSWORD" ]; then
-            dbus-launch notify-send "Connection cancelled."
+            notify-send "Connection cancelled."
             exit 0
         fi
 
-        dbus-launch notify-send "Connecting to $CHOSEN_SSID..."
+        notify-send "Connecting to $CHOSEN_SSID..."
         SUCCESS_MESSAGE=$(nmcli device wifi connect "$CHOSEN_SSID" password "$WIFI_PASSWORD" 2>&1)
     fi
 fi
 
 if [[ "$SUCCESS_MESSAGE" == *"successfully"* ]]; then
-    dbus-launch notify-send "Successfully connected to $CHOSEN_SSID."
+    notify-send "Successfully connected to $CHOSEN_SSID."
 else
-    dbus-launch notify-send "Failed to connect to $CHOSEN_SSID." "$SUCCESS_MESSAGE"
+    notify-send "Failed to connect to $CHOSEN_SSID." "$SUCCESS_MESSAGE"
 fi
