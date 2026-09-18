@@ -116,3 +116,5 @@ export PATH="$PATH:/home/moonbrooke/.lmstudio/bin"
 # End of LM Studio CLI section
 
 eval "$(/home/moonbrooke/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
