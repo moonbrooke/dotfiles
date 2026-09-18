@@ -118,3 +118,6 @@ export PATH="$PATH:/home/moonbrooke/.lmstudio/bin"
 eval "$(/home/moonbrooke/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+
+# opencode
+export PATH=/home/moonbrooke/.opencode/bin:$PATH
