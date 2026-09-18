@@ -163,8 +163,8 @@
 }
 
 #custom-power {
-    font-size: 16px;
+    font-size: 14px;
     color: @black;
     background: @red;
-    padding: 5px 15px 5px 15px;
+    padding: 0px 15px 0px 15px;
 }
