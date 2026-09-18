@@ -121,3 +121,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
 # opencode
 export PATH=/home/moonbrooke/.opencode/bin:$PATH
+
+# Pi
+export PATH="/home/moonbrooke/.local/share/mise/installs/node/26.9.0/bin:$PATH"
