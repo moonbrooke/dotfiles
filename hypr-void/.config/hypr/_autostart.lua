@@ -15,8 +15,5 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("awww-daemon")
     hl.exec_cmd("fcitx5")
     hl.exec_cmd("waybar")
-    -- xfconfd is D-Bus activated on demand (org.xfce.Xfconf.service);
-    -- no manual dbus-launch needed under a shared session bus.
-    -- hl.exec_cmd("/usr/lib/xfce4/xfconf/xfconfd")
     hl.exec_cmd("udiskie --automount --no-notify --no-tray")
 end)
