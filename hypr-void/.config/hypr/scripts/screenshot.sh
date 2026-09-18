@@ -21,4 +21,4 @@ else
     exit 1
 fi
 
-notify-send -a "$TYPE Screenshot" -i $FILEPATH "$TYPE Screenshot" "Screenshot saved as <b>$FILENAME</b>"
+dbus-launch notify-send -a "$TYPE Screenshot" -i $FILEPATH "$TYPE Screenshot" "Screenshot saved as <b>$FILENAME</b>"

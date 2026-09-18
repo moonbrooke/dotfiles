@@ -3,7 +3,7 @@
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 
 if [ ! -d "$WALLPAPER_DIR" ]; then
-    notify-send "Error" "Wallpaper directory not found: $WALLPAPER_DIR"
+    dbus-launch notify-send "Error" "Wallpaper directory not found: $WALLPAPER_DIR"
     exit 1
 fi
 
@@ -35,4 +35,4 @@ awww img "$FULL_PATH" \
     --transition-angle 30 \
     --transition-step 90
 
-notify-send -t 2000 "Wallpaper Updated" "$SELECTED"
+dbus-launch notify-send -t 2000 "Wallpaper Updated" "$SELECTED"
