@@ -21,6 +21,7 @@ export MANPAGER="nvim +Man!"
 # export LANG=en_US.UTF-8
 
 export EDITOR="nvim"
+export VISUAL="nvim"
 
 # Compilation flags
 export ARCHFLAGS="-arch $(uname -m)"
@@ -78,7 +79,7 @@ alias lla="ll --color -h --group-directories-first"
 alias dirsize="du -sh"
 alias grep="grep --color=auto"
 alias fcfv="fc-cache -fv"
-alias snvim="sudo -E -s nvim"
+alias snvim="sudoedit"
 alias untar="tar -zxvf"
 
 alias pminfo="yay -Si"
@@ -87,12 +88,18 @@ alias pmu="sudo pacman -R"
 alias pml="yay -Q"
 alias pmc="du -hd1 /var/cache/pacman"
 alias yayc="du -hd1 ~/.cache/yay"
-alias ccc="du -hd1 ~/.cache"
 alias pmclean="sudo find /var/cache/pacman/pkg/ -mindepth 1 -type d -empty -delete; yay -Scc"
-alias pmconf="sudo -E -s nvim /etc/pacman.conf"
-alias xrco="sudo xbps-remove -o; sudo xbps-remove -O"
+alias pmconf="sudoedit /etc/pacman.conf"
+
+alias ccc="du -hd1 ~/.cache"
 alias brcc="brew cleanup --prune=all"
 alias gocc="go clean -cache"
+
+alias xi="sudo xbps-install -S"
+alias xu="sudo xbps-install -Su"
+alias xr="sudo xbps-remove -R"
+alias xs="xbps-query -Rs"
+alias xrco="sudo xbps-remove -o; sudo xbps-remove -O"
 
 alias gaa="git add ."
 alias gcms="git commit -m"
@@ -100,7 +107,6 @@ alias gsmi="git submodule update --init --recursive"
 alias gsmu="git pull --recurse-submodules; git submodule update --remote --merge"
 
 alias cava="cava -p ~/.config/cava/tokyonight"
-alias gol="golazo"
 
 # NextDNS
 alias ndst="sudo nextdns start; sudo nextdns activate; echo 'NextDNS Started ✅'"
