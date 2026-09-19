@@ -4,7 +4,7 @@ Dotfiles for my ~~Arch Linux~~ Void Linux setup. Only [Hyprland](https://hypr.la
 
 ### Setup
 
-**IMPORTANT:** DO NOT USE the install scripts as they are intended for personal usage purpose. And folders in this repo are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). **Use at your own risk**!
+**IMPORTANT:** DO NOT USE the install scripts as they are intended for personal purpose. And folders in this repo are structured to create symlinks using [GNU Stow](https://www.gnu.org/software/stow/). **Use at your own risk**!
 
 Clone the repo into your home directory then `cd` into it. Run `stow <folder-name>` to create the symlink in your `~/.config` folder.
 
@@ -16,7 +16,7 @@ btop dunst fastfetch hypr-void foot nvim rofi waybar-2 scripts yazi zshrc mimeap
 ```
 
 - WM/Compositor: [Hyprland](https://hypr.land/)
-- Display Manager: None (Login via TTY then run `start-hyprland`)
+- Display Manager: None (Login via TTY)
 - Colors: [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
 - Terminal: [foot](https://codeberg.org/dnkl/foot)
 - Shell: [zsh](https://www.zsh.org/)
@@ -31,7 +31,7 @@ btop dunst fastfetch hypr-void foot nvim rofi waybar-2 scripts yazi zshrc mimeap
 
 ### Screenshot
 
-> Might be a bit outdated.
+> Might be a bit outdated, but accurate for the most part.
 
 Screenshot with Waybar, btop, fastfetch, ncmpcpp, Cava, Bitwig Studio, Rofi, and dunst notification.
 
