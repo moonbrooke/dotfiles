@@ -104,11 +104,11 @@ alias ndsp="sudo nextdns deactivate; sudo nextdns stop; echo 'NextDNS Stopped âœ
 alias ndss="nextdns status"
 
 # WiFi
-alias wfget="iwctl station wlan0 get-networks"
+alias wfget="iwctl station wlo1 get-networks"
 
 wfcon() {
     read -r "wifi_name?Enter WiFi name: "
-    iwctl station wlan0 connect "$wifi_name" --passphrase --ask
+    iwctl station wlo1 connect "$wifi_name" --passphrase --ask
 }
 
 # Added by LM Studio CLI (lms)
