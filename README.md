@@ -1,5 +1,7 @@
 # dotfiles
 
+**Sept 17, 2026**: Switched to Void Linux.
+
 Dotfiles for my ~~Arch Linux~~ Void Linux setup. Only [Hyprland](https://hypr.land/) setup is used regularly. The other WM configs in this dotfiles are either experimental or abandoned.
 
 ### Setup
