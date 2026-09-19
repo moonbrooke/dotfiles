@@ -57,7 +57,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Command not found
 command_not_found_handler() {
-    printf "%s? I don't know what it is\n" "$1" >&2
+    printf "\e[1;31m%s\e[0m? I don't know what it is\n" "$1" >&2
     return 127
 }
 
