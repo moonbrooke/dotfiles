@@ -12,12 +12,10 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="half-life"
 
-# User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
 export MANPAGER="nvim +Man!"
 
-# You may need to manually set your language environment
+# Manually set language environment
 # export LANG=en_US.UTF-8
 
 export EDITOR="nvim"
@@ -59,7 +57,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Command not found
 command_not_found_handler() {
-	printf "%s%s? I don't know what it is\n" "$acc" "$0" >&2
+    printf "%s? I don't know what it is\n" "$1" >&2
     return 127
 }
 
@@ -82,6 +80,7 @@ alias fcfv="fc-cache -fv"
 alias snvim="sudoedit"
 alias untar="tar -zxvf"
 
+# Arch
 alias pminfo="yay -Si"
 alias pmi="sudo pacman -S"
 alias pmu="sudo pacman -R"
@@ -95,12 +94,14 @@ alias ccc="du -hd1 ~/.cache"
 alias brcc="brew cleanup --prune=all"
 alias gocc="go clean -cache"
 
+# Void
 alias xi="sudo xbps-install -S"
 alias xu="sudo xbps-install -Su"
 alias xr="sudo xbps-remove -R"
 alias xs="xbps-query -Rs"
 alias xrco="sudo xbps-remove -o; sudo xbps-remove -O"
 
+# Git
 alias gaa="git add ."
 alias gcms="git commit -m"
 alias gsmi="git submodule update --init --recursive"
