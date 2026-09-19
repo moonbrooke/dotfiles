@@ -2,4 +2,4 @@
 
 ~/.config/hypr/scripts/close-all.sh
 sleep 2
-systemctl poweroff --no-wall
+loginctl poweroff
