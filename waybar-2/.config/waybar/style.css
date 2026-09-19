@@ -38,7 +38,7 @@
     font-family: "English Football Club Badges";
 }
 
-#battery,
+/* #battery, */
 #clock,
 #cpu,
 #custom-logo,
@@ -66,7 +66,7 @@
     font-size: 12px;
 }
 
-#battery.warning.discharging,
+/* #battery.warning.discharging, */
 #memory.warning,
 #network.disconnected,
 #temperature.warning {
@@ -136,13 +136,13 @@
 #temperature {
 }
 
-#battery.critical {
-    color: @yellow;
-}
-
-#battery.warning {
-    color: @red;
-}
+/* #battery.critical { */
+/*     color: @yellow; */
+/* } */
+/**/
+/* #battery.warning { */
+/*     color: @red; */
+/* } */
 
 #tray {
 }
@@ -163,6 +163,13 @@
 }
 
 #custom-power {
+    font-size: 14px;
+    color: @black;
+    background: @red;
+    padding: 0px 15px 0px 15px;
+}
+
+#battery {
     font-size: 14px;
     color: @black;
     background: @red;

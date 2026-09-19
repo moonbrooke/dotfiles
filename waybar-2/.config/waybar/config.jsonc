@@ -15,11 +15,11 @@
         // "memory",
         // "cpu",
         // "temperature",
-        "battery",
         "pulseaudio",
         "network",
         "tray",
-        "custom/power"
+        "battery"
+        // "custom/power"
     ],
 
     "custom/logo": {
@@ -194,8 +194,9 @@
     },
 
     "custom/power":{
+        "format": "{text}",
         "tooltip": false,
-        "on-click": "~/.config/hypr/scripts/power.sh",
-        "format": "moonbrooke"
+        "exec": "whoami",
+        "on-click": "~/.config/hypr/scripts/power.sh"
     }
 }
