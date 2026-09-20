@@ -100,6 +100,8 @@ alias xu="sudo xbps-install -Su"
 alias xr="sudo xbps-remove -R"
 alias xs="xbps-query -Rs"
 alias xrco="sudo xbps-remove -o; sudo xbps-remove -O"
+alias xrcc="sudo rm -rf /var/cache/xbps/*"
+alias xrcs="du -sh /var/cache/xbps"
 
 # Git
 alias gaa="git add ."
