@@ -30,6 +30,7 @@ alias pmconf="sudoedit /etc/pacman.conf"
 alias ccc="du -hd1 ~/.cache"
 alias brcc="brew cleanup --prune=all"
 alias gocc="go clean -cache"
+alias mscc="mise cache clear"
 
 # Void
 alias xi="sudo xbps-install -S"
