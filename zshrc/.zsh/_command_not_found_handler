@@ -3,16 +3,17 @@ command_not_found_handler() {
     local cmd="$1"
 
     local messages=(
-        "\e[1;31m%s\e[0m? I don't know what it is ¯\_(ツ)_/¯"
-        "\e[1;31m%s\e[0m was blown up by \e[1;32mCreeper\e[0m"
-        "Never heard of \e[1;31m%s\e[0m in my life."
-        "\e[1;31m%s\e[0m tried to swim in lava"
-        "\e[1;31m%s\e[0m? Pretty sure you just made that up."
-        "\e[1;31m%s\e[0m was killed by \e[1;33m[Intentional Game Design]\e[0m"
-        "Are you sure \e[1;31m%s\e[0m is a real command?"
-        "\e[1;31m%s\e[0m hit the ground too hard"
-        "404: \e[1;31m%s\e[0m command not found."
-        "\e[1;31m%s\e[0m went off with a bang"
+        "🤷 \e[1;31m%s\e[0m? I don't know what it is."
+        "🤷 Never heard of \e[1;31m%s\e[0m in my life."
+        "🤔 \e[1;31m%s\e[0m? Pretty sure you just made that up."
+        "🤔 Are you sure \e[1;31m%s\e[0m is a real command?"
+        "⚠️ 404: \e[1;31m%s\e[0m command not found."
+        "🤷 Nice try, but \e[1;31m%s\e[0m isn't in my vocabulary."
+        "🤔 \e[1;31m%s\e[0m? Did your cat just walk across the keyboard?"
+        "⚠️ Instructions unclear, \e[1;31m%s\e[0m isn't a thing."
+        "🤔 \e[1;31m%s\e[0m? That's a typo and you know it."
+        "🤷 I checked every line of PATH, and \e[1;31m%s\e[0m is nowhere in sight."
+        "⚠️ \e[1;31m%s\e[0m: Command lost in the void."
     )
 
     local rand_num=$(od -An -N2 -i /dev/urandom | tr -d ' ')
