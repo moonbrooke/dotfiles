@@ -16,6 +16,7 @@ alias grep="grep --color=auto"
 alias fcfv="fc-cache -fv"
 alias snvim="sudoedit"
 alias untar="tar -zxvf"
+alias ff="fastfetch"
 
 # Arch
 alias pminfo="yay -Si"
