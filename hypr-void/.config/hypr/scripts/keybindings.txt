@@ -8,6 +8,7 @@ Super + Period                      | Launch emoji picker
 Super + E                           | Launch file manager
 Super + Shift + W                   | Launch wallpaper switcher
 Super + L or Copilot Key            | Switch layout
+Super + P                           | Display mode switcher
 Super + Comma                       | Toggle animation
 Super + C                           | Toggle gaps
 Super + G                           | Toggle game mode

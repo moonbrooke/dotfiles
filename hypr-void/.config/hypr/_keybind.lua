@@ -21,6 +21,7 @@ local keybinds_helper = "pkill rofi || ~/.config/hypr/scripts/keybinds.sh"
 local emoji = "~/.config/hypr/scripts/emoji.sh"
 local ocr = "~/.config/hypr/scripts/ocr.sh"
 local wallpaper = "~/.config/hypr/scripts/wallpaper.sh"
+local monitor = "~/scripts/monitor-switch"
 
 local mainMod = "SUPER"
 
@@ -33,6 +34,7 @@ hl.bind(mainMod .. " + F", function ()
     hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
     hl.dispatch(hl.dsp.window.center())
 end)
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(monitor))
 hl.bind("F11", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind("ALT + RETURN", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(gamemode))

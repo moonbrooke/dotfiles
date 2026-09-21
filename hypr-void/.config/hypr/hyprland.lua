@@ -1,4 +1,5 @@
 require("_monitor")
+pcall(require, "_monitor_state")
 require("_env")
 require("_autostart")
 require("_appearance")
