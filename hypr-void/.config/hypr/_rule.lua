@@ -16,6 +16,7 @@ hl.window_rule({ match = { class = "vlc" }, opacity = "1.0 override", float = tr
 hl.window_rule({ match = { class = "imv" }, float = true })
 hl.window_rule({ match = { class = "LM-Studio" }, workspace = 2, float = true })
 hl.window_rule({ match = { class = "Mailspring" }, workspace = 2, float = false })
+hl.window_rule({ match = { class = "org.qbittorrent.qBittorrent" }, workspace = 2, float = false })
 hl.window_rule({ match = { title = "^(.*YouTube.*)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { title = "^(.*Twitch.*)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = "^(.*keyviz.*)$" }, opacity = "1.0 override", decorate = false, no_blur = true, no_shadow = true, opaque = false, rounding = 0, no_dim = true })
