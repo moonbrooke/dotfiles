@@ -11,7 +11,7 @@ if ! hyprctl monitors all | grep -q "$EXTERNAL"; then
     exit 1
 fi
 
-MODE=$(printf "Laptop Only\nExternal Only\nExtend\nMirror" | rofi -dmenu -i -p "Display Mode:")
+MODE=$(printf "Laptop Only\nExternal Only\nExtend\nMirror" | rofi -dmenu -i -p "Display Mode:" -theme-str "window {width: 400; border: 3px; border-color: #24283b;}")
 
 case "$MODE" in
     "Laptop Only")
