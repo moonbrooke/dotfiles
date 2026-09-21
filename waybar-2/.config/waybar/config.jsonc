@@ -83,6 +83,7 @@
         "format": "{:%e %b, %I:%M %p}",
         "tooltip": true,
         "tooltip-format": "<tt>{calendar}</tt>",
+        "on-click": "foot calcurse",
         "calendar": {
             "mode"          : "year",
             "mode-mon-col"  : 4,
