@@ -1,0 +1,51 @@
+#!/usr/bin/env sh
+# set-gaps.sh - set Hyprland gaps_in and gaps_out live + persist across reloads
+# Usage: set-gaps.sh <gaps_in> <gaps_out>  (e.g. set-gaps.sh 5 10)
+
+STATE_FILE="$HOME/.cache/hypr_gaps"
+GAPS_IN_FILE="$HOME/.cache/hypr_gaps_in"
+GAPS_OUT_FILE="$HOME/.cache/hypr_gaps_out"
+
+usage() {
+    echo "Usage: $0 <gaps_in> <gaps_out>" >&2
+    echo "Example: $0 5 10" >&2
+    if command -v hyprctl >/dev/null 2>&1; then
+        hyprctl getoption general:gaps_in 2>/dev/null
+        hyprctl getoption general:gaps_out 2>/dev/null
+    fi
+    exit "${1:-1}"
+}
+
+case "$1" in
+    -h|--help) usage 0 ;;
+esac
+
+if [ "$#" -ne 2 ]; then
+    usage 1
+fi
+
+case "$1" in
+    ''|*[!0-9]*)
+        echo "Error: gaps_in must be a non-negative integer (got '$1')" >&2
+        usage 1
+        ;;
+esac
+
+case "$2" in
+    ''|*[!0-9]*)
+        echo "Error: gaps_out must be a non-negative integer (got '$2')" >&2
+        usage 1
+        ;;
+esac
+
+touch "$STATE_FILE" || { echo "Error: cannot write $STATE_FILE" >&2; exit 1; }
+
+printf '%s\n' "$1" > "$GAPS_IN_FILE" || { echo "Error: cannot write $GAPS_IN_FILE" >&2; exit 1; }
+printf '%s\n' "$2" > "$GAPS_OUT_FILE" || { echo "Error: cannot write $GAPS_OUT_FILE" >&2; exit 1; }
+
+if ! hyprctl eval "hl.config({ general = { gaps_in = $1, gaps_out = $2 } })"; then
+    echo "Error: live-apply via 'hyprctl eval' failed" >&2
+    exit 1
+fi
+
+notify-send 'Settings' "Gaps set to: in <span color=\"#9ece6a\"><b>$1</b></span>, out <span color=\"#9ece6a\"><b>$2</b></span>" -t 2500 -i dialog-information &

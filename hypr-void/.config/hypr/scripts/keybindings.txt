@@ -11,6 +11,7 @@ Super + L or Copilot Key            | Switch layout
 Super + P                           | Display mode switcher
 Super + Comma                       | Toggle animation
 Super + C                           | Toggle gaps
+Super + Shift + G                   | Launch gaps menu
 Super + G                           | Toggle game mode
 Super + Z                           | Zoom in
 Super + Shift + Z                   | Reset zoom

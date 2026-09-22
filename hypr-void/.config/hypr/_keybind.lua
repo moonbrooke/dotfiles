@@ -21,6 +21,7 @@ local keybinds_helper = "pkill rofi || ~/.config/hypr/scripts/keybinds.sh"
 local emoji = "~/.config/hypr/scripts/emoji.sh"
 local ocr = "~/.config/hypr/scripts/ocr.sh"
 local wallpaper = "~/.config/hypr/scripts/wallpaper.sh"
+local gaps_menu = "~/.config/hypr/scripts/gaps-menu.sh"
 local monitor = "~/scripts/monitor-switch"
 
 local mainMod = "SUPER"
@@ -39,6 +40,7 @@ hl.bind("F11", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind("ALT + RETURN", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(gamemode))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(gaps))
+hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd(gaps_menu))
 hl.bind(mainMod .. " + Comma", hl.dsp.exec_cmd(animation))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(notes))
 hl.bind(mainMod .. " + BackSlash", hl.dsp.exec_cmd(keybinds_helper))
