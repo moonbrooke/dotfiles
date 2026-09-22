@@ -11,7 +11,7 @@
       "palette": 189
     },
     "frame_focused": {
-      "hex": "#7aa2f7",
+      "hex": "#9ece6a",
       "palette": 75
     },
     "frame_important": {
@@ -19,7 +19,7 @@
       "palette": 141
     },
     "text_focused": {
-      "hex": "#7dcfff",
+      "hex": "#9ece6a",
       "palette": 81
     },
     "text_active": {
@@ -55,7 +55,7 @@
       "palette": 59
     },
     "overlay_focused_border": {
-      "hex": "#7aa2f7",
+      "hex": "#9ece6a",
       "palette": 75
     },
     "overlay_focused_text": {
