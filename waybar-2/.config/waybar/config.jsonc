@@ -81,7 +81,7 @@
     "clock#datetime": {
         "interval": 10,
         "format": "{:%a, %e %b at %I:%M %p}",
-        "tooltip": true,
+        "tooltip": false,
         "tooltip-format": "<tt>{calendar}</tt>",
         "on-click": "foot calcurse",
         "calendar": {
