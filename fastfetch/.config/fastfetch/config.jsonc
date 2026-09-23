@@ -8,10 +8,10 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        // "source": "void_small", // search for logos: fastfetch --list-logos or --print-logos
-        "type": "small",
+        "source": "void2_small", // search for logos: fastfetch --list-logos or --print-logos
+        // "type": "small",
         "padding": {
-	        "top": 1,
+	        "top": 2,
 	        "left": 2
 	    },
     },
@@ -37,11 +37,6 @@
             "key": "kernel",
             "keyColor": "35",
         },
-        //{
-        //    "type": "wm",
-        //    "key": "wm    ",
-        //    "keyColor": "35",
-        //},
         {
             "type": "packages",
             "key": "pkgs  ",
@@ -55,6 +50,11 @@
         {
             "type": "cpu",
             "key": "cpu   ",
+            "keyColor": "35",
+        },
+        {
+            "type": "gpu",
+            "key": "gpu   ",
             "keyColor": "35",
         },
         {
