@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+
+set -eu
+
+CONFIG="$HOME/.config/waybar/config.jsonc"
+
+if [ ! -f "$CONFIG" ]; then
+    echo "Error: config not found: $CONFIG" >&2
+    exit 1
+fi
+
+if grep -q '"position"[[:space:]]*:[[:space:]]*"top"' "$CONFIG"; then
+    NEW="bottom"
+    sed -i 's/"position"[[:space:]]*:[[:space:]]*"top"/"position": "bottom"/' "$CONFIG"
+elif grep -q '"position"[[:space:]]*:[[:space:]]*"bottom"' "$CONFIG"; then
+    NEW="top"
+    sed -i 's/"position"[[:space:]]*:[[:space:]]*"bottom"/"position": "top"/' "$CONFIG"
+else
+    echo "Error: no \"position\": \"top\"/\"bottom\" entry found in $CONFIG" >&2
+    exit 1
+fi
+
+echo "Waybar position set to: $NEW"
+
+POS=$(echo "$NEW" | tr '[:lower:]' '[:upper:]')
+notify-send 'Settings' "Waybar position set to <span color=\"#9ece6a\"><b>$POS</b></span>" -t 2500 -i dialog-information &
+
+pkill waybar || true
+sleep 0.5
+if pgrep -x waybar >/dev/null 2>&1; then
+    echo "Error: failed to stop old waybar instance" >&2
+    exit 1
+fi
+
+nohup waybar >/dev/null 2>&1 &
