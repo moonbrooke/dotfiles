@@ -23,7 +23,7 @@
       "palette": 81
     },
     "text_active": {
-      "hex": "#c0caf5",
+      "hex": "#9ece6a",
       "palette": 189
     },
     "text_disabled": {
@@ -127,11 +127,11 @@
       "palette": 81
     },
     "list_header_highlighted_background": {
-      "hex": "#7dcfff",
+      "hex": "#565f89",
       "palette": 81
     },
     "list_header_highlighted_foreground": {
-      "hex": "#1a1b26",
+      "hex": "#c0caf5",
       "palette": 235
     },
     "list_item_highlighted_background": {
@@ -143,11 +143,11 @@
       "palette": 189
     },
     "list_item_active_background": {
-      "hex": "#7aa2f7",
+      "hex": "#24283b",
       "palette": 75
     },
     "list_item_active_foreground": {
-      "hex": "#1a1b26",
+      "hex": "#bb9af7",
       "palette": 235
     },
     "list_item_active_highlighted_background": {
