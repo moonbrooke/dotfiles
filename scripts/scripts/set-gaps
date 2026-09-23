@@ -1,6 +1,4 @@
 #!/usr/bin/env sh
-# set-gaps.sh - set Hyprland gaps_in and gaps_out live + persist across reloads
-# Usage: set-gaps.sh <gaps_in> <gaps_out>  (e.g. set-gaps.sh 5 10)
 
 STATE_FILE="$HOME/.cache/hypr_gaps"
 GAPS_IN_FILE="$HOME/.cache/hypr_gaps_in"
