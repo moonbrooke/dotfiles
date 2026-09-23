@@ -1,0 +1,84 @@
+#!/bin/bash
+
+R=$'\e[m'
+B=$'\e[1m'
+G=$'\e[32m'
+M=$'\e[35m'
+
+LOGOW=19
+
+logos=(
+    "      _______"
+    "   _ \______ -"
+    "  | \  ___  \ |"
+    "  | | /   \ | |"
+    "  | | \___/ | |"
+    "  | \______ \_|"
+    "   -_______\\"
+)
+
+keys=(
+    "user  "
+    "os    "
+    "kernel"
+    "pkgs  "
+    "wm    "
+    "cpu   "
+    "memory"
+)
+
+user="${USER:-$(whoami)}"
+
+os_name=""
+if [ -r /etc/os-release ]; then
+    source /etc/os-release
+    os_name="${PRETTY_NAME:-$NAME}"
+fi
+os="${os_name} $(uname -m)"
+
+kernel="$(uname -s) $(uname -r)"
+
+pkg_count="$(xbps-query -l 2>/dev/null | wc -l)"
+pkg_count="$(echo "$pkg_count" | tr -d ' ')"
+pkgs="${pkg_count} (xbps)"
+
+wm_ver="$(Hyprland --version 2>/dev/null | head -n 1 | awk '{print $1, $2}')"
+if [ -z "$wm_ver" ]; then
+    wm_ver="$(hyprctl version 2>/dev/null | head -n 1 | awk '{print $1, $2}')"
+fi
+proto="(Wayland)"
+if [[ "${XDG_SESSION_TYPE,,}" == "x11" ]] || { [ -z "${WAYLAND_DISPLAY:-}" ] && [ -n "${DISPLAY:-}" ]; }; then
+    proto="(X11)"
+fi
+wm="${wm_ver} ${proto}"
+
+cpu_model="$(grep -m1 'model name' /proc/cpuinfo | cut -d: -f2 | sed 's/^ *//')"
+cpu="${cpu_model}"
+
+read -r mem_total mem_avail < <(awk '/^MemTotal:/{t=$2} /^MemAvailable:/{a=$2} END{print t, a}' /proc/meminfo)
+mem_used=$((mem_total - mem_avail))
+read -r used_gib total_gib pct < <(awk -v u="$mem_used" -v t="$mem_total" 'BEGIN{printf "%.2f %.2f %.0f", u/1048576, t/1048576, u*100/t}')
+mem="${used_gib} GiB / ${total_gib} GiB (${G}${pct}%${R})"
+
+values=(
+    "$user"
+    "$os"
+    "$kernel"
+    "$pkgs"
+    "$wm"
+    "$cpu"
+    "$mem"
+)
+
+printf '%s                   \n' "$R"
+
+for i in "${!logos[@]}"; do
+    logo="${logos[$i]}"
+    gap_len=$((LOGOW - ${#logo}))
+    gap="$(printf '%*s' "$gap_len" '')"
+    printf '%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n' \
+        "$B" "$G" "$logo" "$R" "$gap" "$R" \
+        "$B" "$M" "${keys[$i]}" "$R" "$R" "  " "$R" "${values[$i]}" "$R"
+done
+
+printf '                   \n%s' "$R"
