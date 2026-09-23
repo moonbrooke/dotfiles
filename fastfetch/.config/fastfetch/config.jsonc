@@ -11,7 +11,7 @@
         "source": "void2_small", // search for logos: fastfetch --list-logos or --print-logos
         // "type": "small",
         "padding": {
-	        "top": 2,
+	        "top": 1,
 	        "left": 2
 	    },
     },
@@ -52,11 +52,11 @@
             "key": "cpu   ",
             "keyColor": "35",
         },
-        {
-            "type": "gpu",
-            "key": "gpu   ",
-            "keyColor": "35",
-        },
+        // {
+        //     "type": "gpu",
+        //     "key": "gpu   ",
+        //     "keyColor": "35",
+        // },
         {
             "type": "memory",
             "key": "memory",
