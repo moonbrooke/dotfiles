@@ -2,27 +2,41 @@
 
 set -eu
 
-CONFIG="$HOME/.config/waybar/config.jsonc"
+STATE_FILE="$HOME/.cache/waybar_state"
+CONFIG_DIR="$HOME/.config/waybar"
+TOP="$CONFIG_DIR/top.jsonc"
+BOTTOM="$CONFIG_DIR/bottom.jsonc"
+LAUNCHER="$HOME/.config/hypr/scripts/launch-waybar.sh"
 
-if [ ! -f "$CONFIG" ]; then
-    echo "Error: config not found: $CONFIG" >&2
-    exit 1
+CURRENT=""
+if [ -f "$STATE_FILE" ]; then
+    CURRENT=$(tr -d '[:space:]' < "$STATE_FILE" 2>/dev/null || true)
 fi
 
-if grep -q '"position"[[:space:]]*:[[:space:]]*"top"' "$CONFIG"; then
+case "$CURRENT" in
+    top|bottom) ;;
+    *) CURRENT="top" ;;
+esac
+
+if [ "$CURRENT" = "top" ]; then
     NEW="bottom"
-    sed -i 's/"position"[[:space:]]*:[[:space:]]*"top"/"position": "bottom"/' "$CONFIG"
-elif grep -q '"position"[[:space:]]*:[[:space:]]*"bottom"' "$CONFIG"; then
-    NEW="top"
-    sed -i 's/"position"[[:space:]]*:[[:space:]]*"bottom"/"position": "top"/' "$CONFIG"
+    TARGET="$BOTTOM"
 else
-    echo "Error: no \"position\": \"top\"/\"bottom\" entry found in $CONFIG" >&2
+    NEW="top"
+    TARGET="$TOP"
+fi
+
+if [ ! -f "$TARGET" ]; then
+    notify-send 'Settings' "Waybar config not found: <b>$TARGET</b>" -t 2500 -i dialog-error &
+    echo "Error: config not found: $TARGET" >&2
     exit 1
 fi
+
+printf '%s\n' "$NEW" > "$STATE_FILE"
 
 echo "Waybar position set to: $NEW"
 
-POS=$(echo "$NEW" | tr '[:lower:]' '[:upper:]')
+POS=$(printf '%s' "$NEW" | tr '[:lower:]' '[:upper:]')
 notify-send 'Settings' "Waybar position set to <span color=\"#9ece6a\"><b>$POS</b></span>" -t 2500 -i dialog-information &
 
 pkill waybar || true
@@ -32,4 +46,8 @@ if pgrep -x waybar >/dev/null 2>&1; then
     exit 1
 fi
 
-waybar >/dev/null 2>&1 &
+if [ -x "$LAUNCHER" ]; then
+    "$LAUNCHER" -c "$TARGET" >/dev/null 2>&1 &
+else
+    waybar -c "$TARGET" >/dev/null 2>&1 &
+fi
