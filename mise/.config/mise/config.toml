@@ -1,0 +1,4 @@
+[tools]
+go = "latest"
+node = "latest"
+rust = "latest"
