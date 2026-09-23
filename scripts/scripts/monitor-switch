@@ -7,6 +7,7 @@ EXTERNAL="HDMI-A-1"
 STATE_FILE="$HOME/.config/hypr/_monitor_state.lua"
 
 if ! hyprctl monitors all | grep -q "$EXTERNAL"; then
+    notify-send 'Settings' "External monitor (<b>$EXTERNAL</b>) not detected." -t 2500 -i dialog-error &
     echo "External monitor ($EXTERNAL) not detected."
     exit 1
 fi
@@ -93,4 +94,5 @@ EOF
 esac
 
 mv "$STATE_FILE.tmp" "$STATE_FILE" || exit 1
-hyprctl reload || { echo "hyprctl reload failed"; exit 1; }
+hyprctl reload || { notify-send 'Settings' "Display mode switch to <b>$MODE</b> failed." -t 2500 -i dialog-error & echo "hyprctl reload failed"; exit 1; }
+notify-send 'Settings' "Display mode switched to <span color=\"#9ece6a\"><b>$MODE</b></span>" -t 2500 -i dialog-information &
