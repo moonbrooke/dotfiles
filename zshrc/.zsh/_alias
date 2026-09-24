@@ -44,6 +44,7 @@ alias xrcs="du -sh /var/cache/xbps"
 
 # Git
 alias gaa="git add ."
+alias gs="git status"
 alias gcms="git commit -m"
 alias gsmi="git submodule update --init --recursive"
 alias gsmu="git pull --recurse-submodules; git submodule update --remote --merge"
