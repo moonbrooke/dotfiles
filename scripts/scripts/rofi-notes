@@ -14,7 +14,9 @@ newnote () { \
 
 selected () { \
   choice=$(
-    echo -e "New\n$(find "$folder" -name ".git" -prune -o -type f \( -name "*.md" -o -name "*.txt" \) -printf '%T@ %P\n' | sort -nr | cut -d' ' -f2-)" | rofi -dmenu -i -l 11 -p "Select note or write new one: " -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}'
+    echo -e "✏️ New note...\n$(find "$folder" -name ".git" -prune -o -type f \( -name "*.md" -o -name "*.txt" \) -printf '%T@ %P\n' | sort -nr | cut -d' ' -f2-)" | rofi -dmenu -i -l 11 -p "Notes: " \
+        -mesg "<span foreground='#414868'>Select a note or write new one!</span>" \
+        -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}'
   )
   case $choice in
     New) newnote ;;
