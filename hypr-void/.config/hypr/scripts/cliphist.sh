@@ -76,6 +76,8 @@ case "$rofi_status" in
 
         if [[ "$confirmation" == "Yes" ]]; then
             printf '%s\n' "$selection" | cliphist delete
+            notify-send 'Clipboard' 'Clipboard entry has been deleted' -t 2000 \
+                --hint=string:x-dunst-stack-tag:clipboard -i dialog-information &
         fi
         ;;
 esac

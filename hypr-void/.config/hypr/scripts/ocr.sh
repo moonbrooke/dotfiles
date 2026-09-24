@@ -17,4 +17,4 @@ TEXT=$(grim -g "$SELECTION" - | tesseract stdin stdout --oem 1 --psm 6 -l jpn --
 [[ -z $TEXT ]] && exit 1
 
 printf "%s" "$TEXT" | wl-copy
-notify-send "Text Copied" "\"$TEXT\""
+notify-send "Text Copied" "\"$TEXT\"" -t 2000 --hint=string:x-dunst-stack-tag:ocr &

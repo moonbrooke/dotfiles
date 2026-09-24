@@ -21,4 +21,5 @@ else
     exit 1
 fi
 
-notify-send -a "$TYPE Screenshot" -i $FILEPATH "$TYPE Screenshot" "Screenshot saved as <b>$FILENAME</b>"
+notify-send -a "$TYPE Screenshot" -i $FILEPATH "$TYPE Screenshot" "Screenshot saved as <b>$FILENAME</b>" \
+    -t 2500 --hint=string:x-dunst-stack-tag:screenshot & 
