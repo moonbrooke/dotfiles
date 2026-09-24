@@ -42,7 +42,7 @@ hl.monitor({
     output = "$EXTERNAL",
     mode = "2560x1440@75",
     position = "0x0",
-    scale = 1.25,
+    scale = 1,
     disabled = false,
 })
 EOF
@@ -61,7 +61,7 @@ hl.monitor({
     output = "$EXTERNAL",
     mode = "2560x1440@75",
     position = "1920x0",
-    scale = 1.25,
+    scale = 1,
     disabled = false,
 })
 EOF
