@@ -1,0 +1,37 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "margin-left": 300,
+    "margin-right": 300,
+    "margin-top": 5,
+    "margin-bottom": 5,
+    "reload_style_on_change": true,
+
+    "include": [
+        "~/.config/waybar/modules/custom/*.jsonc",
+        "~/.config/waybar/modules/hyprland/*.jsonc",
+        "~/.config/waybar/modules/*.jsonc",
+    ],
+    
+    "modules-left": [
+        "custom/layout",
+        "custom/logo",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    // "modules-center": [
+    //     // "custom/weather",
+    //     // "clock#datetime"
+    // ],
+    "modules-right": [
+        // "memory",
+        // "cpu",
+        // "temperature",
+        "clock#datetime",
+        "pulseaudio",
+        "network",
+        "tray",
+        "battery"
+        // "custom/power"
+    ]
+}

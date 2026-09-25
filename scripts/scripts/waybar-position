@@ -6,6 +6,8 @@ STATE_FILE="$HOME/.cache/waybar_state"
 CONFIG_DIR="$HOME/.config/waybar"
 TOP="$CONFIG_DIR/top.jsonc"
 BOTTOM="$CONFIG_DIR/bottom.jsonc"
+ISLAND_TOP="$CONFIG_DIR/island-top.jsonc"
+ISLAND_BOTTOM="$CONFIG_DIR/island-bottom.jsonc"
 LAUNCHER="$HOME/.config/hypr/scripts/launch-waybar.sh"
 
 CURRENT=""
@@ -14,13 +16,19 @@ if [ -f "$STATE_FILE" ]; then
 fi
 
 case "$CURRENT" in
-    top|bottom) ;;
+    top|bottom|island-top|island-bottom) ;;
     *) CURRENT="top" ;;
 esac
 
 if [ "$CURRENT" = "top" ]; then
     NEW="bottom"
     TARGET="$BOTTOM"
+elif [ "$CURRENT" = "bottom" ]; then
+    NEW="island-top"
+    TARGET="$ISLAND_TOP"
+elif [ "$CURRENT" = "island-top" ]; then
+    NEW="island-bottom"
+    TARGET="$ISLAND_BOTTOM"
 else
     NEW="top"
     TARGET="$TOP"
