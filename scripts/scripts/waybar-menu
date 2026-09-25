@@ -1,0 +1,77 @@
+#!/usr/bin/env sh
+
+set -eu
+
+STATE_FILE="$HOME/.cache/waybar_state"
+CONFIG_DIR="$HOME/.config/waybar"
+LAUNCHER="$HOME/.config/hypr/scripts/launch-waybar.sh"
+ROFI_THEME="$HOME/.config/rofi/config.rasi"
+
+CONFIGS="top|Top
+bottom|Bottom
+island-top|Island Top
+island-bottom|Island Bottom"
+
+CURRENT=""
+if [ -f "$STATE_FILE" ]; then
+    CURRENT=$(tr -d '[:space:]' < "$STATE_FILE" 2>/dev/null || true)
+fi
+
+case "$CURRENT" in
+    top|bottom|island-top|island-bottom) ;;
+    *) CURRENT="top" ;;
+esac
+
+menu() {
+    printf '%s\n' "$CONFIGS" | while IFS='|' read -r KEY LABEL; do
+        if [ "$KEY" = "$CURRENT" ]; then
+            printf '%s (Current)\n' "$LABEL"
+        else
+            printf '%s\n' "$LABEL"
+        fi
+    done
+}
+
+CHOSEN=$(menu | rofi -dmenu -i -p "Waybar Switcher" -line-padding 4 \
+    -hide-scrollbar -theme "$ROFI_THEME" \
+    -theme-str 'window {width: 25%; border: 3px; border-color: #24283b;}')
+
+[ -z "$CHOSEN" ] && exit 0
+
+CHOSEN_KEY=$(printf '%s\n' "$CONFIGS" | while IFS='|' read -r KEY LABEL; do
+    if [ "$LABEL" = "$CHOSEN" ]; then
+        printf '%s\n' "$KEY"
+        break
+    fi
+done)
+
+[ -z "$CHOSEN_KEY" ] && exit 0
+[ "$CHOSEN_KEY" = "$CURRENT" ] && exit 0
+
+TARGET="$CONFIG_DIR/$CHOSEN_KEY.jsonc"
+if [ ! -f "$TARGET" ]; then
+    notify-send 'Settings' "Waybar config not found: <b>$TARGET</b>" -t 2500 -i dialog-error &
+    echo "Error: config not found: $TARGET" >&2
+    exit 1
+fi
+
+printf '%s\n' "$CHOSEN_KEY" > "$STATE_FILE"
+
+echo "Waybar config set to: $CHOSEN_KEY"
+
+POS=$(printf '%s' "$CHOSEN_KEY" | tr '[:lower:]' '[:upper:]')
+notify-send 'Settings' "Waybar config set to <span color=\"#9ece6a\"><b>$POS</b></span>" -t 2500 \
+    --hint=string:x-dunst-stack-tag:waybar -i dialog-information &
+
+pkill waybar || true
+sleep 0.5
+if pgrep -x waybar >/dev/null 2>&1; then
+    echo "Error: failed to stop old waybar instance" >&2
+    exit 1
+fi
+
+if [ -x "$LAUNCHER" ]; then
+    "$LAUNCHER" -c "$TARGET" >/dev/null 2>&1 &
+else
+    waybar -c "$TARGET" >/dev/null 2>&1 &
+fi

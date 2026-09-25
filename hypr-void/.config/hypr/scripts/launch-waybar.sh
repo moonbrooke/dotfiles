@@ -11,6 +11,8 @@ if [ "$#" -eq 0 ]; then
 
     case "$STATE" in
         bottom) set -- -c "$CONFIG_DIR/bottom.jsonc" ;;
+        island-top) set -- -c "$CONFIG_DIR/island-top.jsonc" ;;
+        island-bottom) set -- -c "$CONFIG_DIR/island-bottom.jsonc" ;;
         *) set -- -c "$CONFIG_DIR/top.jsonc" ;;
     esac
 

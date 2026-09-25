@@ -12,7 +12,7 @@ local power_menu = "~/.config/hypr/scripts/power.sh"
 local cliphist = "~/.config/hypr/scripts/cliphist.sh"
 local run = "~/.config/hypr/scripts/run.sh"
 local restart_waybar = "pkill waybar; sleep 0.5; ~/.config/hypr/scripts/launch-waybar.sh &"
-local waybar_pos = "~/scripts/waybar-position"
+local waybar_menu = "~/scripts/waybar-menu"
 local wifi = "foot -T floating_wlctl wlctl"
 local gamemode = "~/.config/hypr/scripts/gamemode.sh"
 local animation = "~/.config/hypr/scripts/animation.sh"
@@ -68,7 +68,7 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(cliphist))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(run))
 hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd(emoji))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(restart_waybar))
-hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(waybar_pos))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(waybar_menu))
 -- hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bluetooth))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(wallpaper))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(wifi))
