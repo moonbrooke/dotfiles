@@ -60,20 +60,20 @@ on-notify=none
 #
 
 # Set font to font, as a Pango font description.
-font=monospace 10
+font=Monocraft 10
 
 # Set background color to color.
-background-color=#285577FF
+background-color=#1A1B26FF
 
 # Set text color to color.
-text-color=#FFFFFFFF
+text-color=#C0CAF5FF
 
 # Set width of notification popups.
-width=300
+width=400
 
 # Set maximum height of notification popups. Notifications whose text takes up
 # less space are shrunk to fit.
-height=100
+height=300
 
 # Set outer-margin of each edge to the size specified by directional. This
 # margin applies to the outside of the whole notification list.
@@ -86,13 +86,13 @@ outer-margin=0
 margin=10
 
 # Set padding on each side to the size specified by directional.
-padding=5
+padding=8
 
 # Set popup border size to px pixels.
 border-size=2
 
 # Set popup border color to color.
-border-color=#4C7899FF
+border-color=#C0CAF5FF
 
 # Set popup corner radius on each side to the size specified by directional.
 border-radius=0
@@ -151,6 +151,7 @@ history=1
 #
 # Default when grouped: (%g) <b>%s</b>\n%b
 format=<b>%s</b>\n%b
+# format = "<span size='x-large' font_desc='Monocraft 8' weight='bold'>%s</span>\n%b"
 
 # Set notification text alignment.
 text-alignment=left
@@ -188,4 +189,4 @@ layer=top
 # Show notifications at the specified position on the output. Supported values
 # are top-right, top-center, top-left, bottom-right, bottom-center, bottom-left,
 # center-right, center-left and center.
-anchor=top-right
+anchor=bottom-center
