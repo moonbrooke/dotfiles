@@ -1,0 +1,10 @@
+{
+    "custom/layout": {
+        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: dwindle.*/DW/p; s/.*str: master.*/MS/p; s/.*str: scrolling.*/SC/p; s/.*str: monocle.*/MN/p'",
+        "interval": "once",
+        "signal": 8,
+        "format": "{}",
+        "tooltip": true,
+        "tooltip-format": "Current Layout: <span color='#9ece6a'><b>{}</b></span>"
+    }
+}

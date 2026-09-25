@@ -1,0 +1,15 @@
+{
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "󰂰",
+        "format-muted": "MUTED",
+        "format-icons": {
+            "headphone": "VOL:",
+            "default": "VOL:"
+            // "default": ["󰕿","󰖀","󰕾"]
+        },
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip": false
+    }
+}

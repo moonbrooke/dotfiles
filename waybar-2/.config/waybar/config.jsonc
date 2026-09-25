@@ -1,6 +1,14 @@
 {
     "layer": "top",
     "position": "top",
+    "reload_style_on_change": true,
+
+    "include": [
+        "~/.config/waybar/modules/custom/*.jsonc",
+        "~/.config/waybar/modules/hyprland/*.jsonc",
+        "~/.config/waybar/modules/*.jsonc",
+    ],
+    
     "modules-left": [
         "custom/layout",
         "custom/logo",
@@ -20,184 +28,5 @@
         "tray",
         "battery"
         // "custom/power"
-    ],
-
-    "custom/logo": {
-        "on-click": "~/.config/hypr/scripts/menu.sh",
-        "tooltip-format": "Menu",
-        // "format": "󰣇 "
-        "format": "A"
-    },
-
-    "custom/layout": {
-        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: dwindle.*/DW/p; s/.*str: master.*/MS/p; s/.*str: scrolling.*/SC/p; s/.*str: monocle.*/MN/p'",
-        "interval": "once",
-        "signal": 8,
-        "format": "{}",
-        "tooltip": true,
-        "tooltip-format": "Current Layout: <span color='#9ece6a'><b>{}</b></span>"
-    },
-
-    "mpris": {
-        "format": "󰐌 {player} / {artist} - {title}",
-        "format-paused": "󰏥 {player} / {artist} - {title}",
-        "status-icons": {
-            "paused": "󰏥"
-        },
-        "title-len": 20,
-        "artist-len": 20
-    },
-
-    "battery": {
-        "interval": 10,
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format-time": " ({H}h{M}m)",
-        "format": "{icon} {capacity}%{time}",
-        "format-charging": "󰂄 {capacity}% {time}",
-        "format-charging-full": "󰂄 {capacity}%",
-        "format-full": "{icon} {capacity}%",
-        "format-alt": "{icon} {power}W",
-        "format-icons": [
-            "󰁺",
-            "󰁼",
-            "󰁿",
-            "󰂁",
-            "󰁹"
-        ],
-        "tooltip": false
-    },
-
-    "custom/weather": {
-        "format": "{}",
-        "tooltip": true,
-        "interval": 3600,
-        "exec": "~/scripts/waybar-wttr.sh",
-        "return-type": "json"
-    },
-    
-    "clock#datetime": {
-        "interval": 10,
-        "format": "{:%a, %e %b at %I:%M %p}",
-        "tooltip": false,
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "on-click": "foot calcurse",
-        "calendar": {
-            "mode"          : "year",
-            "mode-mon-col"  : 4,
-            "weeks-pos"     : "right",
-            "on-scroll"     : 1,
-            "format": {
-                "months":     "<span color='#7dcfff'><b>{}</b></span>",
-                "days":       "<span color='#c0caf5'><b>{}</b></span>",
-                "weeks":      "<span color='#9ece6a'><b>{}</b></span>",
-                "weekdays":   "<span color='#e0af68'><b>{}</b></span>",
-                "today":      "<span color='#f7768e'><b><u>{}</u></b></span>"
-            }
-        },
-    },
-
-    "cpu": {
-        "interval": 5,
-        "tooltip": false,
-        "format": "CPU: {usage}%",
-        "format-alt": "CPU: {load}",
-        "states": {
-            "warning": 70,
-            "critical": 90
-        }
-    },
-
-    "memory": {
-        "interval": 5,
-        "format": "RAM: {used:0.1f}G/{total:0.1f}G",
-        "states": {
-            "warning": 70,
-            "critical": 90
-        },
-        "tooltip": false
-    },
-
-    "network": {
-        "interval": 5,
-        "format-wifi": "NET: {essid}",
-        "format-ethernet": "ETH: {ifname}",
-        "format-disconnected": "NET: OFF",
-        "tooltip": false,
-        // "on-click": "kitty --class floating_nmtui -e nmtui"
-        "on-click": "foot -T floating_wlctl wlctl"
-    },
-
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 30,
-        "tooltip": false
-    },
-
-    "hyprland/workspaces": {
-        //"disable-scroll-wraparound": true,
-        //"smooth-scrolling-threshold": 4,
-        //"enable-bar-scroll": true,
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "<b>{icon}</b>",
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-            "9": [],
-            "10": []
-        },
-        "format-icons": {
-            // "5": "SUB1",
-            // "6": "SUB2",
-        }
-    },
-
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "󰂰",
-        "format-muted": "MUTED",
-        "format-icons": {
-            "headphone": "VOL:",
-            "default": "VOL:"
-            // "default": ["󰕿","󰖀","󰕾"]
-        },
-        "scroll-step": 5,
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "tooltip": false
-    },
-
-    "temperature": {
-        "critical-threshold": 90,
-        "interval": 5,
-        "format": "TEMP: {temperatureC}°",
-        // "format-icons": [
-        //     "",
-        //     "",
-        //     "",
-        //     "",
-        //     ""
-        // ],
-        "tooltip": false
-    },
-
-    "tray": {
-        "icon-size": 11,
-        "spacing": 10
-    },
-
-    "custom/power":{
-        "format": "{text}",
-        "tooltip": false,
-        "exec": "whoami",
-        "on-click": "~/.config/hypr/scripts/power.sh"
-    }
+    ]
 }

@@ -1,0 +1,9 @@
+{
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "~/scripts/waybar-wttr.sh",
+        "return-type": "json"
+    }
+}

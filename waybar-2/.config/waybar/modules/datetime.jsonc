@@ -1,0 +1,22 @@
+{
+    "clock#datetime": {
+        "interval": 10,
+        "format": "{:%a, %e %b at %I:%M %p}",
+        "tooltip": false,
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "on-click": "foot calcurse",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 4,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#7dcfff'><b>{}</b></span>",
+                "days":       "<span color='#c0caf5'><b>{}</b></span>",
+                "weeks":      "<span color='#9ece6a'><b>{}</b></span>",
+                "weekdays":   "<span color='#e0af68'><b>{}</b></span>",
+                "today":      "<span color='#f7768e'><b><u>{}</u></b></span>"
+            }
+        },
+    }
+}

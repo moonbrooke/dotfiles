@@ -1,0 +1,8 @@
+{
+    "custom/power":{
+        "format": "{text}",
+        "tooltip": false,
+        "exec": "whoami",
+        "on-click": "~/.config/hypr/scripts/power.sh"
+    }
+}

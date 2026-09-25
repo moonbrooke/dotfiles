@@ -1,0 +1,11 @@
+{
+    "mpris": {
+        "format": "󰐌 {player} / {artist} - {title}",
+        "format-paused": "󰏥 {player} / {artist} - {title}",
+        "status-icons": {
+            "paused": "󰏥"
+        },
+        "title-len": 20,
+        "artist-len": 20
+    }
+}

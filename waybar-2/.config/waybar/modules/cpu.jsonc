@@ -1,0 +1,12 @@
+{
+    "cpu": {
+        "interval": 5,
+        "tooltip": false,
+        "format": "CPU: {usage}%",
+        "format-alt": "CPU: {load}",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    }
+}
