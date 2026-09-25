@@ -1,0 +1,191 @@
+#
+# mako - configuration file example (unofficial, 2026-03-26)
+# See mako(5) man page for more information.
+#
+# All default values are used in this example.
+# CRITERIA information are not included in this example.
+# MODES information are not included in this example.
+#
+
+#
+# GLOBAL CONFIGURATION OPTIONS
+#
+
+# Set maximum number of expired notifications to keep in the history buffer to
+# n. If the buffer is full, newly expired notifications replace the oldest ones.
+# If 0, history is disabled.
+max-history=5
+
+# Sorts incoming notifications by time and/or priority in ascending(+) or
+# descending(-) order.
+sort=-time
+
+# Includes a config at the specified path. The path must be absolute or
+# otherwise start with ~/.
+#
+# mako can't parse option 'include=none' (default in the man page) currently.
+#include=none
+
+#
+# BINDING OPTIONS
+#
+# Supported actions: none, dismiss [--no-history], dismiss-all, dismiss-group,
+# invoke-action <action>, invoke-default-action, exec <command>.
+# See BINDING OPTIONS for more information.
+#
+
+# Performs the action when the left pointer button is pressed.
+on-button-left=invoke-default-action
+
+# Performs the action when the middle pointer button is pressed.
+on-button-middle=none
+
+# Performs the action when the right pointer button is pressed.
+on-button-right=dismiss
+
+# Performs the action when tapped via a touch device.
+on-touch=dismiss
+
+# Performs the action when the notification is opened.
+on-notify=none
+
+#
+# STYLE OPTIONS
+#
+# font: For more information on Pango font descriptions, see:
+# https://docs.gtk.org/Pango/type_func.FontDescription.from_string.html#description
+# color: See COLORS for more information.
+# directional: See DIRECTIONAL VALUES for more information.
+# format: See FORMAT SPECIFIERS for more information.
+#
+
+# Set font to font, as a Pango font description.
+font=monospace 10
+
+# Set background color to color.
+background-color=#285577FF
+
+# Set text color to color.
+text-color=#FFFFFFFF
+
+# Set width of notification popups.
+width=300
+
+# Set maximum height of notification popups. Notifications whose text takes up
+# less space are shrunk to fit.
+height=100
+
+# Set outer-margin of each edge to the size specified by directional. This
+# margin applies to the outside of the whole notification list.
+outer-margin=0
+
+# Set margin of each edge to the size specified by directional. This margin
+# applies to each individual notification. Note that it applies in addition to
+# outer-margin, meaning first and last notifications will use the sum of both
+# margins.
+margin=10
+
+# Set padding on each side to the size specified by directional.
+padding=5
+
+# Set popup border size to px pixels.
+border-size=2
+
+# Set popup border color to color.
+border-color=#4C7899FF
+
+# Set popup corner radius on each side to the size specified by directional.
+border-radius=0
+
+# Set popup progress indicator color to color. To draw the progress indicator on
+# top of the background color, use the over attribute. To replace the background
+# color, use the source attribute (this can be useful when the notification is
+# semi-transparent).
+#
+# Progress can be indicated in a notification by setting a hint, "value" to an
+# integer between 0 and 100 inclusive.
+progress-color=over #5588AAFF
+
+# Show icons in notifications.
+icons=1
+
+# Set maximum icon size to px pixels.
+max-icon-size=64
+
+# Paths to search for icons when a notification specifies a name instead of a
+# full path. Colon-delimited. This approximates the search algorithm used by the
+# XDG Icon Theme Specification, but does not support any of the theme metadata.
+# Therefore, if you want to search parent themes, you'll need to add them to the
+# path manually.
+#
+# The path should be the root of the icon theme, the categories and resolutions
+# will be searched for the most appropriate match.
+#
+# /usr/share/icons/hicolor and /usr/share/pixmaps are always searched.
+icon-path=""
+
+# Position of the icon relative to the displayed text. Valid options are left,
+# right, top and bottom.
+icon-location=left
+
+# Sets icon corner radius to px pixels.
+icon-border-radius=0
+
+# If 1, enable Pango markup. If 0, disable Pango markup. If enabled, Pango
+# markup will be interpreted in your format specifier and in the body of
+# notifications.
+markup=1
+
+# Applications may request an action to be associated with activating a
+# notification. Disabling this will cause mako to ignore these requests.
+actions=1
+
+# If set, mako will save notifications that have reached their timeout into the
+# history buffer instead of immediately deleting them. max-history determines
+# the size of the history buffer.
+history=1
+
+# Set notification format string to format. See FORMAT SPECIFIERS for more
+# information. To change this for grouped notifications, set it within a grouped
+# criteria.
+#
+# Default when grouped: (%g) <b>%s</b>\n%b
+format=<b>%s</b>\n%b
+
+# Set notification text alignment.
+text-alignment=left
+
+# Set the default timeout to timeout in milliseconds. To disable the timeout,
+# set it to zero.
+default-timeout=0
+
+# If set, mako will ignore the expire timeout sent by notifications and use the
+# one provided by default-timeout instead.
+ignore-timeout=0
+
+# A comma-separated list of criteria fields that will be compared to other
+# visible notifications to determine if this one should form a group with them.
+# All listed criteria must be exactly equal for two notifications to group.
+group-by=none
+
+# Set maximum number of visible notifications to n. Older notifications will be
+# hidden. If -1, all notifications are visible.
+max-visible=5
+
+# Show notifications on the specified output. If empty, notifications will
+# appear on the focused output.
+#
+# Requires the compositor to support the Wayland protocol xdg-output-unstable-v1
+# version 2.
+output=""
+
+# Arrange mako at the specified layer, relative to normal windows. Supported
+# values are background, bottom, top, and overlay. Using overlay will cause
+# notifications to be displayed above fullscreen windows, though this may also
+# occur at top depending on your compositor.
+layer=top
+
+# Show notifications at the specified position on the output. Supported values
+# are top-right, top-center, top-left, bottom-right, bottom-center, bottom-left,
+# center-right, center-left and center.
+anchor=top-right
