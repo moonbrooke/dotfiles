@@ -17,6 +17,7 @@ alias fcfv="fc-cache -fv"
 alias snvim="sudoedit"
 alias untar="tar -zxvf"
 alias ff="fastfetch"
+alias ffc="fastfetch -c ~/.config/fastfetch/catnap.jsonc"
 
 # Arch
 alias pminfo="yay -Si"
