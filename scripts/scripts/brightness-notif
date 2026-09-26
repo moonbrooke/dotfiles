@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script only handle the notification since the brightness control 
+# itself is handled by my laptop's built-in hardware functionality
+
+LEVEL=$(brightnessctl --machine-readable | awk -F ',' '{print $4}')
+
+notify-send 'Settings' "Brightness level: <span color=\"#9ece6a\"><b>$LEVEL</b></span>" -t 2500 \
+    --hint=string:x-dunst-stack-tag:brightness -i dialog-information &
