@@ -1,6 +1,6 @@
 {
     "custom/layout": {
-        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: dwindle.*/DW/p; s/.*str: master.*/MS/p; s/.*str: scrolling.*/SC/p; s/.*str: monocle.*/MN/p'",
+        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: dwindle.*/DWINDLE/p; s/.*str: master.*/MASTER/p; s/.*str: scrolling.*/SCROLLING/p; s/.*str: monocle.*/MONOCLE/p'",
         "interval": "once",
         "signal": 8,
         "format": "{}",
