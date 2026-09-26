@@ -1,7 +1,7 @@
 {
     "clock#datetime": {
         "interval": 10,
-        "format": "{:%a, %e %b at %I:%M %p}",
+        "format": "{:%a, %e %b / %I:%M %p}",
         "tooltip": false,
         "tooltip-format": "<tt>{calendar}</tt>",
         "on-click": "foot calcurse",

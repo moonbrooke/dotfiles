@@ -1,6 +1,6 @@
 {
     "hyprland/window": {
-        "format": "{}",
+        "format": "<span foreground='#c0caf5'>[{class}]</span> {title}",
         "max-length": 30,
         "tooltip": false
     }
