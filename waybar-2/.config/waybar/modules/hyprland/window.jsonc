@@ -2,6 +2,9 @@
     "hyprland/window": {
         "format": "<span foreground='#c0caf5'>[{class}]</span> {title}",
         "max-length": 30,
-        "tooltip": false
+        "tooltip": false,
+        "rewrite": {
+            ".*\\[\\]\\s*</span>\\s*": ""
+        }
     }
 }
