@@ -1,10 +1,9 @@
 {
     "custom/layout": {
-        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: dwindle.*/DWINDLE/p; s/.*str: master.*/MASTER/p; s/.*str: scrolling.*/SCROLLING/p; s/.*str: monocle.*/MONOCLE/p'",
+        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: \\(.*\\)/\\U\\1/p' | awk '{n=$0; a=(n==\"DWINDLE\"?\"DW\":n==\"MASTER\"?\"MS\":n==\"SCROLLING\"?\"SC\":n==\"MONOCLE\"?\"MN\":substr(n,1,2)); printf \"%s\\nCurrent Layout: <span color=\\\"#9ece6a\\\"><b>%s</b></span>\\n\", a, n}'",
         "interval": "once",
         "signal": 8,
-        "format": "{}",
-        "tooltip": true,
-        "tooltip-format": "Current Layout: <span color='#9ece6a'><b>{}</b></span>"
+        "format": "{text}",
+        "tooltip": true
     }
 }
