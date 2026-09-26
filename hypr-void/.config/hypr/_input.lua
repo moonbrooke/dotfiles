@@ -17,6 +17,7 @@ hl.config({
         hide_on_key_press = true,
         warp_on_change_workspace = 1,
         no_hardware_cursors = 0,
+        zoom_disable_aa = false,
     },
     gestures = {
         workspace_swipe_touch = false,
