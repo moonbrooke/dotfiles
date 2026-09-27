@@ -30,8 +30,8 @@ Super + Shift + Print               | Window screenshot
 Super + Q                           | Kill focused window
 Super + J                           | Toggle split horizontal/vertical
 Super + F                           | Toggle floating window
-Super + P                           | Toggle pin window
-Super + SHIFT + P                   | Toggle pseudotiling
+Super + H                           | Toggle pin window
+Super + Shift + P                   | Toggle pseudotiling
 Super + Right                       | Move focus to the right
 Super + Left                        | Move focus to the left
 Super + Tab                         | Cycle focus next
@@ -45,7 +45,7 @@ F11 or Alt + Return                 | Toggle fullscreen
 # === Workspace ===
 Super + [1,2,3,..]                  | Switch to workspace
 Super + Shift + [1,2,3,..]          | Move focused window to workspace
-Super + Ctrl + Shift + Ctrl + Right | Move to the next workspace
-Super + Ctrl + Shift + Ctrl + Left  | Move to the previous workspace
+Super + Ctrl + Shift + Right        | Move to the next workspace
+Super + Ctrl + Shift + Left         | Move to the previous workspace
 Super + S                           | Open scratchpad
 Super + Shift + S                   | Move window focused to scratchpad
