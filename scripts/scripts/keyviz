@@ -1,0 +1,813 @@
+#!/usr/bin/env python3
+import ctypes
+import json
+import os
+import re
+import select
+import signal
+import subprocess
+import sys
+import threading
+import time
+
+SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+LISTENER_CANDIDATES = [
+    os.path.join(SCRIPT_DIR, "listener.py"),
+    os.path.expanduser("~/wm/config/mangobar/scripts/listener.py"),
+    os.path.expanduser("~/.local/bin/listener.py"),
+]
+LISTENER_SCRIPT = next((p for p in LISTENER_CANDIDATES if os.path.isfile(p)), os.path.join(SCRIPT_DIR, "listener.py"))
+
+RUN_DIR = os.path.join(os.environ.get("XDG_RUNTIME_DIR", "/dev/shm"), "wm_keyviz")
+os.makedirs(RUN_DIR, exist_ok=True)
+
+CONFIG_DIR = os.path.expanduser("~/.config/keyviz")
+os.makedirs(CONFIG_DIR, exist_ok=True)
+
+STATE_FILE = os.path.join(RUN_DIR, "state")
+PID_FILE = os.path.join(RUN_DIR, "daemon.pid")
+LISTENER_PID_FILE = os.path.join(RUN_DIR, "listener.pid")
+ACTIVE_FILE = os.path.join(RUN_DIR, "active")
+POSITION_FILE = os.path.join(RUN_DIR, "position")
+CONFIG_POS_FILE = os.path.join(CONFIG_DIR, "position")
+SIZE_FILE = os.path.join(RUN_DIR, "size")
+CONFIG_SIZE_FILE = os.path.join(CONFIG_DIR, "size")
+
+TIMEOUT_MS = 850
+MAX_KEYS = 4
+
+SYMBOLS = {
+    "Up": "↑",
+    "Down": "↓",
+    "Left": "←",
+    "Right": "→",
+    "Enter": "↵",
+    "Backspace": "⌫",
+    "Tab": "⇥",
+    "Space": "␣",
+    "Esc": "Esc",
+    "Super": "󰘳",
+    "Ctrl": "Ctrl",
+    "Alt": "Alt",
+    "Shift": "⇧",
+    "Delete": "⌦",
+    "CapsLock": "⇪",
+}
+
+POSITIONS = {
+    "top-left": {"name": "Top-Left", "icon": "↖", "anchor": (True, False, True, False)},
+    "top-center": {"name": "Top-Center", "icon": "↑", "anchor": (True, False, False, False)},
+    "top-right": {"name": "Top-Right", "icon": "↗", "anchor": (True, False, False, True)},
+    "center-left": {"name": "Center-Left", "icon": "←", "anchor": (False, False, True, False)},
+    "center": {"name": "Center", "icon": "•", "anchor": (False, False, False, False)},
+    "center-right": {"name": "Center-Right", "icon": "→", "anchor": (False, False, False, True)},
+    "bottom-left": {"name": "Bottom-Left", "icon": "↙", "anchor": (False, True, True, False)},
+    "bottom-center": {"name": "Bottom-Center", "icon": "↓", "anchor": (False, True, False, False)},
+    "bottom-right": {"name": "Bottom-Right", "icon": "↘", "anchor": (False, True, False, True)},
+}
+
+SIZES = {
+    "small": {
+        "name": "Small (13px)",
+        "font_size": 13,
+        "keycap_pad": "3px 8px",
+        "container_pad": "4px 8px",
+        "radius": 8,
+    },
+    "medium": {
+        "name": "Medium (17px)",
+        "font_size": 17,
+        "keycap_pad": "5px 12px",
+        "container_pad": "6px 12px",
+        "radius": 10,
+    },
+    "large": {
+        "name": "Large (22px)",
+        "font_size": 22,
+        "keycap_pad": "8px 16px",
+        "container_pad": "8px 16px",
+        "radius": 12,
+    },
+}
+
+HAS_GTK = False
+try:
+    if os.environ.get("WAYLAND_DISPLAY"):
+        import gi
+        gi.require_version("Gtk", "3.0")
+        gi.require_version("GtkLayerShell", "0.1")
+        from gi.repository import Gtk, GtkLayerShell, Gdk, GLib
+        HAS_GTK = True
+except Exception:
+    HAS_GTK = False
+
+
+def hex_to_rgba(hex_str: str, alpha: float) -> str:
+    hex_str = hex_str.lstrip("#")
+    if len(hex_str) == 6:
+        r, g, b = tuple(int(hex_str[i : i + 2], 16) for i in (0, 2, 4))
+        return f"rgba({r}, {g}, {b}, {alpha})"
+    elif len(hex_str) == 8:
+        r, g, b, _ = tuple(int(hex_str[i : i + 2], 16) for i in (0, 2, 4, 6))
+        return f"rgba({r}, {g}, {b}, {alpha})"
+    return f"rgba(30, 30, 46, {alpha})"
+
+
+def load_theme_colors() -> dict:
+    colors = {
+        "bg": "#1e1e2e",
+        "fg": "#cdd6f4",
+        "accent": "#b4befe",
+        "border": "#45475a",
+        "capsule_bg": "#313244",
+        "keyviz_color": "#b4befe",
+    }
+    theme_candidates = [
+        os.path.join(SCRIPT_DIR, "../theme.css"),
+        os.path.expanduser("~/wm/config/mangobar/theme.css"),
+    ]
+    for p in theme_candidates:
+        if os.path.exists(p):
+            try:
+                with open(p, "r") as f:
+                    content = f.read()
+                for m in re.finditer(r"@define-color\s+(\w+)\s+(#[0-9a-fA-F]+);", content):
+                    colors[m.group(1)] = m.group(2)
+                break
+            except Exception:
+                pass
+    return colors
+
+
+def build_css(colors: dict, size_cfg: dict) -> str:
+    fs = size_cfg["font_size"]
+    k_pad = size_cfg["keycap_pad"]
+    c_pad = size_cfg["container_pad"]
+    rad = size_cfg["radius"]
+    return f"""
+    window {{
+        background-color: transparent;
+    }}
+    .keyviz-container {{
+        background-color: {hex_to_rgba(colors.get('bg', '#1e1e2e'), 0.88)};
+        border: 1px solid {hex_to_rgba(colors.get('border', '#45475a'), 0.75)};
+        border-radius: {rad}px;
+        padding: {c_pad};
+    }}
+    .keycap-box {{
+        background-color: {hex_to_rgba(colors.get('capsule_bg', '#313244'), 0.85)};
+        border: 1px solid {hex_to_rgba(colors.get('accent', '#b4befe'), 0.35)};
+        border-radius: 6px;
+        padding: {k_pad};
+        margin: 0 4px;
+    }}
+    .keycap-label {{
+        color: {colors.get('fg', '#cdd6f4')};
+        font-family: 'Maple Mono NF', 'MapleMono NF', monospace;
+        font-size: {fs}px;
+        font-weight: bold;
+    }}
+    .keycap-combo {{
+        color: {colors.get('accent', '#b4befe')};
+        font-family: 'Maple Mono NF', 'MapleMono NF', monospace;
+        font-size: {fs}px;
+        font-weight: bold;
+    }}
+    """
+
+
+def format_combo(combo: str) -> str:
+    if not combo:
+        return ""
+    parts = [p.strip() for p in combo.split("+")]
+    formatted = [SYMBOLS.get(p, p) for p in parts]
+    return "+".join(formatted)
+
+
+def is_active() -> bool:
+    if os.path.exists(ACTIVE_FILE):
+        try:
+            with open(ACTIVE_FILE, "r") as f:
+                return f.read().strip() == "1"
+        except Exception:
+            return False
+    return False
+
+
+def set_active(active: bool):
+    with open(ACTIVE_FILE, "w") as f:
+        f.write("1" if active else "0")
+
+
+def get_position() -> str:
+    for p in (POSITION_FILE, CONFIG_POS_FILE):
+        if os.path.exists(p):
+            try:
+                with open(p, "r") as f:
+                    pos = f.read().strip()
+                    if pos in POSITIONS:
+                        return pos
+            except Exception:
+                pass
+    return "bottom-center"
+
+
+def set_position(pos: str):
+    if pos not in POSITIONS:
+        return
+    for p in (POSITION_FILE, CONFIG_POS_FILE):
+        try:
+            with open(p, "w") as f:
+                f.write(pos)
+        except Exception:
+            pass
+    pid = get_daemon_pid()
+    if pid:
+        try:
+            os.kill(pid, signal.SIGUSR2)
+        except Exception:
+            pass
+
+
+def get_size() -> str:
+    for p in (SIZE_FILE, CONFIG_SIZE_FILE):
+        if os.path.exists(p):
+            try:
+                with open(p, "r") as f:
+                    sz = f.read().strip()
+                    if sz in SIZES:
+                        return sz
+            except Exception:
+                pass
+    return "medium"
+
+
+def set_size(size_key: str):
+    if size_key not in SIZES:
+        return
+    for p in (SIZE_FILE, CONFIG_SIZE_FILE):
+        try:
+            with open(p, "w") as f:
+                f.write(size_key)
+        except Exception:
+            pass
+    pid = get_daemon_pid()
+    if pid:
+        try:
+            os.kill(pid, signal.SIGUSR2)
+        except Exception:
+            pass
+
+
+def apply_position(win, pos_key: str):
+    if not win or not HAS_GTK:
+        return
+    cfg = POSITIONS.get(pos_key, POSITIONS["bottom-center"])
+    top, bottom, left, right = cfg["anchor"]
+
+    GtkLayerShell.set_anchor(win, GtkLayerShell.Edge.TOP, top)
+    GtkLayerShell.set_anchor(win, GtkLayerShell.Edge.BOTTOM, bottom)
+    GtkLayerShell.set_anchor(win, GtkLayerShell.Edge.LEFT, left)
+    GtkLayerShell.set_anchor(win, GtkLayerShell.Edge.RIGHT, right)
+
+    GtkLayerShell.set_margin(win, GtkLayerShell.Edge.TOP, 40 if top else 0)
+    GtkLayerShell.set_margin(win, GtkLayerShell.Edge.BOTTOM, 60 if bottom else 0)
+    GtkLayerShell.set_margin(win, GtkLayerShell.Edge.LEFT, 40 if left else 0)
+    GtkLayerShell.set_margin(win, GtkLayerShell.Edge.RIGHT, 40 if right else 0)
+
+
+def write_state(text: str):
+    tmp = STATE_FILE + ".tmp"
+    try:
+        with open(tmp, "w") as f:
+            f.write(text.strip())
+        os.replace(tmp, STATE_FILE)
+    except Exception:
+        pass
+
+
+def get_state() -> str:
+    return "󰌌" if is_active() else "󰌐"
+
+
+def signal_mangobar():
+    try:
+        subprocess.run(["pkill", "-SIGRTMIN+2", "mangobar"], stderr=subprocess.DEVNULL)
+    except Exception:
+        pass
+
+
+def is_daemon_running() -> bool:
+    pid = get_daemon_pid()
+    if pid:
+        try:
+            os.kill(pid, 0)
+            return True
+        except Exception:
+            pass
+    return False
+
+
+def get_daemon_pid() -> int | None:
+    if os.path.exists(PID_FILE):
+        try:
+            with open(PID_FILE, "r") as f:
+                return int(f.read().strip())
+        except Exception:
+            pass
+    return None
+
+
+def get_listener_pid() -> int | None:
+    if os.path.exists(LISTENER_PID_FILE):
+        try:
+            with open(LISTENER_PID_FILE, "r") as f:
+                return int(f.read().strip())
+        except Exception:
+            pass
+    return None
+
+
+def ensure_daemon():
+    if not is_daemon_running() and is_active():
+        subprocess.Popen(
+            [sys.executable, os.path.realpath(__file__), "daemon"],
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            start_new_session=True,
+        )
+
+
+def cmd_stop():
+    """Aggressively and reliably terminate keyviz daemon, listener.py, and all related python processes."""
+    set_active(False)
+
+    daemon_pid = get_daemon_pid()
+    listener_pid = get_listener_pid()
+    my_pid = os.getpid()
+
+    # 1. Kill recorded PIDs directly with SIGKILL
+    for pid in (daemon_pid, listener_pid):
+        if pid and pid != my_pid:
+            try:
+                os.kill(pid, signal.SIGKILL)
+            except Exception:
+                pass
+
+    # 2. Directly scan /proc to kill ANY process running listener.py or keyviz daemon
+    try:
+        for entry in os.listdir("/proc"):
+            if entry.isdigit():
+                p = int(entry)
+                if p == my_pid:
+                    continue
+                try:
+                    with open(f"/proc/{p}/cmdline", "rb") as f:
+                        cmdline = f.read().decode("utf-8", errors="ignore").replace("\x00", " ")
+                    if "listener.py" in cmdline or ("keyviz" in cmdline and "daemon" in cmdline):
+                        try:
+                            os.kill(p, signal.SIGKILL)
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
+    except Exception:
+        pass
+
+    # 3. Clean up pid files
+    for f in (PID_FILE, LISTENER_PID_FILE):
+        if os.path.exists(f):
+            try:
+                os.remove(f)
+            except Exception:
+                pass
+
+    write_state("󰌐")
+    signal_mangobar()
+    print("Keyviz and listener.py killed successfully.")
+
+
+def cmd_start():
+    set_active(True)
+    if not is_daemon_running():
+        ensure_daemon()
+    write_state("󰌌")
+    signal_mangobar()
+    print("Keyviz started.")
+
+
+def cmd_restart():
+    cmd_stop()
+    time.sleep(0.15)
+    cmd_start()
+
+
+def cmd_toggle():
+    new_state = not is_active()
+    if not new_state:
+        cmd_stop()
+    else:
+        cmd_start()
+
+
+def cmd_clear():
+    pid = get_daemon_pid()
+    if pid:
+        try:
+            os.kill(pid, signal.SIGUSR1)
+        except Exception:
+            pass
+    write_state("󰌌" if is_active() else "󰌐")
+    signal_mangobar()
+
+
+def cmd_status():
+    if is_active():
+        ensure_daemon()
+    print(get_state())
+
+
+def cmd_menu():
+    """Display 4x3 interactive Rofi placement and key size grid."""
+    current_pos = get_position()
+    current_sz = get_size()
+
+    # Layout arranged in columns for Rofi vertical flow:
+    # Col 1: Top-Left, Center-Left, Bottom-Left, Small (13px)
+    # Col 2: Top-Center, Center, Bottom-Center, Medium (17px)
+    # Col 3: Top-Right, Center-Right, Bottom-Right, Large (22px)
+    grid_items = [
+        ("pos", "top-left", "↖  Top-Left"),
+        ("pos", "center-left", "←  Center-Left"),
+        ("pos", "bottom-left", "↙  Bottom-Left"),
+        ("size", "small", "󰹍  Small (13px)"),
+        ("pos", "top-center", "↑  Top-Center"),
+        ("pos", "center", "•  Center"),
+        ("pos", "bottom-center", "↓  Bottom-Center"),
+        ("size", "medium", "󰹍  Medium (17px)"),
+        ("pos", "top-right", "↗  Top-Right"),
+        ("pos", "center-right", "→  Center-Right"),
+        ("pos", "bottom-right", "↘  Bottom-Right"),
+        ("size", "large", "󰹍  Large (22px)"),
+    ]
+
+    options = []
+    for kind, key, label in grid_items:
+        if kind == "pos" and key == current_pos:
+            options.append(f"{label}  ✓")
+        elif kind == "size" and key == current_sz:
+            options.append(f"{label}  ✓")
+        else:
+            options.append(label)
+
+    input_text = "\n".join(options)
+    theme_candidates = [
+        os.path.expanduser("~/wm/config/rofi/theme.rasi"),
+        os.path.expanduser("~/.config/rofi/theme.rasi"),
+    ]
+    theme_rasi = next((t for t in theme_candidates if os.path.isfile(t)), "")
+
+    rofi_cmd = ["rofi", "-dmenu", "-i", "-p", "Keyviz HUD Settings"]
+    if theme_rasi:
+        rofi_cmd.extend(["-theme", theme_rasi])
+
+    rofi_cmd.extend([
+        "-theme-str",
+        'window { width: 640px; border-radius: 10px; } '
+        'inputbar { enabled: false; } '
+        'listview { columns: 3; lines: 4; spacing: 8px; margin: 14px; fixed-height: true; fixed-columns: true; cycle: true; } '
+        'element { padding: 14px 8px; border-radius: 6px; } '
+        'element-text { horizontal-align: 0.5; vertical-align: 0.5; font: "Maple Mono NF Bold 12"; }',
+    ])
+
+    try:
+        res = subprocess.run(rofi_cmd, input=input_text, capture_output=True, text=True)
+        choice = res.stdout.strip()
+    except Exception:
+        return
+
+    if not choice:
+        return
+
+    chosen_kind = None
+    chosen_key = None
+    for kind, key, label in grid_items:
+        if label in choice:
+            chosen_kind = kind
+            chosen_key = key
+            break
+
+    if chosen_kind == "pos" and chosen_key:
+        set_position(chosen_key)
+        try:
+            subprocess.run([
+                "notify-send",
+                "-h", "string:x-canonical-private-synchronous:wm-keyviz",
+                "Key Visualizer",
+                f"HUD placement set to {POSITIONS[chosen_key]['name']}"
+            ], stderr=subprocess.DEVNULL)
+        except Exception:
+            pass
+    elif chosen_kind == "size" and chosen_key:
+        set_size(chosen_key)
+        try:
+            subprocess.run([
+                "notify-send",
+                "-h", "string:x-canonical-private-synchronous:wm-keyviz",
+                "Key Visualizer",
+                f"HUD key size set to {SIZES[chosen_key]['name']}"
+            ], stderr=subprocess.DEVNULL)
+        except Exception:
+            pass
+
+
+# -----------------------------------------------------------------------------
+# DAEMON & UI POPUP IMPLEMENTATION
+# -----------------------------------------------------------------------------
+
+def set_child_pdeathsig():
+    """Ensure child process is killed by kernel if parent dies."""
+    try:
+        libc = ctypes.CDLL("libc.so.6")
+        PR_SET_PDEATHSIG = 1
+        libc.prctl(PR_SET_PDEATHSIG, signal.SIGKILL)
+    except Exception:
+        pass
+
+
+def daemon_loop():
+    with open(PID_FILE, "w") as f:
+        f.write(str(os.getpid()))
+
+    active = is_active()
+    keys = []
+    last_was_modifier = False
+    listener_proc = None
+    stop_event = threading.Event()
+
+    hud_win = None
+    hud_box = None
+    hud_timer_id = None
+    css_provider = None
+
+    if HAS_GTK:
+        try:
+            Gtk.init([])
+            hud_win = Gtk.Window(type=Gtk.WindowType.TOPLEVEL)
+            hud_win.set_title("wm-keyviz-hud")
+            hud_win.set_app_paintable(True)
+
+            screen = hud_win.get_screen()
+            visual = screen.get_rgba_visual()
+            if visual:
+                hud_win.set_visual(visual)
+
+            GtkLayerShell.init_for_window(hud_win)
+            GtkLayerShell.set_layer(hud_win, GtkLayerShell.Layer.OVERLAY)
+            GtkLayerShell.set_keyboard_mode(hud_win, GtkLayerShell.KeyboardMode.NONE)
+
+            apply_position(hud_win, get_position())
+
+            colors = load_theme_colors()
+            css_provider = Gtk.CssProvider()
+            current_sz_cfg = SIZES.get(get_size(), SIZES["medium"])
+            css_provider.load_from_data(build_css(colors, current_sz_cfg).encode("utf-8"))
+
+            Gtk.StyleContext.add_provider_for_screen(
+                screen,
+                css_provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+            )
+
+            hud_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+            hud_box.get_style_context().add_class("keyviz-container")
+            hud_win.add(hud_box)
+        except Exception:
+            hud_win = None
+            hud_box = None
+
+    def cleanup(_signum=None, _frame=None):
+        nonlocal listener_proc, hud_win
+        stop_event.set()
+        if hud_win:
+            try:
+                hud_win.destroy()
+            except Exception:
+                pass
+        if listener_proc:
+            try:
+                listener_proc.kill()
+            except Exception:
+                pass
+        for f in (PID_FILE, LISTENER_PID_FILE):
+            if os.path.exists(f):
+                try:
+                    os.remove(f)
+                except Exception:
+                    pass
+        if HAS_GTK:
+            try:
+                Gtk.main_quit()
+            except Exception:
+                pass
+        sys.exit(0)
+
+    signal.signal(signal.SIGTERM, cleanup)
+    signal.signal(signal.SIGINT, cleanup)
+
+    def hide_hud():
+        nonlocal hud_timer_id, keys, last_was_modifier
+        hud_timer_id = None
+        if hud_win:
+            try:
+                hud_win.hide()
+            except Exception:
+                pass
+        keys.clear()
+        last_was_modifier = False
+        return False
+
+    def update_hud_view():
+        if not hud_win or not hud_box:
+            return
+        for child in hud_box.get_children():
+            hud_box.remove(child)
+
+        for combo in keys:
+            cap_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=4)
+            cap_box.get_style_context().add_class("keycap-box")
+            lbl = Gtk.Label(label=combo)
+            lbl.get_style_context().add_class("keycap-combo" if "+" in combo else "keycap-label")
+            cap_box.pack_start(lbl, False, False, 0)
+            hud_box.pack_start(cap_box, False, False, 0)
+
+        hud_win.show_all()
+
+    def handle_usr1(_signum=None, _frame=None):
+        nonlocal keys, last_was_modifier
+        keys.clear()
+        last_was_modifier = False
+        if hud_win:
+            hud_win.hide()
+
+    def handle_usr2(_signum=None, _frame=None):
+        nonlocal css_provider
+        if hud_win:
+            apply_position(hud_win, get_position())
+            if css_provider:
+                colors = load_theme_colors()
+                sz_cfg = SIZES.get(get_size(), SIZES["medium"])
+                css_provider.load_from_data(build_css(colors, sz_cfg).encode("utf-8"))
+
+    signal.signal(signal.SIGUSR1, handle_usr1)
+    signal.signal(signal.SIGUSR2, handle_usr2)
+
+    write_state("󰌌" if active else "󰌐")
+    signal_mangobar()
+
+    def on_key_event(event):
+        nonlocal active, keys, last_was_modifier, hud_timer_id
+        ev_type = event.get("type")
+
+        if ev_type == "error":
+            if event.get("error") == "permission_denied":
+                write_state("󰌐")
+                signal_mangobar()
+            return
+
+        if ev_type == "release":
+            mods = event.get("modifiers") or []
+            if not mods:
+                last_was_modifier = False
+            return
+
+        if ev_type != "press":
+            return
+
+        if not is_active():
+            return
+
+        combo = event.get("combo") or event.get("key", "")
+        formatted = format_combo(combo)
+        is_mod = event.get("is_modifier", False)
+
+        if is_mod:
+            if last_was_modifier and len(keys) > 0:
+                keys[-1] = formatted
+            else:
+                keys.append(formatted)
+            last_was_modifier = True
+        else:
+            if last_was_modifier and len(keys) > 0:
+                keys[-1] = formatted
+            else:
+                keys.append(formatted)
+            last_was_modifier = False
+
+        while len(keys) > MAX_KEYS:
+            keys.pop(0)
+
+        # Show keys ONLY in the popup HUD! Do not display keys in mangobar!
+        if hud_win:
+            update_hud_view()
+            if hud_timer_id is not None:
+                GLib.source_remove(hud_timer_id)
+            hud_timer_id = GLib.timeout_add(TIMEOUT_MS, hide_hud)
+
+    def reader_loop():
+        nonlocal listener_proc
+        while not stop_event.is_set():
+            if not os.path.isfile(LISTENER_SCRIPT):
+                time.sleep(2)
+                continue
+            try:
+                listener_proc = subprocess.Popen(
+                    [sys.executable, "-u", LISTENER_SCRIPT],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.DEVNULL,
+                    text=True,
+                    bufsize=1,
+                    preexec_fn=set_child_pdeathsig,
+                )
+                with open(LISTENER_PID_FILE, "w") as f:
+                    f.write(str(listener_proc.pid))
+            except Exception:
+                time.sleep(2)
+                continue
+
+            while not stop_event.is_set():
+                rlist, _, _ = select.select([listener_proc.stdout], [], [], 0.05)
+                if not rlist:
+                    if listener_proc.poll() is not None:
+                        break
+                    continue
+
+                line = listener_proc.stdout.readline()
+                if not line:
+                    break
+
+                try:
+                    event = json.loads(line)
+                except Exception:
+                    continue
+
+                if HAS_GTK:
+                    GLib.idle_add(on_key_event, event)
+                else:
+                    on_key_event(event)
+
+            if listener_proc:
+                try:
+                    listener_proc.kill()
+                except Exception:
+                    pass
+            time.sleep(1)
+
+    t = threading.Thread(target=reader_loop, daemon=True)
+    t.start()
+
+    if HAS_GTK:
+        GLib.timeout_add(200, lambda: True)
+        try:
+            Gtk.main()
+        except Exception:
+            cleanup()
+    else:
+        while not stop_event.is_set():
+            time.sleep(0.1)
+
+
+def main():
+    if len(sys.argv) > 0 and sys.argv[0].endswith("rofi-keyviz"):
+        cmd_menu()
+        return
+
+    cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
+
+    if cmd == "status":
+        cmd_status()
+    elif cmd == "toggle":
+        cmd_toggle()
+    elif cmd == "clear":
+        cmd_clear()
+    elif cmd == "daemon":
+        daemon_loop()
+    elif cmd == "stop":
+        cmd_stop()
+    elif cmd == "start":
+        cmd_start()
+    elif cmd == "restart":
+        cmd_restart()
+    elif cmd == "menu":
+        cmd_menu()
+    elif cmd == "set-position" and len(sys.argv) > 2:
+        set_position(sys.argv[2])
+    elif cmd == "set-size" and len(sys.argv) > 2:
+        set_size(sys.argv[2])
+    else:
+        cmd_status()
+
+
+if __name__ == "__main__":
+    main()
