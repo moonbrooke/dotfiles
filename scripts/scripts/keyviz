@@ -72,21 +72,21 @@ SIZES = {
         "font_size": 13,
         "keycap_pad": "3px 8px",
         "container_pad": "4px 8px",
-        "radius": 8,
+        "radius": 0,
     },
     "medium": {
         "name": "Medium (17px)",
         "font_size": 17,
         "keycap_pad": "5px 12px",
         "container_pad": "6px 12px",
-        "radius": 10,
+        "radius": 0,
     },
     "large": {
         "name": "Large (22px)",
         "font_size": 22,
         "keycap_pad": "8px 16px",
         "container_pad": "8px 16px",
-        "radius": 12,
+        "radius": 0,
     },
 }
 
@@ -115,12 +115,12 @@ def hex_to_rgba(hex_str: str, alpha: float) -> str:
 
 def load_theme_colors() -> dict:
     colors = {
-        "bg": "#1e1e2e",
-        "fg": "#cdd6f4",
-        "accent": "#b4befe",
-        "border": "#45475a",
-        "capsule_bg": "#313244",
-        "keyviz_color": "#b4befe",
+        "bg": "#1a1b26",
+        "fg": "#c0caf5",
+        "accent": "#7aa2f7",
+        "border": "#414868",
+        "capsule_bg": "#414868",
+        "keyviz_color": "#7aa2f7",
     }
     theme_candidates = [
         os.path.join(SCRIPT_DIR, "../theme.css"),
@@ -149,26 +149,26 @@ def build_css(colors: dict, size_cfg: dict) -> str:
         background-color: transparent;
     }}
     .keyviz-container {{
-        background-color: {hex_to_rgba(colors.get('bg', '#1e1e2e'), 0.88)};
-        border: 1px solid {hex_to_rgba(colors.get('border', '#45475a'), 0.75)};
+        background-color: {hex_to_rgba(colors.get('bg', '#1a1b26'), 0.88)};
+        border: 1px solid {hex_to_rgba(colors.get('border', '#414868'), 0.75)};
         border-radius: {rad}px;
         padding: {c_pad};
     }}
     .keycap-box {{
-        background-color: {hex_to_rgba(colors.get('capsule_bg', '#313244'), 0.85)};
-        border: 1px solid {hex_to_rgba(colors.get('accent', '#b4befe'), 0.35)};
-        border-radius: 6px;
+        background-color: {hex_to_rgba(colors.get('capsule_bg', '#414868'), 0.85)};
+        border: 1px solid {hex_to_rgba(colors.get('accent', '#7aa2f7'), 0.35)};
+        border-radius: 0px;
         padding: {k_pad};
         margin: 0 4px;
     }}
     .keycap-label {{
-        color: {colors.get('fg', '#cdd6f4')};
+        color: {colors.get('fg', '#c0caf5')};
         font-family: 'Maple Mono NF', 'MapleMono NF', monospace;
         font-size: {fs}px;
         font-weight: bold;
     }}
     .keycap-combo {{
-        color: {colors.get('accent', '#b4befe')};
+        color: {colors.get('accent', '#7aa2f7')};
         font-family: 'Maple Mono NF', 'MapleMono NF', monospace;
         font-size: {fs}px;
         font-weight: bold;
