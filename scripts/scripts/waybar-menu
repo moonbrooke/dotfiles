@@ -25,14 +25,14 @@ esac
 menu() {
     printf '%s\n' "$CONFIGS" | while IFS='|' read -r KEY LABEL; do
         if [ "$KEY" = "$CURRENT" ]; then
-            printf '%s (Current)\n' "$LABEL"
+            printf '%s <span color="#565f89">(Active)</span>\n' "$LABEL"
         else
             printf '%s\n' "$LABEL"
         fi
     done
 }
 
-CHOSEN=$(menu | rofi -dmenu -i -p "Waybar Switcher" -line-padding 4 \
+CHOSEN=$(menu | rofi -dmenu -markup-rows -format 'p' -i -p "Waybar Switcher" -line-padding 4 \
     -hide-scrollbar -theme "$ROFI_THEME" \
     -theme-str 'window {width: 25%; border: 3px; border-color: #24283b;}')
 
