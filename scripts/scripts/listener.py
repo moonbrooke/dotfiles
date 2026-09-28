@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+# Credit: https://github.com/h-jangra/wm
+
 import argparse
 import glob
 import json

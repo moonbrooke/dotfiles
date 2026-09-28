@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+# Credit: https://github.com/h-jangra/wm
+
 import ctypes
 import json
 import os
@@ -37,21 +40,21 @@ TIMEOUT_MS = 850
 MAX_KEYS = 4
 
 SYMBOLS = {
-    "Up": "↑",
-    "Down": "↓",
-    "Left": "←",
-    "Right": "→",
-    "Enter": "↵",
-    "Backspace": "⌫",
-    "Tab": "⇥",
-    "Space": "␣",
+    "Up": "Up",
+    "Down": "Down",
+    "Left": "Left",
+    "Right": "Right",
+    "Enter": "Enter",
+    "Backspace": "BackSpace",
+    "Tab": "Tab",
+    "Space": "Space",
     "Esc": "Esc",
-    "Super": "󰘳",
+    "Super": "Super",
     "Ctrl": "Ctrl",
     "Alt": "Alt",
-    "Shift": "⇧",
-    "Delete": "⌦",
-    "CapsLock": "⇪",
+    "Shift": "Shift",
+    "Delete": "Del",
+    "CapsLock": "Caps",
 }
 
 POSITIONS = {
@@ -163,13 +166,13 @@ def build_css(colors: dict, size_cfg: dict) -> str:
     }}
     .keycap-label {{
         color: {colors.get('fg', '#c0caf5')};
-        font-family: 'Maple Mono NF', 'MapleMono NF', monospace;
+        font-family: 'Monocraft', 'CaskaydiaMono Nerd Font', monospace;
         font-size: {fs}px;
         font-weight: bold;
     }}
     .keycap-combo {{
         color: {colors.get('accent', '#7aa2f7')};
-        font-family: 'Maple Mono NF', 'MapleMono NF', monospace;
+        font-family: 'Monocraft', 'CaskaydiaMono Nerd Font', monospace;
         font-size: {fs}px;
         font-weight: bold;
     }}
