@@ -339,39 +339,91 @@ def ensure_daemon():
         )
 
 
+def read_argv(pid: int) -> list[str] | None:
+    """Return the argv list for a pid, or None if unreadable or not a real process."""
+    try:
+        with open(f"/proc/{pid}/cmdline", "rb") as f:
+            raw = f.read()
+    except Exception:
+        return None
+    if not raw:
+        return None
+    return [part.decode("utf-8", errors="ignore") for part in raw.split(b"\x00") if part]
+
+
+def argv_has_script(argv: list[str], path: str) -> bool:
+    """True if any absolute, non-flag argv entry is the given script, compared via realpath.
+
+    Only absolute arguments are considered: every spawn in this file passes a realpath'd
+    absolute path, and resolving a relative one would wrongly match against our own CWD.
+    """
+    try:
+        target = os.path.realpath(path)
+    except Exception:
+        return False
+    for arg in argv:
+        if arg.startswith("-") or not os.path.isabs(arg):
+            continue
+        try:
+            if os.path.realpath(arg) == target:
+                return True
+        except Exception:
+            continue
+    return False
+
+
+def is_keyviz_process(pid: int) -> bool:
+    """True only if pid is the keyviz daemon or its listener child, matched on exact script path."""
+    argv = read_argv(pid)
+    if not argv:
+        return False
+    if argv_has_script(argv, LISTENER_SCRIPT):
+        return True
+    return argv_has_script(argv, os.path.realpath(__file__)) and "daemon" in argv
+
+
+def protected_pids() -> set[int]:
+    """This process and all of its ancestors, which must never be killed by cmd_stop."""
+    protected = {os.getpid()}
+    pid = os.getpid()
+    for _ in range(64):
+        try:
+            with open(f"/proc/{pid}/stat", "r") as f:
+                ppid = int(f.read().rsplit(")", 1)[1].split()[1])
+        except Exception:
+            break
+        if ppid <= 0 or ppid in protected:
+            break
+        protected.add(ppid)
+        pid = ppid
+    return protected
+
+
 def cmd_stop():
     """Aggressively and reliably terminate keyviz daemon, listener.py, and all related python processes."""
     set_active(False)
 
-    daemon_pid = get_daemon_pid()
-    listener_pid = get_listener_pid()
-    my_pid = os.getpid()
+    protected = protected_pids()
 
-    # 1. Kill recorded PIDs directly with SIGKILL
-    for pid in (daemon_pid, listener_pid):
-        if pid and pid != my_pid:
-            try:
-                os.kill(pid, signal.SIGKILL)
-            except Exception:
-                pass
+    def kill_if_ours(pid: int | None):
+        if not pid or pid in protected:
+            return
+        if not is_keyviz_process(pid):
+            return
+        try:
+            os.kill(pid, signal.SIGKILL)
+        except Exception:
+            pass
 
-    # 2. Directly scan /proc to kill ANY process running listener.py or keyviz daemon
+    # 1. Kill recorded PIDs, but only after confirming they are really ours
+    for pid in (get_daemon_pid(), get_listener_pid()):
+        kill_if_ours(pid)
+
+    # 2. Scan /proc for orphaned daemon/listener processes left behind by a crash
     try:
         for entry in os.listdir("/proc"):
             if entry.isdigit():
-                p = int(entry)
-                if p == my_pid:
-                    continue
-                try:
-                    with open(f"/proc/{p}/cmdline", "rb") as f:
-                        cmdline = f.read().decode("utf-8", errors="ignore").replace("\x00", " ")
-                    if "listener.py" in cmdline or ("keyviz" in cmdline and "daemon" in cmdline):
-                        try:
-                            os.kill(p, signal.SIGKILL)
-                        except Exception:
-                            pass
-                except Exception:
-                    pass
+                kill_if_ours(int(entry))
     except Exception:
         pass
 
