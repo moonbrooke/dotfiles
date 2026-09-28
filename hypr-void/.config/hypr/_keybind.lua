@@ -25,6 +25,8 @@ local wallpaper = "~/.config/hypr/scripts/wallpaper.sh"
 local gaps_menu = "~/.config/hypr/scripts/gaps-menu.sh"
 local monitor = "~/scripts/monitor-switch"
 local brightness = "~/scripts/brightness-notif"
+local keyviz = "~/scripts/keyviz toggle"
+local keyviz_menu = "~/scripts/keyviz menu"
 
 local mainMod = "SUPER"
 
@@ -74,6 +76,8 @@ hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(waybar_menu))
 -- hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bluetooth))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(wallpaper))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(wifi))
+hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(keyviz))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.exec_cmd(keyviz_menu))
 
 -- Screenshots
 hl.bind("Print", hl.dsp.exec_cmd(full_screenshot))
