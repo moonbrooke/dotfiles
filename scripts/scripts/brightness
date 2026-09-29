@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+set -u
+
+STATE_FILE="$HOME/.cache/hypr_brightness"
+readonly STEP=5
+readonly MIN=5
+
+command -v brightnessctl >/dev/null 2>&1 || exit 1
+
+read_percent() {
+    brightnessctl -c backlight --machine-readable | awk -F ',' '{print $4}'
+}
+
+save_state() {
+    [ -n "$1" ] || return 1
+    mkdir -p "${STATE_FILE%/*}" || return 1
+    printf '%s\n' "$1" > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE"
+}
+
+notify_level() {
+    notify-send 'Settings' "Brightness level: <span color=\"#9ece6a\"><b>$1</b></span>" -t 2500 \
+        --hint=string:x-dunst-stack-tag:brightness -i dialog-information &
+}
+
+is_valid_level() {
+    [[ "$1" =~ ^[0-9]{1,3}%$ ]] || return 1
+    [ "${1%\%}" -ge "$MIN" ] && [ "${1%\%}" -le 100 ]
+}
+
+adjust() {
+    local current target
+    current=$(read_percent) || return 1
+    current=${current%\%}
+    [[ "$current" =~ ^[0-9]{1,3}$ ]] || return 1
+
+    target=$((current + STEP * $1))
+    [ "$target" -lt "$MIN" ] && target=$MIN
+    [ "$target" -gt 100 ] && target=100
+
+    brightnessctl -c backlight -q set "$target%" || return 1
+    save_state "$target%" || return 1
+    notify_level "$target%"
+}
+
+restore() {
+    [ -r "$STATE_FILE" ] || return 0
+    saved=$(<"$STATE_FILE")
+    is_valid_level "$saved" || return 0
+    brightnessctl -c backlight -q set "$saved"
+}
+
+case "${1:-}" in
+    up)
+        adjust 1
+        ;;
+    down)
+        adjust -1
+        ;;
+    restore)
+        restore
+        ;;
+    *)
+        echo "usage: brightness up|down|restore" >&2
+        exit 1
+        ;;
+esac
