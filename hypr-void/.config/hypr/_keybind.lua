@@ -27,6 +27,7 @@ local monitor = "~/scripts/monitor-switch"
 local brightness = "~/scripts/brightness"
 local keyviz = "~/scripts/keyviz toggle"
 local keyviz_menu = "~/scripts/keyviz menu"
+local notif_history = "~/scripts/notif-history"
 
 local mainMod = "SUPER"
 
@@ -65,7 +66,8 @@ hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(file_manager))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + H", hl.dsp.window.pin())
+hl.bind(mainMod .. " + H", hl.dsp.exec_cmd(notif_history))
+hl.bind(mainMod .. " + SHIFT + Period", hl.dsp.window.pin())
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(cliphist))

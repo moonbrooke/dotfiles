@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+
+if pkill -x rofi; then
+    exit 0
+fi
+
+umask 077
+temp_dir=$(mktemp -d) || exit 1
+trap 'rm -rf -- "$temp_dir"' EXIT
+
+ROFI_THEME="$HOME/.config/rofi/config.rasi"
+THEME_STR="window {width: 35%; border: 3px; border-color: #24283b;}"
+ACCENT='#565f89'
+
+notify() {
+    notify-send 'Notifications' "$1" -t 2000 \
+        --hint=string:x-dunst-stack-tag:notifications -i dialog-information &
+}
+
+confirm() {
+    local answer
+    answer=$(
+        printf 'No\nYes\n' |
+            rofi -dmenu \
+                -no-custom \
+                -i \
+                -p "$1" \
+                -theme "$ROFI_THEME" \
+                -theme-str "$THEME_STR"
+    )
+    [ "$answer" = "Yes" ]
+}
+
+if ! dunstctl history >"$temp_dir/history.json"; then
+    notify "Could not read notification history from dunst."
+    exit 1
+fi
+
+# Timestamp
+now_us=$(awk '{printf "%.0f", $1 * 1000000}' /proc/uptime)
+
+rows=$(
+    jq -r --argjson now "$now_us" --arg accent "$ACCENT" '
+        def clean:
+            gsub("<[^>]*>"; "")
+            | gsub("[\n\r\t]"; " ")
+            | sub("^ +"; "")
+            | sub(" +$"; "");
+
+        def ago:
+            (($now - .timestamp.data) / 1000000 | floor) as $d
+            | if   $d <    0 then "now"
+              elif $d <   60 then "\($d)s"
+              elif $d < 3600 then "\((($d / 60) | floor))m"
+              elif $d < 86400 then "\((($d / 3600) | floor))h"
+              else               "\((($d / 86400) | floor))d"
+              end;
+
+        [ .data[0][] ]
+        | sort_by(.timestamp.data)
+        | reverse
+        | .[]
+        | [ (.id.data | tostring),
+            ("<span foreground=\"" + $accent + "\">" + (. | ago) + "</span>"),
+            (.appname.data | clean),
+            (.summary.data | clean),
+            ((.body.data // "") | clean | .[0:90])
+          ]
+        | @tsv
+    ' "$temp_dir/history.json"
+) || exit 1
+
+if [ -z "$rows" ]; then
+    notify "Notification history is empty."
+    exit 0
+fi
+
+selection=$(
+    printf '%s\n' "$rows" |
+        rofi -dmenu \
+            -no-custom \
+            -markup-rows \
+            -i \
+            -p "Notifications" \
+            -mesg "<span foreground='$ACCENT'>[Enter]: Show | [Alt+D]: Delete | [Alt+C]: Clear all</span>" \
+            -kb-custom-2 "Alt+d" \
+            -kb-custom-3 "Alt+c" \
+            -theme "$ROFI_THEME" \
+            -theme-str "$THEME_STR"
+)
+rofi_status=$?
+
+[ -z "$selection" ] && exit 0
+
+selected_id=${selection%%$'\t'*}
+
+case "$rofi_status" in
+    0)
+        dunstctl history-pop "$selected_id"
+        ;;
+    11)
+        if confirm "Delete this notification from history?"; then
+            dunstctl history-rm "$selected_id"
+            notify "Notification removed from history."
+        fi
+        ;;
+    12)
+        if confirm "Clear the entire notification history?"; then
+            dunstctl history-clear
+            notify "Notification history cleared."
+        fi
+        ;;
+esac

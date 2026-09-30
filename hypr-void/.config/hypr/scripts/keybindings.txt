@@ -15,6 +15,7 @@ Super + Shift + G                   | Launch gaps menu
 Super + G                           | Toggle game mode
 Super + K                           | Toggle key visualizer
 Super + Shift + K                   | Launch key visualizer menu
+Super + H                           | Launch notification history
 Super + [F9, F10]                    | Brightness control
 Super + Z                           | Zoom in
 Super + Shift + Z                   | Reset zoom
@@ -33,7 +34,7 @@ Super + Shift + Print               | Window screenshot
 Super + Q                           | Kill focused window
 Super + J                           | Toggle split horizontal/vertical
 Super + F                           | Toggle floating window
-Super + H                           | Toggle pin window
+Super + Shift + Period              | Toggle pin window
 Super + Shift + P                   | Toggle pseudotiling
 Super + Right                       | Move focus to the right
 Super + Left                        | Move focus to the left
