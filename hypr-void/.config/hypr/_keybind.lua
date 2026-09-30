@@ -1,4 +1,4 @@
-local cycle_layout = require("_layout")
+local layout = require("_layout")
 
 -- Programs
 local terminal = "foot"
@@ -31,8 +31,9 @@ local notif_history = "~/scripts/notif-history"
 
 local mainMod = "SUPER"
 
-hl.bind(mainMod .. " + L", cycle_layout)
-hl.bind(mainMod .. " + SHIFT + F23", cycle_layout)
+hl.bind(mainMod .. " + L", layout.cycle)
+hl.bind(mainMod .. " + SHIFT + F23", layout.cycle)
+hl.bind(mainMod .. " + SHIFT + L", layout.reset)
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(power_menu))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(power_menu))

@@ -1,6 +1,7 @@
 local utils = require("_utils")
 local gaps_enabled = require("_gap")
 local is_animation = require("_animation_toggle")
+local saved_layout = require("_layout_state").get()
 
 --- Read gap value from $HOME/.cache, falling back to default
 --- @param name string cache filename (eg "hypr_gaps_in")
@@ -28,7 +29,7 @@ hl.config({
         border_size = 3,
         resize_on_border = false,
         allow_tearing = false,
-        layout = "dwindle",
+        layout = saved_layout,
 
         col = {
             active_border = { colors = {"rgb(f7768e)", "rgb(bb9af7)"}, angle = 45 },
