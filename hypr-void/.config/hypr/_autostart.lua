@@ -1,7 +1,7 @@
 hl.on("hyprland.start", function ()
+    hl.exec_cmd("dbus-update-activation-environment --all")
     hl.exec_cmd("~/.config/hypr/scripts/xdph.sh")
     -- hl.exec_cmd("dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("dbus-update-activation-environment --all")
     hl.exec_cmd("/usr/libexec/hyprpolkitagent")
     hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "Dracula"')
     hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"')
