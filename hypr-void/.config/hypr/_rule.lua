@@ -19,6 +19,7 @@ hl.window_rule({ match = { class = "Mailspring" }, workspace = 2, float = false 
 hl.window_rule({ match = { class = "org.qbittorrent.qBittorrent" }, workspace = 2, float = false })
 hl.window_rule({ match = { title = "^(.*YouTube.*)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { title = "^(.*Twitch.*)$" }, opacity = "1.0 override" })
+hl.window_rule({ match = { class = "io.github.celluloid_player.Celluloid" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = "^(.*keyviz.*)$" }, opacity = "1.0 override", decorate = false, no_blur = true, no_shadow = true, opaque = false, rounding = 0, no_dim = true })
 hl.window_rule({ match = { class = "thunar", title = "^(.*File Operation Progress.*)$" }, size = {476, 520}, float = true })
 hl.window_rule({ match = { class = "thunar", title = "^(.*Rename \".*)$" }, size = {476, 520}, float = true })
