@@ -15,7 +15,7 @@ Super + Shift + G                   | Launch gaps menu
 Super + G                           | Toggle game mode
 Super + K                           | Toggle key visualizer
 Super + Shift + K                   | Launch key visualizer menu
-Super + [ or ]                      | Change brightness
+Super + [F9, F10]                    | Brightness control
 Super + Z                           | Zoom in
 Super + Shift + Z                   | Reset zoom
 Super + M                           | Launch notes manager
@@ -46,8 +46,8 @@ Super + Ctrl + Left                 | Resize focused window to the left
 F11 or Alt + Return                 | Toggle fullscreen
 
 # === Workspace ===
-Super + [1,2,3,..]                  | Switch to workspace
-Super + Shift + [1,2,3,..]          | Move focused window to workspace
+Super + [1, 2, 3, ...]              | Switch to workspace
+Super + Shift + [1, 2, 3, ...]      | Move focused window to workspace
 Super + Ctrl + Shift + Right        | Move to the next workspace
 Super + Ctrl + Shift + Left         | Move to the previous workspace
 Super + S                           | Open scratchpad

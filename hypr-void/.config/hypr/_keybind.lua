@@ -100,8 +100,8 @@ hl.bind(mainMod .. " + SHIFT + Tab", function()
 end)
 
 -- Brightness
-hl.bind(mainMod .. " + bracketright",  hl.dsp.exec_cmd(brightness .. " up"),   { locked = true, repeating = true })
-hl.bind(mainMod .. " + bracketleft",hl.dsp.exec_cmd(brightness .. " down"), { locked = true, repeating = true })
+hl.bind(mainMod .. " + F10",  hl.dsp.exec_cmd(brightness .. " up"),   { locked = true, repeating = true })
+hl.bind(mainMod .. " + F9",hl.dsp.exec_cmd(brightness .. " down"), { locked = true, repeating = true })
 
 -- Move windows around workspaces
 hl.bind(mainMod .. " + SHIFT + Left",  hl.dsp.window.move({ direction = "left" }))
