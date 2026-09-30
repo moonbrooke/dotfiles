@@ -35,4 +35,5 @@ awww img "$FULL_PATH" \
     --transition-angle 30 \
     --transition-step 90
 
-notify-send -t 2000 "Wallpaper Updated" "$SELECTED"
+notify-send -t 2500 "Wallpaper" "Wallpaper set to <span foreground='#9ece6a'>$SELECTED</span>" \
+    --hint=string:x-dunst-stack-tag:wallpaper -i dialog-information &
