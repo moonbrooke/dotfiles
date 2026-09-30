@@ -8,6 +8,7 @@ image/gif=imv.desktop
 image/webp=imv.desktop
 image/bmp=imv.desktop
 image/tiff=imv.desktop
+video/mp4=io.github.celluloid_player.Celluloid.desktop
 inode/directory=thunar.desktop
 
 [Added Associations]
