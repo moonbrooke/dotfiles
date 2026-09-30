@@ -1,3 +1,5 @@
+local utils = require("_utils")
+
 -- General
 hl.window_rule({ match = { title = "Bluetooth" }, float = true })
 hl.window_rule({ match = { title = "floating_wlctl" }, size = {800, 800}, float = true })
@@ -35,9 +37,58 @@ hl.window_rule({ match = { class = "lutris" }, float = true })
 
 -- Workspaces
 -- Only one workspace may have default = true; others remain persistent.
-hl.workspace_rule({ workspace = "1", persistent = true, monitor = "eDP-1", default = true })
-hl.workspace_rule({ workspace = "2", persistent = true, monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "3", persistent = true, monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "4", persistent = true, monitor = "eDP-1" })
-hl.workspace_rule({ workspace = "5", persistent = true, monitor = "HDMI-A-1" })
-hl.workspace_rule({ workspace = "6", persistent = true, monitor = "HDMI-A-1" })
+
+local LAPTOP = "eDP-1"
+local EXTERNAL = "HDMI-A-1"
+local EXTERNAL_PINS = { "5", "6" }
+
+--- Register a persistent workspace.
+--- @param workspace string
+--- @param monitor string Hyprland output name
+--- @param extra table|nil additional workspace rule fields
+local function workspace_rule(workspace, monitor, extra)
+    local spec = { workspace = workspace, persistent = true }
+
+    if utils.output_connected(monitor) ~= false then
+        spec.monitor = monitor
+    end
+
+    for key, value in pairs(extra or {}) do
+        spec[key] = value
+    end
+
+    hl.workspace_rule(spec)
+end
+
+local function restore_external_pins()
+    if hl.get_monitor(EXTERNAL) == nil then
+        return
+    end
+
+    local active = hl.get_active_workspace()
+    local active_id = active and tostring(active.id) or nil
+
+    for _, id in ipairs(EXTERNAL_PINS) do
+        local ws = hl.get_workspace(id)
+        local misplaced = ws ~= nil and ws.monitor ~= nil and ws.monitor.name ~= EXTERNAL
+
+        -- Never yank the workspace the user is looking at to the other screen.
+        if misplaced and active_id ~= id then
+            hl.dsp.workspace.move({ workspace = id, monitor = EXTERNAL, no_follow = true })
+        end
+    end
+end
+
+hl.on("monitor.added", function()
+    -- Let the new output finish initialising before reassigning workspaces.
+    hl.timer(restore_external_pins, { timeout = 250, type = "oneshot" })
+end)
+
+workspace_rule("1", LAPTOP, { default = true })
+workspace_rule("2", LAPTOP)
+workspace_rule("3", LAPTOP)
+workspace_rule("4", LAPTOP)
+
+for _, id in ipairs(EXTERNAL_PINS) do
+    workspace_rule(id, EXTERNAL)
+end
