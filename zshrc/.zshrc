@@ -74,3 +74,6 @@ export PATH=/home/moonbrooke/.opencode/bin:$PATH
 
 # Pi
 export PATH="/home/moonbrooke/.local/share/mise/installs/node/26.9.0/bin:$PATH"
+
+# omp
+export PATH="/home/moonbrooke/.bun/bin:$PATH"
