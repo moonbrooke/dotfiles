@@ -105,8 +105,8 @@ case "$rofi_status" in
         ;;
     12)
         if confirm "Clear the entire notification history?"; then
-            dunstctl history-clear
             notify "Notification history cleared."
+            dunstctl history-clear
         fi
         ;;
 esac
