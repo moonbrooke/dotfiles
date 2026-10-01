@@ -3,7 +3,7 @@ local layout = require("_layout")
 -- Programs
 local terminal = "foot"
 local file_manager = "thunar"
-local browser = "firefox-esr"
+local browser = "firefox"
 local menu = "~/.config/hypr/scripts/menu.sh"
 local full_screenshot = "~/.config/hypr/scripts/screenshot.sh full"
 local select_screenshot = "~/.config/hypr/scripts/screenshot.sh select"
