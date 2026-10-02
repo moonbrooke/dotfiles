@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+. "$HOME/scripts/themes/colors"
+
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 
 if [ ! -d "$WALLPAPER_DIR" ]; then
@@ -17,7 +19,7 @@ SELECTED=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname
     echo -en "$filename\0icon\x1f$file\n"
 done | rofi -dmenu -i -show-icons -p "Wallpapers" \
     -theme-str '
-    window { width: 35%; border: 3px; border-color: #24283b; }
+    window { width: 35%; border: 3px; border-color: $T_BG_ALT; }
     listview { columns: 1; lines: 8; spacing: 5px; }
     element { orientation: horizontal; padding: 8px; }
     element-icon { size: 2em; }
@@ -35,5 +37,5 @@ awww img "$FULL_PATH" \
     --transition-angle 30 \
     --transition-step 90
 
-notify-send -t 2500 "Wallpaper" "Wallpaper set to <span foreground='#9ece6a'>$SELECTED</span>" \
+notify-send -t 2500 "Wallpaper" "Wallpaper set to <span foreground='$T_GREEN'>$SELECTED</span>" \
     --hint=string:x-dunst-stack-tag:wallpaper -i dialog-information &

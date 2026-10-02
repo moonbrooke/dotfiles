@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+. "$HOME/scripts/themes/colors"
+
 set -u
 
 export LC_ALL=C
@@ -36,10 +38,10 @@ notify_caps() {
     local attempt
 
     if [[ "$state" == on ]]; then
-        color='#9ece6a'
+        color="$T_GREEN"
         label=ON
     else
-        color='#f7768e'
+        color="$T_RED"
         label=OFF
     fi
 

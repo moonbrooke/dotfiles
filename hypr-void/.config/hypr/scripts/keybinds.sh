@@ -1,9 +1,11 @@
 #!/bin/bash
 
+. "$HOME/scripts/themes/colors"
+
 KEYSTXT="$HOME/.config/hypr/scripts/keybindings.txt"
 ROFI_THEME="$HOME/.config/rofi/config.rasi"
 
-rows=$(awk '
+rows=$(awk -v blue="$T_BLUE" -v fg="$T_FG" -v muted="$T_FG_MUTED" '
     function xmlesc(s) {
         gsub(/&/, "\\&amp;", s)
         gsub(/</, "\\&lt;", s)
@@ -47,7 +49,7 @@ rows=$(awk '
         for (i = 1; i <= n; i++) {
             name = order[i]
             if (cnt[name] == 0) continue
-            printf "<span foreground=\"#7aa2f7\">── %s</span>\n", xmlesc(name)
+            printf "<span foreground=\"" blue "\">── %s</span>\n", xmlesc(name)
             for (j = 1; j <= cnt[name]; j++) {
                 
                 # Pad the key string to 35 characters first so Pango tags do not break alignment
@@ -58,10 +60,10 @@ rows=$(awk '
                 
                 # Inject grey color span for the word " or "
                 # We close the primary blue span, start a grey span, and reopen the blue span
-                gsub(/ or /, "</span> <span foreground=\"#565f89\">or</span> <span foreground=\"#c0caf5\">", key_escaped)
+                gsub(/ or /, "</span> <span foreground=\"" muted "\">or</span> <span foreground=\"" fg "\">", key_escaped)
                 
                 # Print the final assembled string
-                printf "<span foreground=\"#c0caf5\">%s</span>  <span foreground=\"#565f89\">%s</span>\n", key_escaped, xmlesc(rdsc[name, j])
+                printf "<span foreground=\"" fg "\">%s</span>  <span foreground=\"" muted "\">%s</span>\n", key_escaped, xmlesc(rdsc[name, j])
             }
         }
     }
@@ -69,4 +71,4 @@ rows=$(awk '
 
 echo "$rows" | rofi -dmenu -markup-rows -i -p "Keybindings" -l 20 \
     -line-padding 4 -hide-scrollbar -theme "$ROFI_THEME" \
-    -theme-str "window {width: 800; border: 3px; border-color: #24283b;}"
+    -theme-str "window {width: 800; border: 3px; border-color: $T_BG_ALT;}"

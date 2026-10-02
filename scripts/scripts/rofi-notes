@@ -3,10 +3,10 @@
 folder=$HOME/notes/
 
 newnote () { \
-  dir="$(find "$folder" -maxdepth 1 -type d ! -name ".git" | rofi -dmenu -i -l 11 -p 'Choose directory: ' -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}')" || exit 0
+  dir="$(find "$folder" -maxdepth 1 -type d ! -name ".git" | rofi -dmenu -i -l 11 -p 'Choose directory: ' -theme-str 'window {width: 35%; border: 3px; border-color: $T_BG_ALT;}')" || exit 0
   : "${dir:=$folder}"
   
-  name="$(echo "" | rofi -dmenu -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;} listview {lines: 0;}' -p "Enter a name: " <&-)" || exit 0
+  name="$(echo "" | rofi -dmenu -theme-str 'window {width: 35%; border: 3px; border-color: $T_BG_ALT;} listview {lines: 0;}' -p "Enter a name: " <&-)" || exit 0
   : "${name:=$(date +%F_%H-%M-%S)}"
   
   setsid -f foot -e nvim "${dir%/}/$name.md" >/dev/null 2>&1
@@ -15,8 +15,8 @@ newnote () { \
 selected () { \
   choice=$(
     echo -e "✏️ New note...\n$(find "$folder" -name ".git" -prune -o -type f \( -name "*.md" -o -name "*.txt" \) -printf '%T@ %P\n' | sort -nr | cut -d' ' -f2-)" | rofi -dmenu -i -l 11 -p "Notes: " \
-        -mesg "<span foreground='#414868'>Select a note or write new one!</span>" \
-        -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}'
+        -mesg "<span foreground='$T_SURFACE'>Select a note or write new one!</span>" \
+        -theme-str 'window {width: 35%; border: 3px; border-color: $T_BG_ALT;}'
   )
   case $choice in
     New) newnote ;;

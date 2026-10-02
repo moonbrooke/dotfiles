@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+. "$HOME/scripts/themes/colors"
 
 STATE_FILE="$HOME/.cache/hypr_gaps"
 GAPS_IN_FILE="$HOME/.cache/hypr_gaps_in"
@@ -46,4 +48,4 @@ if ! hyprctl eval "hl.config({ general = { gaps_in = $1, gaps_out = $2 } })"; th
     exit 1
 fi
 
-notify-send 'Settings' "Gaps set to: in <span color=\"#9ece6a\"><b>$1</b></span>, out <span color=\"#9ece6a\"><b>$2</b></span>" -t 2500 -i dialog-information &
+notify-send 'Settings' "Gaps set to: in <span color=\"$T_GREEN\"><b>$1</b></span>, out <span color=\"$T_GREEN\"><b>$2</b></span>" -t 2500 -i dialog-information &

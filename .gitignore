@@ -16,3 +16,12 @@ cmus/.config/cmus/*
 !cmus/.config/cmus/rc
 
 gtk-3.0/.config/gtk-3.0/bookmarks
+
+# Color theme switcher: only the `current.*` pointers move, the rendered
+# per-theme files are tracked so they stay diff-free between switches.
+hypr-void/.config/hypr/_theme_colors.lua
+waybar-2/.config/waybar/themes/current.css
+rofi/.config/rofi/themes/current.rasi
+foot/.config/foot/themes/current.ini
+kitty/.config/kitty/current.conf
+btop/.config/btop/themes/current.theme

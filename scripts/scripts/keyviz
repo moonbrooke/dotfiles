@@ -116,30 +116,47 @@ def hex_to_rgba(hex_str: str, alpha: float) -> str:
     return f"rgba(30, 30, 46, {alpha})"
 
 
+THEMES_DIR = os.path.expanduser("~/scripts/themes")
+THEME_STATE_FILE = os.path.expanduser("~/.cache/theme-state")
+DEFAULT_THEME = "tokyonight"
+
+
+def load_palette() -> dict:
+    """T_* values of the active ~/scripts/theme palette."""
+    theme_id = DEFAULT_THEME
+    try:
+        with open(THEME_STATE_FILE, "r") as f:
+            theme_id = f.read().strip() or DEFAULT_THEME
+    except OSError:
+        pass
+
+    try:
+        with open(os.path.join(THEMES_DIR, "palettes", theme_id + ".conf"), "r") as f:
+            content = f.read()
+    except OSError:
+        content = ""
+
+    return dict(re.findall(r'^(T_[A-Z_]+)="?(#[0-9a-fA-F]{6})"?', content, re.MULTILINE))
+
+
 def load_theme_colors() -> dict:
-    colors = {
-        "bg": "#1a1b26",
-        "fg": "#c0caf5",
-        "accent": "#7aa2f7",
-        "border": "#414868",
-        "capsule_bg": "#24283b",
-        "keyviz_color": "#7aa2f7",
+    t = load_palette()
+    return {
+        "bg": t.get("T_BG", "#1a1b26"),
+        "fg": t.get("T_FG", "#c0caf5"),
+        "accent": t.get("T_BLUE", "#7aa2f7"),
+        "border": t.get("T_SURFACE", "#414868"),
+        "capsule_bg": t.get("T_BG_ALT", "#24283b"),
+        "keyviz_color": t.get("T_BLUE", "#7aa2f7"),
     }
-    theme_candidates = [
-        os.path.join(SCRIPT_DIR, "../theme.css"),
-        os.path.expanduser("~/wm/config/mangobar/theme.css"),
-    ]
-    for p in theme_candidates:
-        if os.path.exists(p):
-            try:
-                with open(p, "r") as f:
-                    content = f.read()
-                for m in re.finditer(r"@define-color\s+(\w+)\s+(#[0-9a-fA-F]+);", content):
-                    colors[m.group(1)] = m.group(2)
-                break
-            except Exception:
-                pass
-    return colors
+
+
+def theme_color(name: str, fallback: str = "#7aa2f7") -> str:
+    return load_palette().get(name, fallback)
+
+
+T_RED = theme_color("T_RED", "#f7768e")
+T_GREEN = theme_color("T_GREEN", "#9ece6a")
 
 
 def build_css(colors: dict, size_cfg: dict) -> str:
@@ -453,7 +470,7 @@ def cmd_stop():
 
     write_state("󰌐")
     signal_mangobar()
-    notify("Key visualizer HUD has been <span foreground='#f7768e'>DISABLED</span>")
+    notify(f"Key visualizer HUD has been <span foreground='{T_RED}'>DISABLED</span>")
     print("Keyviz and listener.py killed successfully.")
 
 
@@ -463,7 +480,7 @@ def cmd_start():
         ensure_daemon()
     write_state("󰌌")
     signal_mangobar()
-    notify("Key visualizer HUD has been <span foreground='#9ece6a'>ENABLED</span>")
+    notify(f"Key visualizer HUD has been <span foreground='{T_GREEN}'>ENABLED</span>")
     print("Keyviz started.")
 
 
@@ -570,10 +587,10 @@ def cmd_menu():
 
     if chosen_kind == "pos" and chosen_key:
         set_position(chosen_key)
-        notify(f"HUD placement set to <span foreground='#9ece6a'>{POSITIONS[chosen_key]['name']}</span>")
+        notify(f"HUD placement set to <span foreground='{T_GREEN}'>{POSITIONS[chosen_key]['name']}</span>")
     elif chosen_kind == "size" and chosen_key:
         set_size(chosen_key)
-        notify(f"HUD key size set to <span foreground='#9ece6a'>{SIZES[chosen_key]['name']}</span>")
+        notify(f"HUD key size set to <span foreground='{T_GREEN}'>{SIZES[chosen_key]['name']}</span>")
 
 
 # -----------------------------------------------------------------------------

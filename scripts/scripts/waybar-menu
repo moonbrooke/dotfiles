@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+. "$HOME/scripts/themes/colors"
 
 set -eu
 
@@ -25,7 +27,7 @@ esac
 menu() {
     printf '%s\n' "$CONFIGS" | while IFS='|' read -r KEY LABEL; do
         if [ "$KEY" = "$CURRENT" ]; then
-            printf '%s <span color="#565f89">(Active)</span>\n' "$LABEL"
+            printf '%s <span color="%s">(Active)</span>\n' "$LABEL" "$T_FG_MUTED"
         else
             printf '%s\n' "$LABEL"
         fi
@@ -34,7 +36,7 @@ menu() {
 
 CHOSEN=$(menu | rofi -dmenu -markup-rows -format 'p' -i -p "Waybar Switcher" -line-padding 4 \
     -hide-scrollbar -theme "$ROFI_THEME" \
-    -theme-str 'window {width: 25%; border: 3px; border-color: #24283b;}')
+    -theme-str 'window {width: 25%; border: 3px; border-color: $T_BG_ALT;}')
 
 [ -z "$CHOSEN" ] && exit 0
 
@@ -60,7 +62,7 @@ printf '%s\n' "$CHOSEN_KEY" > "$STATE_FILE"
 echo "Waybar config set to: $CHOSEN_KEY"
 
 POS=$(printf '%s' "$CHOSEN_KEY" | tr '[:lower:]' '[:upper:]')
-notify-send 'Settings' "Waybar config set to <span color=\"#9ece6a\"><b>$POS</b></span>" -t 2500 \
+notify-send 'Settings' "Waybar config set to <span color=\"$T_GREEN\"><b>$POS</b></span>" -t 2500 \
     --hint=string:x-dunst-stack-tag:waybar -i dialog-information &
 
 pkill waybar || true

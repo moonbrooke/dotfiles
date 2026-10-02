@@ -1,11 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+. "$HOME/scripts/themes/colors"
 
 ROFI_THEME="$HOME/.config/rofi/config.rasi"
 
 chosen=$(echo -e "Toggle gaps on/off\n2/4\n5/10\n10/15" | \
     rofi -dmenu -i -p "Set Gaps (in/out)" -line-padding 4 \
     -hide-scrollbar -theme "$ROFI_THEME" \
-    -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}')
+    -theme-str 'window {width: 35%; border: 3px; border-color: $T_BG_ALT;}')
 
 [ -z "$chosen" ] && exit
 

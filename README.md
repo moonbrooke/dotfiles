@@ -19,7 +19,7 @@ btop dunst fastfetch hypr-void foot nvim rofi waybar-2 scripts yazi zshrc mimeap
 
 - WM/Compositor: [Hyprland](https://hypr.land/)
 - Display Manager: None (Login via TTY)
-- Colors: [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
+- Colors: switchable — see [Color themes](#color-themes) below
 - Terminal: [foot](https://codeberg.org/dnkl/foot)
 - Shell: [zsh](https://www.zsh.org/)
 - Prompt: [Oh My ZSH](https://ohmyz.sh/)
@@ -30,6 +30,37 @@ btop dunst fastfetch hypr-void foot nvim rofi waybar-2 scripts yazi zshrc mimeap
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - Editor: [Neovim](https://neovim.io/), [VS Code](https://code.visualstudio.com/)
 - Font: [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [Monocraft Nerd Font](https://github.com/IdreesInc/Monocraft), [Sarasa Gothic](https://github.com/be5invis/sarasa-gothic), [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [JetBrains Mono Nerd Font](https://www.nerdfonts.com/font-downloads), [Ricty Nerd Font](https://rictyfonts.github.io/) (Japanese font), [Noto CJK](https://github.com/notofonts/noto-cjk) (Chinese, Japanese, Korean fonts)
+
+### Color themes
+
+`SUPER + T` opens the rofi picker. Available themes: **Tokyo Night** (default),
+**Catppuccin Mocha**, **Catppuccin Latte**, **Rose Pine**, **Rose Pine Dawn**.
+
+```bash
+theme              # rofi picker (SUPER + T)
+theme list         # all themes with a terminal color preview
+theme set cat-mocha
+theme current
+```
+
+Colors live in `scripts/scripts/themes/palettes/<id>.conf` as `T_*` variables —
+that is the only place a color should be edited. Everything else is generated
+from it and re-applied live, without logging out:
+
+| Component | How it is themed |
+| --- | --- |
+| waybar | `style.css` imports `themes/current.css`; the few modules with inline pango colors get rewritten |
+| rofi | `config.rasi` / `clipboard.rasi` point at `themes/current.rasi` |
+| foot | `foot.ini` includes `themes/current.ini` (`[colors-dark]` or `[colors-light]`) |
+| kitty | `kitty.conf` includes `current.conf` (colors + tab bar templates) |
+| btop | `btop.conf` uses `color_theme = "current"` |
+| dunst | urgency colors rewritten in place in `dunstrc`, then `dunstctl reload` |
+| hyprland scripts, `~/scripts`, keyviz | read the palette at runtime via `. "$HOME/scripts/themes/colors"` |
+| fastfetch | nothing to do — it uses ANSI indices and follows the terminal |
+
+waybar, dunst and hyprland reload in place. New foot/kitty/btop windows pick the
+theme up on launch. GTK/Qt apps keep the Dracula GTK theme in every theme, so
+Latte and Dawn only lighten the terminal and bars.
 
 ### Screenshot
 

@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+. "$HOME/scripts/themes/colors"
 
 set -eu
 
@@ -45,7 +47,7 @@ printf '%s\n' "$NEW" > "$STATE_FILE"
 echo "Waybar position set to: $NEW"
 
 POS=$(printf '%s' "$NEW" | tr '[:lower:]' '[:upper:]')
-notify-send 'Settings' "Waybar position set to <span color=\"#9ece6a\"><b>$POS</b></span>" -t 2500 -i dialog-information &
+notify-send 'Settings' "Waybar position set to <span color=\"$T_GREEN\"><b>$POS</b></span>" -t 2500 -i dialog-information &
 
 pkill waybar || true
 sleep 0.5

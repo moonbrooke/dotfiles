@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+#
+# ~/scripts/theme -- switch the desktop color theme.
+#
+#   theme                 open the rofi picker
+#   theme list            print every theme with a color preview
+#   theme set <name>      apply a theme without the menu
+#   theme current         print the active theme id
+#
+# Applying a theme regenerates the rofi/foot/kitty/btop/waybar/dunst colors and
+# then reloads waybar, dunst and hyprland in place.
+
+set -uo pipefail
+
+THEMES_DIR="$HOME/scripts/themes"
+# shellcheck disable=SC1091
+. "$THEMES_DIR/lib.sh"
+
+ROFI_THEME="$CONFIG_DIR/rofi/config.rasi"
+
+# Start from the active palette so $T_* is always defined for the menu chrome.
+theme_load "$(theme_current)"
+
+menu() {
+    local cur
+    cur=$(theme_current)
+    theme_load_quiet "$cur" || true
+    local muted="${T_FG_MUTED:-$T_FG_DIM}"
+
+    local id label mark
+    for id in "${THEME_IDS[@]}"; do
+        theme_load_quiet "$id" || continue
+        label=$T_NAME
+        mark=""
+        [ "$id" = "$cur" ] && mark=" <span color=\"$muted\">(Active)</span>"
+        printf '%s%s\t%s\n' "$label" "$mark" "$(theme_swatch)"
+    done
+}
+
+menu_rofi() {
+    local chosen
+    chosen=$(menu | rofi -dmenu -markup-rows -format 'p' -i -no-custom \
+        -p "Theme" -line-padding 4 -hide-scrollbar \
+        -theme "$ROFI_THEME" \
+        -theme-str "window {width: 40%; border: 3px; border-color: $T_BG_ALT;}")
+    [ -z "$chosen" ] && return 0
+    chosen=${chosen%%$'\t'*}
+
+    local id
+    for id in "${THEME_IDS[@]}"; do
+        theme_load_quiet "$id" || continue
+        if [ "$T_NAME" = "$chosen" ]; then
+            apply "$id"
+            return 0
+        fi
+    done
+}
+
+list() {
+    local cur
+    cur=$(theme_current)
+    local id
+    for id in "${THEME_IDS[@]}"; do
+        theme_load "$id"
+        printf '%-18s %s %s\n' "$id" "$(theme_swatch_terminal)" \
+            "$([ "$id" = "$cur" ] && echo '*' || echo ' ')"
+    done
+}
+
+theme_swatch_terminal() {
+    hex_to_rgb() {
+        local hex=${1#\#}
+        printf '%s;%s;%s' "$((16#${hex:0:2}))" "$((16#${hex:2:2}))" "$((16#${hex:4:2}))"
+    }
+    local c
+    for c in "$T_BG" "$T_RED" "$T_YELLOW" "$T_GREEN" "$T_BLUE"; do
+        printf '\033[48;2;%sm      \033[0m' "$(hex_to_rgb "$c")"
+    done
+}
+
+apply() {
+    local name=$1
+    theme_apply "$name" || {
+        log "theme: failed to apply '$name'"
+        return 1
+    }
+    theme_reload
+    theme_notify
+    printf '%s\n' "$THEME_APPLIED_ID"
+}
+
+case "${1:-menu}" in
+    menu | "")
+        menu_rofi
+        ;;
+    list)
+        list
+        ;;
+    set)
+        [ -n "${2:-}" ] || die "usage: theme set <name>"
+        apply "$2"
+        ;;
+    current)
+        theme_current
+        printf '\n'
+        ;;
+    names)
+        printf '%s\n' "${THEME_IDS[@]}"
+        ;;
+    -h | --help | help)
+        sed -n '2,10p' "$0" | sed 's/^# \{0,1\}//'
+        ;;
+    *)
+        die "unknown command: $1 (try: theme list)"
+        ;;
+esac

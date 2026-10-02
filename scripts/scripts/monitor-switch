@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+. "$HOME/scripts/themes/colors"
 
 # Monitor switcher
 
@@ -12,7 +14,7 @@ if ! hyprctl monitors all | grep -q "$EXTERNAL"; then
     exit 1
 fi
 
-MODE=$(printf "Laptop Only\nExternal Only\nExtend\nMirror" | rofi -dmenu -i -p "Display Mode:" -theme-str "window {width: 400; border: 3px; border-color: #24283b;}")
+MODE=$(printf "Laptop Only\nExternal Only\nExtend\nMirror" | rofi -dmenu -i -p "Display Mode:" -theme-str "window {width: 400; border: 3px; border-color: $T_BG_ALT;}")
 
 case "$MODE" in
     "Laptop Only")
@@ -95,4 +97,4 @@ esac
 
 mv "$STATE_FILE.tmp" "$STATE_FILE" || exit 1
 hyprctl reload || { notify-send 'Settings' "Display mode switch to <b>$MODE</b> failed." -t 2500 -i dialog-error & echo "hyprctl reload failed"; exit 1; }
-notify-send 'Settings' "Display mode switched to <span color=\"#9ece6a\"><b>$MODE</b></span>" -t 2500 -i dialog-information &
+notify-send 'Settings' "Display mode switched to <span color=\"$T_GREEN\"><b>$MODE</b></span>" -t 2500 -i dialog-information &
