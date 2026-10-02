@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+"""Lint the color theme switcher's variable usage.
+
+    themes/check
+
+Two mistakes are easy to make when adding $T_* to a script, and neither is
+caught by `bash -n` or by running the script in a test:
+
+  1. the variable sits inside a single-quoted string, so the shell hands the
+     literal "$T_GREEN" to rofi/notify-send instead of expanding it;
+  2. the script uses $T_* but never loads the palette, so the value is empty.
+
+Exits non-zero when either is found.
+"""
+
+import os
+import pathlib
+import sys
+
+ROOTS = ["hypr-void/.config/hypr/scripts", "scripts/scripts"]
+SKIP = {"themes/lib.sh", "themes/colors"}
+LOADERS = ("themes/colors", "theme_load", "load_palette")
+VAR = "$T_"
+
+problems = []
+
+
+def scan_quotes(text):
+    """Yield (lineno, line, opened_on) for every $T_ inside a *shell* single-quoted string.
+
+    Quote state is tracked per character across the whole file, so both
+    `foo 'bar $T_X'` and multi-line single-quoted blocks are caught.
+
+    Only a `'` that is not itself inside a double-quoted string opens a shell
+    single-quoted region -- inside "..." a `'` is just a literal character, so
+    `-mesg "<span foreground='$T_X'>"` is correct and must not be flagged.
+    """
+    in_single = False
+    in_double = False
+    opened_on = 0
+    lineno = 1
+    for line in text.splitlines():
+        i = 0
+        while i < len(line):
+            ch = line[i]
+            if ch == "\\":
+                i += 2
+                continue
+            if ch == '"':
+                in_double = not in_double
+            elif ch == "'" and not in_double:
+                if in_single:
+                    in_single = False
+                else:
+                    in_single = True
+                    opened_on = lineno
+            elif in_single and not in_double and line[i:i + len(VAR)] == VAR:
+                yield lineno, line, opened_on
+            i += 1
+        lineno += 1
+
+
+def main():
+    for root in ROOTS:
+        base = pathlib.Path(os.path.expanduser("~"), "dotfiles", root)
+        if not base.is_dir():
+            base = pathlib.Path(root)
+        if not base.is_dir():
+            print(f"check: missing directory {base}", file=sys.stderr)
+            return 2
+
+        for path in sorted(p for p in base.iterdir() if p.is_file()):
+            if path.stat().st_size > 500_000:
+                continue
+            try:
+                text = path.read_text()
+            except (UnicodeDecodeError, OSError):
+                continue
+
+            rel = str(path)
+            if rel.split("/")[-1] in SKIP:
+                continue
+
+            if VAR not in text:
+                continue
+
+            for lineno, line, opened_on in scan_quotes(text):
+                where = f"{rel}:{lineno}"
+                if opened_on != lineno:
+                    where += f" (block opened at line {opened_on})"
+                problems.append(f"{where}: $T_ inside single quotes, will not expand")
+                print(f"  {where}: $T_ inside shell single quotes, will not expand")
+                print(f"      {line.strip()}")
+
+            if not any(loader in text for loader in LOADERS):
+                problems.append(f"{rel}: uses $T_ but never loads the palette")
+                print(f"  {rel}: uses $T_ but never loads the palette")
+                print('      add: . "$HOME/scripts/themes/colors"')
+
+    if problems:
+        print(f"\ncheck: {len(problems)} problem(s) found", file=sys.stderr)
+        return 1
+
+    print("check: no unexpanded $T_ references")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

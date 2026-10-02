@@ -46,7 +46,7 @@ selection=$(
             -no-custom \
             -show-icons \
             -p "Clipboard" \
-            -mesg "<span foreground='$T_SURFACE'>[Enter]: Copy | [Alt+X]: Delete</span>" \
+            -mesg "<span foreground=\"$T_SURFACE\">[Enter]: Copy | [Alt+X]: Delete</span>" \
             -kb-custom-2 "Alt+x" \
             -theme ~/.config/rofi/clipboard.rasi \
             -theme-str "window {width: 35%; border: 3px; border-color: $T_BG_ALT;}"

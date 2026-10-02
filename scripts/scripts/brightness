@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+. "$HOME/scripts/themes/colors"
+
 set -u
 
 STATE_FILE="$HOME/.cache/hypr_brightness"

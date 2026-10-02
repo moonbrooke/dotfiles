@@ -62,6 +62,24 @@ waybar, dunst and hyprland reload in place. New foot/kitty/btop windows pick the
 theme up on launch. GTK/Qt apps keep the Dracula GTK theme in every theme, so
 Latte and Dawn only lighten the terminal and bars.
 
+### Using the palette in a script
+
+```bash
+#!/usr/bin/env bash
+. "$HOME/scripts/themes/colors"
+
+rofi -theme-str "window {border: 3px; border-color: $T_BG_ALT;}"
+notify-send 'Settings' "Done <span color=\"$T_GREEN\">OK</span>"
+```
+
+`themes/check` lints that usage — it catches `$T_*` inside single quotes (which
+the shell would pass through literally, so rofi rejects it) and scripts that use
+`$T_*` without loading the palette:
+
+```bash
+themes/check
+```
+
 ### Screenshot
 
 > Might be a bit outdated, but accurate for the most part.

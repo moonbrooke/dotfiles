@@ -36,7 +36,7 @@ menu() {
 
 CHOSEN=$(menu | rofi -dmenu -markup-rows -format 'p' -i -p "Waybar Switcher" -line-padding 4 \
     -hide-scrollbar -theme "$ROFI_THEME" \
-    -theme-str 'window {width: 25%; border: 3px; border-color: $T_BG_ALT;}')
+    -theme-str "window {width: 25%; border: 3px; border-color: $T_BG_ALT;}")
 
 [ -z "$CHOSEN" ] && exit 0
 
