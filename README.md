@@ -1,8 +1,6 @@
 # dotfiles
 
-**Sept 17, 2026**: Switched to Void Linux.
-
-Dotfiles for my ~~Arch Linux~~ Void Linux setup. Only [Hyprland](https://hypr.land/) setup is used regularly. The other WM configs in this dotfiles are either experimental or abandoned.
+Only [Hyprland](https://hypr.land/) setup is used regularly. The other WM/Compositor configurations in this dotfiles are either experimental or abandoned.
 
 ### Setup
 
@@ -30,11 +28,3 @@ btop dunst fastfetch hypr-void foot nvim rofi waybar-2 scripts yazi zshrc mimeap
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - Editor: [Neovim](https://neovim.io/), [VS Code](https://code.visualstudio.com/)
 - Font: [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [Monocraft Nerd Font](https://github.com/IdreesInc/Monocraft), [Sarasa Gothic](https://github.com/be5invis/sarasa-gothic), [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [JetBrains Mono Nerd Font](https://www.nerdfonts.com/font-downloads), [Ricty Nerd Font](https://rictyfonts.github.io/) (Japanese font), [Noto CJK](https://github.com/notofonts/noto-cjk) (Chinese, Japanese, Korean fonts)
-
-### Screenshot
-
-> Might be a bit outdated, but accurate for the most part.
-
-Screenshot with Waybar, btop, fastfetch, ncmpcpp, Cava, Bitwig Studio, Rofi, and dunst notification.
-
-![hypr-3](https://raw.githubusercontent.com/moonbrooke/dotfiles/refs/heads/main/.github/images/hypr-3.png)
