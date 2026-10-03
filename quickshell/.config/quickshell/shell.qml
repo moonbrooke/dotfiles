@@ -1,3 +1,4 @@
+//@ pragma IconTheme Adwaita
 import QtQuick
 import Quickshell
 

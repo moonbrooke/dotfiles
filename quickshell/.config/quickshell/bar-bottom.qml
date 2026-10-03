@@ -300,7 +300,10 @@ PanelWindow {
     QtObject {
         id: workspaceModel
 
-        // persistent_workspaces 1..10, then dynamic, then special workspaces
+        // mirrors waybar modules/hyprland/workspaces.jsonc persistent_workspaces
+        readonly property int workspaceCount: 6
+
+        // exactly 1..6; dynamic and special workspaces are not shown
         property var entries: {
             const existing = Hyprland.workspaces.values;
             const byId = {};
@@ -308,16 +311,8 @@ PanelWindow {
                 byId[existing[i].id] = existing[i];
 
             const entries = [];
-            for (let id = 1; id <= 10; id++)
+            for (let id = 1; id <= workspaceModel.workspaceCount; id++)
                 entries.push({ id: id, ws: byId[id] || null, label: String(id) });
-            for (let i = 0; i < existing.length; i++) {
-                if (existing[i].id > 10)
-                    entries.push({ id: existing[i].id, ws: existing[i], label: String(existing[i].id) });
-            }
-            for (let i = 0; i < existing.length; i++) {
-                if (existing[i].id < 0)
-                    entries.push({ id: existing[i].id, ws: existing[i], label: String(existing[i].name).replace(/^special:?/, "") });
-            }
             return entries;
         }
     }
@@ -607,10 +602,17 @@ PanelWindow {
                         id: trayIcon
                         required property var modelData
 
-                        // the row gives it the bar height, icon-size: 11
-                        width: 11
+                        // waybar modules/tray.jsonc: icon-size 11
+                        readonly property int iconSize: 11
+
+                        width: iconSize
+                        height: iconSize
+                        // with height left implicit the provider is asked for an
+                        // invalid size and answers 100x100, so pin sourceSize
+                        sourceSize: Qt.size(iconSize, iconSize)
                         source: modelData.icon
                         asynchronous: false
+                        smooth: true
                         fillMode: Image.PreserveAspectFit
 
                         // no context menu: DBusMenu entries are not exposed to
