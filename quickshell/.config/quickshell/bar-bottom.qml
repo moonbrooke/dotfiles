@@ -6,29 +6,6 @@ import Quickshell.Wayland
 import Quickshell.Networking
 import Quickshell.Services.SystemTray
 
-// Quickshell port of the waybar-2 bottom bar:
-//   waybar/bottom.jsonc + waybar/style.css
-//
-//   left   custom/layout, custom/logo, hyprland/workspaces, hyprland/window
-//   center clock#datetime
-//   right  pulseaudio, network, tray, battery
-//
-// Notes on the port:
-//   * the Pipewire and UPower singletons stay empty in quickshell 0.3.1 (no
-//     UPower service on this machine at all), so audio and battery read the
-//     same sources waybar's own modules use: wpctl/pactl and
-//     /sys/class/power_supply, polled the way the modules are configured
-//   * Hyprland.activeToplevel is always null in 0.3.1, the window module reads
-//     ToplevelManager.activeToplevel instead (same appId/title as {class})
-//   * persistent_workspaces 1..10 are synthesised from Hyprland.workspaces
-//   * custom/layout refreshed on signal 8; quickshell has no SignalHandler, so
-//     the layout is re-read on the activelayout/configreloaded socket events
-//     _layout.lua used to trigger `pkill -RTMIN+8 waybar` with, plus a slow
-//     fallback poll
-//   * waybar marks the focused monitor's workspace .active, which is quickshell's
-//     HyprlandWorkspace.focused, not .active
-//   * tray context menus cannot be built on 0.3.1, see the tray module
-
 PanelWindow {
     id: bar
 
@@ -413,44 +390,6 @@ PanelWindow {
         }
 
         Item {
-            id: logoModule
-            width: logoText.width
-            height: bar.height
-
-            BarText {
-                id: logoText
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                font.family: "English Football Club Badges"
-                text: "A"
-                // #custom-logo:hover with transition: color 0.2s ease
-                color: logoHover.containsMouse ? theme.red : theme.white
-
-                Behavior on color {
-                    ColorAnimation { duration: 200 }
-                }
-            }
-
-            MouseArea {
-                id: logoHover
-                anchors.fill: parent
-                hoverEnabled: true
-                onClicked: logoProc.running = true
-            }
-
-            Tooltip {
-                target: logoModule
-                shown: logoHover.containsMouse
-                text: "Menu"
-            }
-        }
-
-        Process {
-            id: logoProc
-            command: ["sh", "-c", "$HOME/.config/hypr/scripts/menu.sh"]
-        }
-
-        Item {
             id: workspacesModule
             width: workspacesRow.width
             height: bar.height
@@ -726,82 +665,4 @@ PanelWindow {
             }
         }
     }
-
-    // Commented out in bottom.jsonc. Uncomment a block and add the item to the
-    // left/center/right Row it belongs to.
-    //
-    // custom/weather - {"exec": "~/scripts/waybar-wttr.sh", "interval": 3600, "return-type": "json"}
-    // Item {
-    //     width: weatherText.width
-    //     height: bar.height
-    //     BarText { id: weatherText; anchors.verticalCenter: parent.verticalCenter }
-    //     Process {
-    //         id: weatherProc
-    //         running: true
-    //         command: ["sh", "-c", "~/scripts/waybar-wttr.sh"]
-    //         stdout: StdioCollector { onStreamFinished: weatherText.text = JSON.parse(text).text.trim() }
-    //     }
-    //     Timer { interval: 3600000; running: true; repeat: true; onTriggered: weatherProc.running = true }
-    // }
-    //
-    // memory - "RAM: {used:0.1f}G/{total:0.1f}G", states warning 70 / critical 90
-    // Item {
-    //     width: memoryText.width
-    //     height: bar.height
-    //     BarText { id: memoryText; anchors.verticalCenter: parent.verticalCenter; text: "RAM: 0.0G/0.0G" }
-    //     Process {
-    //         id: memoryProc
-    //         running: true
-    //         command: ["sh", "-c", "free -b | awk '/^Mem/ {printf \"RAM: %.1fG/%.1fG\", $3/1073741824, $2/1073741824}'"]
-    //         stdout: StdioCollector { onStreamFinished: memoryText.text = text.trim() }
-    //     }
-    //     Timer { interval: 5000; running: true; repeat: true; onTriggered: memoryProc.running = true }
-    // }
-    //
-    // cpu - "CPU: {usage}%", states warning 70 / critical 90
-    // Item {
-    //     width: cpuText.width
-    //     height: bar.height
-    //     BarText { id: cpuText; anchors.verticalCenter: parent.verticalCenter; text: "CPU: 0%" }
-    //     Process {
-    //         id: cpuProc
-    //         running: true
-    //         command: ["sh", "-c", "awk '/cpu / {printf \"CPU: %.0f%%\", ($2+$3+$4+$5+$6+$7+$8)/($2+$3+$4+$5+$6+$7+$8+$9)*100}' /proc/stat"]
-    //         stdout: StdioCollector { onStreamFinished: cpuText.text = text.trim() }
-    //     }
-    //     Timer { interval: 5000; running: true; repeat: true; onTriggered: cpuProc.running = true }
-    // }
-    //
-    // temperature - "TEMP: {temperatureC}°", critical-threshold 90
-    // Item {
-    //     width: tempText.width
-    //     height: bar.height
-    //     BarText { id: tempText; anchors.verticalCenter: parent.verticalCenter; text: "TEMP: 0°" }
-    //     Process {
-    //         id: tempProc
-    //         running: true
-    //         command: ["sh", "-c", "cat /sys/class/thermal/thermal_zone0/temp | awk '{printf \"TEMP: %.0f°\", $1/1000}'"]
-    //         stdout: StdioCollector { onStreamFinished: tempText.text = text.trim() }
-    //     }
-    //     Timer { interval: 5000; running: true; repeat: true; onTriggered: tempProc.running = true }
-    // }
-    //
-    // custom/power - red block, on-click ~/.config/hypr/scripts/power.sh
-    // Item {
-    //     width: powerText.width + 30
-    //     height: bar.height
-    //     Rectangle { anchors.fill: parent; color: theme.red }
-    //     Text {
-    //         id: powerText
-    //         anchors.centerIn: parent
-    //         text: "⏻"
-    //         color: theme.black
-    //         font.family: "Monocraft"
-    //         font.weight: Font.Bold
-    //         font.pixelSize: 14
-    //     }
-    //     MouseArea { anchors.fill: parent; onClicked: powerProc.running = true }
-    //     Process { id: powerProc; command: ["sh", "-c", "$HOME/.config/hypr/scripts/power.sh"] }
-    // }
-    // Process { id: powerProc; command: ["sh", "-c", "$HOME/.config/hypr/scripts/power.sh"] }
 }
