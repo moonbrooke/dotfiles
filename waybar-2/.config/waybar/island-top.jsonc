@@ -15,7 +15,6 @@
     
     "modules-left": [
         "custom/layout",
-        "custom/logo",
         "hyprland/workspaces",
         "hyprland/window"
     ],
