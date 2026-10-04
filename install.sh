@@ -54,7 +54,7 @@ echo "Applying dotfiles with GNU Stow..."
 cd "$DOTFILES_DIR"
 
 # Stow the specific folders listed in the README
-stow btop dunst fastfetch hypr foot nvim rofi waybar-2 scripts yazi mimeapps
+stow btop dunst fastfetch hypr foot nvim rofi waybar scripts yazi mimeapps
 
 # Notes Folder
 if [ ! -d "$HOME/notes" ]; then
