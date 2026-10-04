@@ -21,8 +21,8 @@ alias ffc="fastfetch -c ~/.config/fastfetch/catnap.jsonc"
 
 # Arch
 alias pminfo="yay -Si"
-alias pmi="sudo pacman -S"
-alias pmu="sudo pacman -R"
+alias pmi="sudo pacman -S --needed"
+alias pmu="sudo pacman -Rns"
 alias pml="yay -Q"
 alias pmc="du -hd1 /var/cache/pacman"
 alias yayc="du -hd1 ~/.cache/yay"
