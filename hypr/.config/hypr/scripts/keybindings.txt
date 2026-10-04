@@ -8,14 +8,22 @@ Super + Period                      | Launch emoji picker
 Super + E                           | Launch file manager
 Super + Shift + W                   | Launch wallpaper switcher
 Super + L or Copilot Key            | Switch layout
+Super + Shift + L                   | Reset layout to DWINDLE
+Super + P                           | Display mode switcher
 Super + Comma                       | Toggle animation
 Super + C                           | Toggle gaps
+Super + Shift + G                   | Launch gaps menu
 Super + G                           | Toggle game mode
+Super + K                           | Toggle key visualizer
+Super + Shift + K                   | Launch key visualizer menu
+Super + H                           | Launch notification history
+Super + [F9, F10]                    | Brightness control
 Super + Z                           | Zoom in
 Super + Shift + Z                   | Reset zoom
 Super + M                           | Launch notes manager
 Super + N                           | Launch wifi menu
 Super + BackSpace or Super + Esc    | Launch power menu
+Super + Shift + T                   | Waybar switcher
 Super + Shift + R                   | Restart waybar
 
 # === Screenshot ===
@@ -27,8 +35,8 @@ Super + Shift + Print               | Window screenshot
 Super + Q                           | Kill focused window
 Super + J                           | Toggle split horizontal/vertical
 Super + F                           | Toggle floating window
-Super + P                           | Toggle pin window
-Super + SHIFT + P                   | Toggle pseudotiling
+Super + Shift + Period              | Toggle pin window
+Super + Shift + P                   | Toggle pseudotiling
 Super + Right                       | Move focus to the right
 Super + Left                        | Move focus to the left
 Super + Tab                         | Cycle focus next
@@ -40,9 +48,9 @@ Super + Ctrl + Left                 | Resize focused window to the left
 F11 or Alt + Return                 | Toggle fullscreen
 
 # === Workspace ===
-Super + [1,2,3,..]                  | Switch to workspace
-Super + Shift + [1,2,3,..]          | Move focused window to workspace
-Super + Ctrl + Shift + Ctrl + Right | Move to the next workspace
-Super + Ctrl + Shift + Ctrl + Left  | Move to the previous workspace
+Super + [1, 2, 3, ...]              | Switch to workspace
+Super + Shift + [1, 2, 3, ...]      | Move focused window to workspace
+Super + Ctrl + Shift + Right        | Move to the next workspace
+Super + Ctrl + Shift + Left         | Move to the previous workspace
 Super + S                           | Open scratchpad
 Super + Shift + S                   | Move window focused to scratchpad

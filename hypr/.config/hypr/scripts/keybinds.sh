@@ -47,7 +47,7 @@ rows=$(awk '
         for (i = 1; i <= n; i++) {
             name = order[i]
             if (cnt[name] == 0) continue
-            printf "<span foreground=\"#ff8f40\">── %s ──</span>\n", xmlesc(name)
+            printf "<span foreground=\"#7aa2f7\">── %s</span>\n", xmlesc(name)
             for (j = 1; j <= cnt[name]; j++) {
                 
                 # Pad the key string to 35 characters first so Pango tags do not break alignment
@@ -58,10 +58,10 @@ rows=$(awk '
                 
                 # Inject grey color span for the word " or "
                 # We close the primary blue span, start a grey span, and reopen the blue span
-                gsub(/ or /, "</span> <span foreground=\"#565f89\">or</span> <span foreground=\"#78a9ff\">", key_escaped)
+                gsub(/ or /, "</span> <span foreground=\"#565f89\">or</span> <span foreground=\"#c0caf5\">", key_escaped)
                 
                 # Print the final assembled string
-                printf "<span foreground=\"#78a9ff\">%s</span>  %s\n", key_escaped, xmlesc(rdsc[name, j])
+                printf "<span foreground=\"#c0caf5\">%s</span>  <span foreground=\"#565f89\">%s</span>\n", key_escaped, xmlesc(rdsc[name, j])
             }
         }
     }

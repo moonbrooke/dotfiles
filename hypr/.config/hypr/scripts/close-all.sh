@@ -1,9 +1,10 @@
 #!/bin/bash
 
 hyprctl clients -j | \
-  jq -r ".[].address" | \
-  while read -r addr; do
-    hyprctl dispatch "hl.dsp.window.close(\"address:$addr\")" >/dev/null 2>&1 || hyprctl dispatch closewindow "address:$addr"
-  done
+    jq -r ".[].address" | \
+    while read -r addr; do
+        hyprctl dispatch "hl.dsp.window.close({ window = \"address:$addr\" })" >/dev/null
+    done
 
+# Move to first workspace
 hyprctl dispatch 'hl.dsp.focus({ workspace = "1" })' >/dev/null 2>&1 || hyprctl dispatch workspace 1

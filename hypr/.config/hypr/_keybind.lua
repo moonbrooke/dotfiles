@@ -1,9 +1,9 @@
-local cycle_layout = require("_layout")
+local layout = require("_layout")
 
 -- Programs
 local terminal = "foot"
 local file_manager = "thunar"
-local browser = "firefox-esr"
+local browser = "firefox"
 local menu = "~/.config/hypr/scripts/menu.sh"
 local full_screenshot = "~/.config/hypr/scripts/screenshot.sh full"
 local select_screenshot = "~/.config/hypr/scripts/screenshot.sh select"
@@ -11,21 +11,29 @@ local window_screenshot = "~/.config/hypr/scripts/screenshot.sh window"
 local power_menu = "~/.config/hypr/scripts/power.sh"
 local cliphist = "~/.config/hypr/scripts/cliphist.sh"
 local run = "~/.config/hypr/scripts/run.sh"
-local restart_waybar = "pkill waybar; waybar &"
-local wifi = 'foot -T "floating_nmtui" -e nmtui'
+local restart_waybar = "pkill waybar; sleep 0.5; ~/.config/hypr/scripts/launch-waybar.sh &"
+local waybar_menu = "~/scripts/waybar-menu"
+local wifi = "foot -T floating_wlctl wlctl"
 local gamemode = "~/.config/hypr/scripts/gamemode.sh"
 local animation = "~/.config/hypr/scripts/animation.sh"
 local gaps = "~/.config/hypr/scripts/gaps.sh"
-local notes = "~/scripts/rofi-notes.sh"
+local notes = "~/scripts/rofi-notes"
 local keybinds_helper = "pkill rofi || ~/.config/hypr/scripts/keybinds.sh"
 local emoji = "~/.config/hypr/scripts/emoji.sh"
 local ocr = "~/.config/hypr/scripts/ocr.sh"
 local wallpaper = "~/.config/hypr/scripts/wallpaper.sh"
+local gaps_menu = "~/.config/hypr/scripts/gaps-menu.sh"
+local monitor = "~/scripts/monitor-switch"
+local brightness = "~/scripts/brightness"
+local keyviz = "~/scripts/keyviz toggle"
+local keyviz_menu = "~/scripts/keyviz menu"
+local notif_history = "~/scripts/notif-history"
 
 local mainMod = "SUPER"
 
-hl.bind(mainMod .. " + L", cycle_layout)
-hl.bind(mainMod .. " + SHIFT + F23", cycle_layout)
+hl.bind(mainMod .. " + L", layout.cycle)
+hl.bind(mainMod .. " + SHIFT + F23", layout.cycle)
+hl.bind(mainMod .. " + SHIFT + L", layout.reset)
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(power_menu))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(power_menu))
@@ -33,10 +41,13 @@ hl.bind(mainMod .. " + F", function ()
     hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
     hl.dispatch(hl.dsp.window.center())
 end)
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(monitor))
+-- hl.bind("Fn + F7", hl.dsp.exec_cmd(monitor))
 hl.bind("F11", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind("ALT + RETURN", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(gamemode))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(gaps))
+hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd(gaps_menu))
 hl.bind(mainMod .. " + Comma", hl.dsp.exec_cmd(animation))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(notes))
 hl.bind(mainMod .. " + BackSlash", hl.dsp.exec_cmd(keybinds_helper))
@@ -56,16 +67,20 @@ hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(file_manager))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + P", hl.dsp.window.pin())
+hl.bind(mainMod .. " + H", hl.dsp.exec_cmd(notif_history))
+hl.bind(mainMod .. " + SHIFT + Period", hl.dsp.window.pin())
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(cliphist))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(run))
 hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd(emoji))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(restart_waybar))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(waybar_menu))
 -- hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bluetooth))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(wallpaper))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(wifi))
+hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(keyviz))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.exec_cmd(keyviz_menu))
 
 -- Screenshots
 hl.bind("Print", hl.dsp.exec_cmd(full_screenshot))
@@ -86,6 +101,10 @@ hl.bind(mainMod .. " + SHIFT + Tab", function()
     hl.dispatch(hl.dsp.window.cycle_next({ next = false, tiled = true, floating = true }))
     hl.dispatch(hl.dsp.window.bring_to_top())
 end)
+
+-- Brightness
+hl.bind(mainMod .. " + F10",  hl.dsp.exec_cmd(brightness .. " up"),   { locked = true, repeating = true })
+hl.bind(mainMod .. " + F9",hl.dsp.exec_cmd(brightness .. " down"), { locked = true, repeating = true })
 
 -- Move windows around workspaces
 hl.bind(mainMod .. " + SHIFT + Left",  hl.dsp.window.move({ direction = "left" }))
@@ -124,8 +143,8 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd(brightness .. " up"),   { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd(brightness .. " down"), { locked = true, repeating = true })
 
 -- Requires playerctl
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
