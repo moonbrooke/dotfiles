@@ -12,7 +12,7 @@ My current setup consists of the following:
 
 ```bash
 # The configs you need to stow. You can stow multiple folders at once.
-btop dunst fastfetch hypr-lua foot nvim rofi waybar-2 scripts yazi zshrc mimeapps
+btop dunst fastfetch hypr foot nvim rofi waybar-2 scripts yazi zshrc mimeapps
 ```
 
 Install dependencies:
@@ -20,8 +20,8 @@ Install dependencies:
 ```bash
 # Necessary for the setup
 sudo pacman -S --needed --noconfirm \
-    hyprland swaybg dunst grim slurp jq foot waybar rofi awww easyeffects alsa-utils \
-    hyprpicker imv udiskie tesseract tesseract-data-jpn tesseract-data-eng \
+    hyprland dunst grim slurp jq foot waybar rofi awww easyeffects alsa-utils \
+    hyprpicker imv udiskie \
     ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
     wl-clipboard cliphist wl-clip-persist hyprpolkitagent rofimoji noto-fonts-emoji \
     xdg-desktop-portal-hyprland thunar thunar-volman gvfs unzip stow nwg-look \
