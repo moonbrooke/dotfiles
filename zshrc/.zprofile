@@ -1,3 +1,3 @@
-# if [[ -z "$WAYLAND_DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
-#     exec start-hyprland
-# fi
+if [[ -x "$HOME/scripts/desktop-select" ]]; then
+    "$HOME/scripts/desktop-select"
+fi

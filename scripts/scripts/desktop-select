@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+
+set -u
+
+# Interactive tty/tty1 and no session already running.
+[[ -t 0 ]] || exit 0
+[[ -z "${WAYLAND_DISPLAY:-}" && -z "${DISPLAY:-}" ]] || exit 0
+[[ "${XDG_VTNR:-0}" -eq 1 ]] || exit 0
+
+readonly HYPRLAND_LABEL="Hyprland"
+readonly HYPRLAND_CMD="start-hyprland"
+readonly MANGO_LABEL="MangoWM"
+readonly MANGO_CMD="mango"
+
+LABELS=("$HYPRLAND_LABEL" "$MANGO_LABEL")
+COMMANDS=("$HYPRLAND_CMD" "$MANGO_CMD")
+readonly COUNT="${#LABELS[@]}"
+readonly ESC=$'\033'
+
+if [ -z "${TERM:-}" ] || [ "${TERM}" = "dumb" ]; then
+    INVERT=''
+    DIM=''
+    RESET=''
+else
+    INVERT='\033[7m'
+    DIM='\033[2m'
+    RESET='\033[0m'
+fi
+readonly INVERT DIM RESET
+
+clear_screen() {
+    [ -n "$RESET" ] || return 0
+    printf '\033[2J\033[H'
+}
+
+read_key() {
+    local key c2 c3 seq
+
+    IFS= read -rsn1 key || return 1
+
+    [ -n "$key" ] || { printf 'enter\n'; return 0; }
+
+    if [ "$key" = "$ESC" ]; then
+        c2=""
+        c3=""
+        IFS= read -rsn1 -t 0.2 c2 || c2=""
+        [ -n "$c2" ] && { IFS= read -rsn1 -t 0.2 c3 || c3=""; }
+        seq="$c2$c3"
+        case "$seq" in
+            '[A' | 'OA') printf 'up\n' ;;
+            '[B' | 'OB') printf 'down\n' ;;
+            '[C' | 'OC') printf 'right\n' ;;
+            '[D' | 'OD') printf 'left\n' ;;
+            *) printf 'esc\n' ;;
+        esac
+        return 0
+    fi
+
+    case "$key" in
+        $'\n' | $'\r') printf 'enter\n' ;;
+        $'\003' | $'\004') return 1 ;;
+        *) printf '%s\n' "$key" ;;
+    esac
+}
+
+render_menu() {
+    local i
+
+    clear_screen
+    printf '\n  Select a desktop session\n\n'
+    for ((i = 0; i < COUNT; i++)); do
+        if [ "$i" -eq "$cursor" ]; then
+            printf "  ${INVERT} %d) %s${RESET}\n" "$((i + 1))" "${LABELS[$i]}"
+        else
+            printf '    %d) %s\n' "$((i + 1))" "${LABELS[$i]}"
+        fi
+    done
+    printf "\n  ${DIM}[up/down] move | [enter] start | [q] cancel${RESET}\n"
+}
+
+cursor=0
+selected=""
+
+while :; do
+    render_menu
+    key="$(read_key)" || break
+    case "$key" in
+        up | left) cursor=$(((cursor + COUNT - 1) % COUNT)) ;;
+        down | right) cursor=$(((cursor + 1) % COUNT)) ;;
+        1) cursor=0 ;;
+        2) cursor=1 ;;
+        enter) selected="$cursor"; break ;;
+        q | Q | esc) break ;;
+    esac
+done
+
+clear_screen
+
+if [ -z "$selected" ]; then
+    printf 'Cancelled. Run "%s" or "%s" to start a session.\n' "$HYPRLAND_CMD" "$MANGO_CMD"
+    exit 0
+fi
+
+label="${LABELS[$selected]}"
+cmd="${COMMANDS[$selected]}"
+
+if ! command -v "$cmd" >/dev/null 2>&1; then
+    printf '%s is not installed (missing: %s)\n' "$label" "$cmd" >&2
+    exit 1
+fi
+
+printf 'Starting %s...\n' "$label"
+exec "$cmd"
