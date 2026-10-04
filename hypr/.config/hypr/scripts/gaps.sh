@@ -1,21 +1,13 @@
 #!/usr/bin/env sh
 
-STATE_FILE="/tmp/hypr_gaps_state"
+STATE_FILE="$HOME/.cache/hypr_gaps"
 
 if [ ! -f "$STATE_FILE" ]; then
-    echo "on" > "$STATE_FILE"
-fi
-
-STATE=$(cat "$STATE_FILE")
-
-if [ "$STATE" = "on" ]; then
-    hyprctl --batch "\
-        keyword general:gaps_in 0;\
-        keyword general:gaps_out 0;"
-    echo "off" > "$STATE_FILE"
+    touch "$STATE_FILE"
+    notify-send 'Settings' 'Window gaps has been <span color="#9ece6a"><b>ENABLED</b></span>' -t 2500 -i dialog-information &
 else
-    hyprctl --batch "\
-        keyword general:gaps_in 5;\
-        keyword general:gaps_out 10;"
-    echo "on" > "$STATE_FILE"
+    rm "$STATE_FILE"
+    notify-send 'Settings' 'Window gaps has been <span color="#f7768e"><b>DISABLED</b></span>' -t 2500 -i dialog-information &
 fi
+
+hyprctl reload
