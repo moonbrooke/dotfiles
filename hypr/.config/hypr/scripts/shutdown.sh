@@ -1,5 +1,5 @@
 #!/bin/bash
 
 ~/.config/hypr/scripts/close-all.sh
-sleep 2
+sleep 1
 loginctl poweroff
