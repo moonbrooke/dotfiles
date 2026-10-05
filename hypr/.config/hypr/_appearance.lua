@@ -32,8 +32,8 @@ hl.config({
         layout = saved_layout,
 
         col = {
-            active_border = { colors = {"rgb(f7768e)", "rgb(bb9af7)"}, angle = 45 },
-            inactive_border = "rgb(414868)",
+            active_border = { colors = {"rgb(9aa5ce)", "rgb(565f89)"}, angle = 45 },
+            inactive_border = "rgb(24283b)",
         },
     },
 
