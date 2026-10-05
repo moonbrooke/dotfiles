@@ -2,4 +2,4 @@
 
 ~/.config/hypr/scripts/close-all.sh
 sleep 1
-loginctl reboot
+systemctl reboot
