@@ -1,7 +1,7 @@
 [Default Applications]
-text/html=firefox.desktop
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop
+text/html=microsoft-edge.desktop
+x-scheme-handler/http=microsoft-edge.desktop
+x-scheme-handler/https=microsoft-edge.desktop
 image/png=imv.desktop
 image/jpeg=imv.desktop
 image/gif=imv.desktop
