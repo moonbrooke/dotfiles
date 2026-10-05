@@ -1,0 +1,31 @@
+{
+    "layer": "top",
+    "position": "top",
+    "reload_style_on_change": true,
+
+    "include": [
+        "~/.config/waybar/modules/custom/*.jsonc",
+        "~/.config/mango/waybar/modules/mango/*.jsonc",
+        "~/.config/waybar/modules/*.jsonc",
+    ],
+    
+    "modules-left": [
+        "custom/layout",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        // "custom/weather",
+        "clock#datetime"
+    ],
+    "modules-right": [
+        // "memory",
+        // "cpu",
+        // "temperature",
+        "pulseaudio",
+        "network",
+        "tray",
+        "battery"
+        // "custom/power"
+    ]
+}
