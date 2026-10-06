@@ -503,10 +503,6 @@ def cmd_menu():
     current_pos = get_position()
     current_sz = get_size()
 
-    # Layout arranged in columns for Rofi vertical flow:
-    # Col 1: Top-Left, Center-Left, Bottom-Left, Small (13px)
-    # Col 2: Top-Center, Center, Bottom-Center, Medium (17px)
-    # Col 3: Top-Right, Center-Right, Bottom-Right, Large (22px)
     grid_items = [
             ("pos", "top-left", "Pos: Top-Left"),
             ("pos", "top-center", "Pos: Top-Center"),
@@ -525,9 +521,9 @@ def cmd_menu():
     options = []
     for kind, key, label in grid_items:
         if kind == "pos" and key == current_pos:
-            options.append(f"{label} *")
+            options.append(f'{label} <span color="#565f89">(Active)</span>')
         elif kind == "size" and key == current_sz:
-            options.append(f"{label} *")
+            options.append(f'{label} <span color="#565f89">(Active)</span>')
         else:
             options.append(label)
 
@@ -538,7 +534,7 @@ def cmd_menu():
     ]
     theme_rasi = next((t for t in theme_candidates if os.path.isfile(t)), "")
 
-    rofi_cmd = ["rofi", "-dmenu", "-i", "-p", "Keyviz HUD Settings"]
+    rofi_cmd = ["rofi", "-dmenu", "-markup-rows", "-i", "-p", "Keyviz HUD Settings"]
     if theme_rasi:
         rofi_cmd.extend(["-theme", theme_rasi])
 
