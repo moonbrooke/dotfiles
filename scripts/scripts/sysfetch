@@ -1,84 +1,275 @@
 #!/bin/bash
 
-R=$'\e[m'
-B=$'\e[1m'
-G=$'\e[32m'
-M=$'\e[35m'
+if [ -t 1 ]; then
+    BOLD_CYAN=$'\e[1m\e[36m'
+    BOLD_MAGENTA=$'\e[1m\e[35m'
+    GREEN=$'\e[32m'
+    RESET=$'\e[m'
+else
+    BOLD_CYAN=""
+    BOLD_MAGENTA=""
+    GREEN=""
+    RESET=""
+fi
 
-LOGOW=19
+SEP="  " # Separator
+LOGO_WIDTH=20
+BLANK="                    " # Column width
 
-logos=(
-    "      _______"
-    "   _ \______ -"
-    "  | \  ___  \ |"
-    "  | | /   \ | |"
-    "  | | \___/ | |"
-    "  | \______ \_|"
-    "   -_______\\"
+LOGO=(
+"        /\\"
+"       /  \\"
+"      /    \\"
+"     /      \\"
+"    /   ,,   \\"
+"   /   |  |   \\"
+"  /_-''    ''-_\\"
 )
 
-keys=(
-    "user  "
-    "os    "
-    "kernel"
-    "pkgs  "
-    "wm    "
-    "cpu   "
-    "memory"
+KEYS=(
+"user  "
+"os    "
+"kernel"
+"pkgs  "
+"wm    "
+"cpu   "
+"memory"
 )
 
-user="${USER:-$(whoami)}"
+# title
+get_user() {
+    if [ -n "$USER" ]; then
+        printf '%s' "$USER"
+    else
+        whoami 2>/dev/null || printf 'unknown'
+    fi
+}
 
-os_name=""
-if [ -r /etc/os-release ]; then
-    source /etc/os-release
-    os_name="${PRETTY_NAME:-$NAME}"
-fi
-os="${os_name} $(uname -m)"
+# os
+get_os() {
+    local pretty arch
+    if [ -r /etc/os-release ]; then
+        # shellcheck disable=SC1091
+        pretty=$(source /etc/os-release 2>/dev/null && printf '%s' "$PRETTY_NAME")
+    fi
+    [ -z "$pretty" ] && pretty=$(uname -s 2>/dev/null)
+    arch=$(uname -m 2>/dev/null)
+    if [ -n "$arch" ]; then
+        printf '%s %s' "$pretty" "$arch"
+    else
+        printf '%s' "$pretty"
+    fi
+}
 
-kernel="$(uname -s) $(uname -r)"
+# kernel
+get_kernel() {
+    printf '%s %s' "$(uname -s 2>/dev/null)" "$(uname -r 2>/dev/null)"
+}
 
-pkg_count="$(xbps-query -l 2>/dev/null | wc -l)"
-pkg_count="$(echo "$pkg_count" | tr -d ' ')"
-pkgs="${pkg_count} (xbps)"
+# packages
+get_pkgs() {
+    local n
+    if command -v pacman >/dev/null 2>&1; then
+        n=$(pacman -Qq 2>/dev/null | wc -l)
+        n=$(printf '%s' "$n" | tr -d ' ')
+        printf '%s (pacman)' "$n"
+        return
+    fi
+    # fallback for non-Arch systems
+    if command -v dpkg-query >/dev/null 2>&1; then
+        n=$(dpkg-query -f '.\n' -W 2>/dev/null | wc -l); n=$(printf '%s' "$n" | tr -d ' ')
+        printf '%s (dpkg)' "$n"; return
+    fi
+    if command -v rpm >/dev/null 2>&1; then
+        n=$(rpm -qa 2>/dev/null | wc -l); n=$(printf '%s' "$n" | tr -d ' ')
+        printf '%s (rpm)' "$n"; return
+    fi
+    if command -v apk >/dev/null 2>&1; then
+        n=$(apk info 2>/dev/null | wc -l); n=$(printf '%s' "$n" | tr -d ' ')
+        printf '%s (apk)' "$n"; return
+    fi
+    printf 'unknown'
+}
 
-wm_ver="$(Hyprland --version 2>/dev/null | head -n 1 | awk '{print $1, $2}')"
-if [ -z "$wm_ver" ]; then
-    wm_ver="$(hyprctl version 2>/dev/null | head -n 1 | awk '{print $1, $2}')"
-fi
-proto="(Wayland)"
-if [[ "${XDG_SESSION_TYPE,,}" == "x11" ]] || { [ -z "${WAYLAND_DISPLAY:-}" ] && [ -n "${DISPLAY:-}" ]; }; then
-    proto="(X11)"
-fi
-wm="${wm_ver} ${proto}"
+# helpers for wm
+_capitalize() {
+    local s="$1"
+    s=$(printf '%s' "$s" | tr '[:upper:]' '[:lower:]')
+    printf '%s%s' "$(printf '%s' "$s" | cut -c1 | tr '[:lower:]' '[:upper:]')" "$(printf '%s' "$s" | cut -c2-)"
+}
 
-cpu_model="$(grep -m1 'model name' /proc/cpuinfo | cut -d: -f2 | sed 's/^ *//')"
-cpu="${cpu_model}"
+_get_session_type() {
+    local t="${XDG_SESSION_TYPE:-}"
+    if [ -z "$t" ]; then
+        t=$(loginctl show-session "${XDG_SESSION_ID:-self}" -p Type --value 2>/dev/null)
+    fi
+    [ -z "$t" ] && t="unknown"
+    _capitalize "$t"
+}
 
-read -r mem_total mem_avail < <(awk '/^MemTotal:/{t=$2} /^MemAvailable:/{a=$2} END{print t, a}' /proc/meminfo)
-mem_used=$((mem_total - mem_avail))
-read -r used_gib total_gib pct < <(awk -v u="$mem_used" -v t="$mem_total" 'BEGIN{printf "%.2f %.2f %.0f", u/1048576, t/1048576, u*100/t}')
-mem="${used_gib} GiB / ${total_gib} GiB (${G}${pct}%${R})"
+# wm
+get_wm() {
+    local name="" proto
+    proto=$(_get_session_type)
 
-values=(
-    "$user"
-    "$os"
-    "$kernel"
-    "$pkgs"
-    "$wm"
-    "$cpu"
-    "$mem"
+    if command -v hyprctl >/dev/null 2>&1; then
+        local hv
+        hv=$(hyprctl version 2>/dev/null | head -n1 | grep -oE 'v?[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1 | tr -d 'v')
+        if [ -n "$hv" ] && hyprctl version >/dev/null 2>&1; then
+            # only say hyprland if it's actually running
+            if pgrep -x Hyprland >/dev/null 2>&1 || [ "${XDG_CURRENT_DESKTOP:-}" = "Hyprland" ]; then
+                name="Hyprland $hv"
+            fi
+        fi
+    fi
+
+    if [ -z "$name" ] && command -v sway >/dev/null 2>&1 && pgrep -x sway >/dev/null 2>&1; then
+        local sv
+        sv=$(sway --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1)
+        name="Sway${sv:+ $sv}"
+    fi
+
+    if [ -z "$name" ]; then
+        # fallback: desktop env / window manager detection
+        local de="${XDG_CURRENT_DESKTOP:-${DESKTOP_SESSION:-}}"
+        de=${de%%:*}
+        if [ -n "$de" ]; then
+            name="$de"
+            # try to append version for known compositors
+            case "$de" in
+                [Hh]yprland*)
+                    local hv2
+                    hv2=$(hyprctl version 2>/dev/null | head -n1 | grep -oE 'v?[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1 | tr -d 'v')
+                    [ -n "$hv2" ] && name="Hyprland $hv2"
+                    ;;
+                [Gg][Nn][Oo][Mm][Ee]*)
+                    if command -v gnome-shell >/dev/null 2>&1; then
+                        local gv
+                        gv=$(gnome-shell --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1)
+                        [ -n "$gv" ] && name="GNOME $gv"
+                    fi
+                    ;;
+                [Kk][Dd][Ee]*|[Pp]lasma*)
+                    if command -v kwin_wayland >/dev/null 2>&1 || command -v kwin_x11 >/dev/null 2>&1; then
+                        local kv
+                        kv=$(kwin_wayland --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1)
+                        [ -n "$kv" ] && name="KWin $kv" || name="$de"
+                    fi
+                    ;;
+            esac
+        else
+            for p in Hyprland sway kwin_wayland kwin_x11 mutter xfwm4 i3 bspwm openbox; do
+                if pgrep -x "$p" >/dev/null 2>&1; then
+                    name="$p"
+                    break
+                fi
+            done
+        fi
+    fi
+
+    [ -z "$name" ] && name="Unknown"
+    printf '%s (%s)' "$name" "$proto"
+}
+
+# cpu
+get_cpu() {
+    local model threads freq_ghz core_str
+    model=$(grep -m1 'model name' /proc/cpuinfo 2>/dev/null | cut -d: -f2 | sed 's/^ *//')
+    [ -z "$model" ] && model=$(lscpu 2>/dev/null | grep -m1 'Model name' | cut -d: -f2 | sed 's/^ *//')
+    [ -z "$model" ] && model="Unknown CPU"
+    threads=$(nproc 2>/dev/null || grep -c '^processor' /proc/cpuinfo 2>/dev/null)
+    [ -z "$threads" ] && threads=""
+
+    # hybrid cpu breakdown
+    core_str=""
+    if [ -n "$threads" ]; then
+        local smt=0 single=0 f sib
+        for f in /sys/devices/system/cpu/cpu[0-9]*/topology/thread_siblings_list; do
+            [ -r "$f" ] || continue
+            sib=$(cat "$f" 2>/dev/null)
+            if [[ "$sib" == *[,*-]* ]]; then
+                smt=$((smt + 1))
+            else
+                single=$((single + 1))
+            fi
+        done
+        if [ "$smt" -gt 0 ] && [ "$single" -gt 0 ]; then
+            core_str="(${smt}+${single})"
+        elif [ "$threads" -gt 0 ]; then
+            core_str="(${threads})"
+            # fastfetch on hybrid shows split
+        fi
+    fi
+
+    # max frequency
+    local max_mhz=""
+    max_mhz=$(lscpu 2>/dev/null | grep -m1 'CPU max MHz' | grep -oE '[0-9]+\.[0-9]+' | head -n1)
+    if [ -z "$max_mhz" ]; then
+        local mf
+        mf=$(cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq 2>/dev/null | sort -nu | tail -n1)
+        if [ -n "$mf" ]; then
+            max_mhz=$(awk -v f="$mf" 'BEGIN{printf "%.4f", f/1000}')
+        fi
+    fi
+    if [ -z "$max_mhz" ]; then
+        max_mhz=$(grep 'cpu MHz' /proc/cpuinfo 2>/dev/null | awk -F: '{print $2}' | sort -nu | tail -n1 | tr -d ' ')
+    fi
+    if [ -n "$max_mhz" ]; then
+        freq_ghz=$(awk -v m="$max_mhz" 'BEGIN{printf "%.2f", m/1000}')
+    fi
+
+    local out="$model"
+    [ -n "$core_str" ] && out="$out $core_str"
+    [ -n "$freq_ghz" ] && out="$out @ $freq_ghz GHz"
+    printf '%s' "$out"
+}
+
+# memory
+get_memory() {
+    local total_kb avail_kb used_kb total_gib used_gib pct pct_str
+    total_kb=$(grep -m1 '^MemTotal:' /proc/meminfo 2>/dev/null | awk '{print $2}')
+    avail_kb=$(grep -m1 '^MemAvailable:' /proc/meminfo 2>/dev/null | awk '{print $2}')
+    if [ -z "$total_kb" ] || [ -z "$avail_kb" ]; then
+        printf 'unknown'
+        return
+    fi
+    used_kb=$((total_kb - avail_kb))
+    used_gib=$(awk -v u="$used_kb" 'BEGIN{printf "%.2f", u/1024/1024}')
+    total_gib=$(awk -v t="$total_kb" 'BEGIN{printf "%.2f", t/1024/1024}')
+    pct=$(awk -v u="$used_kb" -v t="$total_kb" 'BEGIN{printf "%.0f", u*100/t}')
+    if [ -n "$GREEN" ]; then
+        pct_str="${GREEN}${pct}%${RESET}"
+    else
+        pct_str="${pct}%"
+    fi
+    printf '%s GiB / %s GiB (%s)' "$used_gib" "$total_gib" "$pct_str"
+}
+
+VALS=(
+"$(get_user)"
+"$(get_os)"
+"$(get_kernel)"
+"$(get_pkgs)"
+"$(get_wm)"
+"$(get_cpu)"
+"$(get_memory)"
 )
 
-printf '%s                   \n' "$R"
+# render
+printf '%s\n' "${RESET}${BLANK}${RESET}"
 
-for i in "${!logos[@]}"; do
-    logo="${logos[$i]}"
-    gap_len=$((LOGOW - ${#logo}))
-    gap="$(printf '%*s' "$gap_len" '')"
-    printf '%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n' \
-        "$B" "$G" "$logo" "$R" "$gap" "$R" \
-        "$B" "$M" "${keys[$i]}" "$R" "$R" "  " "$R" "${values[$i]}" "$R"
+for i in "${!LOGO[@]}"; do
+    logo="${LOGO[$i]}"
+    pad_len=$((LOGO_WIDTH - ${#logo}))
+    pad=$(printf '%*s' "$pad_len" '')
+    printf '%s%s%s%s%s%s%s\n' \
+        "${BOLD_CYAN}${logo}${RESET}" \
+        "$pad" \
+        "${BOLD_MAGENTA}${KEYS[$i]}${RESET}" \
+        "$SEP" \
+        "${VALS[$i]}" \
+        "" \
+        "$RESET"
 done
 
-printf '                   \n%s' "$R"
+printf '%s\n' "${RESET}${BLANK}${RESET}"
