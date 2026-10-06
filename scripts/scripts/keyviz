@@ -58,15 +58,15 @@ SYMBOLS = {
 }
 
 POSITIONS = {
-    "top-left": {"name": "Top-Left", "icon": "↖", "anchor": (True, False, True, False)},
-    "top-center": {"name": "Top-Center", "icon": "↑", "anchor": (True, False, False, False)},
-    "top-right": {"name": "Top-Right", "icon": "↗", "anchor": (True, False, False, True)},
-    "center-left": {"name": "Center-Left", "icon": "←", "anchor": (False, False, True, False)},
-    "center": {"name": "Center", "icon": "•", "anchor": (False, False, False, False)},
-    "center-right": {"name": "Center-Right", "icon": "→", "anchor": (False, False, False, True)},
-    "bottom-left": {"name": "Bottom-Left", "icon": "↙", "anchor": (False, True, True, False)},
-    "bottom-center": {"name": "Bottom-Center", "icon": "↓", "anchor": (False, True, False, False)},
-    "bottom-right": {"name": "Bottom-Right", "icon": "↘", "anchor": (False, True, False, True)},
+    "top-left": {"name": "Top-Left", "icon": "", "anchor": (True, False, True, False)},
+    "top-center": {"name": "Top-Center", "icon": "", "anchor": (True, False, False, False)},
+    "top-right": {"name": "Top-Right", "icon": "", "anchor": (True, False, False, True)},
+    "center-left": {"name": "Center-Left", "icon": "", "anchor": (False, False, True, False)},
+    "center": {"name": "Center", "icon": "", "anchor": (False, False, False, False)},
+    "center-right": {"name": "Center-Right", "icon": "", "anchor": (False, False, False, True)},
+    "bottom-left": {"name": "Bottom-Left", "icon": "", "anchor": (False, True, True, False)},
+    "bottom-center": {"name": "Bottom-Center", "icon": "", "anchor": (False, True, False, False)},
+    "bottom-right": {"name": "Bottom-Right", "icon": "", "anchor": (False, True, False, True)},
 }
 
 SIZES = {
@@ -508,26 +508,26 @@ def cmd_menu():
     # Col 2: Top-Center, Center, Bottom-Center, Medium (17px)
     # Col 3: Top-Right, Center-Right, Bottom-Right, Large (22px)
     grid_items = [
-        ("pos", "top-left", "↖  Top-Left"),
-        ("pos", "center-left", "←  Center-Left"),
-        ("pos", "bottom-left", "↙  Bottom-Left"),
-        ("size", "small", "󰹍  Small (13px)"),
-        ("pos", "top-center", "↑  Top-Center"),
-        ("pos", "center", "•  Center"),
-        ("pos", "bottom-center", "↓  Bottom-Center"),
-        ("size", "medium", "󰹍  Medium (17px)"),
-        ("pos", "top-right", "↗  Top-Right"),
-        ("pos", "center-right", "→  Center-Right"),
-        ("pos", "bottom-right", "↘  Bottom-Right"),
-        ("size", "large", "󰹍  Large (22px)"),
+            ("pos", "top-left", "Pos: Top-Left"),
+            ("pos", "top-center", "Pos: Top-Center"),
+            ("pos", "top-right", "Pos: Top-Right"),
+            ("pos", "center-left", "Pos: Center-Left"),
+            ("pos", "center", "Pos: Center"),
+            ("pos", "center-right", "Pos: Center-Right"),
+            ("pos", "bottom-left", "Pos: Bottom-Left"),
+            ("pos", "bottom-center", "Pos: Bottom-Center"),
+            ("pos", "bottom-right", "Pos: Bottom-Right"),
+            ("size", "small", "Size: Small (13px)"),
+            ("size", "medium", "Size: Medium (17px)"),
+            ("size", "large", "Size: Large (22px)"),
     ]
 
     options = []
     for kind, key, label in grid_items:
         if kind == "pos" and key == current_pos:
-            options.append(f"{label}  ✓")
+            options.append(f"{label} *")
         elif kind == "size" and key == current_sz:
-            options.append(f"{label}  ✓")
+            options.append(f"{label} *")
         else:
             options.append(label)
 
@@ -544,11 +544,9 @@ def cmd_menu():
 
     rofi_cmd.extend([
         "-theme-str",
-        'window { width: 640px; border-radius: 10px; } '
-        'inputbar { enabled: false; } '
-        'listview { columns: 3; lines: 4; spacing: 8px; margin: 14px; fixed-height: true; fixed-columns: true; cycle: true; } '
-        'element { padding: 14px 8px; border-radius: 6px; } '
-        'element-text { horizontal-align: 0.5; vertical-align: 0.5; font: "Maple Mono NF Bold 12"; }',
+        'window {width: 35%; border: 3px; border-color: #24283b;}',
+        "-l",
+        "12",
     ])
 
     try:
@@ -570,10 +568,10 @@ def cmd_menu():
 
     if chosen_kind == "pos" and chosen_key:
         set_position(chosen_key)
-        notify(f"HUD placement set to <span foreground='#9ece6a'>{POSITIONS[chosen_key]['name']}</span>")
+        notify(f"HUD placement set to <span foreground='#9ece6a'><b>{POSITIONS[chosen_key]['name']}</b></span>")
     elif chosen_kind == "size" and chosen_key:
         set_size(chosen_key)
-        notify(f"HUD key size set to <span foreground='#9ece6a'>{SIZES[chosen_key]['name']}</span>")
+        notify(f"HUD key size set to <span foreground='#9ece6a'><b>{SIZES[chosen_key]['name']}</b></span>")
 
 
 # -----------------------------------------------------------------------------
