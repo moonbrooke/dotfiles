@@ -20,7 +20,7 @@ done | rofi -dmenu -i -show-icons -p "Wallpapers" \
     -kb-row-up "Up" -kb-row-down "Down" \
     -theme-str '
     window { width: 40%; border: 3px; border-color: #24283b; }
-    listview { columns: 3; lines: 3; }
+    listview { columns: 4; lines: 3; }
     element { orientation: vertical; }
     element-icon { size: 7em; }
     element-text { enabled: false; }
