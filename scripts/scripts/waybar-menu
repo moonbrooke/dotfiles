@@ -10,7 +10,8 @@ ROFI_THEME="$HOME/.config/rofi/config.rasi"
 CONFIGS="top|Top
 bottom|Bottom
 island-top|Island Top
-island-bottom|Island Bottom"
+island-bottom|Island Bottom
+double-bar|Double Bar"
 
 CURRENT=""
 if [ -f "$STATE_FILE" ]; then
@@ -18,7 +19,7 @@ if [ -f "$STATE_FILE" ]; then
 fi
 
 case "$CURRENT" in
-    top|bottom|island-top|island-bottom) ;;
+    top|bottom|island-top|island-bottom|double-bar) ;;
     *) CURRENT="top" ;;
 esac
 
@@ -49,7 +50,7 @@ done)
 [ "$CHOSEN_KEY" = "$CURRENT" ] && exit 0
 
 TARGET="$CONFIG_DIR/$CHOSEN_KEY.jsonc"
-if [ ! -f "$TARGET" ]; then
+if [ ! -f "$TARGET" && "$CHOSEN_KEY" != "double-bar" ]; then
     notify-send 'Settings' "Waybar config not found: <b>$TARGET</b>" -t 2500 -i dialog-error &
     echo "Error: config not found: $TARGET" >&2
     exit 1
@@ -70,8 +71,11 @@ if pgrep -x waybar >/dev/null 2>&1; then
     exit 1
 fi
 
-if [ -x "$LAUNCHER" ]; then
+if [ -x "$LAUNCHER" && "$CHOSEN_KEY" != "double-bar" ]; then
     "$LAUNCHER" -c "$TARGET" >/dev/null 2>&1 &
+elif [ "$CHOSEN_KEY" == "double-bar" ]; then
+    waybar -c "$CONFIG_DIR/$CHOSEN_KEY-top.jsonc" >/dev/null 2>&1 &
+    waybar -c "$CONFIG_DIR/$CHOSEN_KEY-bottom.jsonc" >/dev/null 2>&1 &
 else
     waybar -c "$TARGET" >/dev/null 2>&1 &
 fi

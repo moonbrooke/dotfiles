@@ -1,0 +1,31 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "reload_style_on_change": true,
+
+    "include": [
+        "~/.config/waybar/modules/custom/*.jsonc",
+        "~/.config/waybar/modules/hyprland/*.jsonc",
+        "~/.config/waybar/modules/*.jsonc",
+    ],
+    
+    "modules-left": [
+        // "custom/layout",
+        "hyprland/workspaces",
+    ],
+    // "modules-center": [
+    //     // "custom/weather",
+    //     // "clock#datetime"
+    //     // "hyprland/window"
+    // ],
+    "modules-right": [
+        // "memory",
+        // "cpu",
+        // "temperature",
+        "pulseaudio",
+        "network",
+        "tray",
+        "battery"
+        // "custom/power"
+    ]
+}
