@@ -31,4 +31,4 @@ btop dunst fastfetch hypr foot nvim rofi waybar scripts yazi zshrc app-flags mim
 
 ### Screenshot
 
-![Hyprland Screenshot](./images/hypr-4.png)
+![Hyprland Screenshot](./.github/images/hypr-4.png)
