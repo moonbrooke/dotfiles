@@ -127,7 +127,7 @@
 
     ### Text ###
 
-    font = Iosevka Nerd Font 12
+    font = IosevkaTerm Nerd Font 12
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -168,7 +168,7 @@
     #   %%  Literal %
     # Markup is allowed
 
-    format = "<span size='x-large' font_desc='Iosevka Nerd Font 10' weight='bold'>%s</span>\n%b"
+    format = "<span size='x-large' font_desc='IosevkaTerm Nerd Font 10' weight='bold'>%s</span>\n%b"
 
     #format = "%s %p\n%b"
 

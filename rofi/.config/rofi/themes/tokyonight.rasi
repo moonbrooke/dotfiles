@@ -5,7 +5,7 @@
  *******************************************************************************/
 
 * {
-    font:   "Iosevka Nerd Font Medium 14";
+    font:   "IosevkaTerm Nerd Font Medium 14";
 
     bg0:     #1a1b26;
     bg1:     #24283b;

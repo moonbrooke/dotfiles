@@ -29,7 +29,7 @@
 #waybar {
     color: @white;
     background: @black;
-    font-family: "Iosevka Nerd Font";
+    font-family: "IosevkaTerm Nerd Font";
     font-weight: bold;
     font-size: 14px;
 }
@@ -62,7 +62,7 @@
 #window,
 #custom-layout,
 #mpris {
-    font-family: "Iosevka Nerd Font", "Sarasa Mono CL";
+    font-family: "IosevkaTerm Nerd Font", "Sarasa Mono CL";
     font-size: 14px;
 }
 

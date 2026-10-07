@@ -26,7 +26,7 @@ echo "Installing necessary core packages..."
 sudo pacman -S --needed --noconfirm \
     hyprland dunst grim slurp jq foot waybar rofi awww easyeffects alsa-utils \
     hyprpicker imv udiskie \
-    ttf-cascadia-mono-nerd otf-firamono-nerd ttf-iosevka-nerd \
+    ttf-cascadia-mono-nerd otf-firamono-nerd ttf-iosevkaterm-nerd \
     wl-clipboard cliphist wl-clip-persist hyprpolkitagent rofimoji noto-fonts-emoji \
     xdg-desktop-portal-hyprland thunar thunar-volman gvfs unzip stow nwg-look
 
