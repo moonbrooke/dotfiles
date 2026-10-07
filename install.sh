@@ -26,7 +26,7 @@ echo "Installing necessary core packages..."
 sudo pacman -S --needed --noconfirm \
     hyprland dunst grim slurp jq foot waybar rofi awww easyeffects alsa-utils \
     hyprpicker imv udiskie \
-    ttf-cascadia-mono-nerd otf-firamono-nerd ttf-jetbrains-mono-nerd \
+    ttf-cascadia-mono-nerd otf-firamono-nerd ttf-iosevka-nerd \
     wl-clipboard cliphist wl-clip-persist hyprpolkitagent rofimoji noto-fonts-emoji \
     xdg-desktop-portal-hyprland thunar thunar-volman gvfs unzip stow nwg-look
 
@@ -37,7 +37,7 @@ sudo pacman -S --needed --noconfirm neovim zsh fastfetch yazi fzf bat btop \
 
 # Install AUR Packages
 # echo "Installing additional AUR packages..."
-yay -S --needed --noconfirm ttf-monocraft-nerd dracula-gtk-theme-full tela-icon-theme
+yay -S --needed --noconfirm dracula-gtk-theme-full tela-icon-theme
 
 # Clone Dotfiles
 DOTFILES_DIR="$HOME/dotfiles"
