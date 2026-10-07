@@ -28,3 +28,7 @@ btop dunst fastfetch hypr foot nvim rofi waybar scripts yazi zshrc app-flags mim
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - Editor: [Neovim](https://neovim.io/), [VS Code](https://code.visualstudio.com/)
 - Font: [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [Sarasa Gothic](https://github.com/be5invis/sarasa-gothic), [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [IosevkaTerm Nerd Font](https://www.nerdfonts.com/font-downloads), [Ricty Nerd Font](https://rictyfonts.github.io/) (Japanese font), [Noto CJK](https://github.com/notofonts/noto-cjk) (Chinese, Japanese, Korean fonts)
+
+### Screenshot
+
+![Hyprland Screenshot](./images/hypr-4.png)
