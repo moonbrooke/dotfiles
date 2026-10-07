@@ -25,8 +25,7 @@
         },
         {
             "key": "│ {#31}󰇅 hostname {#keys}│",
-            "type": "title",
-            "format": "F28-DESKTOP"
+            "type": "title"
         },
         {
             "key": "│ {#31}󰅐 uptime   {#keys}│",
