@@ -26,6 +26,7 @@ hl.window_rule({ match = { class = "^(.*keyviz.*)$" }, opacity = "1.0 override",
 hl.window_rule({ match = { class = "thunar", title = "^(.*File Operation Progress.*)$" }, size = {476, 520}, float = true })
 hl.window_rule({ match = { class = "thunar", title = "^(.*Rename \".*)$" }, size = {476, 520}, float = true })
 hl.window_rule({ match = { class = "foot" }, persistent_size = true })
+hl.window_rule({ match = { class = "ai.storyteller.photocraft" }, opacity = "1.0 override" })
 
 -- Games
 hl.window_rule({ match = { class = "org.prismlauncher.PrismLauncher" }, float = true })
