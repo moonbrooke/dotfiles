@@ -29,7 +29,7 @@
 #waybar {
     color: @white;
     background: @black;
-    font-family: "Monocraft";
+    font-family: "Iosevka Nerd Font";
     font-weight: bold;
     font-size: 14px;
 }
@@ -62,8 +62,8 @@
 #window,
 #custom-layout,
 #mpris {
-    font-family: "Monocraft", "Sarasa Mono CL";
-    font-size: 12px;
+    font-family: "Iosevka Nerd Font", "Sarasa Mono CL";
+    font-size: 14px;
 }
 
 #window {
