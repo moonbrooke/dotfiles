@@ -1,0 +1,9 @@
+{
+    "custom/layout-double": {
+        "exec": "hyprctl getoption general:layout | sed -n 's/.*str: \\(.*\\)/\\U\\1/p' | awk '{n=$0; a=(n==\"DWINDLE\"?\"DWINDLE\":n==\"MASTER\"?\"MASTER\":n==\"SCROLLING\"?\"SCROLL\":n==\"MONOCLE\"?\"MONOCLE\":substr(n,1,2)); printf \"%s\\nCurrent Layout: <span color=\\\"#9ece6a\\\"><b>%s</b></span>\\n\", a, n}'",
+        "interval": "once",
+        "signal": 8,
+        "format": "{text}",
+        "tooltip": true
+    }
+}

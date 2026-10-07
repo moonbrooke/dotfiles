@@ -2,7 +2,7 @@
     "custom/logo": {
         "on-click": "~/.config/hypr/scripts/menu.sh",
         "tooltip-format": "Menu",
-        // "format": "󰣇 "
-        "format": "A"
+        "format": "󰣇 "
+        // "format": "A"
     }
 }

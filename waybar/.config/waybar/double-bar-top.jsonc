@@ -10,7 +10,7 @@
     ],
     
     "modules-left": [
-        "custom/layout",
+        "custom/layout-double",
         "hyprland/window"
         // "hyprland/workspaces",
     ],

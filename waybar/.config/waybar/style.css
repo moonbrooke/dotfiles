@@ -55,12 +55,14 @@
     padding: 5px 10px 7px 10px;
 }
 
-#custom-layout {
+#custom-layout,
+#custom-layout-double {
     padding: 5px 10px 5px 10px;
 }
 
 #window,
 #custom-layout,
+#custom-layout-double,
 #mpris {
     font-family: "IosevkaTerm Nerd Font", "Sarasa Mono CL";
     font-size: 14px;
@@ -151,18 +153,19 @@
 #tray {
 }
 
-#custom-layout {
+#custom-layout,
+#custom-layout-double {
     color: @white;
     background: @muted;
 }
 
 #custom-logo {
-    color: @white;
+    color: @blue;
     transition: color 0.2s ease;
 }
 
 #custom-logo:hover {
-    color: @red;
+    color: @white;
     transition: color 0.2s ease;
 }
 
