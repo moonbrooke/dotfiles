@@ -49,12 +49,25 @@ done)
 [ -z "$CHOSEN_KEY" ] && exit 0
 [ "$CHOSEN_KEY" = "$CURRENT" ] && exit 0
 
-TARGET="$CONFIG_DIR/$CHOSEN_KEY.jsonc"
-if [ ! -f "$TARGET" && "$CHOSEN_KEY" != "double-bar" ]; then
-    notify-send 'Settings' "Waybar config not found: <b>$TARGET</b>" -t 2500 -i dialog-error &
-    echo "Error: config not found: $TARGET" >&2
-    exit 1
-fi
+case "$CHOSEN_KEY" in
+    double-bar)
+        for _f in "$CONFIG_DIR/double-bar-top.jsonc" "$CONFIG_DIR/double-bar-bottom.jsonc"; do
+            if [ ! -f "$_f" ]; then
+                notify-send 'Settings' "Waybar config not found: <b>$_f</b>" -t 2500 -i dialog-error &
+                echo "Error: config not found: $_f" >&2
+                exit 1
+            fi
+        done
+        ;;
+    *)
+        TARGET="$CONFIG_DIR/$CHOSEN_KEY.jsonc"
+        if [ ! -f "$TARGET" ]; then
+            notify-send 'Settings' "Waybar config not found: <b>$TARGET</b>" -t 2500 -i dialog-error &
+            echo "Error: config not found: $TARGET" >&2
+            exit 1
+        fi
+        ;;
+esac
 
 printf '%s\n' "$CHOSEN_KEY" > "$STATE_FILE"
 
@@ -71,9 +84,9 @@ if pgrep -x waybar >/dev/null 2>&1; then
     exit 1
 fi
 
-if [ -x "$LAUNCHER" && "$CHOSEN_KEY" != "double-bar" ]; then
-    "$LAUNCHER" -c "$TARGET" >/dev/null 2>&1 &
-elif [ "$CHOSEN_KEY" == "double-bar" ]; then
+if [ -x "$LAUNCHER" ]; then
+    "$LAUNCHER" >/dev/null 2>&1 &
+elif [ "$CHOSEN_KEY" = "double-bar" ]; then
     waybar -c "$CONFIG_DIR/$CHOSEN_KEY-top.jsonc" >/dev/null 2>&1 &
     waybar -c "$CONFIG_DIR/$CHOSEN_KEY-bottom.jsonc" >/dev/null 2>&1 &
 else
