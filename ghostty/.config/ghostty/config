@@ -24,7 +24,7 @@ window-width = 100
 window-padding-x = 5
 window-padding-y = 5
 
-font-family = Iosevka Nerd Font
+font-family = IosevkaTerm Nerd Font Mono
 font-size = 14
 
 # # Spacing around the equals sign does not matter.
@@ -47,4 +47,4 @@ font-size = 14
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
-theme = catppuccin-mocha.conf
+theme = tokyo-night.conf
