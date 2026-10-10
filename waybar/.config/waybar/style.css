@@ -86,7 +86,7 @@
 }
 
 #workspaces button.visible {
-    color: @blue;
+    color: @green;
 }
 
 #workspaces button.focused {
@@ -101,16 +101,16 @@
 
 #workspaces button.active {
     color: @black;
-    background: @blue;
+    background: @green;
 }
 
 #workspaces button:hover {
-    color: @blue;
+    color: @green;
 }
 
 #workspaces button.visible:hover {
     color: @black;
-    background: @blue;
+    background: @green;
 }
 
 #mpris {
