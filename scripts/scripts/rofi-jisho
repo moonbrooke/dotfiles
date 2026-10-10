@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+
+# rofi-jisho — look up a word/phrase on jisho.org via jisho-cli, pick result in rofi.
+# Usage: rofi-jisho [query]
+
+set -uo pipefail
+
+THEME_INPUT="window {width: 35%; border: 3px; border-color: #24283b;} listview {lines: 0;}"
+THEME_RESULTS="window {width: 50%; border: 3px; border-color: #24283b;}"
+
+die() {
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send "rofi-jisho" "$1" -t 2500 -i dialog-error &
+    fi
+    echo "rofi-jisho: $1" >&2
+    exit 1
+}
+
+command -v rofi >/dev/null 2>&1 || die "rofi not found"
+command -v jisho-cli >/dev/null 2>&1 || die "jisho-cli not found"
+
+# Query: CLI args win, otherwise ask via rofi.
+if [ "$#" -gt 0 ]; then
+    QUERY="$*"
+else
+    QUERY="$(printf '' | rofi -dmenu -i -p "Jisho: " -l 0 \
+        -theme-str "$THEME_INPUT" || true)"
+fi
+# Trim leading/trailing whitespace.
+QUERY="$(printf '%s' "$QUERY" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+[ -z "${QUERY:-}" ] && exit 0
+
+# Look up. NB: jisho-cli does NOT accept a `--` separator
+# (it errors with UNKNOWN_VALUE), so pass the term directly.
+RAW="$(jisho-cli --color never "$QUERY" 2>/dev/null || true)"
+# Strip OSC8 hyperlinks (ESC]8;;URL ESC\ text ESC]8;;ESC\) leaving display
+# text, plus any remaining ANSI escapes.
+RAW="$(printf '%s' "$RAW" \
+    | sed -e 's/\x1b\]8;;[^\x1b]*\x1b\\//g' \
+          -e 's/\x1b\]8;;[^\x07]*\x07//g' \
+          -e 's/\x1b\[[0-9;]*[mK]//g')"
+
+[ -z "$(printf '%s' "$RAW" | tr -d '[:space:]')" ] && {
+    rofi -e "No results for '$QUERY'"
+    exit 0
+}
+
+# One rofi row per numbered sense:
+#   HEADER (POS) N. definition
+# Skips the "Other forms" label + its payload line; treats
+# "Wikipedia definition" as the POS for following senses.
+RESULTS="$(printf '%s\n' "$RAW" | awk '
+    BEGIN { header = ""; pos = ""; skip_forms = 0 }
+    /^[[:space:]]*$/ { next }
+    {
+        line = $0
+        sub(/^[ \t]+/, "", line)
+        if (skip_forms) {
+            skip_forms = 0
+            next
+        }
+        if (line == "Other forms") { skip_forms = 1; next }
+        if (line == "Wikipedia definition") { pos = "Wikipedia"; next }
+        if ($0 ~ /^[^ \t]/) {
+            # Headword line, e.g. "猫砂 [ねこすな]:" \u2014 strip trailing colon.
+            header = line
+            sub(/:[[:space:]]*$/, "", header)
+            pos = ""
+            next
+        }
+        if (line ~ /^[0-9]+\. /) {
+            if (header == "") { header = query }
+            if (pos == "")
+                printf "%s \u2014 %s\n", header, line
+            else
+                printf "%s (%s) \u2014 %s\n", header, pos, line
+            next
+        }
+        # Anything else indented is a part-of-speech / category line.
+        pos = line
+    }
+' query="$QUERY")"
+
+[ -z "$(printf '%s' "$RESULTS" | tr -d '[:space:]')" ] && {
+    rofi -e "No results for '$QUERY'"
+    exit 0
+}
+
+CHOSEN="$(printf '%s\n' "$RESULTS" | rofi -dmenu -i -l 15 -p "$QUERY" \
+    -theme-str "$THEME_RESULTS" || true)"
+[ -z "${CHOSEN:-}" ] && exit 0
+
+if command -v wl-copy >/dev/null 2>&1; then
+    printf '%s' "$CHOSEN" | wl-copy
+elif command -v xclip >/dev/null 2>&1; then
+    printf '%s' "$CHOSEN" | xclip -selection clipboard
+elif command -v xsel >/dev/null 2>&1; then
+    printf '%s' "$CHOSEN" | xsel --clipboard --input
+else
+    die "no clipboard tool (wl-copy/xclip/xsel) found"
+fi
+
+if command -v notify-send >/dev/null 2>&1; then
+    notify-send "Jisho" "Copied: <span foreground='#9ece6a'><b>$CHOSEN</b></span>" -t 2500 \
+        --hint=string:x-dunst-stack-tag:josho -i dialog-information &
+fi
