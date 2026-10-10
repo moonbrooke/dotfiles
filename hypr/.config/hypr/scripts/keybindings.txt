@@ -17,10 +17,11 @@ Super + G                           | Toggle game mode
 Super + K                           | Toggle key visualizer
 Super + Shift + K                   | Launch key visualizer menu
 Super + H                           | Launch notification history
-Super + [F9, F10]                    | Brightness control
+Super + [F9, F10]                   | Brightness control
 Super + Z                           | Zoom in
 Super + Shift + Z                   | Reset zoom
 Super + Shift + C                   | Launch rofi calculator
+Super + Shift + J                   | Launch rofi jisho
 Super + M                           | Launch notes manager
 Super + N                           | Launch wifi menu
 Super + BackSpace or Super + Esc    | Launch power menu
