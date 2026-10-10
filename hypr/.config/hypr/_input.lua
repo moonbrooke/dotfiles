@@ -30,6 +30,14 @@ hl.gesture({
     action = "workspace"
 })
 
+hl.gesture({
+    fingers = 2,
+    direction = "pinch",
+    action = "cursor_zoom",
+    zoom_level = 1,
+    mode = "live"
+})
+
 hl.device({
     name = "instant-usb-gaming-mouse-",
     sensitivity = -0.5,
