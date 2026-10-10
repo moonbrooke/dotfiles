@@ -1,0 +1,85 @@
+// Eww port of waybar style.css (TokyoNight) for the island-bottom bar.
+
+* {
+  all: unset;
+}
+
+.bar {
+  color: #c0caf5;
+  background: #1a1b26;
+  font-family: "IosevkaTerm Nerd Font Mono";
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.clock,
+.volume,
+.network,
+.window {
+  color: #c0caf5;
+  padding: 5px 10px 7px 10px;
+}
+
+.layout {
+  color: #c0caf5;
+  background: #24283b;
+  padding: 5px 10px 5px 10px;
+}
+
+.window {
+  font-family: "IosevkaTerm Nerd Font Mono", "Sarasa Mono CL";
+  color: #565f89;
+}
+
+.workspaces .ws {
+  color: #c0caf5;
+  background: #1a1b26;
+  padding: 5px 10px 7px 10px;
+  font-weight: bold;
+}
+
+.workspaces .ws.visible {
+  color: #9ece6a;
+}
+
+.workspaces .ws.active {
+  color: #1a1b26;
+  background: #9ece6a;
+}
+
+.workspaces .ws:hover {
+  color: #9ece6a;
+}
+
+.workspaces .ws.visible:hover {
+  color: #1a1b26;
+  background: #9ece6a;
+}
+
+.volume.muted {
+  color: #565f89;
+}
+
+.network.wifi,
+.network.ethernet {
+  color: #9ece6a;
+}
+
+.network.disconnected {
+  color: #f7768e;
+}
+
+.battery {
+  font-size: 14px;
+  color: #1a1b26;
+  background: #9ece6a;
+  padding: 0px 15px 0px 15px;
+}
+
+.battery.critical {
+  background: #e0af68;
+}
+
+.battery.warning {
+  background: #f7768e;
+}

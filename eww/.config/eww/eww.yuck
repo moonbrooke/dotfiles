@@ -1,0 +1,92 @@
+;; Eww recreation of waybar island-bottom.jsonc (tray omitted: eww has no systray).
+;; Bar order matches waybar: left [layout, workspaces, window],
+;; right [clock, volume, network, battery].
+
+;; --- Variables ------------------------------------------------------------
+
+;; Clock: waybar clock#datetime "{:%a, %e %b / %I:%M %p}", 10s interval
+(defpoll clock :interval "10s" :initial "..."
+  `date '+%a, %e %b / %I:%M %p'`)
+
+;; Hyprland layout abbrev (DW/MS/SC/MN): waybar custom/layout
+(defpoll layout :interval "5s" :initial '{"text":"--","tooltip":""}'
+  `$HOME/.config/eww/scripts/layout.sh`)
+
+;; Volume: waybar pulseaudio ("VOL: x%" / "MUTED")
+(defpoll volume :interval "1s" :initial '{"text":"VOL: --","class":""}'
+  `$HOME/.config/eww/scripts/volume.sh`)
+
+;; Network: waybar network ("NET: essid" / "ETH: if" / "NET: OFF")
+(defpoll network :interval "5s" :initial '{"text":"NET: ...","class":""}'
+  `$HOME/.config/eww/scripts/network.sh`)
+
+;; Battery: waybar battery (icon + % + time, warning/critical classes)
+(defpoll battery :interval "10s" :initial '{"text":"...","class":""}'
+  `$HOME/.config/eww/scripts/battery.sh`)
+
+;; Workspaces 1-6 with active/visible/occupied state (socat event listener)
+(deflisten workspaces :initial "[]"
+  `$HOME/.config/eww/scripts/workspaces.sh`)
+
+;; Active window "[class] title" (socat event listener)
+(deflisten window :initial "{\"text\":\"\",\"empty\":true}"
+  `$HOME/.config/eww/scripts/window.sh`)
+
+;; --- Widgets --------------------------------------------------------------
+
+(defwidget layout []
+  (label :class "layout"
+         :text "${layout.text}"
+         :tooltip "${layout.tooltip}"))
+
+(defwidget workspace-buttons []
+  (box :class "workspaces" :orientation "h" :space-evenly false
+    (for ws in workspaces
+      (button :class "ws ${ws.class}"
+              :onclick "hyprctl dispatch 'hl.dsp.focus({ workspace = ${ws.id} })'"
+        (label :text "${ws.id}")))))
+
+(defwidget window-title []
+  (label :class "window" :text "${window.text}"))
+
+(defwidget clock-widget []
+  (button :class "clock" :onclick "foot calcurse >/dev/null 2>&1 &"
+    (label :text "${clock}")))
+
+(defwidget volume-widget []
+  (eventbox :class "volume ${volume.class}"
+            :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+            :onscroll "$HOME/.config/eww/scripts/volume-scroll.sh {}"
+    (label :text "${volume.text}")))
+
+(defwidget network-widget []
+  (button :class "network ${network.class}"
+          :onclick "foot -T floating_impala impala >/dev/null 2>&1 &"
+    (label :text "${network.text}")))
+
+(defwidget battery-widget []
+  (label :class "battery ${battery.class}" :text "${battery.text}"))
+
+(defwidget bar-left []
+  (box :orientation "h" :space-evenly false :halign "start"
+    (layout) (workspace-buttons) (window-title)))
+
+(defwidget bar-right []
+  (box :orientation "h" :space-evenly false :halign "end"
+    (clock-widget) (volume-widget) (network-widget) (battery-widget)))
+
+(defwidget bar []
+  (centerbox :class "bar" :orientation "h"
+    (bar-left) (label :text "") (bar-right)))
+
+;; Island: bottom-center of eDP-1, 1320px wide (= 1920 - 2x300 margins),
+;; 5px bottom margin. Non-exclusive like waybar layer=top island.
+(defwindow bar
+  ;; NOTE: eww (GDK) does not know Hyprland connector names ("eDP-1");
+  ;; index 0 here is the laptop panel (eDP-1, 1920x1080).
+  :monitor 0
+  :geometry (geometry :x "0%" :y "-5px" :width "1320px" :anchor "bottom center")
+  :stacking "fg"
+  :exclusive false
+  :focusable false
+  (bar))
