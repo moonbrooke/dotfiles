@@ -79,8 +79,11 @@ RAW="$(printf '%s' "$RAW" \
 #   HEADER (POS) N. definition
 # Skips the "Other forms" label + its payload line; treats
 # "Wikipedia definition" as the POS for following senses.
+# NB: jisho-cli emits the best match last, so rows are buffered
+# per headword block and printed in reverse block order (sense
+# order within a block is preserved).
 RESULTS="$(printf '%s\n' "$RAW" | awk '
-    BEGIN { header = ""; pos = ""; skip_forms = 0 }
+    BEGIN { header = ""; pos = ""; skip_forms = 0; nblocks = 0 }
     /^[[:space:]]*$/ { next }
     {
         line = $0
@@ -96,18 +99,27 @@ RESULTS="$(printf '%s\n' "$RAW" | awk '
             header = line
             sub(/:[[:space:]]*$/, "", header)
             pos = ""
+            nblocks++
             next
         }
         if (line ~ /^[0-9]+\. /) {
             if (header == "") { header = query }
+            if (nblocks == 0) { nblocks = 1 }
             if (pos == "")
-                printf "%s \u2014 %s\n", header, line
+                row = header " \u2014 " line
             else
-                printf "%s (%s) \u2014 %s\n", header, pos, line
+                row = header " (" pos ") \u2014 " line
+            count[nblocks]++
+            rows[nblocks, count[nblocks]] = row
             next
         }
         # Anything else indented is a part-of-speech / category line.
         pos = line
+    }
+    END {
+        for (b = nblocks; b >= 1; b--)
+            for (i = 1; i <= count[b]; i++)
+                print rows[b, i]
     }
 ' query="$QUERY")"
 
