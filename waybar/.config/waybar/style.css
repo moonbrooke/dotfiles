@@ -86,7 +86,7 @@
 }
 
 #workspaces button.visible {
-    color: @green;
+    color: @blue;
 }
 
 #workspaces button.focused {
@@ -101,16 +101,16 @@
 
 #workspaces button.active {
     color: @black;
-    background: @green;
+    background: @blue;
 }
 
 #workspaces button:hover {
-    color: @green;
+    color: @blue;
 }
 
 #workspaces button.visible:hover {
     color: @black;
-    background: @green;
+    background: @blue;
 }
 
 #mpris {
@@ -142,14 +142,6 @@
 #temperature {
 }
 
-/* #battery.critical { */
-/*     color: @yellow; */
-/* } */
-/**/
-/* #battery.warning { */
-/*     color: @red; */
-/* } */
-
 #tray {
 }
 
@@ -179,6 +171,14 @@
 #battery {
     font-size: 14px;
     color: @black;
-    background: @red;
+    background: @green;
     padding: 0px 15px 0px 15px;
+}
+
+#battery.critical {
+    background: @yellow;
+}
+
+#battery.warning {
+    background: @red;
 }
