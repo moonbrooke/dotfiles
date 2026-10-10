@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+pkill rofi || rofi -show calc -modi calc \
+    -no-show-match -no-sort \
+    -theme-str 'window {border: 3px; border-color: #24283b;}'
