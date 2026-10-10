@@ -1,4 +1,5 @@
 {
+    "output": "eDP-1",
     "layer": "top",
     "position": "top",
     "reload_style_on_change": true,
