@@ -17,7 +17,37 @@ die() {
 }
 
 command -v rofi >/dev/null 2>&1 || die "rofi not found"
-command -v jisho-cli >/dev/null 2>&1 || die "jisho-cli not found"
+
+# Hyprland keybinds run with a minimal PATH (no shell rc, no
+# `mise activate`), so jisho-cli (installed via mise) is not on PATH.
+# Resolve it via stable locations instead of relying on PATH alone.
+resolve_jisho_cli() {
+    local cand resolved
+    if command -v jisho-cli >/dev/null 2>&1; then
+        command -v jisho-cli
+        return 0
+    fi
+    for cand in \
+        "$HOME/.local/share/mise/shims/jisho-cli" \
+        "$HOME/.local/bin/jisho-cli" \
+        "$HOME/.bun/bin/jisho-cli"; do
+        if [ -x "$cand" ]; then
+            printf '%s\n' "$cand"
+            return 0
+        fi
+    done
+    if command -v mise >/dev/null 2>&1; then
+        resolved="$(mise which jisho-cli 2>/dev/null || true)"
+        if [ -n "$resolved" ] && [ -x "$resolved" ]; then
+            printf '%s\n' "$resolved"
+            return 0
+        fi
+    fi
+    return 1
+}
+
+JISHO_BIN="$(resolve_jisho_cli || true)"
+[ -n "${JISHO_BIN:-}" ] || die "jisho-cli not found (install via mise)"
 
 # Query: CLI args win, otherwise ask via rofi.
 if [ "$#" -gt 0 ]; then
@@ -32,7 +62,7 @@ QUERY="$(printf '%s' "$QUERY" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//
 
 # Look up. NB: jisho-cli does NOT accept a `--` separator
 # (it errors with UNKNOWN_VALUE), so pass the term directly.
-RAW="$(jisho-cli --color never "$QUERY" 2>/dev/null || true)"
+RAW="$("$JISHO_BIN" --color never "$QUERY" 2>/dev/null || true)"
 # Strip OSC8 hyperlinks (ESC]8;;URL ESC\ text ESC]8;;ESC\) leaving display
 # text, plus any remaining ANSI escapes.
 RAW="$(printf '%s' "$RAW" \
