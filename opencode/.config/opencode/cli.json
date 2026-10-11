@@ -5,5 +5,11 @@
   },
   "prompt": {
     "paste": "full"
+  },
+  "tabs": {
+    "mode": "off"
+  },
+  "terminal": {
+    "title": true
   }
 }
