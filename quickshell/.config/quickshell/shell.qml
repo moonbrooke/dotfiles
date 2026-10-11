@@ -1,4 +1,5 @@
 //@ pragma IconTheme Adwaita
+//@ pragma UseQApplication
 import QtQuick
 import Quickshell
 

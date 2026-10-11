@@ -591,8 +591,8 @@ PanelWindow {
                 Repeater {
                     model: SystemTray.items
 
-                    Image {
-                        id: trayIcon
+                    Item {
+                        id: trayItem
                         required property var modelData
 
                         // modules/tray.jsonc: icon-size 11
@@ -600,31 +600,54 @@ PanelWindow {
 
                         width: iconSize
                         height: iconSize
-                        sourceSize: Qt.size(iconSize, iconSize)
-                        source: modelData.icon
-                        asynchronous: false
-                        smooth: true
-                        fillMode: Image.PreserveAspectFit
+
+                        Image {
+                            id: trayIcon
+                            anchors.centerIn: parent
+                            width: trayItem.iconSize
+                            height: trayItem.iconSize
+                            sourceSize: Qt.size(trayItem.iconSize, trayItem.iconSize)
+                            source: trayItem.modelData.icon
+                            asynchronous: false
+                            smooth: true
+                            fillMode: Image.PreserveAspectFit
+                        }
+
+                        QsMenuAnchor {
+                            id: menuAnchor
+                            menu: trayItem.modelData.menu
+                            anchor.item: trayItem
+                            anchor.edges: Edges.Top
+                            anchor.gravity: Edges.Top
+                        }
 
                         MouseArea {
                             id: trayHover
                             anchors.fill: parent
                             hoverEnabled: true
-                            acceptedButtons: Qt.LeftButton | Qt.MiddleButton
+                            acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.RightButton
 
                             onClicked: function(mouse) {
-                                if (mouse.button === Qt.MiddleButton)
-                                    trayIcon.modelData.secondaryActivate();
-                                else
-                                    trayIcon.modelData.activate();
+                                const item = trayItem.modelData;
+                                if (mouse.button === Qt.MiddleButton) {
+                                    item.secondaryActivate();
+                                } else if (mouse.button === Qt.RightButton) {
+                                    if (item.hasMenu)
+                                        menuAnchor.open();
+                                } else {
+                                    if (item.onlyMenu)
+                                        menuAnchor.open();
+                                    else
+                                        item.activate();
+                                }
                             }
                         }
 
                         Tooltip {
-                            target: trayIcon
-                            shown: trayHover.containsMouse
+                            target: trayItem
+                            shown: trayHover.containsMouse && !menuAnchor.visible
                             text: {
-                                const item = trayIcon.modelData;
+                                const item = trayItem.modelData;
                                 return [item.tooltipTitle, item.tooltipDescription].filter(part => part).join("\n") || item.title;
                             }
                         }
