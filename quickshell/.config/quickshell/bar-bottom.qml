@@ -575,6 +575,11 @@ PanelWindow {
             }
         }
 
+        QtObject {
+            id: trayHub
+            property var current: null
+        }
+
         Item {
             id: trayModule
             // style.css: #tray shares the 5px 10px 7px 10px module padding,
@@ -613,12 +618,11 @@ PanelWindow {
                             fillMode: Image.PreserveAspectFit
                         }
 
-                        QsMenuAnchor {
-                            id: menuAnchor
-                            menu: trayItem.modelData.menu
-                            anchor.item: trayItem
-                            anchor.edges: Edges.Top
-                            anchor.gravity: Edges.Top
+                        TrayMenu {
+                            id: trayMenu
+                            handle: trayItem.modelData.menu
+                            anchorTarget: trayItem
+                            hub: trayHub
                         }
 
                         MouseArea {
@@ -633,11 +637,12 @@ PanelWindow {
                                     item.secondaryActivate();
                                 } else if (mouse.button === Qt.RightButton) {
                                     if (item.hasMenu)
-                                        menuAnchor.open();
+                                        trayMenu.toggleMenu();
                                 } else {
-                                    if (item.onlyMenu)
-                                        menuAnchor.open();
-                                    else
+                                    if (item.onlyMenu) {
+                                        if (item.hasMenu)
+                                            trayMenu.toggleMenu();
+                                    } else
                                         item.activate();
                                 }
                             }
@@ -645,7 +650,7 @@ PanelWindow {
 
                         Tooltip {
                             target: trayItem
-                            shown: trayHover.containsMouse && !menuAnchor.visible
+                            shown: trayHover.containsMouse && !trayMenu.visible
                             text: {
                                 const item = trayItem.modelData;
                                 return [item.tooltipTitle, item.tooltipDescription].filter(part => part).join("\n") || item.title;
