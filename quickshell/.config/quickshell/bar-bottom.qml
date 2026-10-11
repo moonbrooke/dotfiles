@@ -424,8 +424,8 @@ PanelWindow {
                             id: workspaceLabel
                             anchors.left: parent.left
                             anchors.verticalCenter: parent.verticalCenter
-                            leftPadding: 10
-                            rightPadding: 10
+                            leftPadding: 15
+                            rightPadding: 15
                             topPadding: 5
                             bottomPadding: 7
                             text: modelData.label
@@ -463,7 +463,7 @@ PanelWindow {
 
             readonly property string text: {
                 const full = windowModule.prefix + (windowModule.toplevel ? windowModule.toplevel.title : "");
-                return full.length > 30 ? full.substring(0, 29) + "…" : full;
+                return full.length > 30 ? full.substring(0, 39) + "…" : full;
             }
 
             readonly property bool truncatedPrefix: windowModule.text.startsWith(windowModule.prefix)
