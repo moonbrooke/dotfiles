@@ -30,6 +30,7 @@ local keyviz_menu = "~/scripts/keyviz menu"
 local notif_history = "~/scripts/notif-history"
 local calc = "~/scripts/rofi-calc"
 local jisho = "~/scripts/rofi-jisho"
+local bookmarks = "~/scripts/rofi-bookmarks"
 
 local mainMod = "SUPER"
 
@@ -51,6 +52,7 @@ hl.bind(mainMod .. " + G", hl.dsp.exec_cmd(gamemode))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(gaps))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(calc))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.exec_cmd(jisho))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bookmarks))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd(gaps_menu))
 hl.bind(mainMod .. " + Comma", hl.dsp.exec_cmd(animation))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(notes))

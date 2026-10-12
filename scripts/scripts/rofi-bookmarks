@@ -1,0 +1,91 @@
+#!/bin/sh
+set -eu
+
+# Files
+# Put your files in .config/bookmarks/.
+PERS_FILE="${PERS_FILE:-$HOME/notes/Bookmarks/personal.md}"
+WORK_FILE="${WORK_FILE:-$HOME/notes/Bookmarks/work.md}"
+
+# Rofi command
+ROFI="rofi -dmenu -markup-rows -p 'Bookmarks' \
+    -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}'"
+
+# Browsers
+# Choose your browsers accordingly
+EDGE="$(command -v microsoft-edge-stable || true)"
+FIREFOX="$(command -v firefox || command -v firefox-esr || true)"
+FALLBACK="$(command -v xdg-open || echo microsoft-edge-stable)"
+
+# Ensure files exist
+mkdir -p "$(dirname "$PERS_FILE")"
+[ -f "$PERS_FILE" ] || cat >"$PERS_FILE" <<'EOF'
+# personal
+Twitter :: https://x.com
+https://www.youtube.com
+EOF
+[ -f "$WORK_FILE" ] || cat >"$WORK_FILE" <<'EOF'
+# work
+Hyprland Wiki :: https://wiki.hypr.land/
+EOF
+
+emit() {
+  tag="$1"; file="$2"
+  [ -f "$file" ] || return 0
+  # Output: "[tag] <display> :: <url or raw>"
+  # We keep the whole line after '::' as the raw RHS, or the entire line if no '::'
+  grep -vE '^\s*(#|$)' "$file" | while IFS= read -r line; do
+    case "$line" in
+      *"::"*)
+        lhs="${line%%::*}"; rhs="${line#*::}"
+        lhs="$(printf '%s' "$lhs" | sed 's/[[:space:]]*$//')"
+        rhs="$(printf '%s' "$rhs" | sed 's/^[[:space:]]*//')"
+        printf '%-10s %s :: %s\n' "[$tag]" "$lhs" "$rhs"
+        ;;
+      *)
+        printf '%-10s %s :: %s\n' "[$tag]" "$line" "$line"
+        ;;
+    esac
+  done
+}
+
+# Build combined list
+choice="$({
+  emit personal "$PERS_FILE"
+  emit work     "$WORK_FILE"
+} | sort | sed -e 's/^\[\(personal\|work\)\]/<span foreground="#565f89">[\1]<\/span>/' | eval "$ROFI" || true)"
+
+[ -n "$choice" ] || exit 0
+
+# Strip Pango markup before parsing
+choice="$(printf '%s' "$choice" | sed -e 's/<[^>]*>//g')"
+
+# Parse tag and raw URL
+tag="${choice%%]*}"; tag="${tag#\[}"
+raw="${choice##* :: }"
+
+# Strip inline comments and trim
+raw="$(printf '%s' "$raw" \
+  | sed -e 's/[[:space:]]\+#.*$//' -e 's/[[:space:]]\/\/.*$//' \
+        -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+
+# Ensure scheme
+case "$raw" in
+  http://*|https://*|file://*|about:*|chrome:*) url="$raw" ;;
+  *) url="https://$raw" ;;
+esac
+
+# Pick browser by tag
+open_with() {
+  cmd="$1"
+  if [ -n "$cmd" ]; then
+    nohup "$cmd" --new-tab "$url" >/dev/null 2>&1 & exit 0
+  fi
+}
+
+case "$tag" in
+  personal) open_with "$EDGE" ;;
+  work)     open_with "$FIREFOX" ;;
+esac
+
+# Fallback if specific browser not found
+nohup $FALLBACK "$url" >/dev/null 2>&1 &
