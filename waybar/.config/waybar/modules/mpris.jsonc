@@ -1,7 +1,8 @@
 {
     "mpris": {
-        "format": "󰐌 {player} / {artist} - {title}",
-        "format-paused": "󰏥 {player} / {artist} - {title}",
+        // "format": "󰐌 {player} / {artist} - {title}",
+        "format": "{artist} - {title}",
+        "format-paused": "{artist} - {title}",
         "status-icons": {
             "paused": "󰏥"
         },
