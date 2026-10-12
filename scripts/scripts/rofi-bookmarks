@@ -7,7 +7,7 @@ PERS_FILE="${PERS_FILE:-$HOME/notes/Bookmarks/personal.md}"
 LINUX_FILE="${LINUX_FILE:-$HOME/notes/Bookmarks/linux.md}"
 
 # Rofi command
-ROFI="rofi -dmenu -markup-rows -p 'Bookmarks' \
+ROFI="rofi -dmenu -i -markup-rows -p 'Bookmarks' \
     -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}'"
 
 # Browsers
