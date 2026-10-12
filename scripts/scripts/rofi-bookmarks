@@ -4,7 +4,7 @@ set -eu
 # Files
 # Put your files in .config/bookmarks/.
 PERS_FILE="${PERS_FILE:-$HOME/notes/Bookmarks/personal.md}"
-WORK_FILE="${WORK_FILE:-$HOME/notes/Bookmarks/work.md}"
+LINUX_FILE="${LINUX_FILE:-$HOME/notes/Bookmarks/linux.md}"
 
 # Rofi command
 ROFI="rofi -dmenu -markup-rows -p 'Bookmarks' \
@@ -23,8 +23,8 @@ mkdir -p "$(dirname "$PERS_FILE")"
 Twitter :: https://x.com
 https://www.youtube.com
 EOF
-[ -f "$WORK_FILE" ] || cat >"$WORK_FILE" <<'EOF'
-# work
+[ -f "$LINUX_FILE" ] || cat >"$LINUX_FILE" <<'EOF'
+# linux
 Hyprland Wiki :: https://wiki.hypr.land/
 EOF
 
@@ -51,8 +51,8 @@ emit() {
 # Build combined list
 choice="$({
   emit personal "$PERS_FILE"
-  emit work     "$WORK_FILE"
-} | sort | sed -e 's/^\[\(personal\|work\)\]/<span foreground="#565f89">[\1]<\/span>/' | eval "$ROFI" || true)"
+  emit linux    "$LINUX_FILE"
+} | sort | sed -e 's/^\[\(personal\|linux\)\]/<span foreground="#565f89">[\1]<\/span>/' | eval "$ROFI" || true)"
 
 [ -n "$choice" ] || exit 0
 
@@ -84,7 +84,7 @@ open_with() {
 
 case "$tag" in
   personal) open_with "$EDGE" ;;
-  work)     open_with "$FIREFOX" ;;
+  linux)    open_with "$FIREFOX" ;;
 esac
 
 # Fallback if specific browser not found
