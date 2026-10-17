@@ -5,8 +5,9 @@
 
 set -uo pipefail
 
-THEME_INPUT="window {width: 35%; border: 3px; border-color: #24283b;} listview {lines: 0;}"
+THEME_INPUT="window {width: 30%; border: 3px; border-color: #24283b;} listview {lines: 0;}"
 THEME_RESULTS="window {width: 50%; border: 3px; border-color: #24283b;}"
+THEME_NO_RESULTS="window {width: 30%; border: 3px; border-color: #24283b;}"
 
 die() {
     if command -v notify-send >/dev/null 2>&1; then
@@ -71,7 +72,7 @@ RAW="$(printf '%s' "$RAW" \
           -e 's/\x1b\[[0-9;]*[mK]//g')"
 
 [ -z "$(printf '%s' "$RAW" | tr -d '[:space:]')" ] && {
-    rofi -e "No results for '$QUERY'"
+    rofi -e "🙇 No results for '$QUERY'." -theme-str "$THEME_NO_RESULTS"
     exit 0
 }
 
