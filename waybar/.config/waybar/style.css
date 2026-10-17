@@ -96,7 +96,7 @@
 
 #workspaces button.urgent {
     color: @black;
-    background: @yellow;
+    background: @red;
 }
 
 #workspaces button.active {
