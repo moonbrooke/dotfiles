@@ -65,7 +65,7 @@ case "$rofi_status" in
         ;;
     11)
         confirmation=$(
-            printf 'No\n<span foreground="#f7768e">Yes</span>\n' |
+            printf 'No\n<span foreground="#f7768e">Yes</span>' |
                 rofi -dmenu \
                     -no-custom \
                     -i \
@@ -74,6 +74,8 @@ case "$rofi_status" in
                     -markup-rows \
                     -theme-str "window {width: 35%; border: 3px; border-color: #24283b;}"
         )
+
+        confirmation=$(printf '%s' "$confirmation" | sed 's/<[^>]*>//g')
 
         if [[ "$confirmation" == "Yes" ]]; then
             printf '%s\n' "$selection" | cliphist delete
