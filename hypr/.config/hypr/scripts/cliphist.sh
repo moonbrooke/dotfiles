@@ -65,12 +65,13 @@ case "$rofi_status" in
         ;;
     11)
         confirmation=$(
-            printf 'No\nYes\n' |
+            printf 'No\n<span foreground="#f7768e">Yes</span>\n' |
                 rofi -dmenu \
                     -no-custom \
                     -i \
                     -p "Delete selected clipboard entry?" \
                     -theme ~/.config/rofi/config.rasi \
+                    -markup-rows \
                     -theme-str "window {width: 35%; border: 3px; border-color: #24283b;}"
         )
 

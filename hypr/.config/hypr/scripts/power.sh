@@ -9,9 +9,12 @@ chosen=$(echo -e "Logout\nShutdown\nReboot" | \
 
 [ -z "$chosen" ] && exit
 
-confirm=$(echo -e "Yes\nNo" | \
-    rofi -dmenu -i -p "Are you sure?" -line-padding 4 -hide-scrollbar -theme "$ROFI_THEME" \
+confirm=$(echo -e 'No\n<span foreground="#f7768e">Yes</span>' | \
+    rofi -dmenu -i -p "Are you sure?" -line-padding 4 -hide-scrollbar -markup-rows -theme "$ROFI_THEME" \
     -theme-str 'window {width: 25%; border: 3px; border-color: #24283b;}')
+
+# rofi echoes the pango markup back, so strip it before comparing
+confirm=$(printf '%s' "$confirm" | sed 's/<[^>]*>//g')
 
 if [ "$confirm" == "Yes" ]; then
     case "$chosen" in
