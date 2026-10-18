@@ -19,7 +19,7 @@ selected () { \
         -theme-str 'window {width: 35%; border: 3px; border-color: #24283b;}'
   )
   case $choice in
-    New) newnote ;;
+    "✏️ New note...") newnote ;;
     *.md|*.txt) setsid -f foot -e nvim "$folder$choice" >/dev/null 2>&1 ;;
     *) exit ;;
   esac
