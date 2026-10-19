@@ -47,7 +47,7 @@ selection=$(
             -mesg "<span foreground='#414868'>[Enter]: Copy | [Alt+X]: Delete</span>" \
             -kb-custom-2 "Alt+x" \
             -theme ~/.config/rofi/clipboard.rasi \
-            -theme-str "window {width: 35%; border: 3px; border-color: #24283b;}"
+            -theme-str "window {width: 35%;}"
 )
 rofi_status=$?
 
@@ -72,7 +72,7 @@ case "$rofi_status" in
                     -p "Delete selected clipboard entry?" \
                     -theme ~/.config/rofi/config.rasi \
                     -markup-rows \
-                    -theme-str "window {width: 35%; border: 3px; border-color: #24283b;}"
+                    -theme-str "window {width: 35%;}"
         )
 
         confirmation=$(printf '%s' "$confirmation" | sed 's/<[^>]*>//g')
