@@ -2,7 +2,8 @@
     "network": {
         "interval": 5,
         "format-wifi": "NET: {essid}",
-        "format-ethernet": "ETH: {ifname}",
+        // "format-ethernet": "ETH: {ifname}",
+        "format-ethernet": "NET: WIRED",
         "format-disconnected": "NET: OFF",
         "tooltip": false,
         // "on-click": "kitty --class floating_nmtui -e nmtui"
