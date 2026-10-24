@@ -18,8 +18,8 @@ confirm=$(printf '%s' "$confirm" | sed 's/<[^>]*>//g')
 
 if [ "$confirm" == "Yes" ]; then
     case "$chosen" in
-        "Logout") ~/.config/hypr/scripts/logout.sh ;;
-        "Shutdown") ~/.config/hypr/scripts/shutdown.sh ;;
-        "Reboot") ~/.config/hypr/scripts/reboot.sh ;;
+        "Logout") ~/scripts/power/logout ;;
+        "Shutdown") ~/scripts/power/shutdown ;;
+        "Reboot") ~/scripts/power/reboot ;;
     esac
 fi

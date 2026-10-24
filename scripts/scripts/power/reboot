@@ -1,5 +1,5 @@
 #!/bin/bash
 
-~/.config/hypr/scripts/close-all.sh
+~/scripts/power/close-all
 sleep 1
 systemctl reboot
