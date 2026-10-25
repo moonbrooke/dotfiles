@@ -1,7 +1,7 @@
 local layout = require("_layout")
 
 -- Programs
-local terminal = "foot"
+local terminal = "kitty"
 local file_manager = "thunar"
 local browser = "microsoft-edge-stable"
 local menu = "~/scripts/rofi-menu"
