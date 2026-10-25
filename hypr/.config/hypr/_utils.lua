@@ -80,4 +80,28 @@ function M.output_connected(name)
     return status:gsub("%s+", "") == "connected"
 end
 
+--- Detect the distro ID from /etc/os-release.
+--- @return string|nil lowercase ID (e.g. "arch", "void"), or nil if unknown
+function M.distro_id()
+    local f = io.open("/etc/os-release", "r")
+    if f == nil then
+        return nil
+    end
+
+    local id
+    for line in f:lines() do
+        id = line:match("^ID=(.+)$")
+        if id ~= nil then
+            break
+        end
+    end
+    f:close()
+
+    if id == nil then
+        return nil
+    end
+
+    return id:gsub('^"', ""):gsub('"$', ""):lower()
+end
+
 return M

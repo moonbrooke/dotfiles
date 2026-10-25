@@ -1,20 +1,59 @@
+local utils = require("_utils")
+
+--- Start every command in a list.
+--- @param cmds string[]
+local function exec_all(cmds)
+    for _, cmd in ipairs(cmds) do
+        hl.exec_cmd(cmd)
+    end
+end
+
+local arch_cmds = {
+    "~/.config/hypr/scripts/xdph.sh",
+    "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP",
+    "dbus-update-activation-environment --systemd --all",
+    "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP",
+    "systemctl --user start hyprpolkitagent",
+    'gsettings set org.gnome.desktop.interface gtk-theme "Dracula"',
+    'gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"',
+    "wl-paste --type text --watch cliphist store",
+    "wl-paste --type image --watch cliphist store",
+    "dunst -config $HOME/.config/dunst/dunstrc",
+    "hypridle",
+    "hyprsunset",
+    "~/scripts/brightness restore",
+    "awww-daemon",
+    "fcitx5",
+    "~/scripts/waybar-launch",
+    "~/scripts/capslock",
+    "udiskie --automount --no-notify --no-tray",
+}
+
+local void_cmds = {
+    "dbus-update-activation-environment --all",
+    "~/.config/hypr/scripts/xdph.sh",
+    "/usr/libexec/hyprpolkitagent",
+    'gsettings set org.gnome.desktop.interface gtk-theme "Dracula"',
+    'gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"',
+    "wl-paste --type text --watch cliphist store",
+    "wl-paste --type image --watch cliphist store",
+    "dunst -config $HOME/.config/dunst/dunstrc",
+    "sh -c 'pgrep -x pipewire >/dev/null || pipewire &'",
+    "hyprsunset",
+    "~/scripts/brightness restore",
+    "awww-daemon",
+    "fcitx5",
+    "~/.config/hypr/scripts/launch-waybar.sh",
+    "~/.config/hypr/scripts/capslock-notify.sh",
+    "udiskie --automount --no-notify --no-tray",
+}
+
 hl.on("hyprland.start", function ()
-    hl.exec_cmd("~/.config/hypr/scripts/xdph.sh")
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("dbus-update-activation-environment --systemd --all")
-    hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("systemctl --user start hyprpolkitagent")
-    hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "Dracula"')
-    hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"')
-    hl.exec_cmd("wl-paste --type text --watch cliphist store")
-    hl.exec_cmd("wl-paste --type image --watch cliphist store")
-    hl.exec_cmd("dunst -config $HOME/.config/dunst/dunstrc")
-    hl.exec_cmd("hypridle")
-    hl.exec_cmd("hyprsunset")
-    hl.exec_cmd("~/scripts/brightness restore")
-    hl.exec_cmd("awww-daemon")
-    hl.exec_cmd("fcitx5")
-    hl.exec_cmd("~/scripts/waybar-launch")
-    hl.exec_cmd("~/scripts/capslock")
-    hl.exec_cmd("udiskie --automount --no-notify --no-tray")
+    local id = utils.distro_id()
+
+    if id == "arch" then
+        exec_all(arch_cmds)
+    elseif id == "void" then
+        exec_all(void_cmds)
+    end
 end)
