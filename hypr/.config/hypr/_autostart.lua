@@ -9,7 +9,7 @@ local function exec_all(cmds)
 end
 
 local arch_cmds = {
-    "~/.config/hypr/scripts/xdph.sh",
+    "~/.config/hypr/scripts/xdph-arch.sh",
     "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP",
     "dbus-update-activation-environment --systemd --all",
     "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP",
@@ -31,7 +31,7 @@ local arch_cmds = {
 
 local void_cmds = {
     "dbus-update-activation-environment --all",
-    "~/.config/hypr/scripts/xdph.sh",
+    "~/.config/hypr/scripts/xdph-void.sh",
     "/usr/libexec/hyprpolkitagent",
     'gsettings set org.gnome.desktop.interface gtk-theme "Dracula"',
     'gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"',
@@ -43,8 +43,8 @@ local void_cmds = {
     "~/scripts/brightness restore",
     "awww-daemon",
     "fcitx5",
-    "~/.config/hypr/scripts/launch-waybar.sh",
-    "~/.config/hypr/scripts/capslock-notify.sh",
+    "~/scripts/waybar-launch",
+    "~/scripts/capslock",
     "udiskie --automount --no-notify --no-tray",
 }
 
