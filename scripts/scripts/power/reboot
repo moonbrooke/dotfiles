@@ -2,4 +2,11 @@
 
 ~/scripts/power/close-all
 sleep 1
-systemctl reboot
+
+. /etc/os-release
+
+case "$ID" in
+    arch) systemctl reboot ;;
+    void) loginctl reboot ;;
+    *) systemctl reboot ;;
+esac

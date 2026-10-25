@@ -2,4 +2,11 @@
 
 ~/scripts/power/close-all
 sleep 1
-systemctl poweroff
+
+. /etc/os-release
+
+case "$ID" in
+    arch) systemctl poweroff ;;
+    void) loginctl poweroff ;;
+    *) systemctl poweroff ;;
+esac
