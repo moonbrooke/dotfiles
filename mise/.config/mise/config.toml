@@ -1,4 +1,4 @@
 [tools]
 go = "latest"
-node = "24"
+node = "latest"
 rust = "latest"
