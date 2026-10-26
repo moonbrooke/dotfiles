@@ -3,7 +3,7 @@ local layout = require("_layout")
 -- Programs
 local terminal = "kitty"
 local file_manager = "thunar"
-local browser = "microsoft-edge-stable"
+local browser = "firefox"
 local menu = "~/scripts/rofi-menu"
 local full_screenshot = "~/scripts/screenshot full"
 local select_screenshot = "~/scripts/screenshot select"
