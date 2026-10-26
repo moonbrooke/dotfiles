@@ -30,6 +30,7 @@ resolve_jisho_cli() {
     fi
     for cand in \
         "$HOME/.local/share/mise/shims/jisho-cli" \
+        "$HOME/.local/share/mise/installs/node/latest/bin/jisho-cli" \
         "$HOME/.local/bin/jisho-cli" \
         "$HOME/.bun/bin/jisho-cli"; do
         if [ -x "$cand" ]; then
