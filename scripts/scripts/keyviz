@@ -15,11 +15,11 @@ import time
 
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 LISTENER_CANDIDATES = [
-    os.path.join(SCRIPT_DIR, "listener.py"),
-    os.path.expanduser("~/wm/config/mangobar/scripts/listener.py"),
-    os.path.expanduser("~/.local/bin/listener.py"),
+    os.path.join(SCRIPT_DIR, "keyviz-listener.py"),
+    os.path.expanduser("~/wm/config/mangobar/scripts/keyviz-listener.py"),
+    os.path.expanduser("~/.local/bin/keyviz-listener.py"),
 ]
-LISTENER_SCRIPT = next((p for p in LISTENER_CANDIDATES if os.path.isfile(p)), os.path.join(SCRIPT_DIR, "listener.py"))
+LISTENER_SCRIPT = next((p for p in LISTENER_CANDIDATES if os.path.isfile(p)), os.path.join(SCRIPT_DIR, "keyviz-listener.py"))
 
 RUN_DIR = os.path.join(os.environ.get("XDG_RUNTIME_DIR", "/dev/shm"), "wm_keyviz")
 os.makedirs(RUN_DIR, exist_ok=True)
@@ -416,7 +416,7 @@ def protected_pids() -> set[int]:
 
 
 def cmd_stop():
-    """Aggressively and reliably terminate keyviz daemon, listener.py, and all related python processes."""
+    """Aggressively and reliably terminate keyviz daemon, keyviz-listener.py, and all related python processes."""
     set_active(False)
 
     protected = protected_pids()
@@ -453,8 +453,8 @@ def cmd_stop():
 
     write_state("󰌐")
     signal_mangobar()
-    notify("Key visualizer HUD has been <span foreground='#f7768e'>DISABLED</span>")
-    print("Keyviz and listener.py killed successfully.")
+    notify("Key visualizer HUD has been <span foreground='#f7768e'><b>DISABLED</b></span>")
+    print("Keyviz and keyviz-listener.py killed successfully.")
 
 
 def cmd_start():
@@ -463,7 +463,7 @@ def cmd_start():
         ensure_daemon()
     write_state("󰌌")
     signal_mangobar()
-    notify("Key visualizer HUD has been <span foreground='#9ece6a'>ENABLED</span>")
+    notify("Key visualizer HUD has been <span foreground='#9ece6a'><b>ENABLED</b></span>")
     print("Keyviz started.")
 
 
