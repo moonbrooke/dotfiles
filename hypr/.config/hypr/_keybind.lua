@@ -2,6 +2,7 @@ local layout = require("_layout")
 
 -- Programs
 local terminal = "kitty"
+local terminal_alt = "foot"
 local file_manager = "thunar"
 local browser = "firefox"
 local menu = "~/scripts/rofi-menu"
@@ -70,6 +71,7 @@ end)
 
 -- Essentials
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + SHIFT + RETURN", hl.dsp.exec_cmd(terminal_alt))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(file_manager))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
