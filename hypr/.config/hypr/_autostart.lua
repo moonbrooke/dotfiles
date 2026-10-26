@@ -39,6 +39,7 @@ local void_cmds = {
     "wl-paste --type image --watch cliphist store",
     "dunst -config $HOME/.config/dunst/dunstrc",
     "sh -c 'pgrep -x pipewire >/dev/null || pipewire &'",
+    "hypridle",
     "hyprsunset",
     "~/scripts/brightness restore",
     "awww-daemon",
