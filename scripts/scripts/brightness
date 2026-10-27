@@ -2,6 +2,9 @@
 
 set -u
 
+# shellcheck disable=SC1091
+. "$HOME/scripts/themes/colors"
+
 STATE_FILE="$HOME/.cache/hypr_brightness"
 readonly STEP=5
 readonly MIN=5
@@ -19,7 +22,7 @@ save_state() {
 }
 
 notify_level() {
-    notify-send 'Settings' "Brightness level: <span color=\"#9ece6a\"><b>$1</b></span>" -t 2500 \
+    notify-send 'Settings' "Brightness level: <span color=\"$T_GREEN\"><b>$1</b></span>" -t 2500 \
         --hint=string:x-dunst-stack-tag:brightness -i dialog-information &
 }
 

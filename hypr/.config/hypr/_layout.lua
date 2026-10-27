@@ -1,4 +1,10 @@
 local state = require("_layout_state")
+local utils = require("_utils")
+
+local ok, colors = pcall(dofile, utils.cache_path("theme_colors.lua"))
+local theme = {
+    green = (ok and type(colors) == "table" and colors.green) or "9ece6a",
+}
 
 --- Apply a layout, persist it, and refresh the waybar module
 --- @param layout string
@@ -7,7 +13,8 @@ local function apply(layout)
     state.set(layout)
 
     local cmd = string.format(
-        "notify-send 'Settings' 'Layout switched to: <span color=\"#9ece6a\"><b>%s</b></span>' -t 2500 --hint=string:x-dunst-stack-tag:layout -i dialog-information &",
+        "notify-send 'Settings' 'Layout switched to: <span color=\"#%s\"><b>%s</b></span>' -t 2500 --hint=string:x-dunst-stack-tag:layout -i dialog-information &",
+        theme.green,
         string.upper(layout)
     )
 

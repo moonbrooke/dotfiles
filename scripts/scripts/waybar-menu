@@ -1,6 +1,9 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -eu
+
+# shellcheck disable=SC1091
+. "$HOME/scripts/themes/colors"
 
 STATE_FILE="$HOME/.cache/waybar_state"
 CONFIG_DIR="$HOME/.config/waybar"
@@ -26,7 +29,7 @@ esac
 menu() {
     printf '%s\n' "$CONFIGS" | while IFS='|' read -r KEY LABEL; do
         if [ "$KEY" = "$CURRENT" ]; then
-            printf '%s <span color="#565f89">(Active)</span>\n' "$LABEL"
+            printf "%s <span color=\"$T_FG_MUTED\">(Active)</span>\n" "$LABEL"
         else
             printf '%s\n' "$LABEL"
         fi
@@ -74,7 +77,7 @@ printf '%s\n' "$CHOSEN_KEY" > "$STATE_FILE"
 echo "Waybar config set to: $CHOSEN_KEY"
 
 POS=$(printf '%s' "$CHOSEN_KEY" | tr '[:lower:]' '[:upper:]')
-notify-send 'Settings' "Waybar config set to <span color=\"#9ece6a\"><b>$POS</b></span>" -t 2500 \
+notify-send 'Settings' "Waybar config set to <span color=\"$T_GREEN\"><b>$POS</b></span>" -t 2500 \
     --hint=string:x-dunst-stack-tag:waybar -i dialog-information &
 
 pkill waybar || true

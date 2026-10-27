@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC1091
+. "$HOME/scripts/themes/colors"
+
 if pkill -x rofi; then
     exit 0
 fi
@@ -44,7 +47,7 @@ selection=$(
             -no-custom \
             -show-icons \
             -p "Clipboard" \
-            -mesg "<span foreground='#414868'>[Enter]: Copy | [Alt+X]: Delete</span>" \
+            -mesg "<span foreground='$T_FG_MUTED'>[Enter]: Copy | [Alt+X]: Delete</span>" \
             -kb-custom-2 "Alt+x" \
             -theme ~/.config/rofi/clipboard.rasi \
             -theme-str "window {width: 35%;}"
@@ -65,7 +68,7 @@ case "$rofi_status" in
         ;;
     11)
         confirmation=$(
-            printf 'No\n<span foreground="#f7768e">Yes</span>' |
+            printf "No\n<span foreground=\"$T_RED\">Yes</span>" |
                 rofi -dmenu \
                     -no-custom \
                     -i \

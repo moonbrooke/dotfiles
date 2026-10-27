@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# Source this to get the active color theme as $T_* variables:
+#
+#     . "$HOME/scripts/themes/colors"
+#     notify-send 'Settings' "Done <span color=\"$T_GREEN\">OK</span>"
+#
+# Requires bash -- it pulls in themes/lib.sh.
+
+if [ -z "${BASH_VERSION:-}" ]; then
+    printf 'themes/colors needs bash\n' >&2
+    return 1 2>/dev/null || exit 1
+fi
+
+# shellcheck disable=SC1091
+. "${BASH_SOURCE[0]%/*}/lib.sh"
+theme_load "$(theme_current)"

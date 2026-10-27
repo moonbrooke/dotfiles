@@ -20,6 +20,7 @@ local animation = "~/scripts/toggle-animation"
 local gaps = "~/scripts/toggle-gaps"
 local notes = "~/scripts/rofi-notes"
 local keybinds_helper = "pkill rofi || ~/scripts/keybinds/keybinds"
+local theme = "~/scripts/theme"
 local emoji = "~/scripts/rofi-emoji"
 local ocr = "~/scripts/ocr"
 local wallpaper = "~/scripts/rofi-wallpaper"
@@ -84,6 +85,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(run))
 hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd(emoji))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(restart_waybar))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(waybar_menu))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(theme))
 -- hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bluetooth))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(wallpaper))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(wifi))

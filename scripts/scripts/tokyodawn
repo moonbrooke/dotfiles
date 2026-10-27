@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+colors=(
+"#faf4ed"
+"#fffaf3"
+"#f2e9e1"
+"#9893a5"
+"#797593"
+"#464261"
+"#b4637a"
+"#ea9d34"
+"#d7827e"
+"#286983"
+"#56949f"
+"#907aa9"
+"#f4ede8"
+"#dfdad9"
+"#cecacd"
+)
+
+hex_to_rgb() {
+    local hex=${1#"#"}
+    local r=$((16#${hex:0:2}))
+    local g=$((16#${hex:2:2}))
+    local b=$((16#${hex:4:2}))
+    echo "$r;$g;$b"
+}
+
+for hex in "${colors[@]}"; do
+    rgb=$(hex_to_rgb "$hex")
+    printf "\e[48;2;%sm      \e[0m %s\n" "$rgb" "$hex"
+done

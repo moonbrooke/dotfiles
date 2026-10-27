@@ -5,6 +5,9 @@
 
 set -uo pipefail
 
+# shellcheck disable=SC1091
+. "$HOME/scripts/themes/colors"
+
 THEME_INPUT="window {width: 30%;} listview {lines: 0;}"
 THEME_RESULTS="window {width: 50%;}"
 THEME_NO_RESULTS="window {width: 30%;}"
@@ -145,6 +148,6 @@ else
 fi
 
 if command -v notify-send >/dev/null 2>&1; then
-    notify-send "Jisho" "Copied: <span foreground='#9ece6a'><b>$CHOSEN</b></span>" -t 2500 \
+    notify-send "Jisho" "Copied: <span foreground='$T_GREEN'><b>$CHOSEN</b></span>" -t 2500 \
         --hint=string:x-dunst-stack-tag:josho -i dialog-information &
 fi

@@ -1,5 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
 set -eu
+
+# shellcheck disable=SC1091
+. "$HOME/scripts/themes/colors"
 
 # Files
 # Put your files in .config/bookmarks/.
@@ -52,7 +55,7 @@ emit() {
 choice="$({
   emit personal "$PERS_FILE"
   emit linux    "$LINUX_FILE"
-} | sort | sed -e 's/^\[\(personal\|linux\)\]/<span foreground="#565f89">[\1]<\/span>/' | eval "$ROFI" || true)"
+} | sort | sed -e "s/^\[\(personal\|linux\)\]/<span foreground=\"$T_FG_MUTED\">[\1]<\/span>/" | eval "$ROFI" || true)"
 
 [ -n "$choice" ] || exit 0
 

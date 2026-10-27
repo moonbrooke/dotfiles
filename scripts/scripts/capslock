@@ -4,6 +4,9 @@ set -u
 
 export LC_ALL=C
 
+# shellcheck disable=SC1091
+. "$HOME/scripts/themes/colors"
+
 readonly SCAN_INTERVAL=2
 readonly CAPS_ON='type 17 (EV_LED), code 1 (LED_CAPSL), value 1'
 readonly CAPS_OFF='type 17 (EV_LED), code 1 (LED_CAPSL), value 0'
@@ -36,10 +39,10 @@ notify_caps() {
     local attempt
 
     if [[ "$state" == on ]]; then
-        color='#9ece6a'
+        color=$T_GREEN
         label=ON
     else
-        color='#f7768e'
+        color=$T_RED
         label=OFF
     fi
 

@@ -9,6 +9,7 @@ local function exec_all(cmds)
 end
 
 local arch_cmds = {
+    "~/scripts/theme apply",
     "~/.config/hypr/scripts/xdph-arch.sh",
     "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP",
     "dbus-update-activation-environment --systemd --all",
@@ -30,6 +31,7 @@ local arch_cmds = {
 }
 
 local void_cmds = {
+    "~/scripts/theme apply",
     "dbus-update-activation-environment --all",
     "~/.config/hypr/scripts/xdph-void.sh",
     "/usr/libexec/hyprpolkitagent",

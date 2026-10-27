@@ -8,4 +8,4 @@ configuration {
     kb-mode-previous: "Left";
     kb-mode-next: "Right";
 }
-@theme "./themes/tokyonight.rasi"
+@theme "./themes/current.rasi"
