@@ -2,6 +2,7 @@
 Super + Space                       | Launch app menu
 Super + Return                      | Launch terminal
 Super + Shift + Return              | Launch alt. terminal
+Super + T                           | Launch theme switcher
 Super + W                           | Launch web browser
 Super + V                           | Launch clipboard history
 Super + R                           | Launch run menu
