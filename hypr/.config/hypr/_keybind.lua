@@ -6,7 +6,7 @@ local terminal_alt = "foot"
 local file_manager = "thunar"
 local browser = "firefox"
 local menu = "~/scripts/rofi-menu"
-local full_screenshot = "~/scripts/screenshot full"
+local screenshot_menu = "~/scripts/rofi-screenshot"
 local select_screenshot = "~/scripts/screenshot select"
 local window_screenshot = "~/scripts/screenshot window"
 local power_menu = "~/scripts/power/rofi-power"
@@ -91,7 +91,7 @@ hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(keyviz))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.exec_cmd(keyviz_menu))
 
 -- Screenshots
-hl.bind("Print", hl.dsp.exec_cmd(full_screenshot))
+hl.bind("Print", hl.dsp.exec_cmd(screenshot_menu))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(select_screenshot))
 hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd(window_screenshot))
 hl.bind("ALT + SHIFT + S", hl.dsp.exec_cmd(ocr))
