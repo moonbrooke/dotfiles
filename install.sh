@@ -26,7 +26,7 @@ yay -Rns go
 # Install Necessary Packages
 echo "Installing necessary core packages..."
 sudo pacman -S --needed --noconfirm \
-    hyprland dunst grim slurp jq foot waybar rofi awww easyeffects alsa-utils \
+    hyprland dunst grim slurp jq foot kitty waybar rofi awww easyeffects alsa-utils \
     hyprsunset hyprpicker imv udiskie \
     ttf-cascadia-mono-nerd otf-firamono-nerd ttf-iosevkaterm-nerd \
     wl-clipboard cliphist wl-clip-persist hyprpolkitagent rofimoji noto-fonts-emoji \
@@ -35,7 +35,7 @@ sudo pacman -S --needed --noconfirm \
 # Install Optional but Recommended Packages
 echo "Installing optional utilities..."
 sudo pacman -S --needed --noconfirm neovim zsh fastfetch yazi fzf bat btop \
-    fcitx5 fcitx5-mozc fcitx5-configtool noto-fonts-cjk
+    fcitx5 fcitx5-mozc fcitx5-configtool noto-fonts-cjk ttf-sarasa-gothic
 
 # Install AUR Packages
 # echo "Installing additional AUR packages..."
@@ -56,7 +56,7 @@ echo "Applying dotfiles with GNU Stow..."
 cd "$DOTFILES_DIR"
 
 # Stow the specific folders listed in the README
-stow btop dunst fastfetch hypr foot nvim rofi waybar scripts yazi app-flags mise mimeapps
+stow btop dunst fastfetch hypr foot kitty nvim rofi waybar scripts yazi app-flags mise mimeapps
 
 # Notes Folder
 if [ ! -d "$HOME/notes" ]; then
