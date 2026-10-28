@@ -7,6 +7,14 @@ FILEPATH="$SAVE_DIR/$FILENAME"
 
 mkdir -p "$SAVE_DIR"
 
+get_monitor() {
+    hyprctl -j monitors | jq -r --arg role "$1" '
+        sort_by(.x, .y)
+        | if $role == "main" then .[0].name // empty
+          else .[1].name // empty
+          end'
+}
+
 if [[ "$1" == "full" ]]; then
     grim "$FILEPATH"
     TYPE="Full"
@@ -16,10 +24,25 @@ elif [[ "$1" == "select" ]]; then
 elif [[ "$1" == "window" ]]; then
     hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | grim -g - "$FILEPATH"
     TYPE="Window"
+elif [[ "$1" == "main" || "$1" == "secondary" ]]; then
+    MONITOR=$(get_monitor "$1")
+
+    if [[ -z "$MONITOR" ]]; then
+        notify-send -a "Screenshot" -i dialog-error "Screenshot failed" "No $1 monitor found." \
+            -t 2500 --hint=string:x-dunst-stack-tag:screenshot &
+        exit 1
+    fi
+
+    grim -o "$MONITOR" "$FILEPATH"
+    if [[ "$1" == "main" ]]; then
+        TYPE="Main Monitor"
+    else
+        TYPE="Secondary Monitor"
+    fi
 else
-    echo "Usage: $0 {full|select|window}"
+    echo "Usage: $0 {main|secondary|select|window|full}"
     exit 1
 fi
 
 notify-send -a "$TYPE Screenshot" -i $FILEPATH "$TYPE Screenshot" "Screenshot saved as <b>$FILENAME</b>" \
-    -t 2500 --hint=string:x-dunst-stack-tag:screenshot & 
+    -t 2500 --hint=string:x-dunst-stack-tag:screenshot &
