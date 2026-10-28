@@ -30,7 +30,7 @@ Super + Shift + T                   | Waybar switcher
 Super + Shift + R                   | Restart waybar
 
 # === Screenshot ===
-Print                               | Full screenshot
+Print                               | Launch screenshot menu
 Super + Print                       | Area selection screenshot
 Super + Shift + Print               | Window screenshot
 
