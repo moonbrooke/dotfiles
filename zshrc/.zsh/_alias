@@ -20,6 +20,8 @@ alias ff="fastfetch"
 alias ffc="fastfetch -c ~/.config/fastfetch/catnap.jsonc"
 alias cddf="cd ~/dotfiles/"
 
+alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+
 # Arch
 alias pminfo="yay -Si"
 alias pmi="sudo pacman -S --needed"
