@@ -21,6 +21,8 @@ else
     echo "yay AUR helper is already installed."
 fi
 
+yay -Rns go
+
 # Install Necessary Packages
 echo "Installing necessary core packages..."
 sudo pacman -S --needed --noconfirm \
@@ -54,7 +56,7 @@ echo "Applying dotfiles with GNU Stow..."
 cd "$DOTFILES_DIR"
 
 # Stow the specific folders listed in the README
-stow btop dunst fastfetch hypr foot nvim rofi waybar scripts yazi app-flags mimeapps
+stow btop dunst fastfetch hypr foot nvim rofi waybar scripts yazi app-flags mise mimeapps
 
 # Notes Folder
 if [ ! -d "$HOME/notes" ]; then
@@ -84,6 +86,17 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
     echo "Changing default shell to zsh..."
     chsh -s /usr/bin/zsh
 fi
+
+# Install mise
+echo "Install mise-en-place..."
+curl -fsSL https://mise.run | sh
+mise install go
+mise install node
+mise use -g go
+mise use -g node
+
+# Install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "================================================="
 echo "Installation Complete!"
