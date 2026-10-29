@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 # Fix Intel audio on my MSI laptop by forcing the legacy HDA driver (dsp_driver=1).
+# My issue was that the laptop's audio device didn't automatically switch
+# between the headphones/speakers when I plugged/unplugged my headphones.
+# This fixes it.
 set -euo pipefail
 
 CONF=/etc/modprobe.d/audio-fix.conf
