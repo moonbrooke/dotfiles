@@ -43,6 +43,19 @@ Hyprland Wiki :: https://wiki.hypr.land/
 EOF
 fi
 
+# Width of the longest "[category]" label, so entries line up and every row
+# keeps the same gap between the category and the bookmark name.
+TAG_WIDTH=0
+for file in "$BOOKMARKS_DIR"/*.md; do
+  [ -f "$file" ] || continue
+  tag="${file##*/}"
+  tag="${tag%.md}"
+  label="[${tag}]"
+  if [ "${#label}" -gt "$TAG_WIDTH" ]; then
+    TAG_WIDTH="${#label}"
+  fi
+done
+
 emit() {
   tag="$1"; file="$2"
   [ -f "$file" ] || return 0
@@ -54,10 +67,10 @@ emit() {
         lhs="${line%%::*}"; rhs="${line#*::}"
         lhs="$(printf '%s' "$lhs" | sed 's/[[:space:]]*$//')"
         rhs="$(printf '%s' "$rhs" | sed 's/^[[:space:]]*//')"
-        printf '%-10s %s :: %s\n' "[$tag]" "$lhs" "$rhs"
+        printf "%-${TAG_WIDTH}s    %s :: %s\n" "[$tag]" "$lhs" "$rhs"
         ;;
       *)
-        printf '%-10s %s :: %s\n' "[$tag]" "$line" "$line"
+        printf "%-${TAG_WIDTH}s    %s :: %s\n" "[$tag]" "$line" "$line"
         ;;
     esac
   done
