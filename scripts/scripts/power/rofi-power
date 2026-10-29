@@ -2,7 +2,7 @@
 
 ROFI_THEME="$HOME/.config/rofi/config.rasi"
 
-chosen=$(echo -e "Logout\nShutdown\nReboot" | \
+chosen=$(echo -e "󰍃 Logout\n󰐥 Shutdown\n󰜉 Reboot" | \
     rofi -dmenu -i -p "Power" -line-padding 4 \
     -hide-scrollbar -theme "$ROFI_THEME" \
     -theme-str 'window {width: 25%;}')
@@ -18,8 +18,8 @@ confirm=$(printf '%s' "$confirm" | sed 's/<[^>]*>//g')
 
 if [ "$confirm" == "Yes" ]; then
     case "$chosen" in
-        "Logout") ~/scripts/power/logout ;;
-        "Shutdown") ~/scripts/power/shutdown ;;
-        "Reboot") ~/scripts/power/reboot ;;
+        "󰍃 Logout") ~/scripts/power/logout ;;
+        "󰐥 Shutdown") ~/scripts/power/shutdown ;;
+        "󰜉 Reboot") ~/scripts/power/reboot ;;
     esac
 fi
