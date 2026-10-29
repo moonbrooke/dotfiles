@@ -23,7 +23,7 @@ command -v rofi >/dev/null 2>&1 || die "rofi not found"
 # `mise activate`), so jisho-cli (installed via mise) is not on PATH.
 # Resolve it via stable locations instead of relying on PATH alone.
 resolve_jisho_cli() {
-    local cand resolved
+    local cand resolved mise_bin
     if command -v jisho-cli >/dev/null 2>&1; then
         command -v jisho-cli
         return 0
@@ -39,7 +39,12 @@ resolve_jisho_cli() {
         fi
     done
     if command -v mise >/dev/null 2>&1; then
-        resolved="$(mise which jisho-cli 2>/dev/null || true)"
+        mise_bin="$(command -v mise)"
+    elif [ -x "$HOME/.local/bin/mise" ]; then
+        mise_bin="$HOME/.local/bin/mise"
+    fi
+    if [ -n "${mise_bin:-}" ]; then
+        resolved="$("$mise_bin" which jisho-cli 2>/dev/null || true)"
         if [ -n "$resolved" ] && [ -x "$resolved" ]; then
             printf '%s\n' "$resolved"
             return 0
@@ -50,6 +55,22 @@ resolve_jisho_cli() {
 
 JISHO_BIN="$(resolve_jisho_cli || true)"
 [ -n "${JISHO_BIN:-}" ] || die "jisho-cli not found (install via mise)"
+
+# jisho-cli is a Node script (`#!/usr/bin/env node`), and Hyprland's
+# session PATH has neither node nor the mise shims. Put the node that
+# ships with jisho-cli on PATH, otherwise the shebang fails with 127.
+NODE_BIN=""
+for cand in "$(command -v node 2>/dev/null || true)" \
+            "$HOME/.local/share/mise/shims/node" \
+            "$HOME/.local/share/mise/installs/node/latest/bin/node" \
+            "$HOME/.local/bin/node"; do
+    if [ -n "$cand" ] && [ -x "$cand" ]; then
+        NODE_BIN="$cand"
+        break
+    fi
+done
+[ -n "$NODE_BIN" ] || die "node not found (needed to run jisho-cli)"
+export PATH="$(dirname "$NODE_BIN"):$PATH"
 
 # Query: CLI args win, otherwise ask via rofi.
 if [ "$#" -gt 0 ]; then
@@ -64,7 +85,10 @@ QUERY="$(printf '%s' "$QUERY" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//
 
 # Look up. NB: jisho-cli does NOT accept a `--` separator
 # (it errors with UNKNOWN_VALUE), so pass the term directly.
-RAW="$("$JISHO_BIN" --color never "$QUERY" 2>/dev/null || true)"
+ERR_FILE="$(mktemp)"
+RAW="$("$JISHO_BIN" --color never "$QUERY" 2>"$ERR_FILE" || true)"
+ERR="$(head -n 5 "$ERR_FILE")"
+rm -f "$ERR_FILE"
 # Strip OSC8 hyperlinks (ESC]8;;URL ESC\ text ESC]8;;ESC\) leaving display
 # text, plus any remaining ANSI escapes.
 RAW="$(printf '%s' "$RAW" \
@@ -73,7 +97,11 @@ RAW="$(printf '%s' "$RAW" \
           -e 's/\x1b\[[0-9;]*[mK]//g')"
 
 [ -z "$(printf '%s' "$RAW" | tr -d '[:space:]')" ] && {
-    rofi -e "🙇 No results for '$QUERY'." -theme-str "$THEME_NO_RESULTS"
+    if [ -n "${ERR:-}" ]; then
+        rofi -e "jisho-cli failed for '$QUERY':\n$ERR" -theme-str "$THEME_NO_RESULTS"
+    else
+        rofi -e "🙇 No results for '$QUERY'." -theme-str "$THEME_NO_RESULTS"
+    fi
     exit 0
 }
 
@@ -97,7 +125,7 @@ RESULTS="$(printf '%s\n' "$RAW" | awk '
         if (line == "Other forms") { skip_forms = 1; next }
         if (line == "Wikipedia definition") { pos = "Wikipedia"; next }
         if ($0 ~ /^[^ \t]/) {
-            # Headword line, e.g. "猫砂 [ねこすな]:" \u2014 strip trailing colon.
+            # Headword line, e.g. "猫砂 [ねこすな]:" — strip trailing colon.
             header = line
             sub(/:[[:space:]]*$/, "", header)
             pos = ""
@@ -108,9 +136,9 @@ RESULTS="$(printf '%s\n' "$RAW" | awk '
             if (header == "") { header = query }
             if (nblocks == 0) { nblocks = 1 }
             if (pos == "")
-                row = header " \u2014 " line
+                row = header " — " line
             else
-                row = header " (" pos ") \u2014 " line
+                row = header " (" pos ") — " line
             count[nblocks]++
             rows[nblocks, count[nblocks]] = row
             next
