@@ -90,10 +90,6 @@ fi
 # Install mise
 echo "Install mise-en-place..."
 curl -fsSL https://mise.run | sh
-mise install go
-mise install node
-mise use -g go
-mise use -g node
 
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
