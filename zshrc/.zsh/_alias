@@ -19,6 +19,7 @@ alias untar="tar -zxvf"
 alias ff="fastfetch"
 alias ffc="fastfetch -c ~/.config/fastfetch/catnap.jsonc"
 alias cddf="cd ~/dotfiles/"
+alias cddfm="cd ~/dotfiles-misc/"
 
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
