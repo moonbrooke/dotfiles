@@ -5,11 +5,11 @@
 ROFI_THEME="$HOME/.config/rofi/config.rasi"
 
 chosen=$(printf '%s\n' \
-    "Main Monitor Screenshot" \
-    "Secondary Monitor Screenshot" \
-    "Area Selection Screenshot" \
-    "Window Screenshot" \
-    "Full Screenshot" | \
+    "󰹑  Main Monitor Screenshot" \
+    "󰹑  Secondary Monitor Screenshot" \
+    "󱣴  Area Selection Screenshot" \
+    "󱂬  Window Screenshot" \
+    "󰨇  Full Screenshot" | \
     rofi -dmenu -i -p "Screenshot" -line-padding 4 \
     -hide-scrollbar -theme "$ROFI_THEME" \
     -theme-str 'window {width: 35%;}')
@@ -17,9 +17,9 @@ chosen=$(printf '%s\n' \
 [ -z "$chosen" ] && exit
 
 case "$chosen" in
-    "Main Monitor Screenshot") "$HOME/scripts/screenshot" main ;;
-    "Secondary Monitor Screenshot") "$HOME/scripts/screenshot" secondary ;;
-    "Area Selection Screenshot") "$HOME/scripts/screenshot" select ;;
-    "Window Screenshot") "$HOME/scripts/screenshot" window ;;
-    "Full Screenshot") "$HOME/scripts/screenshot" full ;;
+    "󰹑  Main Monitor Screenshot") "$HOME/scripts/screenshot" main ;;
+    "󰹑  Secondary Monitor Screenshot") "$HOME/scripts/screenshot" secondary ;;
+    "󱣴  Area Selection Screenshot") "$HOME/scripts/screenshot" select ;;
+    "󱂬  Window Screenshot") "$HOME/scripts/screenshot" window ;;
+    "󰨇  Full Screenshot") "$HOME/scripts/screenshot" full ;;
 esac
