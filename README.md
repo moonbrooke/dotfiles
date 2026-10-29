@@ -1,6 +1,6 @@
 # dotfiles
 
-Only [Hyprland](https://hypr.land/) setup is used regularly. The other WM/Compositor configurations in this dotfiles are either experimental or abandoned.
+This is a personal Linux dotfiles. The configurations are frequently tweaked. Only [Hyprland](https://hypr.land/) setup is being used regularly. The other WM/Compositor configurations are either experimental or abandoned.
 
 ### Setup
 
@@ -12,22 +12,28 @@ My current setup consists of the following:
 
 ```bash
 # The configs you need to stow. You can stow multiple folders at once.
-btop dunst fastfetch hypr foot nvim rofi waybar scripts yazi zshrc app-flags mimeapps
+btop dunst fastfetch hypr foot kitty nvim rofi waybar scripts yazi zshrc app-flags mimeapps
 ```
 
 - WM/Compositor: [Hyprland](https://hypr.land/)
 - Display Manager: None (Login via TTY)
 - Colors: [Tokyo Night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
-- Terminal: [foot](https://codeberg.org/dnkl/foot)
+- Terminal: [kitty](https://github.com/kovidgoyal/kitty), [foot](https://codeberg.org/dnkl/foot)
 - Shell: [zsh](https://www.zsh.org/)
 - Prompt: [Oh My ZSH](https://ohmyz.sh/)
 - Status Bar: [Waybar](https://github.com/Alexays/Waybar)
-- Menu: [rofi](https://github.com/davatorium/rofi)
-- Screenshot: [grim](https://sr.ht/~emersion/grim/) with [slurp](https://github.com/emersion/slurp)+[jq](https://jqlang.org/)
-- File Manager: [Thunar](https://docs.xfce.org/xfce/thunar/start), [yazi](https://github.com/sxyazi/yazi)
+- Menu/Launcher: [rofi](https://github.com/davatorium/rofi)
+- Screenshot: [grim](https://sr.ht/~emersion/grim/) with [slurp](https://github.com/emersion/slurp) and [jq](https://jqlang.org/)
+- File Manager: [Thunar](https://docs.xfce.org/xfce/thunar/start), [Strata](https://github.com/lgse/strata), [yazi](https://github.com/sxyazi/yazi)
 - Sysfetch: [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - Editor: [Neovim](https://neovim.io/), [VS Code](https://code.visualstudio.com/)
-- Font: [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads), [Sarasa Gothic](https://github.com/be5invis/sarasa-gothic), [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads), [IosevkaTerm Nerd Font](https://www.nerdfonts.com/font-downloads), [Ricty Nerd Font](https://rictyfonts.github.io/) (Japanese font), [Noto CJK](https://github.com/notofonts/noto-cjk) (Chinese, Japanese, Korean fonts)
+- Font:
+    - [IosevkaTerm Nerd Font](https://www.nerdfonts.com/font-downloads) (Main)
+    - [Sarasa Gothic](https://github.com/be5invis/sarasa-gothic) (Japanese font support)
+    - [Noto CJK](https://github.com/notofonts/noto-cjk) (Chinese, Japanese, Korean fonts support)
+    - [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads)
+    - [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads)
+    - [Ricty Nerd Font](https://rictyfonts.github.io/) (Japanese font support)
 
 ### Screenshot
 
