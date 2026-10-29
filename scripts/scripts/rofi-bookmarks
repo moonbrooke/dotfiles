@@ -1,14 +1,16 @@
 #!/bin/sh
 set -eu
 
-# Files
-# Put your files in .config/bookmarks/.
-PERS_FILE="${PERS_FILE:-$HOME/notes/Bookmarks/personal.md}"
-LINUX_FILE="${LINUX_FILE:-$HOME/notes/Bookmarks/linux.md}"
+# Bookmark categories are discovered automatically: every <name>.md file in
+# this directory becomes a "<name>" category in the menu.
+# Format of each file (one bookmark per line):
+#   Label :: https://example.com
+#   https://example.com
+BOOKMARKS_DIR="${BOOKMARKS_DIR:-$HOME/notes/Bookmarks}"
 
 # Rofi command
 ROFI="rofi -dmenu -i -markup-rows -p 'Bookmarks' \
-    -theme-str 'window {width: 35%;}'"
+    -theme-str 'window {width: 40%;}'"
 
 # Browsers
 # Choose your browsers accordingly
@@ -16,17 +18,30 @@ EDGE="$(command -v microsoft-edge-stable || true)"
 FIREFOX="$(command -v firefox || command -v firefox-esr || true)"
 FALLBACK="$(command -v xdg-open || echo microsoft-edge-stable)"
 
-# Ensure files exist
-mkdir -p "$(dirname "$PERS_FILE")"
-[ -f "$PERS_FILE" ] || cat >"$PERS_FILE" <<'EOF'
+# Browser used for every category unless overridden below.
+DEFAULT_BROWSER="$EDGE"
+[ -n "$DEFAULT_BROWSER" ] || DEFAULT_BROWSER="$FIREFOX"
+
+# Optional per-category browser override. The variable name is
+# BOOKMARKS_BROWSER_<CATEGORY>, uppercased with non-alphanumerics as "_".
+# Example: to open the "work" category in Firefox, export
+#   BOOKMARKS_BROWSER_WORK=firefox
+
+# Seed the default categories on first run, but never recreate a category
+# the user deleted.
+mkdir -p "$BOOKMARKS_DIR"
+set -- "$BOOKMARKS_DIR"/*.md
+if [ ! -e "$1" ]; then
+  cat >"$BOOKMARKS_DIR/personal.md" <<'EOF'
 # personal
 Twitter :: https://x.com
 https://www.youtube.com
 EOF
-[ -f "$LINUX_FILE" ] || cat >"$LINUX_FILE" <<'EOF'
+  cat >"$BOOKMARKS_DIR/linux.md" <<'EOF'
 # linux
 Hyprland Wiki :: https://wiki.hypr.land/
 EOF
+fi
 
 emit() {
   tag="$1"; file="$2"
@@ -48,11 +63,21 @@ emit() {
   done
 }
 
-# Build combined list
-choice="$({
-  emit personal "$PERS_FILE"
-  emit linux    "$LINUX_FILE"
-} | sort | sed -e 's/^\[\(personal\|linux\)\]/<span foreground="#565f89">[\1]<\/span>/' | eval "$ROFI" || true)"
+# Build combined list from every .md file in the bookmarks directory
+list="$(
+  for file in "$BOOKMARKS_DIR"/*.md; do
+    [ -f "$file" ] || continue
+    tag="${file##*/}"
+    tag="${tag%.md}"
+    emit "$tag" "$file"
+  done | sort
+)"
+
+[ -n "$list" ] || exit 0
+
+choice="$(printf '%s\n' "$list" \
+  | sed -e 's/^\[\([^]]*\)\]/<span foreground="#565f89">[\1]<\/span>/' \
+  | eval "$ROFI" || true)"
 
 [ -n "$choice" ] || exit 0
 
@@ -74,7 +99,11 @@ case "$raw" in
   *) url="https://$raw" ;;
 esac
 
-# Pick browser by tag
+# Pick browser by tag (optional per-category override, else default)
+uc_tag="$(printf '%s' "$tag" | tr -c '[:alnum:]\n' '_' | tr '[:lower:]' '[:upper:]')"
+eval "browser=\${BOOKMARKS_BROWSER_${uc_tag}:-}"
+[ -n "$browser" ] || browser="$DEFAULT_BROWSER"
+
 open_with() {
   cmd="$1"
   if [ -n "$cmd" ]; then
@@ -82,10 +111,8 @@ open_with() {
   fi
 }
 
-case "$tag" in
-  personal) open_with "$EDGE" ;;
-  linux)    open_with "$EDGE" ;;
-esac
+# Open with the chosen browser
+open_with "$browser"
 
 # Fallback if specific browser not found
 nohup $FALLBACK "$url" >/dev/null 2>&1 &
