@@ -88,11 +88,22 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
 fi
 
 # Install mise
-echo "Install mise-en-place..."
+echo "Installing mise-en-place..."
 curl -fsSL https://mise.run | sh
 
 # Install homebrew
+echo "Installing homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install hyprquickpaper
+echo "Installing hyprquickpaper..."
+sudo pacman -S --needed --noconfirm quickshell jq imagemagick
+git clone git clone https://github.com/ujjalsigdel/hyprquickpaper.git "$HOME/.config/quickshell/hyprquickpaper"
+cd "$HOME/.config/quickshell/hyprquickpaper"
+chmod +x install.sh
+./install.sh
+
+cd "$HOME"
 
 echo "================================================="
 echo "Installation Complete!"
