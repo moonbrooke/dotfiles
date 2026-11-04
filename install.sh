@@ -105,7 +105,10 @@ chmod +x install.sh
 
 cd "$HOME"
 
+sudo usermod -aG input $USER
+
 echo "================================================="
 echo "Installation Complete!"
-echo "Login via TTY and run 'start-hyprland' to launch the environment."
+echo "Please reboot the system."
+echo "Then, login via TTY and run 'start-hyprland' to launch the environment."
 echo "================================================="
