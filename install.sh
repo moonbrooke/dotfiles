@@ -39,7 +39,7 @@ sudo pacman -S --needed --noconfirm neovim zsh fastfetch yazi fzf bat btop \
 
 # Install AUR Packages
 # echo "Installing additional AUR packages..."
-yay -S --needed --noconfirm dracula-gtk-theme-full tela-icon-theme
+yay -S --needed --noconfirm matuwall-bin dracula-gtk-theme-full tela-icon-theme
 
 # Clone Dotfiles
 DOTFILES_DIR="$HOME/dotfiles"
@@ -56,7 +56,7 @@ echo "Applying dotfiles with GNU Stow..."
 cd "$DOTFILES_DIR"
 
 # Stow the specific folders listed in the README
-stow btop dunst fastfetch hypr foot kitty nvim rofi waybar scripts yazi app-flags mise mimeapps television
+stow app-flags btop dunst fastfetch foot hypr kitty matuwall mimeapps mise nvim rofi scripts television waybar yazi
 
 # Notes Folder
 if [ ! -d "$HOME/notes" ]; then
@@ -94,16 +94,6 @@ curl -fsSL https://mise.run | sh
 # Install homebrew
 echo "Installing homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install hyprquickpaper
-echo "Installing hyprquickpaper..."
-sudo pacman -S --needed --noconfirm quickshell jq imagemagick
-git clone git clone https://github.com/ujjalsigdel/hyprquickpaper.git "$HOME/.config/quickshell/hyprquickpaper"
-cd "$HOME/.config/quickshell/hyprquickpaper"
-chmod +x install.sh
-./install.sh
-
-cd "$HOME"
 
 sudo usermod -aG input $USER
 

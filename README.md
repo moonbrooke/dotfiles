@@ -12,7 +12,7 @@ My current setup consists of the following:
 
 ```bash
 # The configs you need to stow. You can stow multiple folders at once.
-btop dunst fastfetch hypr foot kitty nvim rofi waybar scripts yazi zshrc app-flags mimeapps television
+stow app-flags btop dunst fastfetch foot hypr kitty matuwall mimeapps mise nvim rofi scripts television waybar yazi
 ```
 
 - WM/Compositor: [Hyprland](https://hypr.land/)

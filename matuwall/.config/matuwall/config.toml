@@ -1,0 +1,61 @@
+[general]
+directory = "/home/moonbrooke/Pictures/Wallpapers"
+backend = "awww"
+
+[backend.sweetbg]
+args = []
+
+[backend.awww]
+args = [
+    "--transition-type", "grow",
+    "--transition-angle", "30",
+    "--transition-step", "90"
+]
+
+[backend.plasma]
+args = []
+
+[backend.command]
+apply = ""
+
+[window]
+preview = false
+close_on_focus_loss = false
+position = "bottom"
+background = "#1a1b2600"
+margin = 34
+edge_margin = 24
+radius = 0
+
+[input]
+mouse = false
+
+[animation]
+navigation_ms = 100
+zoom_percent = 10
+
+[grid]
+columns = 5
+visible_rows = 1
+carousel = true
+edge = "auto"
+spacing = 16
+radius = 0
+border_width = 0
+shadow_width = 0
+ring_width = 3
+
+[thumbnail]
+width = 300
+height = 169
+
+[colors]
+tile = "#313244ff"
+border = "#585b70ff"
+shadow = "#00000066"
+ring = "#7aa2f7ff"
+spinner = "#cdd0e6ff"
+
+[hooks]
+on_apply = [
+]
