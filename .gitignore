@@ -16,3 +16,5 @@ cmus/.config/cmus/*
 !cmus/.config/cmus/rc
 
 gtk-3.0/.config/gtk-3.0/bookmarks
+
+opencode/.config/opencode/service.json
