@@ -10,7 +10,7 @@ chosen=$(echo -e "Toggle gaps on/off\n0/4\n2/4\n5/10\n10/15" | \
 [ -z "$chosen" ] && exit
 
 case "$chosen" in
-    "Toggle gaps on/off") ~/.config/hypr/scripts/gaps.sh ;;
+    "Toggle gaps on/off") ~/scripts/toggle-gaps ;;
     "0/4") ~/scripts/set-gaps 0 4 ;;
     "2/4") ~/scripts/set-gaps 2 4 ;;
     "5/10") ~/scripts/set-gaps 5 10 ;;

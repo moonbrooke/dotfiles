@@ -10,7 +10,7 @@ if [ ! -f "$STATE_FILE" ]; then
 else
     rm "$STATE_FILE"
     pkill waybar
-    ~/.config/hypr/scripts/launch-waybar.sh &
+    ~/scripts/waybar-launch &
     notify-send 'Settings' 'Game Mode has been <span color="#f7768e"><b>DEACTIVATED</b></span>' -t 2500 \
         --hint=string:x-dunst-stack-tag:gamemode -i dialog-information &
 fi
