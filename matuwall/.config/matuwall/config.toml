@@ -21,6 +21,7 @@ apply = ""
 [window]
 preview = false
 close_on_focus_loss = false
+# Placement on screen: "center", "left", "right", "top" or "bottom"
 position = "bottom"
 background = "#1a1b2600"
 margin = 34
