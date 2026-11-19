@@ -56,5 +56,7 @@ hl.on("hyprland.start", function ()
         exec_all(arch_cmds)
     elseif id == "void" then
         exec_all(void_cmds)
+    else
+        exec_all(arch_cmds)
     end
 end)
