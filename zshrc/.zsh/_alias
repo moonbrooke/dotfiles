@@ -16,10 +16,15 @@ alias grep="grep --color=auto"
 alias fcfv="fc-cache -fv"
 alias snvim="sudoedit"
 alias untar="tar -zxvf"
-alias ff="fastfetch"
-alias ffc="fastfetch -c ~/.config/fastfetch/catnap.jsonc"
 alias cddf="cd ~/dotfiles/"
 alias cddfm="cd ~/dotfiles-misc/"
+
+if grep -qE '^ID="?cachyos"?$' /etc/os-release 2>/dev/null; then
+    alias ff="fastfetch -c ~/.config/fastfetch/cachyos.jsonc"
+else
+    alias ff="fastfetch"
+fi
+alias ffc="fastfetch -c ~/.config/fastfetch/catnap.jsonc"
 
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
